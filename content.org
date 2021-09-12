@@ -1,0 +1,51 @@
+#+hugo_base_dir: .
+#+hugo_level_offset: 0
+#+seq_todo: TODO DRAFT DONE
+#+startup: indent
+
+* Home
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:EXPORT_HUGO_MENU: :menu "main"
+:END:
+
+** Home
+:PROPERTIES:
+:EXPORT_HUGO_SECTION:
+:EXPORT_FILE_NAME: _index
+:EXPORT_HUGO_MENU: :menu "main" :weight -2 :title Home
+:END:
+Content on main page.
+
+** Posts
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: posts
+:EXPORT_FILE_NAME: _index
+:EXPORT_HUGO_MENU: :menu "main"
+:END:
+All the posts
+
+** DONE Latte Art :@coffee:
+CLOSED: [2021-09-12 Sun 14:11]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20210802_latte-art
+:EXPORT_HUGO_MENU:
+:END:
+Getting into home espresso has been fun, it's a rabbit hole like most fun things. And with rabbit holes it's best to decide how far you're willing to fall in before really starting down that hole. For me, it was an used Rancilio Silvia modded with a temperature PID controller and a refurbished Baratza Vario. At this level it's definitely possible to get good espresso and latte art if one tries, gets lucky, and practices... it's a good balance. Making one or maximum of two drinks most days is nearly not enough practice especially considering missed practice due to travel. But today was a lucky day, I got the best pour I've managed and it's exciting to see what's possible at the lower/est end of prosumer equipment.
+
+** DONE Gemini Capsule
+CLOSED: [2021-08-02 Mon 19:00]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20210802_gemini-capsule
+:EXPORT_HUGO_MENU:
+:END:
+With a certain nostalgia for the early web ever present, a Gemini site (gemite? edit: I've learned it's called a capsule 💊🚀) is a good spiritual successor. Albeit much fewer under construction gifs and red text on black background...
+=gemini://gem.shom.dev]=
+
+* About
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: about
+:EXPORT_HUGO_MENU: :menu "main" :weight -1 :title About
+:EXPORT_FILE_NAME: _index
+:END:
+I like people, dogs (animals in general), photography, scuba-diving, computers, open-source software, privacy, and generally improving these things where I can.
