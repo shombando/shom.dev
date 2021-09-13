@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Framework | shom.dev</title>
+<meta name="keywords" content="" />
+<meta name="description" content="I&rsquo;ve decided to cross post any of my content type toots from Mastodon (Fosstodon instance) here. I&rsquo;m not sure if there&rsquo;s a good way to &ldquo;tag&rdquo; something aside from filenames so I can generate a toot vs post section? I&rsquo;ll include that info in the filename and I can investigate automation later.
+First impression I just received my frame.work (i5) DIY edition laptop. I haven&rsquo;t installed the RAM and NVMe yet (they need to come out from another machine first) but I&rsquo;m pretty impressed with the build quality so far.">
+<meta name="author" content="Shom Bandopadhaya">
+<link rel="canonical" href="./posts/20210901_termuxemacs/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.9f1d947375927e9847272b1f4e9be81336f539e513bf04d52cade31f81cad1af.css" integrity="sha256-nx2Uc3WSfphHJysfTpvoEzb1OeUTvwTVLK3jH4HK0a8=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="mask-icon" href="safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.88.1" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Framework" />
+<meta property="og:description" content="I&rsquo;ve decided to cross post any of my content type toots from Mastodon (Fosstodon instance) here. I&rsquo;m not sure if there&rsquo;s a good way to &ldquo;tag&rdquo; something aside from filenames so I can generate a toot vs post section? I&rsquo;ll include that info in the filename and I can investigate automation later.
+First impression I just received my frame.work (i5) DIY edition laptop. I haven&rsquo;t installed the RAM and NVMe yet (they need to come out from another machine first) but I&rsquo;m pretty impressed with the build quality so far." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="./posts/20210901_termuxemacs/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-01T19:25:00-05:00" />
+<meta property="article:modified_time" content="2021-09-01T19:25:00-05:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Framework"/>
+<meta name="twitter:description" content="I&rsquo;ve decided to cross post any of my content type toots from Mastodon (Fosstodon instance) here. I&rsquo;m not sure if there&rsquo;s a good way to &ldquo;tag&rdquo; something aside from filenames so I can generate a toot vs post section? I&rsquo;ll include that info in the filename and I can investigate automation later.
+First impression I just received my frame.work (i5) DIY edition laptop. I haven&rsquo;t installed the RAM and NVMe yet (they need to come out from another machine first) but I&rsquo;m pretty impressed with the build quality so far."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "./posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Framework",
+      "item": "./posts/20210901_termuxemacs/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Framework",
+  "name": "Framework",
+  "description": "I\u0026rsquo;ve decided to cross post any of my content type toots from Mastodon (Fosstodon instance) here. I\u0026rsquo;m not sure if there\u0026rsquo;s a good way to \u0026ldquo;tag\u0026rdquo; something aside from filenames so I can generate a toot vs post section? I\u0026rsquo;ll include that info in the filename and I can investigate automation later.\nFirst impression I just received my frame.work (i5) DIY edition laptop. I haven\u0026rsquo;t installed the RAM and NVMe yet (they need to come out from another machine first) but I\u0026rsquo;m pretty impressed with the build quality so far.",
+  "keywords": [
+    
+  ],
+  "articleBody": "I’ve decided to cross post any of my content type toots from Mastodon (Fosstodon instance) here. I’m not sure if there’s a good way to “tag” something aside from filenames so I can generate a toot vs post section? I’ll include that info in the filename and I can investigate automation later.\nFirst impression I just received my frame.work (i5) DIY edition laptop. I haven’t installed the RAM and NVMe yet (they need to come out from another machine first) but I’m pretty impressed with the build quality so far. The laptop feels solid and the expansion cards fit flush and tight. I’m excited about the 3:2 display, #modular design, and user #replaceable everything. If folks are interested I can share my experience as I get it up and running. #framework 🦣 fosstodon toot\nQuick review Since there was a decent bit of interest, here’s a #framework #laptop update.\n1/X: I opened up the case with the provided multi-tool (T6/phillips reversible bit with a spudger at the other end). The screws on the case are captive, which is great no worries about losing one. 1 of the 5 screws wasn’t perfectly aligned but posed no issues, build is solid. The spudger allows the keyboard to be lifted (top view under keyboard shown). The QR codes link to documentation (which has a lot of photos). 2/X: The top plate is secured in place with magnets (gluing isn’t the answer!) and feels very secure and still easy to remove with spudger. Only a single ribbon cable connects the top to the main board and it has plenty of play so working with it was comfortable and easy to detach and reattach. Installing the components, RAM (which I had) and wifi-card (which I bought from frame.work) was very easy. I’d even say easier than desktop since everything is open and flat. I’ll install the NVMe later. 3/X: They supplied an advisory to put some insulating tape under the touchpad cable to prevent a potential short (similar issue to pre-2012 Macbook SATA cable, could potentially rub over time and short). I appreciated the note and put down some electrical tape, photo attached, it was #righttorepair working in the manufacturer favor. The advisory sheet also had a couple stickers on it, which was cool. All other hardware looks good and fits well. I’m not a huge fan of the keyboard, a bit mushy. 4/4: I have it configured with 2 USB-C ports, 1 USB-A, and 1 microSD card reader. Booting up went fine, I installed #pop_os from flash drive to microSD v90, suprisingly fast. The BIOS (needed to disable secure boot) splash screen doesn’t show FN key legend for boot device (F12) / BIOS (? I mashed a lot of FN keys), so that would be a nice touch to add. Having WiFi issues, will investigate later. But everything else feels snappy and display looks good (3:2 ratio!!). Happy to answer questions!\n🦣 fosstodon toot\n",
+  "wordCount" : "490",
+  "inLanguage": "en",
+  "datePublished": "2021-09-01T19:25:00-05:00",
+  "dateModified": "2021-09-01T19:25:00-05:00",
+  "author":[{
+    "@type": "Person",
+    "name": "Shom Bandopadhaya"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "./posts/20210901_termuxemacs/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "shom.dev",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="." accesskey="h" title="shom.dev (Alt + H)">shom.dev</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="./" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href=".">Home</a>&nbsp;»&nbsp;<a href="./posts/">Posts</a></div>
+    <h1 class="post-title">
+      Framework
+    </h1>
+    <div class="post-meta">September 1, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Shom Bandopadhaya
+</div>
+  </header> 
+  <div class="post-content"><p>I&rsquo;ve decided to cross post any of my content type toots from Mastodon (Fosstodon instance) here. I&rsquo;m not sure if there&rsquo;s a good way to &ldquo;tag&rdquo; something aside from filenames so I can generate a toot vs post section? I&rsquo;ll include that info in the filename and I can investigate automation later.</p>
+<h1 id="first-impression">First impression<a hidden class="anchor" aria-hidden="true" href="#first-impression">#</a></h1>
+<p>I just received my frame.work (i5) DIY edition laptop. I haven&rsquo;t installed the RAM and NVMe yet (they need to come out from another machine first) but I&rsquo;m pretty impressed with the build quality so far. The laptop feels solid and the expansion cards fit flush and tight. I&rsquo;m excited about the 3:2 display, #modular design, and user #replaceable everything.
+If folks are interested I can share my experience as I get it up and running.
+#framework
+<a href="https://fosstodon.org/@shom/106849498535302510">🦣 fosstodon toot</a></p>
+<h1 id="quick-review">Quick review<a hidden class="anchor" aria-hidden="true" href="#quick-review">#</a></h1>
+<p>Since there was a decent bit of interest, here&rsquo;s a #framework #laptop update.</p>
+<p>1/X:
+I opened up the case with the provided multi-tool (T6/phillips reversible bit with a spudger at the other end). The screws on the case are captive, which is great no worries about losing one. 1 of the 5 screws wasn&rsquo;t perfectly aligned but posed no issues, build is solid. The spudger allows the keyboard to be lifted (top view under keyboard shown). The QR codes link to documentation (which has a lot of photos).
+2/X:
+The top plate is secured in place with magnets (gluing isn&rsquo;t the answer!) and feels very secure and still easy to remove with spudger. Only a single ribbon cable connects the top to the main board and it has plenty of play so working with it was comfortable and easy to detach and reattach.
+Installing the components, RAM (which I had) and wifi-card (which I bought from frame.work) was very easy. I&rsquo;d even say easier than desktop since everything is open and flat. I&rsquo;ll install the NVMe later.
+3/X:
+They supplied an advisory to put some insulating tape under the touchpad cable to prevent a potential short (similar issue to pre-2012 Macbook SATA cable, could potentially rub over time and short). I appreciated the note and put down some electrical tape, photo attached, it was #righttorepair working in the manufacturer favor. The advisory sheet also had a couple stickers on it, which was cool.
+All other hardware looks good and fits well. I&rsquo;m not a huge fan of the keyboard, a bit mushy.
+4/4:
+I have it configured with 2 USB-C ports, 1 USB-A, and 1 microSD card reader. Booting up went fine, I installed #pop_os from flash drive to microSD v90, suprisingly fast.
+The BIOS (needed to disable secure boot) splash screen doesn&rsquo;t show FN key legend for boot device (F12) / BIOS (? I mashed a lot of FN keys), so that would be a nice touch to add.
+Having WiFi issues, will investigate later. But everything else feels snappy and display looks good (3:2 ratio!!).
+Happy to answer questions!</p>
+<p><a href="https://fosstodon.org/@shom/106854632055933583">🦣 fosstodon toot</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+<nav class="paginav">
+  <a class="prev" href="./posts/20210910_staticsite/">
+    <span class="title">« Prev Page</span>
+    <br>
+    <span>Static-site</span>
+  </a>
+  <a class="next" href="./posts/20210808_videoediting/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>Video Editing</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2021 <a href=".">shom.dev</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
