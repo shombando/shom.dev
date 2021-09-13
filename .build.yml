@@ -8,10 +8,9 @@ tasks:
   # - build: |
       # cd $site
       # emacs --batch -l ./publish.el --funcall publish/sb
-  - package: |
+  - deploy: |
       cd $site
       cd public
       tar -cvz . > ../site.tar.gz
-  - upload: |
       cd ..
       acurl -f https://pages.sr.ht/publish/$site -Fcontent=@site.tar.gz
