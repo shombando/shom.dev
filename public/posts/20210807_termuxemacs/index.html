@@ -10,15 +10,15 @@
 <meta name="description" content="One of the biggest advantages of Android is that it runs on Linux and Termux [1] is a very capable terminal emulator. Until pine phone (which I own for playing around on) type devices reach daily driver maturity (to use with job related corporate apps etc.) Termux is my only realistic option to run Linux terminal apps on the phone.
 This is where being able to use Emacs as a TUI application on Termux is great.">
 <meta name="author" content="Shom Bandopadhaya">
-<link rel="canonical" href="./posts/20210807_termuxemacs/" />
+<link rel="canonical" href="https://shom.dev/posts/20210807_termuxemacs/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.9f1d947375927e9847272b1f4e9be81336f539e513bf04d52cade31f81cad1af.css" integrity="sha256-nx2Uc3WSfphHJysfTpvoEzb1OeUTvwTVLK3jH4HK0a8=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="mask-icon" href="safari-pinned-tab.svg">
+<link rel="icon" href="https://shom.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shom.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shom.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shom.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://shom.dev/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.88.1" />
@@ -62,7 +62,7 @@ This is where being able to use Emacs as a TUI application on Termux is great.">
 <meta property="og:description" content="One of the biggest advantages of Android is that it runs on Linux and Termux [1] is a very capable terminal emulator. Until pine phone (which I own for playing around on) type devices reach daily driver maturity (to use with job related corporate apps etc.) Termux is my only realistic option to run Linux terminal apps on the phone.
 This is where being able to use Emacs as a TUI application on Termux is great." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="./posts/20210807_termuxemacs/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://shom.dev/posts/20210807_termuxemacs/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-07T15:59:00-05:00" />
 <meta property="article:modified_time" content="2021-08-07T15:59:00-05:00" />
 
@@ -81,13 +81,13 @@ This is where being able to use Emacs as a TUI application on Termux is great."/
       "@type": "ListItem",
       "position":  2 ,
       "name": "Posts",
-      "item": "./posts/"
+      "item": "https://shom.dev/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  3 ,
       "name": "Termux + Emacs",
-      "item": "./posts/20210807_termuxemacs/"
+      "item": "https://shom.dev/posts/20210807_termuxemacs/"
     }
   ]
 }
@@ -102,7 +102,7 @@ This is where being able to use Emacs as a TUI application on Termux is great."/
   "keywords": [
     
   ],
-  "articleBody": "One of the biggest advantages of Android is that it runs on Linux and Termux [1] is a very capable terminal emulator. Until pine phone (which I own for playing around on) type devices reach daily driver maturity (to use with job related corporate apps etc.) Termux is my only realistic option to run Linux terminal apps on the phone.\nThis is where being able to use Emacs as a TUI application on Termux is great. I actually run a slightly tweaked version of my desktop config which relies of doom-emacs [1]. I don’t do anything complex but the editing experience is as comfortable as most other phone app. The editing experience is helped by evil bindings which are more key-sequence driven rather than key-combo driven. Although modifier keys are supported by Termux and a two row soft keyboard is fully customizable, evil bindings are easier. My config for the softkeys is shown here:\nextra-keys = [ \\ ['ESC','|','/','HOME','UP','END','~','DEL'], \\ ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT',':','Also swiping over the soft keyboard reveals a text entry field which is a standard Android text field so text auto correct, gesture typing, and other keyboard features work as expected and is a lot more convenient for typing.\nIn fact this whole gemini capsule and all entries (so far) were created using Termux + Emacs including setting up the CI/CD for sr.ht.\nWhile I use this setup for capturing notes in org mode, for tasks management I use Orgzly. That’s another topic but in an even smaller nutshell, the biggest benefit is system notifications.\n[1] https://termux.com\n[2] https://github.com/hlissner/doom-emacs.\n",
+  "articleBody": "One of the biggest advantages of Android is that it runs on Linux and Termux [1] is a very capable terminal emulator. Until pine phone (which I own for playing around on) type devices reach daily driver maturity (to use with job related corporate apps etc.) Termux is my only realistic option to run Linux terminal apps on the phone.\nThis is where being able to use Emacs as a TUI application on Termux is great. I actually run a slightly tweaked version of my desktop config which relies of doom-emacs [1]. I don’t do anything complex but the editing experience is as comfortable as most other phone app. The editing experience is helped by evil bindings which are more key-sequence driven rather than key-combo driven. Although modifier keys are supported by Termux and a two row soft keyboard is fully customizable, evil bindings are easier. My config for the softkeys is shown here:\nextra-keys = [ \\ ['ESC','|','/','HOME','UP','END','~','DEL'], \\ ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT',':','Also swiping over the soft keyboard reveals a text entry field which is a standard Android text field so text auto correct, gesture typing, and other keyboard features work as expected and is a lot more convenient for typing.\nIn fact this whole gemini capsule and all entries (so far) were created using Termux + Emacs including setting up the CI/CD for sr.ht.\nWhile I use this setup for capturing notes in org mode, for tasks management I use Orgzly. That’s another topic but in an even smaller nutshell, the biggest benefit is system notifications.\n[1] https://termux.com [2] https://github.com/hlissner/doom-emacs.\n",
   "wordCount" : "262",
   "inLanguage": "en",
   "datePublished": "2021-08-07T15:59:00-05:00",
@@ -113,14 +113,14 @@ This is where being able to use Emacs as a TUI application on Termux is great."/
   }],
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "./posts/20210807_termuxemacs/"
+    "@id": "https://shom.dev/posts/20210807_termuxemacs/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "shom.dev",
     "logo": {
       "@type": "ImageObject",
-      "url": "favicon.ico"
+      "url": "https://shom.dev/favicon.ico"
     }
   }
 }
@@ -142,7 +142,7 @@ This is where being able to use Emacs as a TUI application on Termux is great."/
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="." accesskey="h" title="shom.dev (Alt + H)">shom.dev</a>
+            <a href="https://shom.dev" accesskey="h" title="shom.dev (Alt + H)">shom.dev</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -168,12 +168,12 @@ This is where being able to use Emacs as a TUI application on Termux is great."/
         </div>
         <ul id="menu">
             <li>
-                <a href="./" title="Home">
+                <a href="https://shom.dev/" title="Home">
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="posts/" title="Posts">
+                <a href="https://shom.dev/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
@@ -184,7 +184,7 @@ This is where being able to use Emacs as a TUI application on Termux is great."/
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href=".">Home</a>&nbsp;»&nbsp;<a href="./posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://shom.dev">Home</a>&nbsp;»&nbsp;<a href="https://shom.dev/posts/">Posts</a></div>
     <h1 class="post-title">
       Termux &#43; Emacs
     </h1>
@@ -200,20 +200,20 @@ This is where being able to use Emacs as a TUI application on Termux is great."/
 </code></pre><p>Also swiping over the soft keyboard reveals a text entry field which is a standard Android text field so text auto correct, gesture typing, and other keyboard features work as expected and is a lot more convenient for typing.</p>
 <p>In fact this whole gemini capsule and all entries (so far) were created using Termux + Emacs including setting up the CI/CD for sr.ht.</p>
 <p>While I use this setup for capturing notes in org mode, for tasks management I use Orgzly. That&rsquo;s another topic but in an even smaller nutshell, the biggest benefit is system notifications.</p>
-<p>[1] <a href="https://termux.com">https://termux.com</a></p>
-<p>[2] <a href="https://github.com/hlissner/doom-emacs">https://github.com/hlissner/doom-emacs</a>.</p>
+<p>[1] <a href="https://termux.com">https://termux.com</a>
+[2] <a href="https://github.com/hlissner/doom-emacs">https://github.com/hlissner/doom-emacs</a>.</p>
 
 
   </div>
 
   <footer class="post-footer">
 <nav class="paginav">
-  <a class="prev" href="./posts/20210808_videoediting/">
+  <a class="prev" href="https://shom.dev/posts/20210808_videoediting/">
     <span class="title">« Prev Page</span>
     <br>
     <span>Video Editing</span>
   </a>
-  <a class="next" href="./posts/20210802_latte-art/">
+  <a class="next" href="https://shom.dev/posts/20210802_latte-art/">
     <span class="title">Next Page »</span>
     <br>
     <span>Latte Art</span>
@@ -225,7 +225,7 @@ This is where being able to use Emacs as a TUI application on Termux is great."/
     </main>
     
 <footer class="footer">
-    <span>&copy; 2021 <a href=".">shom.dev</a></span>
+    <span>&copy; 2021 <a href="https://shom.dev">shom.dev</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

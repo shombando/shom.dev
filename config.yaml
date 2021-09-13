@@ -1,4 +1,4 @@
-baseURL: "."
+baseURL: "https://shom.dev"
 languageCode: "en-us"
 title: "shom.dev"
 theme: "PaperMod"
