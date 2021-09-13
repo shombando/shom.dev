@@ -1,6 +1,6 @@
 #+hugo_base_dir: .
 #+hugo_level_offset: 0
-#+seq_todo: TODO DRAFT DONE
+#+seq_todo: DRAFT DONE
 #+startup: indent
 
 * Home
@@ -15,7 +15,6 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main" :weight -2 :title Home
 :END:
-Content on main page.
 
 ** Posts
 :PROPERTIES:
@@ -23,10 +22,124 @@ Content on main page.
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
-All the posts
+
+** DRAFT Static-site with Emacs + Org-mode
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20210912_EmacsOrgModeHugo
+:EXPORT_HUGO_MENU:
+:END:
+This is a draft article.
+
+** DONE Static-site
+CLOSED: [2021-09-10 Fri 20:29]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20210910_StaticSite
+:EXPORT_HUGO_MENU:
+:END:
+=This entry and all previous ones are taken verbatim from the gemini capsule.=
+*** Establishing a web presence
+The gemini capsule has been an interesting experiment. In order to be the change I want to see, I will be creating a personal website/blog and the articles will appear both as html and gemtext. All entries prior to this have been made with Android+Termux+emacs. Going forward, the entries won't strictly be made from Termux.
+
+*** Static site using org-mode
+Org-mode has good html export capabilities and using it with SimpleCss [1] provides a pretty decent standalone webpage. However, creating a site that will auto-generate navigation and headers/footers is a bit more involved.
+
+*** Hugo / Ox-gemtext
+One option is to write the content in org format, use ox-hugo [2] for content export to enable Hugo for the site generation and use a gemtext exporter for gemini. ox-gemtext [3] does not handle gemtext markup for links properly and the generated TOC and section choices are not quite to my liking. Might need to investigate another option. Better to get started than find a perfect solution.
+
+[1] https://simplecss.org
+[2] https://ox-hugo.scripter.co
+[3] https://codeberg.org/woozong/ox-gemtext
+
+
+** DONE Framework
+CLOSED: [2021-09-01 Wed 19:25]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20210901_TermuxEmacs
+:EXPORT_HUGO_MENU:
+:END:
+I've decided to cross post any of my content type toots from Mastodon (Fosstodon instance) here. I'm not sure if there's a good way to "tag" something aside from filenames so I can generate a toot vs post section? I'll include that info in the filename and I can investigate automation later.
+
+*** First impression
+I just received my frame.work (i5) DIY edition laptop. I haven't installed the RAM and NVMe yet (they need to come out from another machine first) but I'm pretty impressed with the build quality so far. The laptop feels solid and the expansion cards fit flush and tight. I'm excited about the 3:2 display, #modular design, and user #replaceable everything.
+If folks are interested I can share my experience as I get it up and running.
+ #framework
+[[https://fosstodon.org/@shom/106849498535302510][🦣 fosstodon toot]]
+
+*** Quick review
+Since there was a decent bit of interest, here's a #framework #laptop update.
+
+1/X:
+I opened up the case with the provided multi-tool (T6/phillips reversible bit with a spudger at the other end). The screws on the case are captive, which is great no worries about losing one. 1 of the 5 screws wasn't perfectly aligned but posed no issues, build is solid. The spudger allows the keyboard to be lifted (top view under keyboard shown). The QR codes link to documentation (which has a lot of photos).
+2/X:
+The top plate is secured in place with magnets (gluing isn't the answer!) and feels very secure and still easy to remove with spudger. Only a single ribbon cable connects the top to the main board and it has plenty of play so working with it was comfortable and easy to detach and reattach.
+Installing the components, RAM (which I had) and wifi-card (which I bought from frame.work) was very easy. I'd even say easier than desktop since everything is open and flat. I'll install the NVMe later.
+3/X:
+They supplied an advisory to put some insulating tape under the touchpad cable to prevent a potential short (similar issue to pre-2012 Macbook SATA cable, could potentially rub over time and short). I appreciated the note and put down some electrical tape, photo attached, it was #righttorepair working in the manufacturer favor. The advisory sheet also had a couple stickers on it, which was cool.
+All other hardware looks good and fits well. I'm not a huge fan of the keyboard, a bit mushy.
+4/4:
+I have it configured with 2 USB-C ports, 1 USB-A, and 1 microSD card reader. Booting up went fine, I installed #pop_os from flash drive to microSD v90, suprisingly fast.
+The BIOS (needed to disable secure boot) splash screen doesn't show FN key legend for boot device (F12) / BIOS (? I mashed a lot of FN keys), so that would be a nice touch to add.
+Having WiFi issues, will investigate later. But everything else feels snappy and display looks good (3:2 ratio!!).
+Happy to answer questions!
+
+[[https://fosstodon.org/@shom/106854632055933583][🦣 fosstodon toot]]
+
+
+
+** DONE Video Editing
+CLOSED: [2021-08-08 Sun 16:00]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20210808_VideoEditing
+:EXPORT_HUGO_MENU:
+:END:
+I'm not a video person, I've made an occasional slideshow but even that has been over a decade ago. Recently, I needed to edit a video of an event and splice in the live recording with some pre-recorded segments and stitch it all together with some simple transitions. I didn't know what the "standard" FOSS offering was when it came to video editing. For photography I would go to Dark Table, GIMP for images, but what for video? I knew that Blender was an option but I wanted something with less steep of a learning curve even if that meant it was less featured. Luckily, there are several articles listing and comparing options, Shotcut and KDEnlive seemed to be the two worth investigating.
+
+*** Shotcut
+I started with Shotcut because it seemed like the lighther of the two packages. There were ample and good tutorials on YouTube that weren't too out of date, which got me up and running fairly quickly. Though I'm not a video person, I'm familiar with multi track editing and transforms, I just needed to know where the tools were and what they were called.
+
+The interface was fairly intuitive after watching a short tutorial to get familiarized. It did slow down, choke, and crash a few times when working with my 3.5 hour long source video. The timeline zooming in and out (to make precise cuts) were a bit painful until I could cut everything into clips. I quickly learned their keyframe driven actions and also learned how to make a picture-in-picture transform. With all manipulations being filters, configuring transitions was also pretty easy.
+
+However, the problem was stability. It crashed a few more times and then wouldn't preview the transitions at all unless I removed them and re-did them. Finally, it had lots of issues exporting (a big one was it having path issues that likely was more of a guix package manager complication).
+
+*** KDEnlive
+I turned to KDEnlive after it was recommended by the System Crafters community [1]. The workflow was very familiar between the two programs. Both of them support rearranging panels to customize the UI, that also helped in coming up to speed. The filters/transforms work a bit differently but there are again plenty of YouTube tutorials. KDEnlive has a lot more functionality it seems but it doesn't force you to use any of it to accomplish your task. It was also noticeably more stable (no crashes even with a 2.25 hour video render) and snappy (the timeline editing and zooming was never laggy or froze up the UI).
+
+All in all, I would say both are good but I personally had a better experience with KDEnlive, even though I much preferred the key framing UI of Shotcut. The stability issues of Shotcut could very well be specific to my machine and environment, so I'm not writing it off and might revisit it. KDEnlive produced a quality video where the editing seems passably professional, which is a testament to the tool and not my skill. It's amazing to have such high quality FOSS software, thank you devs!
+
+
+[1] https://wiki.systemcrafters.cc/community/chat-with-us/
+
+
+** DONE Termux + Emacs
+CLOSED: [2021-08-07 Sat 15:59]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20210807_TermuxEmacs
+:EXPORT_HUGO_MENU:
+:END:
+One of the biggest advantages of Android is that it runs on Linux and Termux [1] is a very capable terminal emulator. Until pine phone (which I own for playing around on) type devices reach daily driver maturity (to use with job related corporate apps etc.) Termux is my only realistic option to run Linux terminal apps on the phone.
+
+This is where being able to use Emacs as a TUI application on Termux is great. I actually run a slightly tweaked version of my desktop config which relies of doom-emacs [1]. I don't do anything complex but the editing experience is as comfortable as most other phone app. The editing experience is helped by evil bindings which are more key-sequence driven rather than key-combo driven. Although modifier keys are supported by Termux and a two row soft keyboard is fully customizable, evil bindings are easier. My config for the softkeys is shown here:
+
+#+begin_src
+extra-keys = [ \
+    ['ESC','|','/','HOME','UP','END','~','DEL'], \
+    ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT',':','<'] \
+]
+#+end_src
+
+Also swiping over the soft keyboard reveals a text entry field which is a standard Android text field so text auto correct, gesture typing, and other keyboard features work as expected and is a lot more convenient for typing.
+
+In fact this whole gemini capsule and all entries (so far) were created using Termux + Emacs including setting up the CI/CD for sr.ht.
+
+While I use this setup for capturing notes in org mode, for tasks management I use Orgzly. That's another topic but in an even smaller nutshell, the biggest benefit is system notifications.
+
+[1] https://termux.com
+[2] https://github.com/hlissner/doom-emacs.
+
+
 
 ** DONE Latte Art :@coffee:
-CLOSED: [2021-09-12 Sun 14:11]
+CLOSED: [2021-08-02 Mon 19:11]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20210802_latte-art
 :EXPORT_HUGO_MENU:
@@ -40,12 +153,13 @@ CLOSED: [2021-08-02 Mon 19:00]
 :EXPORT_HUGO_MENU:
 :END:
 With a certain nostalgia for the early web ever present, a Gemini site (gemite? edit: I've learned it's called a capsule 💊🚀) is a good spiritual successor. Albeit much fewer under construction gifs and red text on black background...
-=gemini://gem.shom.dev]=
 
-* About
-:PROPERTIES:
-:EXPORT_HUGO_SECTION: about
-:EXPORT_HUGO_MENU: :menu "main" :weight -1 :title About
-:EXPORT_FILE_NAME: _index
-:END:
-I like people, dogs (animals in general), photography, scuba-diving, computers, open-source software, privacy, and generally improving these things where I can.
+=gemini://gem.shom.dev=
+
+# * About
+# :PROPERTIES:
+# :EXPORT_HUGO_SECTION: about
+# :EXPORT_HUGO_MENU: :menu "main" :weight -1 :title About
+# :EXPORT_FILE_NAME: _index
+# :END:
+# I like people, dogs (animals in general), photography, scuba-diving, computers, open-source software, privacy, and generally improving these things where I can.

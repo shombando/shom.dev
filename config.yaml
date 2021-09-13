@@ -1,4 +1,46 @@
-baseURL: "https://shom.dev"
+baseURL: "."
 languageCode: "en-us"
-title: "Shom Bandopadhaya"
+title: "shom.dev"
 theme: "PaperMod"
+
+params:
+    defaultTheme: auto
+    ShowReadingTime: true
+    #ShowShareButtons: true
+    #ShowToc: true
+    ShowBreadCrumbs: true
+    ShowPostNavLinks: true
+    homeInfoParams:
+        enabled: true
+        Title: Shom Bandopadhaya
+        Content: "I like people, dogs (animals in general), photography, scuba-diving, computers, open-source software, privacy, and generally improving these things where I can."
+    profileMode:
+        enabled: false
+        title: "Shom Bandopadhaya" # optional default will be site title
+        subtitle: "More curiosity than time"
+        #imageUrl: "<image link>" # optional
+        #imageTitle: "<title of image as alt>" # optional
+#        imageWidth: 120 # custom size
+#        imageHeight: 120 # custom size
+    buttons:
+      - name: Archives
+        url: "/posts"
+        name: Tags
+        url: "/tags"
+    socialIcons: # optional
+        - name: 'Github'
+          url: 'https://github.com/shombando'
+        - name: 'LinkedIn'
+          url: 'https://www.linkedin.com/in/shom'
+        - name: 'Mastodon'
+          url: 'https://fosstodon.org/@shom'
+        - name: 'Keybase'
+          url: 'https://keybase.io/sbando'
+        - name: 'gitea'
+          url: 'https://codeberg.org/shom'
+        - name: 'instagram'
+          url: 'https://shom.bandopadhaya.com/photos/'
+        - name: 'RSS'
+          url: 'https://shom.dev/index,xml'
+    #    - name: "<platform 2>"
+    #        url: "<link2>"
