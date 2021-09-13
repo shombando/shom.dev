@@ -41,6 +41,6 @@ params:
         - name: 'instagram'
           url: 'https://shom.bandopadhaya.com/photos/'
         - name: 'RSS'
-          url: 'https://shom.dev/index,xml'
+          url: 'https://shom.dev/index.xml'
     #    - name: "<platform 2>"
     #        url: "<link2>"
