@@ -13,4 +13,5 @@ tasks:
       cd public
       tar -cvz . > ../site.tar.gz
   - upload: |
-      acurl --fail-with-body https://pages.sr.ht/publish/$site -Fcontent=@site.tar.gz
+      cd ..
+      acurl -f https://pages.sr.ht/publish/$site -Fcontent=@site.tar.gz
