@@ -6,10 +6,11 @@ environment:
   site: shom.dev
 tasks:
   # - build: |
-      # cd site
+      # cd $site
       # emacs --batch -l ./publish.el --funcall publish/sb
   - package: |
+      cd $site
       cd public
       tar -cvz . > ../site.tar.gz
   - upload: |
-      acurl --fail-with-body https://pages.sr.ht/publish/$site -Fcontent=@public.tar.gz
+      acurl --fail-with-body https://pages.sr.ht/publish/$site -Fcontent=@site.tar.gz
