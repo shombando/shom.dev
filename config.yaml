@@ -22,22 +22,22 @@ params:
         #imageTitle: "<title of image as alt>" # optional
 #        imageWidth: 120 # custom size
 #        imageHeight: 120 # custom size
-    buttons:
-      - name: Archives
-        url: "/posts"
-        name: Tags
-        url: "/tags"
+    # buttons:
+    #   - name: Archives
+    #     url: "/posts"
+    #     name: Tags
+    #     url: "/tags"
     socialIcons: # optional
         - name: 'Github'
           url: 'https://github.com/shombando'
-        - name: 'LinkedIn'
-          url: 'https://www.linkedin.com/in/shom'
-        - name: 'Mastodon'
-          url: 'https://fosstodon.org/@shom'
-        - name: 'Keybase'
-          url: 'https://keybase.io/sbando'
         - name: 'gitea'
           url: 'https://codeberg.org/shom'
+        - name: 'Mastodon'
+          url: 'https://fosstodon.org/@shom'
+        - name: 'LinkedIn'
+          url: 'https://www.linkedin.com/in/shom'
+        - name: 'Keybase'
+          url: 'https://keybase.io/sbando'
         - name: 'instagram'
           url: 'https://shom.bandopadhaya.com/photos/'
         - name: 'RSS'
