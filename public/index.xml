@@ -1,10 +1,69 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>shom.dev</title>
+    <title>Home on shom.dev</title>
     <link>https://shom.dev/</link>
-    <description>Recent content on shom.dev</description>
+    <description>Recent content in Home on shom.dev</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://shom.dev/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Sep 2021 20:29:00 -0500</lastBuildDate><atom:link href="https://shom.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Static-site</title>
+      <link>https://shom.dev/posts/20210910_staticsite/</link>
+      <pubDate>Fri, 10 Sep 2021 20:29:00 -0500</pubDate>
+      
+      <guid>https://shom.dev/posts/20210910_staticsite/</guid>
+      <description>This entry and all previous ones are taken verbatim from the gemini capsule.
+Establishing a web presence The gemini capsule has been an interesting experiment. In order to be the change I want to see, I will be creating a personal website/blog and the articles will appear both as html and gemtext. All entries prior to this have been made with Android+Termux+emacs. Going forward, the entries won&amp;rsquo;t strictly be made from Termux.</description>
+    </item>
+    
+    <item>
+      <title>Framework</title>
+      <link>https://shom.dev/posts/20210901_termuxemacs/</link>
+      <pubDate>Wed, 01 Sep 2021 19:25:00 -0500</pubDate>
+      
+      <guid>https://shom.dev/posts/20210901_termuxemacs/</guid>
+      <description>I&amp;rsquo;ve decided to cross post any of my content type toots from Mastodon (Fosstodon instance) here. I&amp;rsquo;m not sure if there&amp;rsquo;s a good way to &amp;ldquo;tag&amp;rdquo; something aside from filenames so I can generate a toot vs post section? I&amp;rsquo;ll include that info in the filename and I can investigate automation later.
+First impression I just received my frame.work (i5) DIY edition laptop. I haven&amp;rsquo;t installed the RAM and NVMe yet (they need to come out from another machine first) but I&amp;rsquo;m pretty impressed with the build quality so far.</description>
+    </item>
+    
+    <item>
+      <title>Video Editing</title>
+      <link>https://shom.dev/posts/20210808_videoediting/</link>
+      <pubDate>Sun, 08 Aug 2021 16:00:00 -0500</pubDate>
+      
+      <guid>https://shom.dev/posts/20210808_videoediting/</guid>
+      <description>I&amp;rsquo;m not a video person, I&amp;rsquo;ve made an occasional slideshow but even that has been over a decade ago. Recently, I needed to edit a video of an event and splice in the live recording with some pre-recorded segments and stitch it all together with some simple transitions. I didn&amp;rsquo;t know what the &amp;ldquo;standard&amp;rdquo; FOSS offering was when it came to video editing. For photography I would go to Dark Table, GIMP for images, but what for video?</description>
+    </item>
+    
+    <item>
+      <title>Termux &#43; Emacs</title>
+      <link>https://shom.dev/posts/20210807_termuxemacs/</link>
+      <pubDate>Sat, 07 Aug 2021 15:59:00 -0500</pubDate>
+      
+      <guid>https://shom.dev/posts/20210807_termuxemacs/</guid>
+      <description>One of the biggest advantages of Android is that it runs on Linux and Termux [1] is a very capable terminal emulator. Until pine phone (which I own for playing around on) type devices reach daily driver maturity (to use with job related corporate apps etc.) Termux is my only realistic option to run Linux terminal apps on the phone.
+This is where being able to use Emacs as a TUI application on Termux is great.</description>
+    </item>
+    
+    <item>
+      <title>Latte Art</title>
+      <link>https://shom.dev/posts/20210802_latte-art/</link>
+      <pubDate>Mon, 02 Aug 2021 19:11:00 -0500</pubDate>
+      
+      <guid>https://shom.dev/posts/20210802_latte-art/</guid>
+      <description>Getting into home espresso has been fun, it&amp;rsquo;s a rabbit hole like most fun things. And with rabbit holes it&amp;rsquo;s best to decide how far you&amp;rsquo;re willing to fall in before really starting down that hole. For me, it was an used Rancilio Silvia modded with a temperature PID controller and a refurbished Baratza Vario. At this level it&amp;rsquo;s definitely possible to get good espresso and latte art if one tries, gets lucky, and practices&amp;hellip; it&amp;rsquo;s a good balance.</description>
+    </item>
+    
+    <item>
+      <title>Gemini Capsule</title>
+      <link>https://shom.dev/posts/20210802_gemini-capsule/</link>
+      <pubDate>Mon, 02 Aug 2021 19:00:00 -0500</pubDate>
+      
+      <guid>https://shom.dev/posts/20210802_gemini-capsule/</guid>
+      <description>With a certain nostalgia for the early web ever present, a Gemini site (gemite? edit: I&amp;rsquo;ve learned it&amp;rsquo;s called a capsule 💊🚀) is a good spiritual successor. Albeit much fewer under construction gifs and red text on black background&amp;hellip;
+gemini://gem.shom.dev</description>
+    </item>
+    
   </channel>
 </rss>
