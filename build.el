@@ -39,21 +39,8 @@
 
 ;; Export content from org to Hugo md
 (message "\n==== Exporting Hugo markdown ====")
-(setq org-publish-project-alist
-      (list
-       (list "org-site:main"
-             :recursive nil
-             :base-directory "./"
-             :publishing-function '(org-hugo-export-wim-to-md :all-subtrees nil :visible-only nil)
-             :publishing-directory "./public"
-             ;; :with-author nil           ;; Don't include author name
-             ;; :with-creator t            ;; Include Emacs and Org versions in footer
-             ;; :with-toc t                ;; Include a table of contents
-             ;; :section-numbers nil       ;; Don't include section numbers
-             :time-stamp-file nil)))    ;; Don't include time stamp in file
-
-;; Generate the site output
-(org-publish-all t)
+(with-current-buffer (find-file "./content.org")
+(org-hugo-export-wim-to-md :all-subtrees nil :visible-only nil))
 
 (message "\n==== Export complete ====")
 
