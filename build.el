@@ -34,16 +34,17 @@
 ;; Install and dependencies
 (message "\n==== Installing depedencies ====")
 (package-install 'ox-hugo)
+(require 'org-id)
 (require 'ox-hugo)
 
+;; Export content from org to Hugo md
 (message "\n==== Exporting Hugo markdown ====")
-
 (setq org-publish-project-alist
       (list
        (list "org-site:main"
              :recursive nil
              :base-directory "./"
-             :publishing-function '(org-hugo-export-wim-to-md :all-subtrees nil nil)
+             :publishing-function '(org-hugo-export-wim-to-md :all-subtrees nil :visible-only nil)
              :publishing-directory "./public"
              ;; :with-author nil           ;; Don't include author name
              ;; :with-creator t            ;; Include Emacs and Org versions in footer
