@@ -2,5 +2,5 @@
 set -euo pipefail
 
 emacs -Q --script build.el
-echo "Build with Hugo"
+echo "\n==== Build with Hugo ===="
 hugo

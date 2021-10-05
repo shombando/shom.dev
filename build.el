@@ -19,6 +19,8 @@
 ;;
 ;;; Code:
 
+;; Setup
+(message "\n==== Setup package repos ====")
 (require 'package)
 (setq package-user-dir (expand-file-name "./.packages"))
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -30,18 +32,18 @@
   (package-refresh-contents))
 
 ;; Install and dependencies
-(message "Installing depedencies")
+(message "\n==== Installing depedencies ====")
 (package-install 'ox-hugo)
 (require 'ox-hugo)
 
-(message "Exporting Hugo markdown")
+(message "\n==== Exporting Hugo markdown ====")
 
 (setq org-publish-project-alist
       (list
        (list "org-site:main"
-             :recursive t
+             :recursive nil
              :base-directory "./"
-             :publishing-function 'org-hugo-export-to-md
+             :publishing-function '(org-hugo-export-wim-to-md :all-subtrees nil nil)
              :publishing-directory "./public"
              ;; :with-author nil           ;; Don't include author name
              ;; :with-creator t            ;; Include Emacs and Org versions in footer
@@ -52,6 +54,6 @@
 ;; Generate the site output
 (org-publish-all t)
 
-(message "Export complete")
+(message "\n==== Export complete ====")
 
 ;;; build.el ends here
