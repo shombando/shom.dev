@@ -1,6 +1,7 @@
 image: archlinux
 packages:
   - emacs-nox
+  - hugo
 oauth: pages.sr.ht/PAGES:RW
 sources:
   - https://git.sr.ht/~shom/shom.dev
