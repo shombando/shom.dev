@@ -1,13 +1,15 @@
-image: alpine/latest
+image: archlinux
+packages:
+  - emacs-nox
 oauth: pages.sr.ht/PAGES:RW
 sources:
   - https://git.sr.ht/~shom/shom.dev
 environment:
   site: shom.dev
 tasks:
-  # - build: |
-      # cd $site
-      # emacs --batch -l ./publish.el --funcall publish/sb
+  - build: |
+      cd $site
+      ./build.sh
   - deploy: |
       cd $site
       cd public
