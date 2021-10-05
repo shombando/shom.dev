@@ -23,7 +23,7 @@
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
 
-** DONE Fully automated deployment
+** DONE Fully automated deployment :@emacs: :@hugo: :@foss:
 CLOSED: [2021-10-05 Tue 05:53]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211005_fully-automated-deployment
@@ -72,7 +72,7 @@ In order to check sanity and solve the issue, I exported directly with ~org-hugo
 
 I would like to get the ~org-publish~ route sorted out so I can publish to the Hugo site and the Gemini capsule with a single commit.
 
-** DONE Static-site :@emacs:
+** DONE Static-site :@emacs: :@gemini:
 CLOSED: [2021-09-10 Fri 20:29]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20210910_static-site
@@ -128,7 +128,7 @@ Happy to answer questions!
 
 
 
-** DONE Video Editing
+** DONE Video Editing :@foss:
 CLOSED: [2021-08-08 Sun 16:00]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20210808_video-editing
@@ -190,7 +190,7 @@ Getting into home espresso has been fun, it's a rabbit hole like most fun things
 [[./static/20210802_LatteArt.jpg]]
 
 
-** DONE Gemini Capsule
+** DONE Gemini Capsule :@gemini:
 CLOSED: [2021-08-02 Mon 19:00]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20210802_gemini-capsule
