@@ -23,7 +23,7 @@
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
 
-** DONE Fully automated deployment :@emacs: :@hugo: :@foss:
+** DONE Fully automated deployment :@emacs:@foss:
 CLOSED: [2021-10-05 Tue 05:53]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211005_fully-automated-deployment
@@ -72,7 +72,7 @@ In order to check sanity and solve the issue, I exported directly with ~org-hugo
 
 I would like to get the ~org-publish~ route sorted out so I can publish to the Hugo site and the Gemini capsule with a single commit.
 
-** DONE Static-site :@emacs: :@gemini:
+** DONE Static-site :@emacs:@gemini:
 CLOSED: [2021-09-10 Fri 20:29]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20210910_static-site
