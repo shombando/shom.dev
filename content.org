@@ -23,10 +23,59 @@
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
 
+** DONE Fully automated deployment
+CLOSED: [2021-10-05 Tue 05:53]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20211005_fully-automated-deployment
+:EXPORT_HUGO_MENU:
+:END:
+Up until the last commit, the site was being written in Org Mode, exported using ox-hugo, and Hugo was invoked manually to generate the html all locally. The generated =public= folder was what was being pushed to SourceHut for the deployment. This will be first post which will only commit the actual content in org format only and the full CI/CD will happen on SourceHut.
+
+*** Using org-publish
+I'll be following along with the System Crafters' [[https://systemcrafters.net/publishing-websites-with-org-mode/][Publishing Website with Org Mode]] to take full advantage of ~org-publish~ and configure multiple outputs (WWW and Gemini). As of the now the following configuration is invoking the correct export function through org-publish but ox-hugo isn't finding the Hugo sub-trees.
+#+begin_src emacs-lisp
+(message "\n==== Exporting Hugo markdown ====")
+(setq org-publish-project-alist
+      (list
+       (list "org-site:main"
+             :recursive nil
+             :base-directory "./"
+             :publishing-function '(org-hugo-export-wim-to-md :all-subtrees nil :visible-only nil)
+             :publishing-directory "./public"
+             ;; :with-author nil           ;; Don't include author name
+             ;; :with-creator t            ;; Include Emacs and Org versions in footer
+             ;; :with-toc t                ;; Include a table of contents
+             ;; :section-numbers nil       ;; Don't include section numbers
+             :time-stamp-file nil)))    ;; Don't include time stamp in file
+
+;; Generate the site output
+(org-publish-all t)
+
+(message "\n==== Export complete ====")
+#+end_src
+
+=RESULTS=
+#+begin_src bash
+Publishing file /home/shom/dev/shom.dev/content.org using `org-hugo-export-wim-to-md'
+[ox-hugo] No valid Hugo post subtrees were found
+#+end_src
+
+*** Using hugo-export directly
+In order to check sanity and solve the issue, I exported directly with ~org-hugo-export-wim-to-md~ which is straightforward since I've opted for a single org-content file and it worked as expected. So this is the configuration that is currently building the site:
+#+begin_src emacs-lisp
+(message "\n==== Exporting Hugo markdown ====")
+(with-current-buffer (find-file "./content.org")
+  (org-hugo-export-wim-to-md :all-subtrees nil :visible-only nil))
+
+(message "\n==== Export complete ====")
+#+end_src
+
+I would like to get the ~org-publish~ route sorted out so I can publish to the Hugo site and the Gemini capsule with a single commit.
+
 ** DONE Static-site :@emacs:
 CLOSED: [2021-09-10 Fri 20:29]
 :PROPERTIES:
-:EXPORT_FILE_NAME: 20210910_StaticSite
+:EXPORT_FILE_NAME: 20210910_static-site
 :EXPORT_HUGO_MENU:
 :END:
 =This entry and all previous ones are taken verbatim from the gemini capsule.=
@@ -47,7 +96,7 @@ One option is to write the content in org format, use ox-hugo [2] for content ex
 ** DONE Framework :@framework:
 CLOSED: [2021-09-01 Wed 19:25]
 :PROPERTIES:
-:EXPORT_FILE_NAME: 20210901_TermuxEmacs
+:EXPORT_FILE_NAME: 20210901_framework-first-impressions
 :EXPORT_HUGO_MENU:
 :END:
 I've decided to cross post any of my content type toots from Mastodon (Fosstodon instance) here. I'm not sure if there's a good way to "tag" something aside from filenames so I can generate a toot vs post section? I'll include that info in the filename and I can investigate automation later.
@@ -82,7 +131,7 @@ Happy to answer questions!
 ** DONE Video Editing
 CLOSED: [2021-08-08 Sun 16:00]
 :PROPERTIES:
-:EXPORT_FILE_NAME: 20210808_VideoEditing
+:EXPORT_FILE_NAME: 20210808_video-editing
 :EXPORT_HUGO_MENU:
 :END:
 I'm not a video person, I've made an occasional slideshow but even that has been over a decade ago. Recently, I needed to edit a video of an event and splice in the live recording with some pre-recorded segments and stitch it all together with some simple transitions. I didn't know what the "standard" FOSS offering was when it came to video editing. For photography I would go to Dark Table, GIMP for images, but what for video? I knew that Blender was an option but I wanted something with less steep of a learning curve even if that meant it was less featured. Luckily, there are several articles listing and comparing options, Shotcut and KDEnlive seemed to be the two worth investigating.
@@ -106,7 +155,7 @@ All in all, I would say both are good but I personally had a better experience w
 ** DONE Termux + Emacs :@emacs:
 CLOSED: [2021-08-07 Sat 15:59]
 :PROPERTIES:
-:EXPORT_FILE_NAME: 20210807_TermuxEmacs
+:EXPORT_FILE_NAME: 20210807_termux-emacs
 :EXPORT_HUGO_MENU:
 :END:
 One of the biggest advantages of Android is that it runs on Linux and Termux [1] is a very capable terminal emulator. Until pine phone (which I own for playing around on) type devices reach daily driver maturity (to use with job related corporate apps etc.) Termux is my only realistic option to run Linux terminal apps on the phone.
