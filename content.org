@@ -23,6 +23,23 @@
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
 
+** DONE Wine and CrossOver Lightroom :@foss:
+CLOSED: [2021-10-16 Sat 00:07]
+:PROPERTIES:
+:EXPORT_FILE_NAME: wine-and-crossover-lightroom
+:END:
+I have been using [[https://www.darktable.org/][Darktable]] and transitioning away from Adobe's Lightroom. However, I have almost a decade of edits and experience with Lightroom so doing a cold-turkey switch is proving to be challenging. So I decided to investigate if I could "natively" run Lightroom (without a VM) so I decided to give =wine= a try.
+
+I use =guix= as a package manager on Pop!_OS and guix has =wine= but it did a while to build and install. I needed to download a Lightroom Classic executable but like a lot of software it's an installer that does the downloading and installing. However, Adobe won't allow you to download a Windows installer on Linux, so I had to use [[https://gitlab.com/ntninja/user-agent-switcher][User-Agent Switcher]] on Firefox to Windows to even get the installer... this is part of the frustration of software you lease.
+
+=wine= will ask to install mono installer, which is does by itself and then the same thing with Gecko installer. Overall a pretty smooth process but the Adobe installer failed miserably with a less than helpful error.
+#+begin_src shell
+Crash Annotation GraphicsCriticalError: |[0][GFX1]: Potential driver version mismatch ignored due to missing DLLs 0.0.0.0 and 0.0.0.0 (t=18.9854
+) [GFX1]: Potential driver version mismatch ignored due to missing DLLs 0.0.0.0 and 0.0.0.0
+#+end_src
+
+At this point I didn't have high hopes for avoiding the Windows VM route but  wanted to give a quick try to [[https://www.codeweavers.com/crossover][CrossOver]]. I tried one of their supported applications (Notepad++) and that worked great. They also support "unlisted application" but pointing the Adobe installer led to a lot of nothing, the logs were not very helpful either. At this point I decided to abandon this path and go the VM route to make progress on my actual photo editing goals. However, Steam's [[https://www.simpler.website/html/2020/12/steam-play.html][Proton]] could be a option to investigate in the future. Are there any other good solutions?
+
 ** DONE Fully automated deployment :@emacs:@foss:
 CLOSED: [2021-10-05 Tue 05:53]
 :PROPERTIES:
@@ -199,22 +216,6 @@ CLOSED: [2021-08-02 Mon 19:00]
 With a certain nostalgia for the early web ever present, a Gemini site (gemite? edit: I've learned it's called a capsule 💊🚀) is a good spiritual successor. Albeit much fewer under construction gifs and red text on black background...
 
 =gemini://gem.shom.dev=
-** DONE Wine and CrossOver Lightroom
-CLOSED: [2021-10-16 Sat 00:07]
-:PROPERTIES:
-:EXPORT_FILE_NAME: wine-and-crossover-lightroom
-:END:
-I have been using [[https://www.darktable.org/][Darktable]] and transitioning away from Adobe's Lightroom. However, I have almost a decade of edits and experience with Lightroom so doing a cold-turkey switch is proving to be challenging. So I decided to investigate if I could "natively" run Lightroom (without a VM) so I decided to give =wine= a try.
-
-I use =guix= as a package manager on Pop!_OS and guix has =wine= but it did a while to build and install. I needed to download a Lightroom Classic executable but like a lot of software it's an installer that does the downloading and installing. However, Adobe won't allow you to download a Windows installer on Linux, so I had to use [[https://gitlab.com/ntninja/user-agent-switcher][User-Agent Switcher]] on Firefox to Windows to even get the installer... this is part of the frustration of software you lease.
-
-=wine= will ask to install mono installer, which is does by itself and then the same thing with Gecko installer. Overall a pretty smooth process but the Adobe installer failed miserably with a less than helpful error.
-#+begin_src shell
-Crash Annotation GraphicsCriticalError: |[0][GFX1]: Potential driver version mismatch ignored due to missing DLLs 0.0.0.0 and 0.0.0.0 (t=18.9854
-) [GFX1]: Potential driver version mismatch ignored due to missing DLLs 0.0.0.0 and 0.0.0.0
-#+end_src
-
-At this point I didn't have high hopes for avoiding the Windows VM route but  wanted to give a quick try to [[https://www.codeweavers.com/crossover][CrossOver]]. I tried one of their supported applications (Notepad++) and that worked great. They also support "unlisted application" but pointing the Adobe installer led to a lot of nothing, the logs were not very helpful either. At this point I decided to abandon this path and go the VM route to make progress on my actual photo editing goals. However, Steam's [[https://www.simpler.website/html/2020/12/steam-play.html][Proton]] could be a option to investigate in the future. Are there any other good solutions?
 
 * Categories
 :PROPERTIES:
