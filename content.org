@@ -199,7 +199,7 @@ CLOSED: [2021-08-02 Mon 19:00]
 With a certain nostalgia for the early web ever present, a Gemini site (gemite? edit: I've learned it's called a capsule 💊🚀) is a good spiritual successor. Albeit much fewer under construction gifs and red text on black background...
 
 =gemini://gem.shom.dev=
-** DONE TODO Wine and CrossOver Lightroom
+** DONE Wine and CrossOver Lightroom
 CLOSED: [2021-10-16 Sat 00:07]
 :PROPERTIES:
 :EXPORT_FILE_NAME: wine-and-crossover-lightroom
