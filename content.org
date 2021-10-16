@@ -23,10 +23,11 @@
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
 
-** DONE Wine and CrossOver Lightroom :@foss:
+** DONE Wine and CrossOver to use Lightroom on Linux :@foss:
 CLOSED: [2021-10-16 Sat 00:07]
 :PROPERTIES:
 :EXPORT_FILE_NAME: wine-and-crossover-lightroom
+:EXPORT_HUGO_MENU:
 :END:
 I have been using [[https://www.darktable.org/][Darktable]] and transitioning away from Adobe's Lightroom. However, I have almost a decade of edits and experience with Lightroom so doing a cold-turkey switch is proving to be challenging. So I decided to investigate if I could "natively" run Lightroom (without a VM) so I decided to give =wine= a try.
 
