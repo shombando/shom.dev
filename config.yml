@@ -13,7 +13,7 @@ params:
     homeInfoParams:
         enabled: true
         Title: Shom Bandopadhaya
-        Content: "I like people, dogs (animals in general), photography, scuba-diving, computers, open-source software, privacy, and generally improving these things where I can."
+        Content: "I like people, dogs, photography, scuba-diving, computers, open-source software, privacy, and generally improving things where I can."
     profileMode:
         enabled: false
         title: "Shom Bandopadhaya" # optional default will be site title
