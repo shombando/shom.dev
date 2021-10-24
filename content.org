@@ -3,22 +3,8 @@
 #+seq_todo: DRAFT DONE
 #+startup: indent
 
-* Home
+* Content
 :PROPERTIES:
-:EXPORT_FILE_NAME: _index
-:EXPORT_HUGO_MENU: :menu "main"
-:END:
-
-** Home
-:PROPERTIES:
-:EXPORT_HUGO_SECTION:
-:EXPORT_FILE_NAME: _index
-:EXPORT_HUGO_MENU: :menu "main" :weight -2 :title Home
-:END:
-
-** Posts
-:PROPERTIES:
-:EXPORT_HUGO_SECTION: posts
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
@@ -211,6 +197,20 @@ CLOSED: [2021-08-02 Mon 19:00]
 With a certain nostalgia for the early web ever present, a Gemini site (gemite? edit: I've learned it's called a capsule 💊🚀) is a good spiritual successor. Albeit much fewer under construction gifs and red text on black background...
 
 =gemini://gem.shom.dev=
+
+** Posts
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: posts
+:EXPORT_FILE_NAME: _index
+:EXPORT_HUGO_MENU: :menu "main"
+:END:
+
+** Home
+:PROPERTIES:
+:EXPORT_HUGO_SECTION:
+:EXPORT_FILE_NAME: _index
+:EXPORT_HUGO_MENU: :menu "main" :weight -2 :title Home
+:END:
 
 * Categories
 :PROPERTIES:
