@@ -9,7 +9,7 @@
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
 
-** DONE org-bars view for outlining folding :@emacs:
+** DONE org-bars view for outlining/folding :@emacs:
 CLOSED: [2021-10-23 Sat 23:37]
 :PROPERTIES:
 :EXPORT_FILE_NAME: org-bars-view-for-outlining-folding
@@ -224,14 +224,14 @@ With a certain nostalgia for the early web ever present, a Gemini site (gemite? 
 
 =gemini://gem.shom.dev=
 
-** Posts
+* Posts
 :PROPERTIES:
 :EXPORT_HUGO_SECTION: posts
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
 
-** Home
+* Home
 :PROPERTIES:
 :EXPORT_HUGO_SECTION:
 :EXPORT_FILE_NAME: _index
