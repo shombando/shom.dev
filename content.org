@@ -9,6 +9,32 @@
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
 
+** DONE org-bars view for outlining folding :@emacs:
+CLOSED: [2021-10-23 Sat 23:37]
+:PROPERTIES:
+:EXPORT_FILE_NAME: org-bars-view-for-outlining-folding
+:EXPORT_HUGO_MENU:
+:END:
+I came across this new [[https://github.com/tonyaldon/org-bars][org-bars]] package that has shows folding indicators and lines to indicate the groupings. In the [[https://www.reddit.com/r/emacs/comments/qdze6g/new_orgbars_add_bars_to_the_virtual_indentation/][reddit]] discussion I also discovered there's another package [[https://github.com/legalnonsense/org-visual-outline][org-visual-outline]] but it actually requires configuring two packages so I didn't try it. However, based on the discussion in the comments it seems that org-bars supports narrowing of the buffer (and it works great) which visual-outline does not.
+
+I discovered a visual bug and filed a [[https://github.com/tonyaldon/org-bars/issues/2][report]].
+
+Here's the configuration I'm using based on the recommendations in the documentation.
+#+begin_src emacs-lisp
+;; Org-bars configuration ====================================================
+(use-package org-bars
+  :after org
+  :ensure t
+  :custom
+ (defun org-no-ellipsis-in-headlines ()
+ "Remove use of ellipsis in headlines.
+See `buffer-invisibility-spec'."
+  (remove-from-invisibility-spec '(outline . t))
+  (add-to-invisibility-spec 'outline))
+ (add-hook 'org-mode-hook #'org-bars-mode)
+ (add-hook 'org-mode-hook 'org-no-ellipsis-in-headlines))
+#+end_src
+
 ** DONE Wine and CrossOver to use Lightroom on Linux :@foss:
 CLOSED: [2021-10-16 Sat 00:07]
 :PROPERTIES:
