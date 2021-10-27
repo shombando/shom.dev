@@ -38,6 +38,8 @@ It is also a good idea to turn off =Pre-AF Off= which moves the focus point base
 I'm choosing to use the default =AF-On= button on the back of the camera for now. But it can be customized to any of the other buttons in ~Menu - Camera 2 - Custom Operation1 - Custom Key~ (Page 9).
 *** DRO/Auto HDR
 The LCD panel on the camera shows the JPEG preview of the image regardless of whether you're shooting RAW. The Dynamic Range Optimization (DRO) boosts the shadows and that's what shows up in the LCD, which in turn means that the RAW is underexposed. The =DRO/Auto HDR= setting can be turned off in ~Menu - Camera 1 - Color/WB/Img.Processing1~ (Page 11).
+
+This [[https://www.youtube.com/watch?v=21Z7l1-h71E][video from Nick Page]] describes the issue and suggests this fix.
 *** Long Exposure NR
 By default the camera attempts to do Noise Reduction (NR) when doing long-exposure. While this does create a lower noise image it comes at the expense of "timing out" for the same length of time the original exposure was. This makes sense since the camera takes a "dark" image with the shutter closed as a noise reference and subtracts it from the original exposure to remove that noise. However, this is a major hindrance for doing multiple longer exposure shots especially as the light is fading. Turning the  =Long Exposure NR= feature off is necessary for those scenarios. The option is found in ~Menu - Camera 1 - Quality/Image Size2~ (Page 2).
 
