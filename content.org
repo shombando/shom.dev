@@ -8,7 +8,44 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Sony A7c initial customization :@camera:
+CLOSED: [2021-10-27 Wed 00:52]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20211026_sony-a7c-initial-customization
+:EXPORT_HUGO_MENU:
+:END:
+I have been using the Sony A7ii for a long while. It was my first full-frame and mirrorless camera. The A7ii is a great camera and in a lot of ways I have been very spoiled by it. However, when the A7iii came out with fairly significant improvements I resisted the urge to upgrade and decided to wait for the A7iv.
 
+The A7iv was released last week and in many regards is a "perfect" camera. It has made a lot of improvements in an already excellent line-up and is perhaps justifiably is also priced 25% more than it's predecessor. However, most of the advancements were made in the video department (save for the new 33MP sensor) and that is not the feature set I use. Also, given the shortage of electronic parts it is unclear when pre-orders would get into the hands of users. Ultimately, after waiting for an agonizing 3.5 years after the release of the A7iii, I decided not to buy the A7iv.
+
+Instead, I opted for the A7c which was released in 2020 and is essentially an A7iii in a smaller body. It loses the dual SD cards, 2 custom buttons, and a joystick but gains a fully articulating LCD monitor, compactness, and a range-finder look and feel. I decided to get it with the compact (but quite excellent) 28-60 f/4-5.6 kit lens and make this is my "only" camera for both landscape and underwater photography (with a Seafrog case I intend to get).
+
+All of this preface to get to my main point. I have customized a lot of functions of the A7ii that I no longer remember the "how" or the "why" behind those changes. Here are the main changes I made and replicated on the A7c before the first shoot.
+
+Image from first shoot:
+#+ATTR_ORG: :width 800
+[[./static/Shom_20211026_McDonaldLake_00015.jpg]]
+
+*** Back-button auto-focus
+Decoupling auto-focus from the shutter action allows me to focus on a subject and wait for the right moment to click the shutter without worrying about refocusing/losing focus. This is accomplished in two pieces, first the shutter and auto-focus is decoupled and then the auto-focus function is then remapped to a button on the back of the camera.
+**** Decouple auto-focus from shutter
+The current Sony terminology for decoupling auto-focus from shutter is =AF w/ shutter=. In the A7C it is found in ~Menu - Camera 1 - AF2~ (Page 5).
+
+It is also a good idea to turn off =Pre-AF Off= which moves the focus point based on the scene changes even before auto-focus is actuated (to improve speed).
+
+~NOTE:~ Shutter half-press is not customizable on the A7c (unlike A7ii)
+**** Remap auto-focus to another button
+I'm choosing to use the default =AF-On= button on the back of the camera for now. But it can be customized to any of the other buttons in ~Menu - Camera 2 - Custom Operation1 - Custom Key~ (Page 9).
+*** DRO/Auto HDR
+The LCD panel on the camera shows the JPEG preview of the image regardless of whether you're shooting RAW. The Dynamic Range Optimization (DRO) boosts the shadows and that's what shows up in the LCD, which in turn means that the RAW is underexposed. The =DRO/Auto HDR= setting can be turned off in ~Menu - Camera 1 - Color/WB/Img.Processing1~ (Page 11).
+*** Long Exposure NR
+By default the camera attempts to do Noise Reduction (NR) when doing long-exposure. While this does create a lower noise image it comes at the expense of "timing out" for the same length of time the original exposure was. This makes sense since the camera takes a "dark" image with the shutter closed as a noise reference and subtracts it from the original exposure to remove that noise. However, this is a major hindrance for doing multiple longer exposure shots especially as the light is fading. Turning the  =Long Exposure NR= feature off is necessary for those scenarios. The option is found in ~Menu - Camera 1 - Quality/Image Size2~ (Page 2).
+
+~NOTE:~ There's a related setting for =High ISO NR=.
+
+~NOTE:~ If attempting proper astrophotography then multiple dark frames are needed anyway for proper post processing.I'll
+
+These are the main features that would have "bit" me if I didn't change them before trying to use the camera. If there are others, I will note them here after they bite me.
 ** DONE org-bars view for outlining/folding :@emacs:
 CLOSED: [2021-10-23 Sat 23:37]
 :PROPERTIES:
