@@ -15,6 +15,7 @@ params:
     disableScrollToTop: true
     showtoc: true
     tocopen: false
+    hideFooter: true
     homeInfoParams:
         enabled: true
         Title: Shom Bandopadhaya
