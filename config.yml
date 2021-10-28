@@ -10,6 +10,7 @@ params:
     #ShowToc: true
     ShowBreadCrumbs: true
     ShowPostNavLinks: true
+    ShowFullTextinRSS: true
     homeInfoParams:
         enabled: true
         Title: Shom Bandopadhaya
