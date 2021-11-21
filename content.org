@@ -8,6 +8,26 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Emacs custom configuration                                   :@emacs:
+CLOSED: [2021-11-21 Sun 17:35]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20211121_emacs-custom-configuration
+:EXPORT_HUGO_MENU:
+:END:
+
+So, I created and have been using a custom configuration for Emacs. This is something I didn't really see myself doing when I started using Emacs.
+
+*** Doom 
+I started my Emacs journey with [[https://github.com/hlissner/doom-emacs/][Doom]] and have been learning things along the way. This was a great way to get started. Borrowing configuration snippets and blindly copying and pasting got me up and running quickly which was great. I did find the vastness of Doom intimidating and knew that I wasn't using all the functionality and wasn't really discovering it given the jam packed key-maps.  
+*** Vanilla Chocolate Swirl  
+Around the time when I was understanding how to copy paste configs more, there was some community discussion around making Emacs more inviting to new users. As a new user, I felt qualified to collect my thoughts. In an attempt to help new user on-boarding, I even created a [[https://github.com/shombando/EmacsVanillaChocolateSwirl][literate config]] that others found useful enough to contribute to. I understood things a lot better through that exercise and felt comfortable enough to try packages by myself. 
+*** Back to Doom
+Actually, I never left Doom while doing the above exercise. I did not want to invest the time necessary to learn to make my own config. Also, having all the keybindings already setup and showing up nicely in ~which-key~ was great. This is also before =native-comp= was merged into Emacs 28 master branch so I was having issues with compatibility. The final push was that using Doom with all its modules was not performant on a Windows machine that I don't manage but have to use. 
+*** Custom Config
+During this time, I kept disabling more and more Doom modules and replacing some of them with other options. There seems to be a lot of excitement about light-weight packages like =vertico=, =consult=, etc. that are more single task focused which I started integrating. I started using =orderless=, =embark= and =ace-window= as well and with those, I felt I had enough to use a custom config and be productive. I'm using [[https://github.com/plexus/chemacs2][Chemacs2]] to have both my Doom config and my [[https://git.sr.ht/~shom/.emacs.custom][custom config]] installed but have been exclusively using the config.
+
+I'll make a few short posts with some of the things I learned in this process with some code snippets as examples.  
+
 ** DONE Sony A7c initial customization :@camera:
 CLOSED: [2021-10-27 Wed 00:52]
 :PROPERTIES:
@@ -48,6 +68,13 @@ By default the camera attempts to do Noise Reduction (NR) when doing long-exposu
 ~NOTE:~ If attempting proper astrophotography then multiple dark frames are needed anyway for proper post processing.I'll
 
 These are the main features that would have "bit" me if I didn't change them before trying to use the camera. If there are others, I will note them here after they bite me.
+
+** DRAFT Org-capture template for Hugo
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20211025_org-capture-template-for-hugo
+:EXPORT_HUGO_MENU:
+:END:
+Need to get the original date of the post as part of the slug title in capture template. This might cause discrepancy if the date of capture isn't the date of publish (which will show up in Hugo metadata), so maybe the slug needs to be updated upon org state change from DRAFT to DONE.
 ** DONE org-bars view for outlining/folding :@emacs:
 CLOSED: [2021-10-23 Sat 23:37]
 :PROPERTIES:
