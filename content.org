@@ -8,17 +8,17 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
-** DONE Emacs custom configuration                                   :@emacs:
+** DONE Emacs custom configuration :@emacs:
 CLOSED: [2021-11-21 Sun 17:35]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211121_emacs-custom-configuration
 :EXPORT_HUGO_MENU:
 :END:
 
-So, I created and have been using a custom configuration for Emacs. This is something I didn't really see myself doing when I started using Emacs.
+I crafted a custom configuration for Emacs and have been using it for the past few weeks. This is something I didn't really see myself doing when I started using Emacs, it seemed "very advanced". This was my journey from a noob to a different kind of noob!
 
 *** Doom 
-I started my Emacs journey with [[https://github.com/hlissner/doom-emacs/][Doom]] and have been learning things along the way. This was a great way to get started. Borrowing configuration snippets and blindly copying and pasting got me up and running quickly which was great. I did find the vastness of Doom intimidating and knew that I wasn't using all the functionality and wasn't really discovering it given the jam packed key-maps.  
+I started my Emacs journey with [[https://github.com/hlissner/doom-emacs/][Doom]] and was learning things along the way. This was a great way to get started by borrowing configuration snippets and blindly copying and pasting, which got me up and running quickly. I did find the vastness of Doom intimidating and knew that I wasn't using all the functionality and wasn't really discovering it given the jam packed key-maps.
 *** Vanilla Chocolate Swirl  
 Around the time when I was understanding how to copy paste configs more, there was some community discussion around making Emacs more inviting to new users. As a new user, I felt qualified to collect my thoughts. In an attempt to help new user on-boarding, I even created a [[https://github.com/shombando/EmacsVanillaChocolateSwirl][literate config]] that others found useful enough to contribute to. I understood things a lot better through that exercise and felt comfortable enough to try packages by myself. 
 *** Back to Doom
