@@ -8,6 +8,46 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Emacs which-key prefix labels                                :@emacs:
+CLOSED: [2021-11-22 Mon 00:26]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20211122_emacs-which-key-prefix-labels
+:EXPORT_HUGO_MENU:
+:END:
+I've been using =evil-mode= for my Emacs configuration and [[https://github.com/cofi/evil-leader][evil-leader]] makes the key-mapping very straight-forward with the =set-key=. I wanted a few functions to be grouped together. =SPC= is bound as a leader key and there are a few frequent functions bound to single keys, the rest are grouped under other leaders.
+
+However, the secondary leaders show up as =x → +prefix= and it would nice to give the grouping a name. A lot of suggestions make use of the [[https://github.com/noctuid/general.el][General.el]] but at this time I didn't need anything beyond giving the grouping a name. I was not immediately able to find a way to create an empty keymap to put commands under (I did not know that's what I needed to do), like this: ~"e" '("eval" . (keymap))~
+
+#+begin_src emacs-lisp
+  (evil-leader/set-key
+  "." 'find-file
+  "," 'consult-buffer
+  "'" 'execute-extended-command
+
+  "e" '("eval" . (keymap))
+  "eb" '("buffer" . eval-buffer)
+  "er" '("region" . eval-region)
+
+  "g" '("magit" . (keymap))
+  "gc" '("commit" . magit-commit)
+  "gf" '("fetch" . magit-fetch)
+  "gg" '("status" . magit-status)
+
+  "q" '("quit" . (keymap))
+  "qb" '("buffer" . kill-this-buffer)
+  "qq" '("save&quit" . save-buffers-kill-terminal)
+
+  "h" '("help" . (keymap))
+  "hf" '("function" . describe-function)
+  "hk" '("key" . describe-key)
+  "hv" '("variable" . describe-variable)
+
+  "w" '("window" . (keymap))
+  "wd" '("delete" . delete-window)
+  "wo" '("delete other" . delete-other-windows)
+  "ww" '("ace-window" . aw-show-dispatch-help))
+#+end_src
+
 ** DONE Emacs custom configuration :@emacs:
 CLOSED: [2021-11-21 Sun 17:35]
 :PROPERTIES:
