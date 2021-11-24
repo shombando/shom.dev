@@ -8,7 +8,7 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
-** DONE Emacs which-key prefix labels                                :@emacs:
+** DONE Emacs which-key prefix labels :emacs:
 CLOSED: [2021-11-22 Mon 00:26]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211122_emacs-which-key-prefix-labels
@@ -48,7 +48,7 @@ However, the secondary leaders show up as =x → +prefix= and it would nice to g
   "ww" '("ace-window" . aw-show-dispatch-help))
 #+end_src
 
-** DONE Emacs custom configuration :@emacs:
+** DONE Emacs custom configuration :emacs:
 CLOSED: [2021-11-21 Sun 17:35]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211121_emacs-custom-configuration
@@ -68,7 +68,7 @@ During this time, I kept disabling more and more Doom modules and replacing some
 
 I'll make a few short posts with some of the things I learned in this process with some code snippets as examples.  
 
-** DONE Sony A7c initial customization :@camera:
+** DONE Sony A7c initial customization :camera:
 CLOSED: [2021-10-27 Wed 00:52]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211026_sony-a7c-initial-customization
@@ -115,7 +115,7 @@ These are the main features that would have "bit" me if I didn't change them bef
 :EXPORT_HUGO_MENU:
 :END:
 Need to get the original date of the post as part of the slug title in capture template. This might cause discrepancy if the date of capture isn't the date of publish (which will show up in Hugo metadata), so maybe the slug needs to be updated upon org state change from DRAFT to DONE.
-** DONE org-bars view for outlining/folding :@emacs:
+** DONE org-bars view for outlining/folding :emacs:
 CLOSED: [2021-10-23 Sat 23:37]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211023_org-bars-view-for-outlining-folding
@@ -145,7 +145,7 @@ Here's a screenshot of my Hugo content buffer showing ~org-bars~:
 #+ATTR_ORG: :width 600
 [[./static/20211023_org-bars.png]]
 
-** DONE Wine and CrossOver to use Lightroom on Linux :@foss:
+** DONE Wine and CrossOver to use Lightroom on Linux :foss:
 CLOSED: [2021-10-16 Sat 00:07]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211016_wine-and-crossover-lightroom
@@ -163,7 +163,7 @@ Crash Annotation GraphicsCriticalError: |[0][GFX1]: Potential driver version mis
 
 At this point I didn't have high hopes for avoiding the Windows VM route but  wanted to give a quick try to [[https://www.codeweavers.com/crossover][CrossOver]]. I tried one of their supported applications (Notepad++) and that worked great. They also support "unlisted application" but pointing the Adobe installer led to a lot of nothing, the logs were not very helpful either. At this point I decided to abandon this path and go the VM route to make progress on my actual photo editing goals. However, Steam's [[https://www.simpler.website/html/2020/12/steam-play.html][Proton]] could be a option to investigate in the future. Are there any other good solutions?
 
-** DONE Fully automated deployment :@emacs:@foss:
+** DONE Fully automated deployment :emacs:foss:
 CLOSED: [2021-10-05 Tue 05:53]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211005_fully-automated-deployment
@@ -212,7 +212,7 @@ In order to check sanity and solve the issue, I exported directly with ~org-hugo
 
 I would like to get the ~org-publish~ route sorted out so I can publish to the Hugo site and the Gemini capsule with a single commit.
 
-** DONE Static-site :@emacs:@gemini:
+** DONE Static-site :emacs:gemini:
 CLOSED: [2021-09-10 Fri 20:29]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20210910_static-site
@@ -232,7 +232,7 @@ One option is to write the content in org format, use ox-hugo [2] for content ex
 [2] https://ox-hugo.scripter.co
 [3] https://codeberg.org/woozong/ox-gemtext
 
-** DONE Framework :@framework:
+** DONE Framework :framework:
 CLOSED: [2021-09-01 Wed 19:25]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20210901_framework-first-impressions
@@ -265,7 +265,7 @@ Happy to answer questions!
 
 [[https://fosstodon.org/@shom/106854632055933583][🦣 fosstodon toot]]
 
-** DONE Video Editing :@foss:
+** DONE Video Editing :foss:
 CLOSED: [2021-08-08 Sun 16:00]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20210808_video-editing
@@ -288,7 +288,7 @@ All in all, I would say both are good but I personally had a better experience w
 
 [1] https://wiki.systemcrafters.cc/community/chat-with-us/
 
-** DONE Termux + Emacs :@emacs:
+** DONE Termux + Emacs :emacs:
 CLOSED: [2021-08-07 Sat 15:59]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20210807_termux-emacs
@@ -314,7 +314,7 @@ While I use this setup for capturing notes in org mode, for tasks management I u
 [1] https://termux.com
 [2] https://github.com/hlissner/doom-emacs.
 
-** DONE Latte Art :@coffee:
+** DONE Latte Art :coffee:
 CLOSED: [2021-08-02 Mon 19:11]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20210802_latte-art
@@ -324,7 +324,7 @@ Getting into home espresso has been fun, it's a rabbit hole like most fun things
 #+ATTR_ORG: :width 1200
 [[./static/20210802_LatteArt.jpg]]
 
-** DONE Gemini Capsule :@gemini:
+** DONE Gemini Capsule :gemini:
 CLOSED: [2021-08-02 Mon 19:00]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20210802_gemini-capsule
@@ -341,10 +341,10 @@ With a certain nostalgia for the early web ever present, a Gemini site (gemite? 
 :EXPORT_HUGO_MENU: :menu "main" :weight -2 :title Home
 :END:
 
-* Categories
+* Tags
 :PROPERTIES:
-:EXPORT_HUGO_SECTION: categories
-:EXPORT_HUGO_MENU: :menu "main" :weight -1 :title Categories
+:EXPORT_HUGO_SECTION: tags 
+:EXPORT_HUGO_MENU: :menu "main" :weight -1 :title Tags
 :EXPORT_FILE_NAME: _index
 :END:
 
