@@ -8,6 +8,17 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+*** DONE Highland Chewie :art:
+CLOSED: [2021-11-29 Mon 22:52]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20211129_highland-chewie
+:EXPORT_HUGO_MENU:
+:END:
+I picked up a water color kit for $2 with a brush and eight colors to try something new. I followed along with a [[https://www.instagram.com/paigepayne_creations/channel/][tutorial]] to paint a highland cow and my painting wasn't that great, but it was fun. Afterwards it felt a little like Chewbacca, so l added a bandoleer. Here's Higland Chewie:
+
+#+ATTR_ORG: :width 800
+[[./static/20211129_HighlandChewie.jpg]]
+
 ** DONE Emacs which-key prefix labels :emacs:
 CLOSED: [2021-11-22 Mon 00:26]
 :PROPERTIES:
