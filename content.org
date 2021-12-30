@@ -8,6 +8,39 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE "Inverse literate" config via org-transclusion                :emacs:
+CLOSED: [2021-12-30 Thu 17:32]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20211230_inverse-literate-config-via-org-transclusion
+:EXPORT_HUGO_MENU:
+:END:
+I am very intrigued by the whole concept of literate programming. There is a lot of opinions and lots of valid points for and against comments, but ultimately it's always a good idea to understand intent. I wanted to create a literate config but did not want slow down startup with tangling.
+
+I came across an interesting package today called [[https://github.com/nobiot/org-transclusion][org-transclusion]] by @nobiot. The package is very interesting, being able to bring in arbitrary lines of text from multiple documents into a single document (while those documents remain the source of truth) is quite powerful. The package also allows extracting sections based on tags (string match) which makes it a good contender to make an "inverse literate" configuration which I've been curious about ever since David Wilson did a [[https://www.youtube.com/watch?v=50Vsh4qw-E4][System Crafters live stream]].
+
+So I decided to give it a shot and got started with my custom configuration. I added some text comments to divide the configuration into sections:
+#+begin_src emacs-lisp
+;directory_begin
+(setq user-emacs-directory "~/.emacs/.custom/")
+;directory_end
+#+end_src
+
+Then I'm able to include it in an org file:
+#+begin_src emacs-lisp
+This line live in my org file, but the content below lives in my init.el file:
+#+transclude: [[./init.el::;directory_begin]] :lines 2- :src emacs-lisp :end "directory_end"
+#+end_src
+Where =org-transclusion= looks for a file =./init.el= and searching for the begin string ~;directory_begin~ and includes everything until it encounters the end string ~;directory_end~ (both strings are arbitrary, I just picked that convention) but doesn't include the actual line containing "directory_end" as specified by the ~:line 2-~ parameter. All of that would produce:
+#+begin_src emacs-lisp
+This line live in my org file, but the content below lives in my init.el file:
+(setq user-emacs-directory "~/.emacs/.custom/")
+#+end_src
+And in the future if I added anything in =init.el= between the ~;directory_begin~ and ~;directory_end~ comment lines, then it would get included in the org file.
+
+Here's what all of this looks like [[https://git.sr.ht/~shom/.emacs.custom][in my actual configuration repo]] (I haven't finished writing up all the sections yet, but plan to soon™.
+
+Overall, this has worked pretty well. The file =config.org= in my repo contains the "source" and =org-transclusion= directives and is rendered out to =README.md= (markdown is better supported for auto-rendering by more forges currently). I'll eventually automate this process, likely through a git-hook. However, the rendered output is never guaranteed to include all of my config, just the sections that have been manually commented, =init.el= and includes will remain the source of truth.
+
 ** DONE Doom Emacs config (deprecated) :emacs:
 CLOSED: [2021-12-01 Wed 21:57]
 :PROPERTIES:
