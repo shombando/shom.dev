@@ -8,6 +8,748 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Setting up Protonmail in Emacs :emacs:
+CLOSED: [2022-01-08 Sat 12:04]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20220108_setting-up-protonmail-in-emacs
+:EXPORT_HUGO_MENU:
+:END:
+I've used [[https://protonmail.com][Protonmail]] for several years and use the web interface for the most part and used Thunderbird on the desktop to keep offline copies of email. Since Protnmail takes care of the encryption it requires a [[https://protonmail.com/bridge/install][local bridge]] to provide a standard interface like IMAP. Essentially, it is running an IMAP server on the local machine that any compatible client can connect to. Technically, the bridge can be made accessible on a local network so many clients from many machines can connect to it. I might eventually set this up when I have had a chance to get a better handle on vlans and access control.
+
+*** Installing packages
+In order to use connect to the local IMAP bridge locally, I will be using =mbsync=. I'm using =guix= for package management, guix (and other package  managers) refer to =mbsync= as =isync=. The =mu= package also includes =mu4e= (at least in version 1.6+ and it's not recommended to mix/match versions).
+#+begin_src sh
+  guix install isync mu
+#+end_src
+
+*** Configuring mbsync
+=mbsync= expects a configuration in =~/.mbsyncrc= (does anyone know how to move this to =~/.config=? I'm disheartened by all the home directory clutter). Ideally one would GPG encrypt the password but since Proton Bridge generates it locally and it's is available as clear text to the local machine anyway, I didn't bother. Instead I just put the password from the ProtonBridge application into a text file (ensure no extra characters exist like space or return) and cat that into the ~PassCmd~. 
+#+begin_src conf
+  IMAPAccount proton
+  Host 127.0.0.1
+  User user@protonmail.com
+  PassCmd "cat ~/.protonBridgePass"
+  SSLType NONE
+  CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+  IMAPStore proton-remote
+  Account proton
+
+  MaildirStore proton-local
+  Subfolders Verbatim
+  Path ~/mail/proton
+  Inbox ~/mail/proton/inbox
+
+  Channel proton
+  Far :proton-remote:
+  Near :proton-local:
+  Patterns *
+  Create Both
+  SyncState *
+#+end_src
+Running the sync command gave me an error that sent me on a goose chase:
+#+begin_src sh
+mbsync -a
+#+end_src
+=Socket error: secure connect to 127.0.0.1 (127.0.0.1:1143): error:1408F10B:SSL routines:ssl3_get_record:wrong version number=
+The issue was the =SSLType NONE= is the proper config as shown above, I originally had it set to =IMAPS=. Once the sync starts it will take a long time depending upon how many emails you have.
+
+*** Configuring mu4e
+Configure the ~mu4e-maildir~ location to wherever you want to store the mail directory (remember mail in this folder is stored in clear-text). The ~mu4e-****-folder~ variables need to include the sub-directory in the relative path, in my case =proton=.
+
+#+begin_src emacs-lisp
+  (use-package mu4e
+    :straight nil
+    :defer 20 ; Wait until 20 seconds after startup
+    :config
+
+    (setq mu4e-change-filenames-when-moving t ; avoid sync conflicts
+	  mu4e-update-interval (* 10 60) ; check mail 10 minutes
+	  mu4e-compose-format-flowed t ; re-flow mail so it's not hard wrapped
+	  mu4e-get-mail-command "mbsync -a"
+	  mu4e-maildir "~/mail/proton")
+
+    (setq mu4e-drafts-folder "/proton/Drafts"
+	  mu4e-sent-folder   "/proton/Sent"
+	  mu4e-refile-folder "/proton/All Mail"
+	  mu4e-trash-folder  "/proton/Trash")
+
+    (setq mu4e-maildir-shortcuts
+	  '(("/proton/inbox"     . ?i)
+	    ("/proton/Sent"      . ?s)
+	    ("/proton/Trash"     . ?t)
+	    ("/proton/Drafts"    . ?d)
+	    ("/proton/All Mail"  . ?a)))
+
+    (setq message-send-mail-function 'smtpmail-send-it
+	  auth-sources '("~/.authinfo") ;need to use gpg version but only local smtp stored for now
+	  smtpmail-smtp-server "127.0.0.1"
+	  smtpmail-smtp-service 1025
+	  smtpmail-stream-type  'ssl))
+#+end_src
+
+I'm also configuring ~smtpmail~ in the config section of =mu4e= just to keep mail config together, ~smtpmail~ is part of Emacs core. I'm adding SMTP authentication info to the un-encrypted ~.authinfo~ for the same reason as =.mbsyncrc= explanation above.
+
+#+begin_src conf
+machine 127.0.0.1 login user@protonmail.com password ProtonBridgeGeneratedPassword port 1025
+#+end_src
+
+*** Using org-mode to compose HTML emails
+At this stage plain-text email will work just fine, in order to send email with formatting I'm using =org-msg= which lets you compose with org markup and sends it out as HTML (including in-lining images, tables, etc.)
+#+begin_src emacs-lisp
+  (use-package org-msg
+    :straight t
+    :after mu4e
+    :config
+    (setq mail-user-agent 'mu4e-user-agent)
+    (require 'org-msg)
+    (setq org-msg-options "html-postamble:nil H:5 num:nil ^:{} toc:nil author:nil email:nil \\n:t"
+	  org-msg-startup "hidestars indent inlineimages"
+	  org-msg-default-alternatives '((new		. (text html))
+					 (reply-to-html	. (text html))
+					 (reply-to-text	. (text)))
+	  org-msg-convert-citation t)
+    (org-msg-mode))
+#+end_src
+
+*** References
+Here are a list of references I used to get everything setup and configured:
+- https://systemcrafters.net/emacs-mail/
+- http://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/
+- https://jherrlin.github.io/posts/emacs-mu4e/
+
+** DONE "Inverse literate" config via org-transclusion                :emacs:
+CLOSED: [2021-12-30 Thu 17:32]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20211230_inverse-literate-config-via-org-transclusion
+:EXPORT_HUGO_MENU:
+:END:
+I am very intrigued by the whole concept of literate programming. There is a lot of opinions and lots of valid points for and against comments, but ultimately it's always a good idea to understand intent. I wanted to create a literate config but did not want slow down startup with tangling.
+
+I came across an interesting package today called [[https://github.com/nobiot/org-transclusion][org-transclusion]] by @nobiot. The package is very interesting, being able to bring in arbitrary lines of text from multiple documents into a single document (while those documents remain the source of truth) is quite powerful. The package also allows extracting sections based on tags (string match) which makes it a good contender to make an "inverse literate" configuration which I've been curious about ever since David Wilson did a [[https://www.youtube.com/watch?v=50Vsh4qw-E4][System Crafters live stream]].
+
+So I decided to give it a shot and got started with my custom configuration. I added some text comments to divide the configuration into sections:
+#+begin_src emacs-lisp
+;directory_begin
+(setq user-emacs-directory "~/.emacs/.custom/")
+;directory_end
+#+end_src
+
+Then I'm able to include it in an org file:
+#+begin_src emacs-lisp
+This line live in my org file, but the content below lives in my init.el file:
+#+transclude: [[./init.el::;directory_begin]] :lines 2- :src emacs-lisp :end "directory_end"
+#+end_src
+Where =org-transclusion= looks for a file =./init.el= and searching for the begin string ~;directory_begin~ and includes everything until it encounters the end string ~;directory_end~ (both strings are arbitrary, I just picked that convention) but doesn't include the actual line containing "directory_end" as specified by the ~:line 2-~ parameter. All of that would produce:
+#+begin_src emacs-lisp
+This line live in my org file, but the content below lives in my init.el file:
+(setq user-emacs-directory "~/.emacs/.custom/")
+#+end_src
+And in the future if I added anything in =init.el= between the ~;directory_begin~ and ~;directory_end~ comment lines, then it would get included in the org file.
+
+Here's what all of this looks like [[https://git.sr.ht/~shom/.emacs.custom][in my actual configuration repo]] (I haven't finished writing up all the sections yet, but plan to soon™.
+
+Overall, this has worked pretty well. The file =config.org= in my repo contains the "source" and =org-transclusion= directives and is rendered out to =README.md= (markdown is better supported for auto-rendering by more forges currently). I'll eventually automate this process, likely through a git-hook. However, the rendered output is never guaranteed to include all of my config, just the sections that have been manually commented, =init.el= and includes will remain the source of truth.
+
+** DONE Doom Emacs config (deprecated) :emacs:
+CLOSED: [2021-12-01 Wed 21:57]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20211201_doom-emacs-config--deprecated
+:EXPORT_HUGO_MENU:
+:END:
+I was asked about my Doom config by [[https://fosstodon.org/@Runlevelrobot/107374760764898864][someone on fosstodon]] but it's not a clean repo where I'm not confident that I didn't accidentally commit private information in the past, so I wasn't sure how to share. But this is a good time to put a pin in the config and capture a snapshot here, for reference.
+
+This is quite messy and mixes idioms at random as I learned more about configuration. I also used this config to transition over to my custom config so I disabled some Doom functionality as I went down that path, in short, I was using a lot more packages in =init.el= that the current state below.
+
+*** init.el
+#+begin_src emacs-lisp
+(doom! :input
+       ;;chinese
+       ;;japanese
+
+       :completion
+       company           ; the ultimate code completion backend
+       ;;helm              ; the *other* search engine for love and life
+       ;;ido               ; the other *other* search engine...
+       ;;ivy               ; a search engine for love and life
+
+       :ui
+       ;;deft              ; notational velocity for Emacs
+       doom              ; what makes DOOM look the way it does
+       doom-dashboard    ; a nifty splash screen for Emacs
+       doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       ;;fill-column       ; a `fill-column' indicator
+       hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
+       ;;hydra
+       indent-guides     ; highlighted indent columns
+       modeline          ; snazzy, Atom-inspired modeline, plus API
+       nav-flash         ; blink the current line after jumping
+       ;;neotree           ; a project drawer, like NERDTree for vim
+       ;;ophints           ; highlight the region an operation acts on
+       (popup +defaults)   ; tame sudden yet inevitable temporary windows
+       ;;pretty-code       ; ligatures or substitute text with pretty symbols
+       ;tabs              ; an tab bar for Emacs
+       ;;treemacs          ; a project drawer, like neotree but cooler
+       unicode           ; extended unicode support for various languages
+       vc-gutter         ; vcs diff in the fringe
+       ;;vi-tilde-fringe   ; fringe tildes to mark beyond EOB
+       ;;window-select     ; visually switch windows
+       ;;workspaces        ; tab emulation, persistence & separate workspaces
+       ;;zen               ; distraction-free coding or writing
+
+       :editor
+       (evil +everywhere); come to the dark side, we have cookies
+       ;file-templates    ; auto-snippets for empty files
+       fold              ; (nigh) universal code folding
+       ;;(format +onsave)  ; automated prettiness
+       ;;god               ; run Emacs commands without modifier keys
+       ;;lispy             ; vim for lisp, for people who don't like vim
+       ;;multiple-cursors  ; editing in many places at once
+       ;;objed             ; text object editing for the innocent
+       ;;parinfer          ; turn lisp into python, sort of
+       ;;rotate-text       ; cycle region at point between text candidates
+       snippets          ; my elves. They type so I don't have to
+       ;;word-wrap         ; soft wrapping with language-aware indent
+
+       :emacs
+       (dired +icons)    ; making dired pretty [functional]
+       electric          ; smarter, keyword-based electric-indent
+       ;;ibuffer         ; interactive buffer management
+       undo              ; persistent, smarter undo for your inevitable mistakes
+       ;;vc              ; version-control and Emacs, sitting in a tree
+
+       :term
+       ;;eshell            ; the elisp shell that works everywhere
+       ;;shell             ; simple shell REPL for Emacs
+       ;;term              ; basic terminal emulator for Emacs
+       vterm             ; the best terminal emulation in Emacs
+
+       :checkers
+       syntax              ; tasing you for every semicolon you forget
+       spell             ; tasing you for misspelling mispelling
+       ;;grammar           ; tasing grammar mistake every you make
+
+       :tools
+       ;;ansible
+       ;;debugger          ; FIXME stepping through code, to help you add bugs
+       ;;direnv
+       ;;docker
+       ;;editorconfig      ; let someone else argue about tabs vs spaces
+       ;;ein               ; tame Jupyter notebooks with emacs
+       (eval +overlay)     ; run code, run (also, repls)
+       ;;gist              ; interacting with github gists
+       lookup              ; navigate your code and its documentation
+       lsp
+       ;;macos             ; MacOS-specific commands
+       (magit +forge)      ; a git porcelain for Emacs
+       ;;make              ; run make tasks from Emacs
+       ;;pass              ; password manager for nerds
+       ;;pdf               ; pdf enhancements
+       ;;prodigy           ; FIXME managing external services & code builders
+       ;;rgb               ; creating color strings
+       ;;terraform         ; infrastructure as code
+       ;;tmux              ; an API for interacting with tmux
+       ;;upload            ; map local to remote projects via ssh/ftp
+
+       :lang
+       ;;agda              ; types of types of types of types...
+       ;;assembly          ; assembly for fun or debugging
+       ;;cc                ; C/C++/Obj-C madness
+       ;;clojure           ; java with a lisp
+       ;;common-lisp       ; if you've seen one lisp, you've seen them all
+       ;;coq               ; proofs-as-programs
+       ;;crystal           ; ruby at the speed of c
+       ;;csharp            ; unity, .NET, and mono shenanigans
+       data              ; config/data formats
+       ;;(dart +flutter)   ; paint ui and not much else
+       ;;elixir            ; erlang done right
+       ;;elm               ; care for a cup of TEA?
+       emacs-lisp        ; drown in parentheses
+       ;;erlang            ; an elegant language for a more civilized age
+       ;;ess               ; emacs speaks statistics
+       ;;faust             ; dsp, but you get to keep your soul
+       ;;fsharp           ; ML stands for Microsoft's Language
+       ;;fstar             ; (dependent) types and (monadic) effects and Z3
+       ;;(go +lsp)         ; the hipster dialect
+       ;;(haskell +dante)  ; a language that's lazier than I am
+       ;;hy                ; readability of scheme w/ speed of python
+       ;;idris             ;
+       ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
+       ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       ;;julia             ; a better, faster MATLAB
+       ;;kotlin            ; a better, slicker Java(Script)
+       ;;latex             ; writing papers in Emacs has never been so fun
+       ;;lean
+       ;;factor
+       ;;ledger            ; an accounting system in Emacs
+       ;;lua               ; one-based indices? one-based indices
+       markdown          ; writing docs for people to ignore
+       ;;nim               ; python + lisp at the speed of c
+       ;;nix               ; I hereby declare "nix geht mehr!"
+       ;;ocaml             ; an objective camel
+       org ;;(org +roam)              ; organize your plain life in plain text
+       ;;perl              ; write code no one else can comprehend
+       ;;php               ; perl's insecure younger brother
+       ;;plantuml          ; diagrams for confusing people more
+       ;;purescript        ; javascript, but functional
+       ;;python            ; beautiful is better than ugly
+       ;;qt                ; the 'cutest' gui framework ever
+       ;;racket            ; a DSL for DSLs
+       ;;rest              ; Emacs as a REST client
+       ;;rst               ; ReST in peace
+       ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+       rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       ;;scala             ; java, but good
+       ;;scheme            ; a fully conniving family of lisps
+       (sh +lsp +fish)     ; she sells {ba,z,fi}sh shells on the C xor
+       ;;sml
+       ;;solidity          ; do you need a blockchain? No.
+       ;;swift             ; who asked for emoji variables?
+       ;;terra             ; Earth and Moon in alignment for performance.
+       ;;web               ; the tubes
+
+       :email
+       ;;(mu4e +gmail)
+       ;;notmuch
+       ;;(wanderlust +gmail)
+
+       :app
+       ;;calendar
+       ;;irc               ; how neckbeards socialize
+       ;;(rss +org)        ; emacs as an RSS reader
+       ;;twitter           ; twitter client https://twitter.com/vnought
+       everywhere
+
+       :config
+       ;;literate
+       (default +bindings +smartparens))
+#+end_src
+
+*** packages.el
+#+begin_src emacs-lisp
+;; Useful for position M-x (execute-extended-command) window on screen
+(package! ivy-posframe)
+
+;; Simpleclip allows access to system clipboard in a reasonable manner
+(package! simpleclip)
+
+;; Use org-journal with org-roam to follow Roam Research workflow
+(package! org-journal)
+
+;; Use org-roam-server to visualize org-roam links
+(package! org-roam-server)
+
+;; single dired buffer and icons
+(package! all-the-icons-dired)
+(package! dired-single)
+
+(package! fish-completion
+  :recipe (:host gitlab :repo "ambrevar/emacs-fish-completion"))
+
+(package! emacas-0x0
+  :recipe (:host gitlab :repo "willvaughn/emacs-0x0"))
+
+(package! org-present)
+(package! org-appear)
+
+(package! ox-gemtext
+  :recipe (:host nil :repo "https://codeberg.org/woozong/ox-gemtext"))
+
+(package! gemini-mode)
+(package! org-preview-html)
+
+(package! ox-hugo)
+(package! yaml-mode)
+(package! ox-gemini)
+
+(package! org-books)
+
+(package! deadgrep)
+
+(package! vertico)
+(package! orderless)
+(package! marginalia)
+(package! embark)
+
+(package! ace-window)
+
+(package! org-bars
+  :recipe (:host github :repo "tonyaldon/org-bars"))
+
+(package! consult)
+
+(package! vertico-posframe)
+
+#+end_src
+
+*** config.el
+#+begin_src emacs-lisp
+(setq doom-theme 'doom-one)
+
+(setq doom-font (font-spec :family "JetBrains Mono" :size 14)
+      doom-big-font (font-spec :family "JetBrains Mono" :size 32))
+
+(setq display-line-numbers-type t)
+
+;; CUA type customizations and conveniences=====================================
+;; Simpleclip to access system clipboard
+(require 'simpleclip)
+(setq simpleclip-mode 1)
+
+(map! :gin "C-S-x" #'simpleclip-cut ;Was: C-x chord
+      :gin "C-S-c" #'simpleclip-copy ;Was: C-x chord
+      :gin "C-S-v" #'clipboard-yank ;freezing on Ubuntu: 'simpleclip-paste ;Was: C-x chord
+      :gin "C-z" #'undo ; Was: enable Emacs state
+      :gin "C-S-z" #'redo ;Was: C-x chor
+      ;; :gin "C-<tab>" #'switch-to-next-buffer ;Was: aya-create snippet
+      ;; :gin "C-S-<tab>" #'previous-multiframe-window ;Was: C-x chord
+      :gin "C-w" #'kill-buffer ;Was: evil-window-map
+      :gin "C-a" #'mark-whole-buffer ;Was: doom/backward-to-bol-or-indent
+      )
+
+;; Escape smart-parens after done typing inside
+(map! :i "M-;" #'sp-up-sexp) ;Was: comment-dwim
+
+;; Save. Was: isearch-forward
+(map! "C-s" #'save-buffer)
+;; Save as. Was: nil
+(map! "C-S-s" #'write-file)
+
+;; Ctrl shift P like sublime for commands
+(map! "C-S-p" #'execute-extended-command)
+
+;; Popup which-key fast
+(after! which-key
+  (setq which-key-idle-delay 0.1))
+
+;; Org mode related=============================================================
+(setq org-directory "~/org/")
+(setq org-agenda-files '("~/org/todo.org"))
+
+;; Org files that are refile targets
+(setq org-refile-targets (quote (("notes.org" :maxlevel . 1)
+                                 ("projects.org" :level . 1)
+                                 ("doomNotes.org" :level . 1)
+                                 )))
+
+;; Allow text selection by holding down shift key
+(setq org-support-shift-select t)
+
+;; Mark when task was completed
+(setq org-log-done 'time)
+
+;; Toggle narrow/widen subtree. Was: append-next-kill
+(map! "C-M-w" #'org-toggle-narrow-to-subtree)
+
+;; Render modified text only not modifier characters
+(setq org-pretty-entities-include-sub-superscripts t)
+
+;; Show images in the org buffers
+(setq org-startup-with-inline-images t)
+
+;; Org-roam
+(setq org-roam-mode 0)
+(setq org-roam-directory "~/org/roam/")
+(setq org-roam-buffer "Org-roam Sidebar")
+(setq org-roam-buffer-width 0.15)
+;;(setq org-roam-buffer-no-delete-other-windows t)
+(setq org-roam-link-title-format "∞%s")
+
+;; Org-journal roam integration
+;; From @ianjones on doom emacs discord: https://www.ianjones.us/blog/2020-05-05-doom-emacs/#fleeting-notes
+(use-package org-journal
+      :custom
+      (org-journal-dir "~/org/roam/journal/")
+      (org-journal-date-prefix "#+TITLE: ")
+      (org-journal-file-format "%Y-%m-%d.org")
+      (org-journal-date-format "%A, %B %d %Y"))
+(setq org-journal-enable-agenda-integration t)
+(map! "C-c C-5" #'org-journal-search) ;;was overriding org schedule
+
+(setq org-roam-dailies-capture-templates
+      '(("d" "daily" plain #'org-roam-capture--get-point ""
+         :immediate-finish t
+         :file-name "%<journal/%Y-%m-%d>"
+         :head "#+TITLE: %<%Y %B %d, %A>\nTAGS: [[file:dailies.org][∞Dailies]]\n\n*")))
+
+(setq org-roam-capture-templates '(
+                                   ("d" "default"
+                                    plain
+                                    #'org-roam-capture--get-point "%?"
+                                    :file-name "%<%Y%m%d>-${slug}"
+                                    :head "#+TITLE: ${title}\n"
+                                    :unnarrowed t)
+                                   ("p" "personal"
+                                    plain
+                                    #'org-roam-capture--get-point "%?"
+                                    :file-name "personal/%<%Y%m%d>-${slug}"
+                                    :head "#+TITLE: ${title}\n"
+                                    :unnarrowed t)))
+;; org-roam-server=====================================
+(if (eq system-type 'gnu/linux)
+    (use-package org-roam-server
+      :ensure t
+      :config
+      (setq org-roam-server-host "127.0.0.1"
+            org-roam-server-port 8008
+            org-roam-server-authenticate nil
+            org-roam-server-export-inline-images t
+            org-roam-server-serve-files nil
+            org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+            org-roam-server-network-poll t
+            org-roam-server-network-arrows nil
+            org-roam-server-network-label-truncate t
+            org-roam-server-network-label-truncate-length 60
+            org-roam-server-network-label-wrap-length 20))
+  )
+;; Posframe customization to position popup=====================================
+(require 'ivy-posframe)
+;; display at `ivy-posframe-style'
+(setq ivy-posframe-display-functions-alist
+      '((t . ivy-posframe-display)))
+(setq ivy-posframe-display-functions-alist
+      '((t . ivy-posframe-display-at-frame-center)))
+(ivy-posframe-mode t)
+
+;; Use aspell for spell-checking================================================
+(setq-default ispell-program-name "aspell")
+
+;; Speed up frame by loading heavy things when daemon starts
+(when (daemonp)
+  (require 'org)
+  (require 'org-roam)
+  (require 'ispell)
+  (ispell-start-process))
+
+;; dired config from system builder's emacs from scratch #1
+(use-package dired
+    :ensure nil
+    :commands (dired dired-jump)
+    :bind (("C-x C-j" . dired-jump))
+    :custom ((dired-listing-switches "-agho --group-directories-first"))
+    :config
+    (evil-collection-define-key 'normal 'dired-mode-map
+      "h" 'dired-single-up-directory
+      "l" 'dired-single-buffer))
+
+(use-package dired-single
+  :ensure t
+  :init
+  (require 'dired-single))
+
+(use-package all-the-icons-dired
+    :hook (dired-mode . all-the-icons-dired-mode))
+
+;; Magit forge configuration==================================================
+(setq auth-sources '("~/.authinfo"))
+
+;; eshell configuration ======================================================
+(when (and (executable-find "fish")
+           (require 'fish-completion nil t))
+  (global-fish-completion-mode))
+
+;; vterm configuration========================================================
+(use-package vterm
+  :commands vterm
+  :config
+  (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
+  (setq vterm-shell "fish")
+  (setq vterm-max-scrollback 10000))
+
+;; org-present configuration from https://github.com/daviwil/dotfiles=========
+(defun dw/org-present-prepare-slide ()
+  (org-overview)
+  (org-show-entry)
+  ;(org-show-children)
+  )
+
+(defun dw/org-present-hook ()
+  (setq-local face-remapping-alist '((default (:height 1.5) variable-pitch)
+                                     (header-line (:height 4.5) variable-pitch)
+                                     (org-document-title (:height 1.75) org-document-title)
+                                     (org-code (:height 1.55) org-code)
+                                     (org-verbatim (:height 1.55) org-verbatim)
+                                     (org-block (:height 1.25) org-block)
+                                     (org-block-begin-line (:height 0.7) org-block)))
+  (setq header-line-format " ")
+  (org-appear-mode -1)
+  (org-display-inline-images)
+  (display-line-numbers-mode)
+  (dw/org-present-prepare-slide))
+
+(defun dw/org-present-quit-hook ()
+  (setq-local face-remapping-alist '((default variable-pitch default)))
+  (setq header-line-format nil)
+  (org-present-small)
+  (org-remove-inline-images)
+  (org-appear-mode 1)
+  (display-line-numbers-mode))
+
+(defun dw/org-present-prev ()
+  (interactive)
+  (org-present-prev)
+  (dw/org-present-prepare-slide))
+
+(defun dw/org-present-next ()
+  (interactive)
+  (org-present-next)
+  (dw/org-present-prepare-slide))
+
+(use-package org-present
+  :after simple
+  :after org
+  :bind (:map org-present-mode-keymap
+         ("C-j" . dw/org-present-next)
+         ("C-k" . dw/org-present-prev))
+  :hook ((org-present-mode . dw/org-present-hook)
+         (org-present-mode-quit . dw/org-present-quit-hook)))
+
+;; Gemini=====================================================================
+(require 'ox-gemtext)
+(add-hook 'find-file-hook
+          (lambda ()
+            (when (string= (file-name-extension buffer-file-name) "gmi")
+              (gemini-mode +1))))
+;; ox-hugo====================================================================
+(require 'ox-hugo)
+(require 'ox-gemini)
+
+;; Org capture template for Hugo posts
+;; https://ox-hugo.scripter.co/doc/org-capture-setup/
+(with-eval-after-load 'org-capture
+  (defun org-hugo-new-subtree-post-capture-template ()
+    "Returns `org-capture' template string for new Hugo post.
+See `org-capture-templates' for more information."
+    (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+           (fname (concat (format-time-string "%Y%m%d_") (org-hugo-slug title))))
+      (mapconcat #'identity
+                 `(
+                   ,(concat "\n* DRAFT " title)
+                   ":PROPERTIES:"
+                   ,(concat ":EXPORT_FILE_NAME: " fname)
+                   ":EXPORT_HUGO_MENU:\n:END:"
+                   "%?\n")          ;Place the cursor here finally
+                 "\n")))
+
+  (add-to-list 'org-capture-templates
+               '("h"                ;`org-capture' binding + h
+                 "Hugo post"
+                 entry
+                 ;; It is assumed that below file is present in `org-directory'
+                 ;; and that it has a "Blog Ideas" heading. It can even be a
+                 ;; symlink pointing to the actual location of all-posts.org!
+                 (file+olp "~/dev/shom.dev/content.org" "Content")
+                 (function org-hugo-new-subtree-post-capture-template)
+                 :prepend t)))
+
+;; Embark config==============================================================
+(use-package embark
+  :ensure t
+  :bind
+  (("C-;" . embark-act)
+   ("C-M-;" . embark-dwim)
+   ("C-h B" . embark-bindings))
+
+  :init
+  (setq prefix-help-command #'embark-prefix-help-command))
+
+
+;; Org-books==================================================================
+(setq org-books-file "~/org/roam/personal/books.org")
+
+;; Vertico ===================================================================
+;; Enable vertico
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode)
+
+  ;; Optionally enable cycling for `vertico-next', `vertico-previous',
+  ;; `vertico-next-group' and `vertico-previous-group'.
+  (setq vertico-cycle t))
+
+;; Optionally use the `orderless' completion style. See
+;; `+orderless-dispatch' in the Consult wiki for an advanced Orderless style
+;; dispatcher. Additionally enable `partial-completion' for file path
+;; expansion. `partial-completion' is important for wildcard support.
+;; Multiple files can be opened at once with `find-file' if you enter a
+;; wildcard. You may also give the `initials' completion style a try.
+(use-package orderless
+  :ensure t
+  :custom (completion-styles '(orderless)))
+(orderless-define-completion-style orderless+initialism
+  (orderless-matching-styles '(orderless-initialism
+                               orderless-literal
+                               orderless-regexp)))
+(setq completion-category-overrides
+      '((command (styles orderless+initialism))
+        (symbol (styles orderless+initialism))
+        (variable (styles orderless+initialism))))
+
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
+
+(use-package marginalia
+  :after vertico
+  :ensure t
+  :custom
+  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+  :init
+  (marginalia-mode))
+
+(use-package consult
+  :after vertico)
+(map! :gin "C-<tab>" #'consult-buffer
+      :gin "C-f" #'consult-ripgrep
+      :given "C-i" #'consult-imenu)
+
+;; Window and decoration =====================================================
+(set-fringe-mode '(15 . 10))
+
+(use-package ace-window
+  :ensure t
+  :init
+  (global-set-key (kbd "M-q") 'ace-window)
+  (setq aw-dispatch-always t)
+  (custom-set-faces!
+    '(aw-leading-char-face
+      :foreground "white" :background "red"
+      :weight bold :height 2.5 :box (:line-width 10 :color "red"))))
+
+
+;; Org-bars configuration ====================================================
+(use-package org-bars
+  :after org
+  :ensure t
+  :init
+ (defun org-no-ellipsis-in-headlines ()
+ "Remove use of ellipsis in headlines.
+See `buffer-invisibility-spec'."
+  (remove-from-invisibility-spec '(outline . t))
+  (add-to-invisibility-spec 'outline))
+ (add-hook 'org-mode-hook #'org-bars-mode)
+ (add-hook 'org-mode-hook 'org-no-ellipsis-in-headlines))
+
+;; ===========================================================================
+(after! tramp
+  (setq tramp-inline-compress-start-size 1000)
+  (setq tramp-copy-size-limit 10000)
+  (setq tramp-verbose 1)
+  (setq tramp-default-method "scp")
+  (setq tramp-use-ssh-controlmaster-options t)
+  (setq tramp-verbose 1))
+
+;; ===========================================================================
+(use-package vertico-posframe
+  :after vertico
+  :ensure t
+  :init
+  (vertico-posframe-mode 1))
+
+#+end_src
+
 ** DONE Highland Chewie :art: 
 CLOSED: [2021-11-29 Mon 22:52]
 :PROPERTIES:
@@ -75,7 +817,7 @@ Around the time when I was understanding how to copy paste configs more, there w
 *** Back to Doom
 Actually, I never left Doom while doing the above exercise. I did not want to invest the time necessary to learn to make my own config. Also, having all the keybindings already setup and showing up nicely in ~which-key~ was great. This is also before =native-comp= was merged into Emacs 28 master branch so I was having issues with compatibility. The final push was that using Doom with all its modules was not performant on a Windows machine that I don't manage but have to use. 
 *** Custom Config
-During this time, I kept disabling more and more Doom modules and replacing some of them with other options. There seems to be a lot of excitement about light-weight packages like =vertico=, =consult=, etc. that are more single task focused which I started integrating. I started using =orderless=, =embark= and =ace-window= as well and with those, I felt I had enough to use a custom config and be productive. I'm using [[https://github.com/plexus/chemacs2][Chemacs2]] to have both my Doom config and my [[https://git.sr.ht/~shom/.emacs.custom][custom config]] installed but have been exclusively using the config.
+[[../20211201_doom-emacs-config-deprecated][During this time]], I kept disabling more and more Doom modules and replacing some of them with other options. There seems to be a lot of excitement about light-weight packages like =vertico=, =consult=, etc. that are more single task focused which I started integrating. I started using =orderless=, =embark= and =ace-window= as well and with those, I felt I had enough to use a custom config and be productive. I'm using [[https://github.com/plexus/chemacs2][Chemacs2]] to have both my Doom config and my [[https://git.sr.ht/~shom/.emacs.custom][custom config]] installed but have been exclusively using the config.
 
 I'll make a few short posts with some of the things I learned in this process with some code snippets as examples.  
 

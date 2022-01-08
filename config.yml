@@ -16,6 +16,8 @@ params:
     showtoc: true
     tocopen: false
     hideFooter: true
+    assets:
+      disableHLJS: true
     homeInfoParams:
         enabled: true
         Title: Shom Bandopadhaya
@@ -50,3 +52,11 @@ params:
           url: 'https://shom.dev/index.xml'
     #    - name: "<platform 2>"
     #        url: "<link2>"
+markup:
+  highlight:
+    # anchorLineNos: true
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    # noClasses: false
+    style: nord
