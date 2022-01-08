@@ -8,6 +8,116 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Setting up Protonmail in Emacs :emacs:
+CLOSED: [2022-01-08 Sat 12:04]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20220108_setting-up-protonmail-in-emacs
+:EXPORT_HUGO_MENU:
+:END:
+I've used [[https://protonmail.com][Protonmail]] for several years and use the web interface for the most part and used Thunderbird on the desktop to keep offline copies of email. Since Protnmail takes care of the encryption it requires a [[https://protonmail.com/bridge/install][local bridge]] to provide a standard interface like IMAP. Essentially, it is running an IMAP server on the local machine that any compatible client can connect to. Technically, the bridge can be made accessible on a local network so many clients from many machines can connect to it. I might eventually set this up when I have had a chance to get a better handle on vlans and access control.
+
+*** Installing packages
+In order to use connect to the local IMAP bridge locally, I will be using =mbsync=. I'm using =guix= for package management, guix (and other package  managers) refer to =mbsync= as =isync=. The =mu= package also includes =mu4e= (at least in version 1.6+ and it's not recommended to mix/match versions).
+#+begin_src sh
+  guix install isync mu
+#+end_src
+
+*** Configuring mbsync
+=mbsync= expects a configuration in =~/.mbsyncrc= (does anyone know how to move this to =~/.config=? I'm disheartened by all the home directory clutter). Ideally one would GPG encrypt the password but since Proton Bridge generates it locally and it's is available as clear text to the local machine anyway, I didn't bother. Instead I just put the password from the ProtonBridge application into a text file (ensure no extra characters exist like space or return) and cat that into the ~PassCmd~. 
+#+begin_src conf
+  IMAPAccount proton
+  Host 127.0.0.1
+  User user@protonmail.com
+  PassCmd "cat ~/.protonBridgePass"
+  SSLType NONE
+  CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+  IMAPStore proton-remote
+  Account proton
+
+  MaildirStore proton-local
+  Subfolders Verbatim
+  Path ~/mail/proton
+  Inbox ~/mail/proton/inbox
+
+  Channel proton
+  Far :proton-remote:
+  Near :proton-local:
+  Patterns *
+  Create Both
+  SyncState *
+#+end_src
+Running the sync command gave me an error that sent me on a goose chase:
+#+begin_src sh
+mbsync -a
+#+end_src
+=Socket error: secure connect to 127.0.0.1 (127.0.0.1:1143): error:1408F10B:SSL routines:ssl3_get_record:wrong version number=
+The issue was the =SSLType NONE= is the proper config as shown above, I originally had it set to =IMAPS=. Once the sync starts it will take a long time depending upon how many emails you have.
+
+*** Configuring mu4e
+Configure the ~mu4e-maildir~ location to wherever you want to store the mail directory (remember mail in this folder is stored in clear-text). The ~mu4e-****-folder~ variables need to include the sub-directory in the relative path, in my case =proton=.
+
+#+begin_src emacs-lisp
+  (use-package mu4e
+    :straight nil
+    :defer 20 ; Wait until 20 seconds after startup
+    :config
+
+    (setq mu4e-change-filenames-when-moving t ; avoid sync conflicts
+	  mu4e-update-interval (* 10 60) ; check mail 10 minutes
+	  mu4e-compose-format-flowed t ; re-flow mail so it's not hard wrapped
+	  mu4e-get-mail-command "mbsync -a"
+	  mu4e-maildir "~/mail/proton")
+
+    (setq mu4e-drafts-folder "/proton/Drafts"
+	  mu4e-sent-folder   "/proton/Sent"
+	  mu4e-refile-folder "/proton/All Mail"
+	  mu4e-trash-folder  "/proton/Trash")
+
+    (setq mu4e-maildir-shortcuts
+	  '(("/proton/inbox"     . ?i)
+	    ("/proton/Sent"      . ?s)
+	    ("/proton/Trash"     . ?t)
+	    ("/proton/Drafts"    . ?d)
+	    ("/proton/All Mail"  . ?a)))
+
+    (setq message-send-mail-function 'smtpmail-send-it
+	  auth-sources '("~/.authinfo") ;need to use gpg version but only local smtp stored for now
+	  smtpmail-smtp-server "127.0.0.1"
+	  smtpmail-smtp-service 1025
+	  smtpmail-stream-type  'ssl))
+#+end_src
+
+I'm also configuring ~smtpmail~ in the config section of =mu4e= just to keep mail config together, ~smtpmail~ is part of Emacs core. I'm adding SMTP authentication info to the un-encrypted ~.authinfo~ for the same reason as =.mbsyncrc= explanation above.
+
+#+begin_src conf
+machine 127.0.0.1 login user@protonmail.com password ProtonBridgeGeneratedPassword port 1025
+#+end_src
+
+*** Using org-mode to compose HTML emails
+At this stage plain-text email will work just fine, in order to send email with formatting I'm using =org-msg= which lets you compose with org markup and sends it out as HTML (including in-lining images, tables, etc.)
+#+begin_src emacs-lisp
+  (use-package org-msg
+    :straight t
+    :after mu4e
+    :config
+    (setq mail-user-agent 'mu4e-user-agent)
+    (require 'org-msg)
+    (setq org-msg-options "html-postamble:nil H:5 num:nil ^:{} toc:nil author:nil email:nil \\n:t"
+	  org-msg-startup "hidestars indent inlineimages"
+	  org-msg-default-alternatives '((new		. (text html))
+					 (reply-to-html	. (text html))
+					 (reply-to-text	. (text)))
+	  org-msg-convert-citation t)
+    (org-msg-mode))
+#+end_src
+
+*** References
+Here are a list of references I used to get everything setup and configured:
+- https://systemcrafters.net/emacs-mail/
+- http://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/
+- https://jherrlin.github.io/posts/emacs-mu4e/
+
 ** DONE "Inverse literate" config via org-transclusion                :emacs:
 CLOSED: [2021-12-30 Thu 17:32]
 :PROPERTIES:
