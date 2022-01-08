@@ -8,6 +8,16 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Water color paint key/legend                                   :art:
+CLOSED: [2022-01-08 Sat 17:48]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20220108_water-color-paint-key-legend
+:EXPORT_HUGO_MENU:
+:END:
+I got a new water color paint set. Turns out I like painting enough and I was encouraged by a friend with a generous gift of brushes and a marine life water color book. The same friend also clued me in to making a paint key/legend. Well, first I made a poor design decision on how to structure the key and then failed to follow the design (further indicating poor design). I also had to reconcile  my desire for perfection with lack of a ruler, lack of patience, and lack of necessity for the outcome to be perfect. So what I intended to be a relaxing afternoon activity turned out to be a bit frustrating. BUT, I'm glad I persevered and now I have this legend to guide me on what colors to pick when I paint. Now that it's done, it looks pretty to me, not surprising that I also love opera warming up cacophonous sound. 
+
+[[./static/20220108_paintkey.jpg]]
+
 ** DONE Setting up Protonmail in Emacs :emacs:
 CLOSED: [2022-01-08 Sat 12:04]
 :PROPERTIES:
