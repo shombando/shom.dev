@@ -8,6 +8,15 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Found Nemo!                                                    :art:
+CLOSED: [2022-01-09 Sun 21:05]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20220109_found-nemo
+:EXPORT_HUGO_MENU:
+:END:
+First painting with the new paint set. Good paper (140 lbs) and paint make a big difference.
+[[./static/20220109_foundnemo.jpg]]
+
 ** DONE Water color paint key/legend                                   :art:
 CLOSED: [2022-01-08 Sat 17:48]
 :PROPERTIES:
