@@ -8,6 +8,26 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE OBS, virtual camera, guix                                 :foss:guix:
+CLOSED: [2022-01-11 Tue 16:47]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20220111_obs-virtual-camera-guix
+:EXPORT_HUGO_MENU:
+:END:
+I've used OBS as a virtual camera input for various reasons (to compose scenes, to control field of view, etc.). I was setting it up on my desktop (Pop_Os! 20.04 with Guix as the package manager) today because Microsoft Teams recognizes my El Gato CamLink 4K but won't show any video. Since I had successfully used virtual camera before I tried setting it up, but ran into some issues.
+
+OBS needs the =v4l2loopback= driver in order to enable the virtual camera functionality.
+#+begin_src bash
+  guix install obs-studio v4l2loopback-linux-module
+#+end_src
+Installing OBS and the loopback driver worked but even after a restart OBS would not show the virtual camera option. I decided to see if it was a package/path issue and tried using =apt= but even after restart that didn't work, turns out apt's version of OBS is too old.
+#+begin_src bash
+  apt install -y obs v4l2loopback-dkms
+#+end_src
+=NOTE= package names are different
+
+Ultimately, I had to get OBS from guix and the loopback from apt. This mismatch makes me uneasy since it goes directly against a declarative config, so I'm documenting the discrepancy for when it bites me in the future.
+
 ** DONE Found Nemo!                                                    :art:
 CLOSED: [2022-01-09 Sun 21:05]
 :PROPERTIES:
@@ -16,7 +36,6 @@ CLOSED: [2022-01-09 Sun 21:05]
 :END:
 First painting with the new paint set. Good paper (140 lbs) and paint make a big difference.
 [[./static/20220109_foundnemo.jpg]]
-
 ** DONE Water color paint key/legend                                   :art:
 CLOSED: [2022-01-08 Sat 17:48]
 :PROPERTIES:
