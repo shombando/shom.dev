@@ -8,6 +8,32 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Corne LP                                              :foss:keyboard:
+CLOSED: [2022-01-16 Sun 14:48]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20220116_corne-lp
+:EXPORT_HUGO_MENU:
+:END:
+I fell down the split ergo mechanical keyboard rabbit hole thanks to a dear friend who was kind enough to loan me his [[https://www.gboards.ca/product/gergoplex][Gergoplex]] (despite my incessant teasing about his hipster keyboard). The Gergoplex is on the deeper end of the rabbit-hole with only 36 keys and 12g switches but it demonstrated the value to me. I ended up getting a pre-built [[https://github.com/foostan/crkbd][Corne]] and added the lightest switches I could find at the time: [[https://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=1638][Gateron MX 35g switches]]. I've been pretty happy with the Corne (and it's 3x6 +3 layout) but I very much enjoyed the lower profile and light action of the Gergoplex and wanted to chase it...
+
+So, I got a [[https://boardsource.xyz/store/5f2efc462902de7151495057][Corne LP]] kit but went with an acrylic case (the aluminum case looks really nice but it's quite rich) and got the 25g [[https://boardsource.xyz/store/5fff705f03db380da20f1014][Purpz]] Choc switches.
+#+ATTR_ORG: :width 800
+#+ATTR_HTML: :width 800px
+[[./static/20220126_corne-1.jpg]]
+
+It was fun to assemble the kit and the board looks great:
+#+ATTR_ORG: :width 800
+#+ATTR_HTML: :width 800px
+[[./static/20220126_corne-2.jpg]]
+
+I didn't have any Choc keycaps so I had to wait a bit for the [[https://mkultra.click/mbk-choc-keycaps][MK Ultra MBK Choc]] keycaps. I'm very impressed with the keycaps and the homing keys feel great. I'm a big fan of the look and feel and quite happy with the low profile and light touch which I was looking for.
+
+#+ATTR_ORG: :width 800
+#+ATTR_HTML: :width 800px
+[[./static/20220126_corne-3.jpg]]
+
+The keyboard worked "out of the box" but I was able to flash my custom [[https://qmk.fm/][QMK firmware]] and was able to get up and going with my keymap. Now, maybe I'll look into making the kit [[https://nicekeyboards.com/nice-nano/][wireless]]? It never ends.
+
 ** DONE OBS, virtual camera, guix                                 :foss:guix:
 CLOSED: [2022-01-11 Tue 16:47]
 :PROPERTIES:
