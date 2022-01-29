@@ -29,7 +29,10 @@ And the "new" method which uses the shortcode to resize the image to save bandwi
 
 =Update:= Shortcode appears to be working locally when testing with ~hugo server -D~ but failing on sourcehut ci/cd, I'll investigate with fresh eyes tomorrow.
 
+#+begin_export hugo
 {{<exif src="20191016-Howe-Lake.jpg" caption="Howe Lake at Glacier National Park" alt="Howe Lake in Glacier National Park reflecting the yellow larch and pink alpine glow of sunset kissing the top of the snow-capped peaks on a perfectly still mirror surface">}}
+#+end_export
+=Update 2:= Kaushal happened to see my toot and quickly provided a work-around, I'll sing his praises more preemptively so he can do troubleshooting for me without even asking :), more later.
 
 ** DONE Corne LP                                              :foss:keyboard:
 CLOSED: [2022-01-16 Sun 14:48]
