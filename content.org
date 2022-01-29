@@ -8,6 +8,26 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Hugo photos with EXIF data                                :foss:hugo:
+CLOSED: [2022-01-29 Sat 01:42]
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: 20220128_hugo-photos-with-exif-data
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_MENU:
+:END:
+I have been wanting to transition my photography site to Hugo as well but have not investigated how to utilize Hugo's image processing capabilities. Yesterday I came across [[https://fosstodon.org/@Wivik][Wivik's]] [[https://github.com/Wivik/hugo-shortcodes/tree/master/exif][helpful shortcodes]] that display EXIF information and presents the photo with a frame and a caption. I'm experimenting with it now and might modify it and eventually migrate my photography content.
+
+I ran into =nil pointer evaluating resource.Resource.Resize= error when running the shortcode and tried out the built-in =figure= shortcode with the same path to verify that it wasn't an actual path issue. The answer lies in Hugo's use of *Page Bundles*, essentially standalone directory per post which /bundles/ the text and images in a single folder. Many thanks to [[https://snowgoons.ro/posts/2020-06-04-hugo-automated-image-processing/][Tim Walls' post explicitly helping future sufferers]] of the same error and DuckDuckGo for indexing the page keywords well.
+
+I still have to smooth out the edges for making the page bundle play nice with the short-code within ox-hugo. Kudos to [[https://fosstodon.org/web/@kaushalmodi@mastodon.technology][Kaushal Modi]] for already [[https://ox-hugo.scripter.co/doc/hugo-bundle/][supporting page bundles elegantly]] in ox-hugo. But for this post, I can "cheat" because I need to show the old style rendering anyway for a comparison. By inserting the image directly, ox-hugo will copy the image to the right location so Hugo can do image processing on that page bundle.
+
+The "old" method is just the original image linked directly with no captions or EXIF metadata:
+[[file:images/20220128_hugo-photos-with-exif-data/20191016-Howe-Lake.jpg]]
+
+
+And the "new" method which uses the shortcode to resize the image to save bandwidth (the original image can be viewed at full resolution by clicking it... I'm not thrilled with the compression quality but it's decent) and also shows the EXIF metadata. I plan to do a bit more with the EXIF info but this is a great start thanks to the shortcode, the caption parameter I added (to provide descriptive alts for accessibility independent of the caption) and icons from the [[https://github.com/Remix-Design/remixicon][Remixicon project]] who provide high-quality FOSS icons. 
+{{<exif src="20191016-Howe-Lake.jpg" caption="Howe Lake at Glacier National Park" alt="Howe Lake in Glacier National Park reflecting the yellow larch and pink alpine glow of sunset kissing the top of the snow-capped peaks on a perfectly still mirror surface">}}
+
 ** DONE Corne LP                                              :foss:keyboard:
 CLOSED: [2022-01-16 Sun 14:48]
 :PROPERTIES:

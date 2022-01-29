@@ -1,0 +1,23 @@
+{{/*
+  This code originates from a contribution on Hugo Forum
+  https://discourse.gohugo.io/t/properly-formatting-exif-data-tag-exposure-time/32415/8
+  This specific part is licensed under a Creative Common Attribution NonCommercial ShareAlike 3.0 Unported License as indicated by their ToS
+  https://discourse.gohugo.io/tos#3
+*/}}
+{{ $n := "- . ," }}   {{/* numFmt options */}}
+{{ $p := 9 }}         {{/* precision */}}
+
+{{ $e := "" }}
+
+{{ if eq (printf "%T" .) "float64" }}
+  {{ $r := div 1 . }}
+  {{ if math.ModBool (mul $r (pow 10 $p)) (mul (int $r) (pow 10 $p)) }}
+    {{ $e = printf "1/%d s" (int $r) }}
+  {{ else }}
+    {{ $e = printf "%s s" (lang.NumFmt $p . $n ) }}
+  {{ end }}
+{{ else }}
+  {{ $e = printf "%s s" . }}
+{{ end }}
+
+{{ return $e }}

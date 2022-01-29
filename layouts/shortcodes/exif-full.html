@@ -1,0 +1,24 @@
+{{- $imageName := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+{{- $originalImage := resources.Get $imageName -}}
+
+<figure>
+<img src="{{ $originalImage.RelPermalink }}" alt="{{ $alt }}">
+{{ with $originalImage.Exif }}
+    <figcaption class="exif">{{ $alt }}
+        <br />{{with .Tags.Model }}{{ . }} {{ end }} {{with .Tags.LensModel }}{{ . }} {{ end }} {{ with .Tags.FNumber }}<i>f</i>{{ . }} {{ end }} {{ with .Tags.FocalLength }} {{ . }}mm{{ end }} {{ with .Tags.ExposureTime }} {{ partial "format-exposure-time.html" . }} {{ end }}  {{ with .Tags.ISOSpeedRatings }} ISO {{ . }}{{ end }}
+        <br />{{with .Tags.Artist }}{{ . }} - {{ end }} {{with .Tags.DateTimeOriginal }} {{ . }} - {{ end }} {{ with .Tags.Copyright}}{{ . }}{{ end }}
+    </figcaption>
+{{end }}
+</figure>
+
+{{ with $originalImage.Exif }}
+Date: {{ .Date }}
+Lat/Long: {{ .Lat}}/{{ .Long }}
+Tags:
+<ul>
+{{ range $k, $v := .Tags }}
+<li>TAG: {{ $k }}: {{ $v }}</li>
+{{ end }}
+</ul>
+{{ end }}
