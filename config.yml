@@ -4,7 +4,7 @@ title: "shom.dev"
 theme: "PaperMod"
 
 params:
-    defaultTheme: auto
+    defaultTheme: dark
     ShowReadingTime: true
     #ShowShareButtons: true
     #ShowToc: true
