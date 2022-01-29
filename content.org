@@ -25,7 +25,10 @@ The "old" method is just the original image linked directly with no captions or 
 [[file:images/20220128_hugo-photos-with-exif-data/20191016-Howe-Lake.jpg]]
 
 
-And the "new" method which uses the shortcode to resize the image to save bandwidth (the original image can be viewed at full resolution by clicking it... I'm not thrilled with the compression quality but it's decent) and also shows the EXIF metadata. I plan to do a bit more with the EXIF info but this is a great start thanks to the shortcode, the caption parameter I added (to provide descriptive alts for accessibility independent of the caption) and icons from the [[https://github.com/Remix-Design/remixicon][Remixicon project]] who provide high-quality FOSS icons. 
+And the "new" method which uses the shortcode to resize the image to save bandwidth (the original image can be viewed at full resolution by clicking it... I'm not thrilled with the compression quality but it's decent) and also shows the EXIF metadata. I plan to do a bit more with the EXIF info but this is a great start thanks to the shortcode, the caption parameter I added (to provide descriptive alts for accessibility independent of the caption) and icons from the [[https://github.com/Remix-Design/remixicon][Remixicon project]] who provide high-quality FOSS icons.
+
+=Update:= Shortcode appears to be working locally when testing with ~hugo server -D~ but failing on sourcehut ci/cd, I'll investigate with fresh eyes tomorrow.
+
 {{<exif src="20191016-Howe-Lake.jpg" caption="Howe Lake at Glacier National Park" alt="Howe Lake in Glacier National Park reflecting the yellow larch and pink alpine glow of sunset kissing the top of the snow-capped peaks on a perfectly still mirror surface">}}
 
 ** DONE Corne LP                                              :foss:keyboard:
