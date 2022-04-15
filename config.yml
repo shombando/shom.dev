@@ -38,6 +38,8 @@ params:
     socialIcons: # optional
         - name: 'Github'
           url: 'https://github.com/shombando'
+        - name: 'other'
+          url: 'https://git.sr.ht/~shom'
         - name: 'gitea'
           url: 'https://codeberg.org/shom'
         - name: 'Mastodon'
