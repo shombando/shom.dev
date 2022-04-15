@@ -25,6 +25,21 @@ This is where the very interesting and awesome [[https://getreuer.info/posts/key
 
 I was able to set it up pretty easily on the keyboard, well, once I realized that I had ~MOD_LSFT~ on both halves accidentally and fixed it. It's going to take a bit of getting used to but awkwardly typing in ALL CAPS is a good reminder to use the proper feature.
 
+** DONE Seahorse                                                       :art:
+CLOSED: [2022-03-08 Tue 21:53]
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: 20220308_seahorse
+:EXPORT_FILE_NAME: index 
+:EXPORT_HUGO_MENU:
+:END:
+I still need to figure out how to get ox-hugo to process images that are within shortcodes. Might be a good opportunity to learn the code base a bit and maybe contribute.
+[[file:images/20220308_seahorse/20220308_seahorse.jpg]]
+
+Here's the ~figure~ shortcode.
+#+begin_export hugo
+{{< figure src="20220308_seahorse.jpg" caption="Seahorse" alt="Watercolor painting of a seahorse in yellows browns and reds floating above slight green and pink vegetation" >}}
+#+end_export
+
 ** DONE Hugo photos with EXIF data                                :foss:hugo:
 CLOSED: [2022-01-29 Sat 01:42]
 :PROPERTIES:
