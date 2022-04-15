@@ -8,6 +8,23 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE QMK caps word
+CLOSED: [2022-04-14 Thu 20:40]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20220414_qmk-caps-word
+:EXPORT_HUGO_MENU:
+:END:
+
+I use a [[https://github.com/foostan/crkbd][Corne]] low profile keyboard running the [[https://qmk.fm/][QMK firmware]]. It is a 42 key layout and although it has a sixth column where a lot of folks put the traditional SHIFT and CTRL modifier keys, I've opted to go with the [[https://precondition.github.io/home-row-mods][home row mods]] so that I'm not stretching my fingers and negating some of the ergonomic advantages. The downside is that it is difficult to type full words/phrases in capital letters without switching which hand is holding the modifier. Also, it's not as convenient to  press the capslock button since it's on a layer and most things that I'm typing aren't very long in ALL CAPS, I don't do a lot of yelling online.
+
+This is where the very interesting and awesome [[https://getreuer.info/posts/keyboards/caps-word/index.html#using-caps-word][Caps Word]] feature that I just discovered comes in handy. It temporarily sends out capital letters from the keyboard (importantly, it doesn't turn on CAPSLOCK since it might be mapped to something else. Here's how it works:
+#+begin_quote
+- Caps Word is activated by pressing the left and right shift keys at the same time.
+- Caps Word automatically disables itself at the end of the word.
+#+end_quote
+
+I was able to set it up pretty easily on the keyboard, well, once I realized that I had ~MOD_LSFT~ on both halves accidentally and fixed it. It's going to take a bit of getting used to but awkwardly typing in ALL CAPS is a good reminder to use the proper feature.
+
 ** DONE Hugo photos with EXIF data                                :foss:hugo:
 CLOSED: [2022-01-29 Sat 01:42]
 :PROPERTIES:
