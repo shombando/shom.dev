@@ -8,25 +8,6 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
-<<<<<<< HEAD
-** DONE QMK caps word                                        :foss:keyboard:
-CLOSED: [2022-04-14 Thu 20:59]
-:PROPERTIES:
-:EXPORT_FILE_NAME: 20220414_qmk-caps-word
-:EXPORT_HUGO_MENU:
-:END:
-
-I use a [[https://github.com/foostan/crkbd][Corne]] low profile keyboard running the [[https://qmk.fm/][QMK firmware]]. It is a 42 key layout and although it has a sixth column where a lot of folks put the traditional SHIFT and CTRL modifier keys, I've opted to go with the [[https://precondition.github.io/home-row-mods][home row mods]] so that I'm not stretching my fingers and negating some of the ergonomic advantages. The downside is that it is difficult to type full words/phrases in capital letters without switching which hand is holding the modifier. Also, it's not as convenient to  press the capslock button since it's on a layer and most things that I'm typing aren't very long in ALL CAPS, I don't do a lot of yelling online.
-
-This is where the very interesting and awesome [[https://getreuer.info/posts/keyboards/caps-word/index.html#using-caps-word][Caps Word]] feature that I just discovered comes in handy. It temporarily sends out capital letters from the keyboard (importantly, it doesn't turn on CAPSLOCK since it might be mapped to something else. Here's how it works:
-#+begin_quote
-- Caps Word is activated by pressing the left and right shift keys at the same time.
-- Caps Word automatically disables itself at the end of the word.
-#+end_quote
-
-I was able to set it up pretty easily on the keyboard, well, once I realized that I had ~MOD_LSFT~ on both halves accidentally and fixed it. It's going to take a bit of getting used to but awkwardly typing in ALL CAPS is a good reminder to use the proper feature.
-
-=======
 ** DONE From fish on Gnome Terminal to zsh with Starship on Alacritty :foss:linux:
 CLOSED: [2022-05-14 Sat 17:01]
 :PROPERTIES:
@@ -157,7 +138,24 @@ Yeah, I get it: just show the screenshots.
 [[file:images/20220514_from-fish-on-gnome-terminal-to-zsh-with-starship-on-alacritty/fish-on-gnome-terminal.png][fish on Gnome Terminal]]
 [[file:images/20220514_from-fish-on-gnome-terminal-to-zsh-with-starship-on-alacritty/zsh-with-starship-on-alacritty.png][zsh with starship on Alacritty]]
 So far I'm pretty happy and comfortable with the new system. The thing I still miss from fish is expanding the commands and sub-commands of CLI apps. I'm sure there are zsh packages for that and I look forward to learning more. If you have [[mailto:fish-to-zsh@shom.dev][any suggestions]], I would love to learn from you.
->>>>>>> 1271abe (fish to zsh post)
+
+** DONE QMK caps word                                        :foss:keyboard:
+CLOSED: [2022-04-14 Thu 20:59]
+:PROPERTIES:
+:EXPORT_FILE_NAME: 20220414_qmk-caps-word
+:EXPORT_HUGO_MENU:
+:END:
+
+I use a [[https://github.com/foostan/crkbd][Corne]] low profile keyboard running the [[https://qmk.fm/][QMK firmware]]. It is a 42 key layout and although it has a sixth column where a lot of folks put the traditional SHIFT and CTRL modifier keys, I've opted to go with the [[https://precondition.github.io/home-row-mods][home row mods]] so that I'm not stretching my fingers and negating some of the ergonomic advantages. The downside is that it is difficult to type full words/phrases in capital letters without switching which hand is holding the modifier. Also, it's not as convenient to  press the capslock button since it's on a layer and most things that I'm typing aren't very long in ALL CAPS, I don't do a lot of yelling online.
+
+This is where the very interesting and awesome [[https://getreuer.info/posts/keyboards/caps-word/index.html#using-caps-word][Caps Word]] feature that I just discovered comes in handy. It temporarily sends out capital letters from the keyboard (importantly, it doesn't turn on CAPSLOCK since it might be mapped to something else. Here's how it works:
+#+begin_quote
+- Caps Word is activated by pressing the left and right shift keys at the same time.
+- Caps Word automatically disables itself at the end of the word.
+#+end_quote
+
+I was able to set it up pretty easily on the keyboard, well, once I realized that I had ~MOD_LSFT~ on both halves accidentally and fixed it. It's going to take a bit of getting used to but awkwardly typing in ALL CAPS is a good reminder to use the proper feature.
+
 ** DONE Seahorse                                                       :art:
 CLOSED: [2022-03-08 Tue 21:53]
 :PROPERTIES:
