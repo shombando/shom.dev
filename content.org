@@ -8,6 +8,7 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+<<<<<<< HEAD
 ** DONE QMK caps word                                        :foss:keyboard:
 CLOSED: [2022-04-14 Thu 20:59]
 :PROPERTIES:
@@ -25,6 +26,138 @@ This is where the very interesting and awesome [[https://getreuer.info/posts/key
 
 I was able to set it up pretty easily on the keyboard, well, once I realized that I had ~MOD_LSFT~ on both halves accidentally and fixed it. It's going to take a bit of getting used to but awkwardly typing in ALL CAPS is a good reminder to use the proper feature.
 
+=======
+** DONE From fish on Gnome Terminal to zsh with Starship on Alacritty :foss:linux:
+CLOSED: [2022-05-14 Sat 17:01]
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: 20220514_from-fish-on-gnome-terminal-to-zsh-with-starship-on-alacritty
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_MENU:
+:END:
+*** Gnome Terminal and fish
+I have been using the default Gnome Terminal with the [[https://fishshell.com/][fish shell]] for a long time and it has served me well. Since =fish= provides a lot of functionality out of the box (including meta information about git repos in the prompt), I have stuck with it for the convenience. However, there is ONE major downside to fish; it is not POSIX compliant.
+
+*** Why ditch fish?
+See what had happened was... Non-POSIX compliant wasn't a big problem until I found myself writing a couple helper functions with =fish= syntax. This was a proverbial red-flag since =fish= becomes a hard dependency for all my systems going forward. This coupled with the how =fish= saves aliases (as separate functions when you call ~funcsave aliasname~) which I always found a bit tedious led me to finally think about moving to =zsh=.
+
+*** What would I miss most from fish and Gnome Terminal?
+The baseline against which I'm making this list is default =bash= on Ubuntu based systems, which is what I've had the most exposure to. So compared to that experience:
+- Right off the bat, I like =fish='s default prompt and never felt the need to customize it because it showed the current path and for git repos shows the current branch.
+- Completions! The fish completions are great and the history sub-string search is excellent.
+- Syntax highlighting of commands as you type so you can easily spot typos as they happen.
+- As for Gnome Terminal, I wouldn't really miss anything assuming I could theme the terminal a bit. What I wouldn't miss is the lack of a configuration file that could be added to my other dotfiles.
+
+While this list serves as the basis for the requirements of the new tool-chain, the top requirement was plain-text based configuration management, which can be placed under version control. The other very soft requirement was tools developed using [[https://www.rust-lang.org/][Rust]]. I've done a few "hello world" things in Rust and want to continue learning more and figured that using more Rust based tools is a good path to learning and contributing. With all that in mind, I landed on [[Prompt: starship]], [[Terminal: Alacritty]], and [[Shell: zsh]].
+
+*** Prompt: starship
+I decided to separate the prompt from the shell with [[https://starship.rs/][Starship]]. =starship= is highly customizable but it does everything I want from it out of the box; which is, cleanly and minimally replicate features of the =fish= prompt. There are a lot of "themes" and configurations which I'm sure I'd love to tweak and [[https://www.youtube.com/watch?v=AbSehcT19u0][yak-shave]] someday, but I enjoy the out of box experience. To fully take advantage of the default configuration, you need a nerd font (a font that has been patched with icons that are often used to represent software tools/concepts/applications). I'm a fan of the JetBrains Mono and there is a [[https://github.com/jtbx/jetbrainsmono-nerdfont][patched nerd font variant]].
+
+*** Terminal: Alacritty
+I have seen =Alacritty= getting praised for being fast, functional, configurable, and it being cross-platform tool written in Rust was all I needed to land on it. Some of the speed tests are pretty impressive, the configuration is very straight forward, and there are tons of resources so I won't delve into things that have been covered very well everywhere.
+
+One big advantage of Alacritty that I don't see touted often is a very keyboard focused workflow. I especially enjoy the vim-like visual mode (bound to =CTRL= + =SPACE= by default) which allows navigating within the buffer, searching the output, and making text selections and copying from anywhere in the buffer all with the familiar vim keybindings. 
+
+Here's my minimal =Alacritty= configuration: 
+
+#+begin_src yaml
+  # Configuration for Alacritty, the GPU enhanced terminal emulator.
+  window:
+    # Window dimensions (changes require restart)
+    padding:
+      x: 10
+      y: 5
+    decorations: none
+    opacity: 0.85
+
+  # Font configuration
+  font:
+    size: 14.0
+    normal:
+      family: JetBrains Mono Nerd Font
+      style: Regular
+
+  # Colors (Nord)
+  colors:
+    # Default colors
+    primary:
+      background: '0x2E3440'
+      foreground: '0xD8DEE9'
+
+    # Normal colors
+    normal:
+      black:   '0x3B4252'
+      red:     '0xBF616A'
+      green:   '0xA3BE8C'
+      yellow:  '0xEBCB8B'
+      blue:    '0x81A1C1'
+      magenta: '0xB48EAD'
+      cyan:    '0x88C0D0'
+      white:   '0xE5E9F0'
+
+  cursor:
+    style:
+      shape: Beam
+    vi_mode_style: Underline
+    thickness: 0.25
+
+  # Live config reload (changes require restart)
+  live_config_reload: true
+
+  key_bindings:
+    - { key: N,              mods: Shift|Control,                action: SpawnNewInstance      }
+    - { key: Space,          mods: Control, mode: ~Search,       action: ToggleViMode          }
+    - { key: Return,         mods: Alt,                          action: ToggleFullScreen      }
+#+end_src
+
+*** Shell: zsh
+This post is getting to be quite long and there's a lot to discuss with =zsh=. I'll hit the highlights here and do a more detailed write-up in the future when I've lived in it for a few weeks/months. I have seen lots of helpful posts on =zsh= and even =fish= to =zsh= migrations but all of the ones I came across use the [[https://ohmyz.sh/][Oh my zsh]] "framework". While =oh my zsh= is great, I wanted to stick to a smaller/leaner configuration that I could understand myself. The great thing is that since =oh my zsh= is a collection of scripts that marshaled, the underlying functionality is available as independent repos which I added as git submodules to my dotfiles repo and got a fairly streamlined experience on my laptop and phone (via Termux).
+
+#+begin_src sh
+# Minimal zsh configuration
+
+# Personal functions
+fpath=(~/.config/zsh/functions "${fpath[@]}")
+autoload -Uz vi
+autoload -Uz cat
+autoload -Uz ls
+autoload -Uz lst
+
+# Aliases
+alias gs="git status"
+alias ga="git add --all"
+alias gd="git diff"
+alias gc="git commit -m"
+alias gf="git fetch"
+alias gF="git pull"
+alias gp="git push"
+
+# History
+export HISTFILE=~/.config/.zsh_history
+export HISTSIZE=100
+export SAVEHIST=1000
+
+# Command prompt using starship
+eval "$(starship init zsh)"
+
+# All zsh "plugins" are git submodules symlinked to ~/.config/zsh
+# Sourced from: https://github.com/orgs/zsh-users/
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/zsh-ssh-agent/ssh-agent.zsh
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# History substring matching like fish, load after syntax-highlighting
+source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+#requires keybinds for up and down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+#+end_src
+*** Before and After
+Yeah, I get it: just show the screenshots.
+[[file:images/20220514_from-fish-on-gnome-terminal-to-zsh-with-starship-on-alacritty/fish-on-gnome-terminal.png][fish on Gnome Terminal]]
+[[file:images/20220514_from-fish-on-gnome-terminal-to-zsh-with-starship-on-alacritty/zsh-with-starship-on-alacritty.png][zsh with starship on Alacritty]]
+So far I'm pretty happy and comfortable with the new system. The thing I still miss from fish is expanding the commands and sub-commands of CLI apps. I'm sure there are zsh packages for that and I look forward to learning more. If you have [[mailto:fish-to-zsh@shom.dev][any suggestions]], I would love to learn from you.
+>>>>>>> 1271abe (fish to zsh post)
 ** DONE Seahorse                                                       :art:
 CLOSED: [2022-03-08 Tue 21:53]
 :PROPERTIES:
@@ -92,7 +225,7 @@ I didn't have any Choc keycaps so I had to wait a bit for the [[https://mkultra.
 
 The keyboard worked "out of the box" but I was able to flash my custom [[https://qmk.fm/][QMK firmware]] and was able to get up and going with my keymap. Now, maybe I'll look into making the kit [[https://nicekeyboards.com/nice-nano/][wireless]]? It never ends.
 
-** DONE OBS, virtual camera, guix                                 :foss:guix:
+** DONE OBS, virtual camera, guix                                 :foss:guix:linux:
 CLOSED: [2022-01-11 Tue 16:47]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20220111_obs-virtual-camera-guix
@@ -130,7 +263,7 @@ I got a new water color paint set. Turns out I like painting enough and I was en
 
 [[./static/20220108_paintkey.jpg]]
 
-** DONE Setting up Protonmail in Emacs :emacs:
+** DONE Setting up Protonmail in Emacs :emacs:linux:
 CLOSED: [2022-01-08 Sat 12:04]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20220108_setting-up-protonmail-in-emacs
@@ -1020,7 +1153,7 @@ Here's a screenshot of my Hugo content buffer showing ~org-bars~:
 #+ATTR_ORG: :width 600
 [[./static/20211023_org-bars.png]]
 
-** DONE Wine and CrossOver to use Lightroom on Linux :foss:
+** DONE Wine and CrossOver to use Lightroom on Linux :foss:linux:
 CLOSED: [2021-10-16 Sat 00:07]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211016_wine-and-crossover-lightroom
