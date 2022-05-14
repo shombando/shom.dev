@@ -135,8 +135,15 @@ bindkey '^[[B' history-substring-search-down
 #+end_src
 *** Before and After
 Yeah, I get it: just show the screenshots.
-[[file:images/20220514_from-fish-on-gnome-terminal-to-zsh-with-starship-on-alacritty/fish-on-gnome-terminal.png][fish on Gnome Terminal]]
-[[file:images/20220514_from-fish-on-gnome-terminal-to-zsh-with-starship-on-alacritty/zsh-with-starship-on-alacritty.png][zsh with starship on Alacritty]]
+#+ATTR_ORG: :width 800
+#+ATTR_HTML: :width 800px
+[[file:images/20220514_from-fish-on-gnome-terminal-to-zsh-with-starship-on-alacritty/fish-on-gnome-terminal.png]]
+fish on Gnome Terminal
+#+ATTR_ORG: :width 800
+#+ATTR_HTML: :width 800px
+[[file:images/20220514_from-fish-on-gnome-terminal-to-zsh-with-starship-on-alacritty/zsh-with-starship-on-alacritty.png]]
+zsh with starship on Alacritty
+
 So far I'm pretty happy and comfortable with the new system. The thing I still miss from fish is expanding the commands and sub-commands of CLI apps. I'm sure there are zsh packages for that and I look forward to learning more. If you have [[mailto:fish-to-zsh@shom.dev][any suggestions]], I would love to learn from you.
 
 ** DONE QMK caps word                                        :foss:keyboard:
