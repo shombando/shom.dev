@@ -62,3 +62,6 @@ markup:
     lineNos: true
     # noClasses: false
     style: nord
+  goldmark:
+    renderer:
+      unsafe: true # This is *necessary* for ox-hugo to work well with Hugo 0.60.0+
