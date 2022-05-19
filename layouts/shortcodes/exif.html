@@ -2,6 +2,7 @@
 {{ $originalImage := .Page.Resources.GetMatch (printf "%s" $srcUrl) }}
 {{- $alt := .Get "alt" -}}
 {{- $caption := .Get "caption" -}}
+{{- $showexif := .Get "showexif" -}}
 
 {{- $resize := default "720x" (.Get "resize") -}}
 
@@ -14,6 +15,7 @@
   <!-- icons from https://github.com/Remix-Design/remixicon -->
 <a href="{{ $originalImage.RelPermalink }}"><img src="{{ $resizedImage.RelPermalink }}" alt="{{ $alt }}"></a>
 <figcaption class="exif">{{ $caption }}
+{{ if not (eq $showexif "false") }}
 {{ with $originalImage.Exif }}
       <br />
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 3h6l2 2h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4l2-2zm3 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm0-2a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="rgba(136,136,136,1)"/></svg>
@@ -28,6 +30,7 @@
       {{ with .Tags.ExposureTime }} {{ partial "format-exposure-time.html" . }} {{ end }}
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2V4a8 8 0 1 0 0 16z" fill="rgba(136,136,136,1)"/></svg>
       {{ with .Tags.ISOSpeedRatings }} ISO {{ . }}{{ end }}
+      {{ end }}
   </div>
   </figcaption>
 {{end }}

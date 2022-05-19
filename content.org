@@ -215,18 +215,18 @@ I fell down the split ergo mechanical keyboard rabbit hole thanks to a dear frie
 
 So, I got a [[https://boardsource.xyz/store/5f2efc462902de7151495057][Corne LP]] kit but went with an acrylic case (the aluminum case looks really nice but it's quite rich) and got the 25g [[https://boardsource.xyz/store/5fff705f03db380da20f1014][Purpz]] Choc switches.
 #+begin_export hugo
-{{< exif src="20220126_corne-1.jpg" caption="Corne parts" alt="Split ergonomic keyboard parts, pcb, switches, keycaps" >}}
+{{< exif src="20220126_corne-1.jpg" caption="Corne parts" alt="Split ergonomic keyboard parts, pcb, switches, keycaps" showexif="false">}}
 #+end_export
 
 It was fun to assemble the kit and the board looks great:
 #+begin_export hugo
-{{< exif src="20220126_corne-2.jpg" caption="Corne with purpz" alt="Split ergonomic keyboard with switches installed but no keycaps" >}}
+{{< exif src="20220126_corne-2.jpg" caption="Corne with purpz" alt="Split ergonomic keyboard with switches installed but no keycaps" showexif="false">}}
 #+end_export
 
 I didn't have any Choc keycaps so I had to wait a bit for the [[https://mkultra.click/mbk-choc-keycaps][MK Ultra MBK Choc]] keycaps. I'm very impressed with the keycaps and the homing keys feel great. I'm a big fan of the look and feel and quite happy with the low profile and light touch which I was looking for.
 
 #+begin_export hugo
-{{< exif src="20220126_corne-3.jpg" caption="Fully assembled Corne" alt="Split ergonomic keyboard with black and white keys" >}}
+{{< exif src="20220126_corne-3.jpg" caption="Fully assembled Corne" alt="Split ergonomic keyboard with black and white keys" showexif="false">}}
 #+end_export
 
 The keyboard worked "out of the box" but I was able to flash my custom [[https://qmk.fm/][QMK firmware]] and was able to get up and going with my keymap. Now, maybe I'll look into making the kit [[https://nicekeyboards.com/nice-nano/][wireless]]? It never ends.
