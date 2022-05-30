@@ -1,7 +1,7 @@
 image: archlinux
 packages:
   - emacs-nox
-  - exiftool
+  - perl-image-exiftool
   - hugo
 oauth: pages.sr.ht/PAGES:RW
 sources:
