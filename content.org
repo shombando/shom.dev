@@ -11,44 +11,45 @@
 ** DONE Bonaire Art                                              :art:travel:
 CLOSED: [2022-05-30 Mon 11:26]
 :PROPERTIES:
-:EXPORT_FILE_NAME: 20220530_bonaire-art
+:EXPORT_HUGO_BUNDLE: 20220530_bonaire-art
+:EXPORT_FILE_NAME: index
 :EXPORT_HUGO_MENU:
+:EXPORT_HUGO_IMAGES: "bonaire.jpg"
 :END:
 I was privileged to visit Bonaire in the Dutch Caribbean last week. While the whole reason for the trip was scuba diving (the entire island is essentially a dive site, just walk out into ocean in any direction), I also enjoyed the downtown area and found the art very charming. Here are a few pieces that caught my eye:
 
 #+begin_export hugo
-{{< exif src="bonaire.jpg" caption="Bonaire" alt="A sign painted on a wall reading Bonaire with a red heart painted between bon and aire. The red heart has the shape of the island inlayed in white." >}}
+{{< exif src="bonaire.jpg" caption="Bonaire" alt="A sign painted on a wall reading Bonaire with a red heart painted between bon and aire. The red heart has the shape of the island inlayed in white." showexif="false" >}}
 #+end_export
 
 My favorite mural was definitely this whimsical scene of this mural of a guy vibin' with some chill goats and playing his ukulele. The island has a lot of wild/stray goats and they're definitely quite chill and the baby goats are super cute, kid you not! The [[https://dodiciartproject.com/][artist is Dodici]] and has a very unique style.
 #+begin_export hugo
-{{< exif src="goats.jpg" caption="Dodici's goats" alt="Street mural of a man wearing a straw hat, red shirt, blue shorts, reclining while playing a ukuele while three goats surround him chewing leaves with funky expressions." >}}
+{{< exif src="goats.jpg" caption="Dodici's goats" alt="Street mural of a man wearing a straw hat, red shirt, blue shorts, reclining while playing a ukuele while three goats surround him chewing leaves with funky expressions." showexif="false" >}}
 #+end_export
 
 The island is also famous for its flamingos grazing in the salt flats. Bonaire is a sea-salt producing island and there are huge mounds of salt that are stacked before shipping, all of that area is a good hang for flamingos. I was lucky to get to see some flamingos up close while at the Washington Slagbaai National Park. But I think I saw a lot more flamingo art, which was also great.  
 #+begin_export hugo
-{{< exif src="flamingos.jpg" caption="Wall mural of a flock of flamingos standing and grazing in the salt flats. Only one of them is standing on one leg, the classic pose." >}}
+{{< exif src="flamingos.jpg" caption="Wall mural of a flock of flamingos standing and grazing in the salt flats. Only one of them is standing on one leg, the classic pose." showexif="false" >}}
 #+end_export
 
 #+begin_export hugo
-{{< exif src="saltmounds.jpg" caption="Flamingos take flight over the salt mounds" alt="Wall mural of four flamingos at different distances away from the observer take flight with the salt mounts in the background and the pink salt flats in the foreground." >}}
+{{< exif src="saltmounds.jpg" caption="Flamingos take flight over the salt mounds" alt="Wall mural of four flamingos at different distances away from the observer take flight with the salt mounts in the background and the pink salt flats in the foreground." showexif="false" >}}
 #+end_export
 
 I enjoyed the simple style of this mermaid and the paint colors effectively capture all the hues of the waters around Bonaire.
 #+begin_export hugo
-{{< exif src="mermaid.jpg" caption="Mermaid" alt="Outline of a mermaid with the middle filled with shades of blue and green paint." >}}
+{{< exif src="mermaid.jpg" caption="Mermaid" alt="Outline of a mermaid with the middle filled with shades of blue and green paint." showexif="false" >}}
 #+end_export
 
 Dushi means all the things in life that are good and sweet. The artist tag is @kayakorsou but I wasn't able to find an online presence.
 #+begin_export hugo
-{{< exif src="hummindbird.jpg" caption="Life is dushi in Bonaire" alt="Wall mural of an underwater scene with corals and fish with a mermaid floating and taking the scene in. On the right side there's a layer of stripes with a massive hummingbird seeming to hold up a sign reading 'dushi Bonaire @kaya korsou'" >}}
+{{< exif src="hummingbird.jpg" caption="Life is dushi in Bonaire" alt="Wall mural of an underwater scene with corals and fish with a mermaid floating and taking the scene in. On the right side there's a layer of stripes with a massive hummingbird seeming to hold up a sign reading 'dushi Bonaire @kaya korsou'" showexif="false" >}}
 #+end_export
 
 We can't end without yet another cute flamingo!
 #+begin_export hugo
-{{< exif src="flamingo.jpg" caption="Cute cartoony flamingo" alt="A flamingo painted on a wall with more of a cartoony style with big pretty eyes and the classic standing on one leg pose." >}}
+{{< exif src="flamingo.jpg" caption="Cute cartoony flamingo" alt="A flamingo painted on a wall with more of a cartoony style with big pretty eyes and the classic standing on one leg pose." showexif="false" >}}
 #+end_export
-
 
 ** DONE From fish on Gnome Terminal to zsh with Starship on Alacritty :foss:linux:
 CLOSED: [2022-05-14 Sat 17:01]

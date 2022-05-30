@@ -4,6 +4,7 @@ title: "shom.dev"
 theme: "PaperMod"
 
 params:
+    env: production
     defaultTheme: dark
     ShowReadingTime: true
     #ShowShareButtons: true
