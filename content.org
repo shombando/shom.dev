@@ -14,7 +14,7 @@ CLOSED: [2022-05-30 Mon 11:26]
 :EXPORT_HUGO_BUNDLE: 20220530_bonaire-art
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_MENU:
-:EXPORT_HUGO_IMAGES: "bonaire.jpg"
+:EXPORT_HUGO_IMAGES: "/posts/20220530_bonaire-art/bonaire.jpg"
 :END:
 I was privileged to visit Bonaire in the Dutch Caribbean last week. While the whole reason for the trip was scuba diving (the entire island is essentially a dive site, just walk out into ocean in any direction), I also enjoyed the downtown area and found the art very charming. Here are a few pieces that caught my eye:
 
