@@ -8,6 +8,132 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Markdown anchor linking on Github                        :emacs:foss:
+CLOSED: [2022-09-18 Sun 02:11]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20220917_markdown-anchor-linking-on-github
+:EXPORT_HUGO_IMAGES: /posts/20220917_markdown-anchor-linking-on-github/user-anchors-as-p.jpg
+:EXPORT_HUGO_MENU:
+:END:
+I've been using =org-transclusion= for an [[* "Inverse literate" config via org-transclusion]["inverse literate"]] Emacs config and tangling all the config chunks on save and exporting it as a markdown file. This has worked fairly well except for the fact that org-export creates =org-export= regenerates ids for all the headings which creates noise in the git commit history and also in-page anchors can't be reliably linked to a specific part of the document (independent of the git forge's markdown parsing implementation).
+
+In order to remedy that without relying on a full-featured package without additional capabilities, I decided to adapt a snippet of [[https://github.com/alphapapa][@alphapapa]]'s [[https://github.com/alphapapa/unpackaged.el][unpackaged configuration]], which advices the export to create unique anchors that won't change between exports (unless the headings themselves have been changed). However, this is ended being the beginning of the solution and how I discovered GitHub renders markdown internal links to HTML is not consistent with how Sourcehut does it.
+
+#+begin_details
+#+begin_summary
+I added the following snippet into my =config.org= file's ~after-save-hook~:
+#+end_summary
+#+begin_src emacs-lisp
+  ;;usefulanchors_begin
+;; From @alphapapa's unpackaged repo https://github.com/alphapapa/unpackaged.el#export-to-html-with-useful-anchors
+(use-package ox
+  :config
+  (define-minor-mode unpackaged/org-export-html-with-useful-ids-mode
+    "Attempt to export Org as HTML with useful link IDs.
+Instead of random IDs like \"#orga1b2c3\", use heading titles,
+made unique when necessary."
+    :global t
+    (if unpackaged/org-export-html-with-useful-ids-mode
+        (advice-add #'org-export-get-reference :override #'unpackaged/org-export-get-reference)
+      (advice-remove #'org-export-get-reference #'unpackaged/org-export-get-reference)))
+
+  (defun unpackaged/org-export-get-reference (datum info)
+    "Like `org-export-get-reference', except uses heading titles instead of random numbers."
+    (let ((cache (plist-get info :internal-references)))
+      (or (car (rassq datum cache))
+          (let* ((crossrefs (plist-get info :crossrefs))
+                 (cells (org-export-search-cells datum))
+                 ;; Preserve any pre-existing association between
+                 ;; a search cell and a reference, i.e., when some
+                 ;; previously published document referenced a location
+                 ;; within current file (see
+                 ;; `org-publish-resolve-external-link').
+                 ;;
+                 ;; However, there is no guarantee that search cells are
+                 ;; unique, e.g., there might be duplicate custom ID or
+                 ;; two headings with the same title in the file.
+                 ;;
+                 ;; As a consequence, before re-using any reference to
+                 ;; an element or object, we check that it doesn't refer
+                 ;; to a previous element or object.
+                 (new (or (cl-some
+                           (lambda (cell)
+                             (let ((stored (cdr (assoc cell crossrefs))))
+                               (when stored
+                                 (let ((old (org-export-format-reference stored)))
+                                   (and (not (assoc old cache)) stored)))))
+                           cells)
+                          (when (org-element-property :raw-value datum)
+                            ;; Heading with a title
+                            (unpackaged/org-export-new-title-reference datum cache))
+                          ;; NOTE: This probably breaks some Org Export
+                          ;; feature, but if it does what I need, fine.
+                          (org-export-format-reference
+                           (org-export-new-reference cache))))
+                 (reference-string new))
+            ;; Cache contains both data already associated to
+            ;; a reference and in-use internal references, so as to make
+            ;; unique references.
+            (dolist (cell cells) (push (cons cell new) cache))
+            ;; Retain a direct association between reference string and
+            ;; DATUM since (1) not every object or element can be given
+            ;; a search cell (2) it permits quick lookup.
+            (push (cons reference-string datum) cache)
+            (plist-put info :internal-references cache)
+            reference-string))))
+
+  (defun unpackaged/org-export-new-title-reference (datum cache)
+    "Return new reference for DATUM that is unique in CACHE."
+    (cl-macrolet ((inc-suffixf (place)
+                               `(progn
+                                  (string-match (rx bos
+                                                    (minimal-match (group (1+ anything)))
+                                                    (optional "--" (group (1+ digit)))
+                                                    eos)
+                                                ,place)
+                                  ;; HACK: `s1' instead of a gensym.
+                                  (-let* (((s1 suffix) (list (match-string 1 ,place)
+                                                             (match-string 2 ,place)))
+                                          (suffix (if suffix
+                                                      (string-to-number suffix)
+                                                    0)))
+                                    (setf ,place (format "%s--%s" s1 (cl-incf suffix)))))))
+      (let* ((title (org-element-property :raw-value datum))
+             (ref (replace-regexp-in-string "%.." "-" (url-hexify-string (substring-no-properties title)))) ;replace all encoded characters with dashes
+             (parent (org-element-property :parent datum)))
+        (while (--any (equal ref (car it))
+                      cache)
+          ;; Title not unique: make it so.
+          (if parent
+              ;; Append ancestor title.
+              (setf title (concat (org-element-property :raw-value parent)
+                                  "--" title)
+                    ref (url-hexify-string (substring-no-properties title))
+                    parent (org-element-property :parent parent))
+            ;; No more ancestors: add and increment a number.
+            (inc-suffixf ref)))
+        ref))))
+;;usefulanchors_end
+#+end_src
+#+end_details
+
+#+begin_export hugo
+{{< exif src="github-not-linking-hexcoded.png" caption="GitHub's internal linking works but hex coded does not" alt="Screenshot of Readme.md file with source insepctor open in Firefox showing the actual header anchor is GitHub's internal linking and there's separate <p> with the user exported anchor from markdown." showexif="false" >}}
+#+end_export
+=NOTE:= actual header anchor is GitHub's internal linking and there's separate <p> with the user exported anchor from markdown, just interesting.
+
+Turns out that GitHub won't do anchors with any non-alphanumeric links even if they're properly hex-coded. I had to modify the function which creates the unique slugs because by default it hex encodes the url, which is the "correct/smart" thing to do and Sourcehut happily renders that. But GitHub generates its own slugs which removes all non-alphanumeric characters (which makes the slug less readable, I prefer more readable urls).
+#+begin_src emacs-lisp
+  (replace-regexp-in-string "%.." "-" (url-hexify-string (substring-no-properties title)))
+#+end_src
+
+#+begin_export hugo
+{{< exif src="user-anchors-as-p.png" caption="All non-alphanumeric replaced with dashes" alt="Similiar to other screenshot except anchor words are dash separated. Screenshot of Readme.md file with source insepctor open in Firefox showing the actual header anchor is GitHub's internal linking and there's separate <p> with the user exported anchor from markdown." showexif="false" >}}
+#+end_export
+
+Another excellent example of how [[/tags/foss][#foss]] enables these customizations by empowering the user. 
+
 ** DONE Bonaire Art                                              :art:travel:
 CLOSED: [2022-05-30 Mon 11:26]
 :PROPERTIES:
