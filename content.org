@@ -8,6 +8,43 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Fun with pipes                                                :linux:
+CLOSED: [2022-09-19 Mon 19:15]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20220919_fun-with-pipes
+:EXPORT_HUGO_IMAGES: /posts/20220919_fun-with-pipes/mindmap.png/
+:EXPORT_HUGO_MENU:
+:END:
+
+Just came across this excellent post: [[https://unixsheikh.com/tutorials/poor-mans-mind-mapping-tool-with-just-the-terminal.html][Poor mans mind mapping tool with just the terminal]] from [[https://fosstodon.org/@fullstackthaumaturge/109026870492731099][@fullstackthaumaturge]]. The whole premise is that you can do a lot things with the UNIX philosophy of using files for everything and manipulating them with simple tools that do one thing but do it well. So if you wanted a mindmap then just ~touch~ files in a folder hierarchy and then print it out with ~tree~.
+
+I found that amusing and thought, well what if you don't want to clutter your file-system and wanted to zip up your mindmap. Would you be able to get a nice ~tree~ output without unzipping the archive? Well turns out you can do just that by piping from ~zipinfo~ to ~tree~ which supports reading from a file (instead of reading a file-system) using the =--fromfile= argument.
+
+So this is what you end up with this command:
+#+begin_src shell
+  zipinfo -1 mindmap.zip | tree --fromfile $1 -C -r
+#+end_src
+and this output:
+#+begin_src shell
+.
+`-- mindmap
+    |-- top
+    |-- first
+    |   |-- second
+    |   `-- first
+    `-- 2
+        |-- 2
+        `-- 1
+
+3 directories, 5 files
+#+end_src
+#+begin_export hugo
+{{< exif src="mindmap.png" caption="Pretty terminal output with colors from the '-C' flag" alt="Screenshot of the same output as the preceding code block above with terminal colors." showexif="false" >}}
+#+end_export
+
+I'm not suggesting anyone do this but it's a fun example UNIX principles and pipes.
+
 ** DONE Markdown anchor linking on Github                        :emacs:foss:
 CLOSED: [2022-09-18 Sun 02:11]
 :PROPERTIES:
