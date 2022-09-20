@@ -17,7 +17,7 @@ CLOSED: [2022-09-19 Mon 19:15]
 :EXPORT_HUGO_MENU:
 :END:
 
-Just came across this excellent post: [[https://unixsheikh.com/tutorials/poor-mans-mind-mapping-tool-with-just-the-terminal.html][Poor mans mind mapping tool with just the terminal]] from [[https://fosstodon.org/@fullstackthaumaturge/109026870492731099][@fullstackthaumaturge]]. The whole premise is that you can do a lot things with the UNIX philosophy of using files for everything and manipulating them with simple tools that do one thing but do it well. So if you wanted a mindmap then just ~touch~ files in a folder hierarchy and then print it out with ~tree~.
+Just came across this excellent post: [[https://unixsheikh.com/tutorials/poor-mans-mind-mapping-tool-with-just-the-terminal.html][Poor mans mind mapping tool with just the terminal]] from [[https://fosstodon.org/@fullstackthaumaturge/109026870492731099][@fullstackthaumaturge]] toot on Fosstodon. The whole premise is that you can do a lot things with the UNIX philosophy of using files for everything and manipulating them with simple tools that do one thing but do it well. So if you wanted a mindmap then just ~touch~ files in a folder hierarchy and then print it out with ~tree~.
 
 I found that amusing and thought, well what if you don't want to clutter your file-system and wanted to zip up your mindmap. Would you be able to get a nice ~tree~ output without unzipping the archive? Well turns out you can do just that by piping from ~zipinfo~ to ~tree~ which supports reading from a file (instead of reading a file-system) using the =--fromfile= argument.
 
