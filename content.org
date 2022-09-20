@@ -21,7 +21,7 @@ Just came across this excellent post: [[https://unixsheikh.com/tutorials/poor-ma
 
 I found that amusing and thought, well what if you don't want to clutter your file-system and wanted to zip up your mindmap. Would you be able to get a nice ~tree~ output without unzipping the archive? Well turns out you can do just that by piping from ~zipinfo~ to ~tree~ which supports reading from a file (instead of reading a file-system) using the =--fromfile= argument.
 
-So this is what you end up with this command:
+So you end up with this command:
 #+begin_src shell
   zipinfo -1 mindmap.zip | tree --fromfile $1 -C -r
 #+end_src
@@ -43,7 +43,7 @@ and this output:
 {{< exif src="mindmap.png" caption="Pretty terminal output with colors from the '-C' flag" alt="Screenshot of the same output as the preceding code block above with terminal colors." showexif="false" >}}
 #+end_export
 
-I'm not suggesting anyone do this but it's a fun example UNIX principles and pipes.
+I'm not suggesting anyone do this, but it's a fun example UNIX principles and pipes.
 
 ** DONE Markdown anchor linking on Github                        :emacs:foss:
 CLOSED: [2022-09-18 Sun 02:11]
