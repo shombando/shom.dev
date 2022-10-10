@@ -8,6 +8,22 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Fiddly Fig                                                      :art:
+CLOSED: [2022-10-09 Sun 23:40]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20221009_fiddly-fig
+:EXPORT_HUGO_IMAGES: /posts/20221009_fiddly-fig/fiddlyfig.jpg
+:EXPORT_HUGO_MENU:
+:END:
+Haven't done any water coloring in months and this fiddly fig wasn't the easiest one to start with. My friend had a book of botanical watercolors and the fiddly fig was one of the choices. Turns out I have a hard time drawing non standard leaves🍃 that overlap. I hadn't originally planned to sketch the outline but after I finished (messing up) coloring the leaves, it all looked like blobs in need of structure. The actual instructions were a bit confusing but after doing it poorly I now understand a better way to approach it: paint a lighter base layer of green, wet on dry, and then at the base of the leaf inject some darker green, wet on wet.
+
+#+begin_export hugo
+{{< exif src="fiddlyfig.jpg" caption="Fiddly fig water color" alt="Water color of a fiddly fig plant, deeper green thickish leafy leaves on a brown stem potted in a light brown vessel with the date noted as 20221009" showexif="false" >}}
+#+end_export
+
+It was a fun way to spend an evening with friends and reminded me to paint more. Only the drawing/sketching is stressful the painting part is fun!
+
 ** DONE Fun with pipes                                                :linux:
 CLOSED: [2022-09-19 Mon 19:15]
 :PROPERTIES:
