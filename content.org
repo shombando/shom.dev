@@ -8,7 +8,7 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
-** DONE Fiddly Fig                                                      :art:
+** DONE Fiddly Fig                                           :art:watercolor:
 CLOSED: [2022-10-09 Sun 23:40]
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
@@ -385,7 +385,7 @@ This is where the very interesting and awesome [[https://getreuer.info/posts/key
 
 I was able to set it up pretty easily on the keyboard, well, once I realized that I had ~MOD_LSFT~ on both halves accidentally and fixed it. It's going to take a bit of getting used to but awkwardly typing in ALL CAPS is a good reminder to use the proper feature.
 
-** DONE Seahorse                                                       :art:
+** DONE Seahorse                                             :art:watercolor:
 CLOSED: [2022-03-08 Tue 21:53]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 20220308_seahorse
@@ -473,7 +473,7 @@ Installing OBS and the loopback driver worked but even after a restart OBS would
 
 Ultimately, I had to get OBS from guix and the loopback from apt. This mismatch makes me uneasy since it goes directly against a declarative config, so I'm documenting the discrepancy for when it bites me in the future.
 
-** DONE Found Nemo!                                                    :art:
+** DONE Found Nemo!                                          :art:watercolor:
 CLOSED: [2022-01-09 Sun 21:05]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20220109_found-nemo
@@ -481,7 +481,7 @@ CLOSED: [2022-01-09 Sun 21:05]
 :END:
 First painting with the new paint set. Good paper (140 lbs) and paint make a big difference.
 [[./static/20220109_foundnemo.jpg]]
-** DONE Water color paint key/legend                                   :art:
+** DONE Water color paint key/legend                         :art:watercolor:
 CLOSED: [2022-01-08 Sat 17:48]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20220108_water-color-paint-key-legend
@@ -1233,7 +1233,7 @@ See `buffer-invisibility-spec'."
 
 #+end_src
 
-** DONE Highland Chewie :art: 
+** DONE Highland Chewie                                      :art:watercolor: 
 CLOSED: [2021-11-29 Mon 22:52]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211129_highland-chewie
