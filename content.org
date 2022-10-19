@@ -8,6 +8,28 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE FOSS Woodworking                                   :foss:woodworking:
+CLOSED: [2022-10-19 Wed 01:50]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20221019_foss-woodworking
+:EXPORT_HUGO_IMAGES: /posts/20221019_foss-woodworking/3Dmodel.png
+:EXPORT_HUGO_MENU:
+:END:
+I built a small table this weekend and realized that the thing I desperately need if I'm going to build more stuff is a workbench. There are a TON of workbench options to pick from, which is great. But, I didn't want to get into picking and choosing dimensions and features on the fly, that was asking for a disaster. So I decided to take the plunge and learn [[https://www.freecadweb.org/][FreeCAD]]. There are excellent YouTube videos targeted at [[https://www.youtube.com/watch?v=jfNBfdIpzDQ&list=PL9VmYdF0sBykAJiMAqIxzTTti3i-kvarx]["FreeCAD for Woodworkers"]] which was a delightful surprise. Being a novice at woodworking and CAD is not the best combination, but you gotta start somewhere.
+
+I decided to start backwards by doing the build first and the design later. Just like I built a small table physically, it seemed like a good idea to model something simpler. I was able to learn enough FreeCAD in one evening to make this model:
+#+begin_export hugo
+{{< exif src="3Dmodel.png" caption="Simple table modeled in FreeCAD" alt="A 3D render of a small table with two boards joined lengthwise to make a top with rectangular legs and a bottom shelf with two smaller boards" showexif="false" >}}
+#+end_export
+
+Had I made the model before the bottom shelf might have turned out better, just maybe, but something else would have provided "an opportunity for improvement"... there are many ways to get better, exciting!
+#+begin_export hugo
+{{< exif src="PineTable.jpg" caption="Small pine table" alt="A small table made of light colored pinewood construction lumber with a table top and a bottom shelf made from similar colored thin boards. You can see several fastening screws and not everything is quite plumb but functional" showexif="false" >}}
+
+I'm looking forward to learning more tricks in FreeCAD like creating/exporting cutlists, 3D renders with wood texture and lighting effects. The ecosystem is quite rich!
+#+end_export
+
 ** DONE Fiddly Fig                                           :art:watercolor:
 CLOSED: [2022-10-09 Sun 23:40]
 :PROPERTIES:
