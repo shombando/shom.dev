@@ -8,6 +8,37 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Let's Encrypt with acme.sh behind CPanel           :linux:foss:
+CLOSED: [2022-11-09 Wed 23:43]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20221109_let-s-encrypt-with-acme-dot-sh-behind-cpanel
+:EXPORT_HUGO_MENU:
+:END:
+I have access to webhosting through the generosity of a friend and his hosting provider used CPanel and offers paid SSL certificates but does allow for SSH access. So, the best and free way to get SSL certificates is getting certificates from [[https://letsencrypt.org/][Let's Encrypt]] using [[https://github.com/acmesh-official/acme.sh][acme.sh]].
+
+While I've had this setup for years and it works great, it's a real issue if it breaks because I do the sad thing of hitting up in the terminal history #somuchshame. So I'm documenting it for myself and anyone else that might find this useful.
+
+1. Clone acme.sh from Github and cd into folder.
+2. Issue the certificate with:
+
+   ~./acme.sh --issue --webroot /home/USERNAME/public_html/ --domain example.org --deploy-hook cpanel_uapi~
+3. Deploy the certificate if the deploy hook doesn't do its job properly
+
+   ~./acme.sh --deploy --domain example.org --deploy-hook cpanel_uapi~
+4. Setup the cron job so it will renew automatically
+
+   ~./acme.sh --cron~
+
+Another win for FOSS and SSH access on a Linux box.
+
+In dire situations, you can actually go to CPanel and manually enter the certificate information that acme.sh generates. The acme.sh folder will contain a sub-directory named example.org (whatever your domain name is), inside that you'll need to map the contents of the following files to the following fields:
+
+| File Name       | CPanel Field                             |
+| example.org.cer | Certificate: (CRT)                       |
+| example.org.key | Private Key (KEY)                        |
+| ca.cer          | Certificate Authority Bundle: (CABUNDLE) |
+
 ** DONE FOSS Woodworking                                   :foss:woodworking:
 CLOSED: [2022-10-19 Wed 01:50]
 :PROPERTIES:
