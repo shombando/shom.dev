@@ -39,6 +39,12 @@ In dire situations, you can actually go to CPanel and manually enter the certifi
 | example.org.key | Private Key (KEY)                        |
 | ca.cer          | Certificate Authority Bundle: (CABUNDLE) |
 
+=NOTE=: If you're having issues with the ZeroSSL.com CA that acme.sh now defaults to, you can edit =example.org.conf= and specify the api using:
+
+~Le_API='https://acme-v02.api.letsencrypt.org/directory'~
+
+=Editorial note=: The API is French, it's Le for Let's Encrypt... capitalizing acronyms in variable names is always contentious, snake case should makes it easier. But mixing usage seems like the worst of all choices. 
+
 ** DONE FOSS Woodworking                                   :foss:woodworking:
 CLOSED: [2022-10-19 Wed 01:50]
 :PROPERTIES:
