@@ -43,7 +43,7 @@ In dire situations, you can actually go to CPanel and manually enter the certifi
 
 ~Le_API='https://acme-v02.api.letsencrypt.org/directory'~
 
-=Editorial note=: The API is French, it's Le for Let's Encrypt... capitalizing acronyms in variable names is always contentious, snake case should makes it easier. But mixing usage seems like the worst of all choices. 
+=Editorial note=: The API isn't French, it's Le for Let's Encrypt... capitalizing acronyms in variable names is always contentious, snake case should makes it easier. But mixing usage seems like the worst of all choices.
 
 ** DONE FOSS Woodworking                                   :foss:woodworking:
 CLOSED: [2022-10-19 Wed 01:50]
