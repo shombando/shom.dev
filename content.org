@@ -43,7 +43,9 @@ In dire situations, you can actually go to CPanel and manually enter the certifi
 
 ~Le_API='https://acme-v02.api.letsencrypt.org/directory'~
 
-=Editorial note=: The API isn't French, it's Le for Let's Encrypt... capitalizing acronyms in variable names is always contentious, snake case should makes it easier. But mixing usage seems like the worst of all choices.
+=Editorial note=: The API isn't French, it's Le for Let's Encrypt... capitalizing acronyms in variable names is always contentious, snake case should makes it easier. But mixing usage seems like the worst of all choices. Le but not Api? Why not LE_API or le_api.
+
+=Update=: [[https://fosstodon.org/@benoitj/109319882279718334][@benoitj makes another great point]], LE is not providing any additonal context, acme or api (regardless of capitalization) would make the variable name better.
 
 ** DONE FOSS Woodworking                                   :foss:woodworking:
 CLOSED: [2022-10-19 Wed 01:50]
@@ -94,7 +96,7 @@ CLOSED: [2022-09-19 Mon 19:15]
 
 Just came across this excellent post: [[https://unixsheikh.com/tutorials/poor-mans-mind-mapping-tool-with-just-the-terminal.html][Poor mans mind mapping tool with just the terminal]] from [[https://fosstodon.org/@fullstackthaumaturge/109026870492731099][@fullstackthaumaturge]] toot on Fosstodon. The whole premise is that you can do a lot things with the UNIX philosophy of using files for everything and manipulating them with simple tools that do one thing but do it well. So if you wanted a mindmap then just ~touch~ files in a folder hierarchy and then print it out with ~tree~.
 
-I found that amusing and thought, well what if you don't want to clutter your file-system and wanted to zip up your mindmap. Would you be able to get a nice ~tree~ output without unzipping the archive? Well turns out you can do just that by piping from ~zipinfo~ to ~tree~ which supports reading from a file (instead of reading a file-system) using the =--fromfile= argument.
+I found that amusing and thought, "well what if you don't want to clutter your file-system and wanted to zip up your mindmap?" Would you be able to get a nice ~tree~ output without unzipping the archive? Well turns out you can do just that by piping from ~zipinfo~ to ~tree~, which supports reading from a file (instead of reading a file-system) using the =--fromfile= argument.
 
 So you end up with this command:
 #+begin_src shell
@@ -118,7 +120,7 @@ and this output:
 {{< exif src="mindmap.png" caption="Pretty terminal output with colors from the '-C' flag" alt="Screenshot of the same output as the preceding code block above with terminal colors." showexif="false" >}}
 #+end_export
 
-I'm not suggesting anyone do this, but it's a fun example UNIX principles and pipes.
+I'm not suggesting anyone do this, but it's a fun example of UNIX principles and pipes.
 
 ** DONE Markdown anchor linking on Github                        :emacs:foss:
 CLOSED: [2022-09-18 Sun 02:11]
