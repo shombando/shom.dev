@@ -37,18 +37,14 @@ params:
     #     name: Tags
     #     url: "/tags"
     socialIcons: # optional
-        - name: 'Github'
-          url: 'https://github.com/shombando'
-        - name: 'other'
-          url: 'https://git.sr.ht/~shom'
-        - name: 'gitea'
-          url: 'https://codeberg.org/shom'
         - name: 'Mastodon'
           url: 'https://fosstodon.org/@shom'
+        - name: 'other'
+          url: 'https://git.sr.ht/~shom'
+        - name: 'Github'
+          url: 'https://github.com/shombando'
         - name: 'LinkedIn'
           url: 'https://www.linkedin.com/in/shom'
-        - name: 'Keybase'
-          url: 'https://keybase.io/sbando'
         - name: 'instagram'
           url: 'https://shom.bandopadhaya.com/photos/'
         - name: 'RSS'
