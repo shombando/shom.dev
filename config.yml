@@ -39,18 +39,16 @@ params:
     socialIcons: # optional
         - name: 'Mastodon'
           url: 'https://fosstodon.org/@shom'
-        - name: 'other'
+        - name: 'camera'
+          url: 'https://shom.bandopadhaya.com/photos/'
+        - name: 'git'
           url: 'https://git.sr.ht/~shom'
         - name: 'Github'
           url: 'https://github.com/shombando'
         - name: 'LinkedIn'
           url: 'https://www.linkedin.com/in/shom'
-        - name: 'instagram'
-          url: 'https://shom.bandopadhaya.com/photos/'
         - name: 'RSS'
           url: 'https://shom.dev/index.xml'
-    #    - name: "<platform 2>"
-    #        url: "<link2>"
 markup:
   highlight:
     # anchorLineNos: true
