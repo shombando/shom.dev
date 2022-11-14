@@ -47,6 +47,8 @@ params:
           url: 'https://github.com/shombando'
         - name: 'LinkedIn'
           url: 'https://www.linkedin.com/in/shom'
+        - name: 'key'
+          url: 'https://id.shom.dev'
         - name: 'RSS'
           url: 'https://shom.dev/index.xml'
 markup:
