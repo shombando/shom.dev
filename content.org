@@ -8,6 +8,20 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Trigger site rebuild to update copyright
+CLOSED: [2023-01-01 Sun 00:37]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20230101_trigger-site-rebuild-to-update-copyright
+:EXPORT_HUGO_IMAGES: /posts/20230101_trigger-site-rebuild-to-update-copyright/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+I just saw [[https://mspsocial.net/@vkc/109612388794875976][this post from VKC]] about updating the footer of your website, meaning the copyright section. It occurred to me that it's a manual process for my fully auto-generated blog, so I never think about the copyright info in the footer. Static sites do kind of have a shortcoming of sort.
+
+I still have my photos on a WordPress blog and it automatically updates the copyright, which came up, very recently, in a conversation with a friend and yet I never thought about my Hugo site (this one). I wonder if I need a build pipeline that triggers at midnight UTC every year just to update the footer!? No.
+
+I wanted to scribble this thought quickly to first, trigger a rebuild and secondly, to put a commitment to finally investigate the Creative Commons licenses and choose an appropriate license site-wide. I would like for any information/photo/art to be usable for non-commercial use with attribution and maintaining an equivalent license. 
+
 ** DONE Let's Encrypt with acme.sh behind CPanel           :linux:foss:
 CLOSED: [2022-11-09 Wed 23:43]
 :PROPERTIES:
