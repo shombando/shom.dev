@@ -8,6 +8,29 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Eagles in the "backyard"                                     :camera:
+CLOSED: [2023-01-20 Fri 13:11]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20230120_eagles-in-the-backyard
+:EXPORT_HUGO_IMAGES: /posts/20230120_eagles-in-the-backyard/EagleInFlight.jpg
+:EXPORT_HUGO_MENU:
+:END:
+Took some photos of bald eagles fairly close to my house, thanks to a tip from a friend. I never think to go exploring around home whereas I would have hiked miles on vacation to see wildlife. This is a great proof and reminder to see your "backyard" with fresh eyes.
+
+Photos captured with a Sony A7C with a Sigma 100-400.
+#+begin_export hugo
+{{< exif src="EagleInFlight.jpg" caption="" alt="A bald eagle is flying low on a harvested field with brown straw and dirt, trees and yellow grass are in the background. It's winter so the trees don't have any foliage and their limbs are dark and light streaks. The eagle's wings are on a downstroke and it is flying towards two pigeons moving so fast that they're blurry." showexif="true" >}}
+#+end_export
+
+#+begin_export hugo
+{{< exif src="EagleAndCrow.jpg" caption="" alt="A juvenile eagle is perched on some fallen branches next to shallow water. A crow is flying away from the spot with it's wings spread midstroke, appears to have been chased away by the eagle who is 4 times as large." showexif="true" >}}
+#+end_export
+
+#+begin_export hugo
+{{< exif src="EaglesInTree.jpg" caption="" alt="A tree without any leaves in front of a similarly treeless forest has three bald eagles on it. The most clearly visible one is on the top with a gray sky as the backdrop with its head tilted such that one eye is looking towards the camera. The second eagle is on the bottom right with more trees as a backdrop facing to the right with its head turned away from the camera. The third eagle is on the bottom left against an even busier background, it's a juvenile quite dark and does not have the characteristic white head of an adult." showexif="true" >}}
+#+end_export
+
 ** DONE Trigger site rebuild to update copyright
 CLOSED: [2023-01-01 Sun 00:37]
 :PROPERTIES:
@@ -21,6 +44,7 @@ I just saw [[https://mspsocial.net/@vkc/109612388794875976][this post from VKC]]
 I still have my photos on a WordPress blog and it automatically updates the copyright, which came up, very recently, in a conversation with a friend and yet I never thought about my Hugo site (this one). I wonder if I need a build pipeline that triggers at midnight UTC every year just to update the footer!? No.
 
 I wanted to scribble this thought quickly to first, trigger a rebuild and secondly, to put a commitment to finally investigate the Creative Commons licenses and choose an appropriate license site-wide. I would like for any information/photo/art to be usable for non-commercial use with attribution and maintaining an equivalent license. 
+=======
 
 ** DONE Let's Encrypt with acme.sh behind CPanel           :linux:foss:
 CLOSED: [2022-11-09 Wed 23:43]
