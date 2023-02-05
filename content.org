@@ -8,6 +8,32 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE More eagles                                                  :camera:
+CLOSED: [2023-02-05 Sun 17:28]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20230205_more-eagles
+:EXPORT_HUGO_IMAGES: /posts/20230205_more-eagles/Swoop.jpg
+:EXPORT_HUGO_MENU:
+:END:
+
+I went back to look for eagles again and found that the lake/pond/ditch had frozen over but there were still a couple of eagles milling about and several black birds.
+
+Lessons learned:
+- 1/1600 of second still pretty slow for capturing even a big bird in flight.
+- ISO 400 is pretty reliable on my camera and darktable matches the noise profile, doing a decent job of noise removal.
+- Busy backgrounds are hard to work with but they aren't show stoppers.
+- JPEG is a terrible image format and makes the photos look much worse.
+
+#+begin_export hugo
+{{< exif src="Flight.jpg" caption="Late afternoon flight" alt="A bald eagle is gliding against a backdrop of leafless trees. The eagle's wings are out stretched and the head is in almost profile view and well lit" showexif="true" >}}
+#+end_export
+
+#+begin_export hugo
+{{< exif src="Swoop.jpg" caption="Make way!" alt="A bald eagle is swooping down over a frozen body of water and has its wings out stretched and talons forward. Several blackbirds are scattering due to the arrival of the eagle captured in various poses of flight tyring to vacate the area." showexif="true" >}}
+#+end_export
+
+
 ** DONE Eagles in the "backyard"                                     :camera:
 CLOSED: [2023-01-20 Fri 13:11]
 :PROPERTIES:
