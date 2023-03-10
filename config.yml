@@ -40,7 +40,7 @@ params:
         - name: 'Mastodon'
           url: 'https://fosstodon.org/@shom'
         - name: 'camera'
-          url: 'https://shom.bandopadhaya.com/photos/'
+          url: 'https://photos.shom.dev'
         - name: 'git'
           url: 'https://git.sr.ht/~shom'
         - name: 'Github'
