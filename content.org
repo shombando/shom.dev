@@ -8,6 +8,24 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Film Photography                   :film:
+CLOSED: [2023-12-07 Thu 03:06]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20231207_film-photography
+:EXPORT_HUGO_IMAGES: /posts/20231207_film-photography/cameras.jpg
+:EXPORT_HUGO_MENU:
+:END:
+There's a new section on the website for Film Photography that is being by Hugo but independent of the blogging workflow. I'll create a new entry documenting how that is setup in a follow-up post.
+
+I'm not sure if the film photos should be a on the main blog feed but without realizing it I have flooded the RSS feed, perhaps it should be on it's own feed (don't want to inconvenience the non-existent readership of this blog!). The other thing that might require some thinking/restructuring is whether to use categories to get a better handle on taxonomies. Hugo does not do hierarchical tags but posts tagged with ~camera~ and ~camera/canonQL17Giii~ will show up under the ~camera~ tag, which is nice but a drill down would be preferable (without extensive JavaScript magic). Categories could serve as the drill down but I don't know if that added convolution has any practical benefits.
+
+For now, I'll just leave a family portrait of the range finders: Olympus 35 SP, Canon QL17 Giii, and Olympus 35RC.
+
+#+begin_export hugo
+{{< exif src="cameras.jpg" caption="Family photo" alt="Three range finder cameras all with silver tops and black bodies are lined up left to right, larger to smaller on a wooden table top with great walnut figure. The cameras left to right are: Olympus 35 SP, Canon QL17 Giii, and Olympus 35RC" showexif="false" >}}
+#+end_export
+
 ** DONE More eagles                                                  :camera:
 CLOSED: [2023-02-05 Sun 17:28]
 :PROPERTIES:
