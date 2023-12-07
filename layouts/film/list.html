@@ -1,4 +1,18 @@
 {{ define "main" }}
+<style>
+  ul {
+	  display: flex;
+	  flex-wrap:wrap;
+	  gap:0.5em;
+  }
+  li {
+	  flex-grow:1;
+	  list-style-type:none;
+  }
+  li.lastChild {
+	  flex-grow:10;
+  }
+  </style>
 <header>
     <h1>{{ .Title }}</h1>
     {{.Content}}
@@ -7,17 +21,17 @@
   <br />
         {{ range .Pages.GroupByDate "Jan 2006" }}
         <h4>{{ .Key }}</h4>
-        <ul style="display: flex; flex-wrap:wrap; gap:0.5em;">
+        <ul>
             {{ range .Pages }}
             {{ $firstImage := index (.Resources.ByType "image") 0 }}
             {{ $firstImage = $firstImage.Fit "350x250" }}
-            <li style="flex-grow:1; list-style-type:none;">
+            <li>
                 <a href="{{ .RelPermalink }}" title="{{ .Title }}">
                     <img loading="lazy" src="{{ $firstImage.RelPermalink }}" alt="{{ .Description }}">
                 </a>
             </li>
             {{ end }}
-			<li style="flex-grow:10; list-style-type:none;"></li>
+			<li class="lastChild"></li>
         </ul>
         {{ end }}
 </section>

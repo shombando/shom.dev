@@ -1,11 +1,31 @@
 {{ define "main" }}
 
+<style>
+  h4 {
+	  color:gray;
+  }
+  section.meta {
+	  span {
+		  color:gray;
+		  font-size:0.9em;
+	  }
+  }
+  figcaption {
+	  font-size:0.8em;
+	  color:gray;
+	  padding-left:2px;
+	  border-left:2px dotted;
+	  border-color:gray;
+	  line-height:1em;
+  }
+</style>
+
 <article itemscope itemType="https://schema.org/BlogPosting">
   <header>
-	<h4 style="color:gray">{{ .Title }}</h4>
+	<h4>{{ .Title }}</h4>
 	<section class="meta">
 	  {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
-	  <span style="color:gray; font-size:0.9em;">posted:  <time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></span>
+	  <span>posted:  <time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></span>
 	</section>
   </header>
 
@@ -18,7 +38,7 @@
 	  <a href="{{ .RelPermalink }}">
 		<img src="{{ $image.RelPermalink }}" alt="{{ $.Description }}">
 	  </a>
-	  <figcaption style="font-size:0.8em; color:gray; padding-left:2px; border-left:2px dotted; border-color:gray; line-height:1em;">Alt-text description: {{ $.Description }}</figcaption>
+	  <figcaption>Alt-text description: {{ $.Description }}</figcaption>
 	</figure>
 	{{ end }}
   </main>
