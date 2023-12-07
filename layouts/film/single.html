@@ -9,17 +9,6 @@
             {{ if (and .Site.Params.showUpdated (ne .Lastmod .Date)) }}
             <span>(Updated: <time datetime="{{ .Lastmod }}" itemprop="dateModified">{{ .Lastmod.Format $dataFormat }}</time>)</span>
             {{ end }}
-
-            {{ with (.GetTerms "tags") }}
-            <ul class="tags">
-                {{ range . }}
-                <li class="tag">
-                    <span class="prefix">#</span>
-                    <a href="{{ .Permalink }}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
-                </li>
-                {{ end }}
-            </ul>
-            {{ end }}
         </section>
     </header>
 
@@ -29,10 +18,20 @@
     {{ range . }}
         {{ $image := .Fit "1024x1024" }}
         <figure>
-            <img src="{{ $image.RelPermalink }}" alt="{{ $.Description }}">
+            <a href="{{ .RelPermalink }}">
+              <img src="{{ $image.RelPermalink }}" alt="{{ $.Description }}">
+			  </a>
             <figcaption>{{ $.Description }}</figcaption>
         </figure>
     {{ end }}
+
+		<footer class="post-footer">
+    <ul class="post-tags">
+      {{- range ($.GetTerms "tags") }}
+      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+  </footer>
 
     </main>
 
