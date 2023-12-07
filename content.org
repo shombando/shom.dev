@@ -1699,13 +1699,13 @@ With a certain nostalgia for the early web ever present, a Gemini site (gemite? 
 :PROPERTIES:
 :EXPORT_HUGO_SECTION:
 :EXPORT_FILE_NAME: _index
-:EXPORT_HUGO_MENU: :menu "main" :weight -2 :title Home
+:EXPORT_HUGO_MENU: :menu "main" :weight -3 :title Home
 :END:
 
 * Tags
 :PROPERTIES:
 :EXPORT_HUGO_SECTION: tags 
-:EXPORT_HUGO_MENU: :menu "main" :weight -1 :title Tags
+:EXPORT_HUGO_MENU: :menu "main" :weight -2 :title Tags
 :EXPORT_FILE_NAME: _index
 :END:
 
@@ -1713,5 +1713,12 @@ With a certain nostalgia for the early web ever present, a Gemini site (gemite? 
 :PROPERTIES:
 :EXPORT_HUGO_SECTION: posts
 :EXPORT_FILE_NAME: _index
-:EXPORT_HUGO_MENU: :menu "main"
+:EXPORT_HUGO_MENU: :menu "main" :weight -1 :title Posts
+:END:
+
+* Film
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: film
+:EXPORT_HUGO_MENU: :menu "main" :weight 0 :title Film
+:EXPORT_FILE_NAME: _index
 :END:
