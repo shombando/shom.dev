@@ -7,7 +7,6 @@ tags:
 - format/35mm
 - camera/canonQL17Giii
 - film/fuji200
-- lab/brooktreeFilmLab
 resources:
 -  src: 'image.jpg'
 ---
