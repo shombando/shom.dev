@@ -1,7 +1,3 @@
----
-title: "Title"
-date: "2023-09-28"
-description: "Alt-text"
 tags:
 - b&w
 - color
