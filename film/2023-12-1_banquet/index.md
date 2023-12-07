@@ -1,6 +1,6 @@
 ---
 title: banquet
-date: 2023-12-1
+date: 2023-12-01
 description: Color photo with golden hour warm light falling on a multi-pane window, the top half reflecting silhouettes some tree branches and a building, while the bottom half shows people sitting at several round tables for a banquet.
 tags:
 - color

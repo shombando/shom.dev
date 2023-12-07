@@ -4,7 +4,7 @@
     {{.Content}}
 </header>
 <section>
-        {{ range .Pages.GroupByDate "Jan 2006" }}
+        {{ range .Pages.GroupByDate "2006" }}
         <h4>{{ .Key }}</h4>
         <ul style="display: flex; flex-wrap:wrap; justify-content:space-evenly; gap:0.75em;">
             {{ range .Pages }}
