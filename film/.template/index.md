@@ -11,6 +11,7 @@ tags:
 - film/ilfordFP4
 - film/kentmere100
 - film/kentmere400
+- film/kodakVision3250D
 - developer/ilfosol3
 - lab/brooktreeFilmLab
 resources:

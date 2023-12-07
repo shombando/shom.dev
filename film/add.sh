@@ -15,4 +15,6 @@ echo "description: ${photo_description}" >> index.md
 
 echo "$(cat ../.template/index.md)" >> index.md
 
-echo "Edit the tags in ${photo_dir}/index.md"
+echo "Editing the tags in ${photo_dir}/index.md"
+
+vi index.md
