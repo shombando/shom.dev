@@ -3,19 +3,20 @@ title: "Title"
 date: "2023-09-28"
 description: "Alt-text"
 tags:
-- FilmPhotography
-- BlackAndWhite
-- Color
-- MediumFormat
-- 35mm
-- CanonQL17Giii
-- Olympus35RC
-- Kiev60
-- Rolleiflex3.5Standard
+- b&w
+- color
+- format/mediumFormat
+- format/35mm
+- camera/canonQL17Giii
+- camera/olympus35RC
+- camera/kiev60
+- camera/rolleiflex3.5Standard
+- film/fuji200
+- film/ilfordFP4
+- film/kentmere100
+- film/kentmere400
+- developer/ilfosol3
+- lab/brooktreeFilmLab
 resources:
-- title: Title
-  src: 'image.jpg'
+- film/src: 'image.jpg'
 ---
-
-## Heading
-Text
