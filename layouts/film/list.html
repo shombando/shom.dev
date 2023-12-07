@@ -4,15 +4,16 @@
     {{.Content}}
 </header>
 <section>
-        {{ range .Pages.GroupByDate "2006" }}
+  <br />
+        {{ range .Pages.GroupByDate "Jan 2006" }}
         <h4>{{ .Key }}</h4>
-        <ul style="display: flex; flex-wrap:wrap; justify-content:space-evenly; gap:0.75em;">
+        <ul style="display: flex; flex-wrap:wrap; gap:0.5em;">
             {{ range .Pages }}
             {{ $firstImage := index (.Resources.ByType "image") 0 }}
-            {{ $firstImage = $firstImage.Fit "250x250" }}
+            {{ $firstImage = $firstImage.Fit "350x250" }}
             <li style="flex-grow:1; list-style-type:none;">
                 <a href="{{ .RelPermalink }}" title="{{ .Title }}">
-                    <img style="object-fit: cover; vertical-align: bottom;" loading="lazy" src="{{ $firstImage.RelPermalink }}" alt="{{ .Description }}">
+                    <img loading="lazy" src="{{ $firstImage.RelPermalink }}" alt="{{ .Description }}">
                 </a>
             </li>
             {{ end }}
