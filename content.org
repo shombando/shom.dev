@@ -1739,6 +1739,7 @@ With a certain nostalgia for the early web ever present, a Gemini site (gemite? 
 :EXPORT_HUGO_SECTION: film
 :EXPORT_HUGO_MENU: :menu "main" :weight 0 :title Film
 :EXPORT_FILE_NAME: _index
+:EXPORT_HUGO_IMAGES: /posts/20231207_film-photography/cameras.jpg
 :END:
 I had shot two rolls of film in college but couldn't afford the on-going expense, but I really wish I had found my way back to film photography sooner. Better late than never. I'm shooting fully manual cameras, most of them without any built-in light meters. I'm now developing and scanning black & white negatives at home and plan to take on color film soon.
 
