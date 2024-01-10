@@ -6,16 +6,34 @@
   ul {
 	  display: flex;
 	  flex-wrap:wrap;
-	  gap:0.5em;
+	  gap: 0.5em;
   }
   li {
-	  flex-grow:1;
 	  list-style-type:none;
   }
   li.lastChild {
 	  flex-grow:10;
   }
-  </style>
+  .main {
+	  max-width: 98vw;
+  }
+  @media screen and (min-width: 600px) {
+	  .main {
+		  max-width: 90vw;
+	  }
+	  ul {
+		  gap: 1em;
+	  }
+  }
+  @media screen and (min-width: 1600px) {
+	  .main {
+		  max-width: 75vw;
+	  }
+	  ul {
+		  gap: 1.5em;
+	  }
+  }
+</style>
 <header>
     <h1>{{ .Title }}</h1>
     {{.Content}}
@@ -26,12 +44,20 @@
         <h4>{{ .Key }}</h4>
         <ul>
             {{ range .Pages }}
-            {{ $firstImage := index (.Resources.ByType "image") 0 }}
-            {{ $firstImage = $firstImage.Fit "350x250" }}
+            {{ $largeImage := index (.Resources.ByType "image") 0 }}
+            {{ $largeImage = $largeImage.Fit "500x500" }}
+            {{ $mediumImage := index (.Resources.ByType "image") 0 }}
+            {{ $mediumImage = $mediumImage.Fit "350x350" }}
+            {{ $smallImage := index (.Resources.ByType "image") 0 }}
+            {{ $smallImage = $smallImage.Fit "175x175" }}
             <li>
-                <a href="{{ .RelPermalink }}" title="{{ .Title }}">
-                    <img loading="lazy" src="{{ $firstImage.RelPermalink }}" alt="{{ .Description }}">
-                </a>
+              <a href="{{ .RelPermalink }}" title="{{ .Title }}">
+				<picture>
+				  <source srcset="{{ $largeImage.RelPermalink }}" media="(min-width:1200px)">
+				  <source srcset="{{ $mediumImage.RelPermalink }}" media="(min-width:600px)">
+                  <img loading="lazy" src="{{ $smallImage.RelPermalink }}" alt="{{ .Description }}">
+				</picture>
+              </a>
             </li>
             {{ end }}
 			<li class="lastChild"></li>
