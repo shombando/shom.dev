@@ -8,6 +8,54 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Tech debt for personal projects                           :foss:rant:
+CLOSED: [2024-01-20 Sat 01:16]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240119_tech-debt-for-personal-projects
+:EXPORT_HUGO_IMAGES: /posts/20240119_tech-debt-for-personal-projects/Deal-with-the-tech-debt_by_psd-on-Flickr_CCbySA.jpg
+:EXPORT_HUGO_MENU:
+:END:
+A great thing about Free and Open Source Software (FOSS) is that anyone can create a thing, share it with others, and anyone else can contribute and make it better. It's also great to solve a problem for yourself and just share it with the world just in case it helps someone else. I know I have benefited from both those modalities, so I have tried to share a few tools and knowledge on this blog and through my repos. So that's the ideal scenario, but there is a downside that I hadn't quite grasped before I fell into it... personal tech debt.
+
+*** Scratch your own itch "software"
+It's one thing to write a janky script to solve your problem but a whole different ball-game to share it with the world. This is after you've overcome the first hurdle: the notion that others would have done it better and smarter, fully embracing the benefits and vulnerability of working in the open. Sharing with the world means that you have to fix things properly and shimming a problem isn't always an option. Getting great input from others is awesome but also overwhelming because I don't want to just implement something without understanding what it is. The genesis of some of these "projects" was to "scratch your own itch" but once I put it out there, I have a strong desire to not put out crap, which means finding the time and motivation to learn nuances and do it right. Ultimately that means the project quickly becomes unmaintained.
+
+*** A really-nice-post™
+The same goes for writing blog posts, "ohhh, I had to read a bunch of old forum threads which are all just a little outdated but I figured it out so I'll make a really-nice-post™ to help others". Well, finding time and motivation to write that post is even scarcer. Now the itch has been scratched and unless it's a really-nice-post™ then there's really no point in writing it at all since the information is technically out there. Such a post has a high bar for quality, it must:
+- Provide clear context and describe the problem
+- Layout out potential solutions
+- Describe the chosen solution
+- Provide detailed steps
+  - Code snippets in fences so they're rendered with highlighting
+  - Screenshots where applicable
+- Links and credit to all the sources
+So it's not much of a surprise that such a post is just as well-intentioned as it is non-existent.
+
+*** The three mes
+There's a past-me, the now-me, and the future-me and they're almost never happy with each other. The now-me always expected more of past-me and has high ambition for future-me. Given that the only me that has agency now is now-me, I've decided to... rant. To be fair to past-me, the only reason I'm ranting now is because I finally updated [[https://github.com/shombando/keyoxidizer][Keyoxidizer]][^fn:1], hopefully future-me is happy that there was an update and this post was published (and hopefully, that there was a shift in attitude, but let's not jump ahead).
+
+*** Keyoxidizer
+I made Keyoxidizer to scratch my own itch, sharing it with the world was exciting as it looked like some people got some use out of it. GPG identity management isn't that straight forward and I was learning by doing. Sharing with the world paid-off because I got great feedback and a couple of contributions. But some of the feedback about best practices was a bit over my head. I understood enough to know that what I had implemented (RSA) was fine but neither modern nor performant. But I didn't understand the feedback enough to directly translate that to the GPG unattended key generation config format (it's not straight-forward, or so I thought because it's complicated)! Also I wanted to learn and make other improvements on handling this, like giving users choice of algo... so predictably it didn't get done. It fell into the really-nice-post™ black-hole.
+
+Ultimately, what helped was to just narrow my focus on a specific implementation[^fn:2]. Something that I would have easily done in a work context, but doing it for a personal project is difficult because there are so many competing goals[^fn:3]. 
+
+*** Personal tech-debt
+So why did it take 700+ words to get to the titular point? Because I'm still fighting against past-me's desire to have a really-nice-post™[^fn:4] and future-me's concern that this is all rubbish anyway.
+
+I have been doing an increasingly better job of keeping personal notes on hobbies, highlights from articles, archiving links and documents that have reference potential, etc.[^fn:5] for months. I'm trying to build on that habit to decrease my personal tech-debt. Capturing information when I think of it and do a quick search so I can come back to it more easily later. Biting off smaller chunks and getting it running; basically, everything I would do at work but for hobbies? I don't want to make my hobbies a chore but it is nice to see progress and completion. I'm still uncomfortable with the idea that my personal tech-debt can become someone's problem if I share what I'm doing and they decide to use it. But the alternative might be [[https://xkcd.com/979/][DenverCoder9]], so doing work out in the open and not producing a really-nice-post™ might be okay?
+
+#+begin_export hugo
+{{< exif src="Deal-with-the-tech-debt_by_psd-on-Flickr_CCbySA.jpg" caption="Deal with the tech debt" alt="Pen drawing on a post-it note of a grim reaper with the text above reading DEAL WITH THE TECH DEBT" showexif="false" >}}
+#+end_export
+[^fn:6]
+
+[^fn:1]: Linking to Github mirror because [[https://codeberg.org/shom/keyoxidizer][Codeberg]] and [[https://git.sr.ht/~shom/keyoxidizer][Sourcehut]] have been dealing with DDoS attacks.
+[^fn:2]: changing the ~Key-Type: EDDSA~ and specify the ~Key-Curve: ed25519~.
+[^fn:3]: I want to learn, yak-shave, experiment, be present instead of being results oriented and enjoy the experience.
+[^fn:4]: Fun fact - the oldest incomplete draft on this blog is from 2021-10-25 about org-capture template for Hugo, it wasn't nice enough to finish and post but would have helped a more recent past-me had I finished writing it.
+[^fn:5]: I've been using [[https://logseq.com/][Logseq]] for it (org data format) but just using the `#` notation to create pages and links using the journal as a front-end for note capture.
+[^fn:6]: "Deal with the tech debt" by dafyddbach is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse. 
 ** DONE Film Photography                   :film:
 CLOSED: [2023-12-07 Thu 03:06]
 :PROPERTIES:
