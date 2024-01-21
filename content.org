@@ -8,6 +8,108 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE URL shortening for blog links natively in Hugo      :foss:hugo:emacs:
+CLOSED: [2024-01-21 Sun 00:36]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240121_url-shortening-for-blog-links-natively-in-hugo
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/1ba87346
+:EXPORT_HUGO_IMAGES: /posts/20240121_url-shortening-for-blog-links-natively-in-hugo/3D-strongest-link.jpg
+:EXPORT_HUGO_MENU:
+:END:
+This blog post can also be found at [[/s/1ba87346][1ba87346]]. This short URL is designed to make sharing online more compact without having to use an external URL shortening service. The permalink for this post is 62 characters (plus base URL, everything following discounts the base URL), while the short URL is 11 characters. Every post will predictably be 11 characters since I'm using CRC32 hash of the permalink to generate the short link. My base domain is 8 characters including the dot so a fully qualified link will be 27 characters, which is acceptable. All the while resolving to a fully informative URL (date + topic).
+
+Hugo provides an [[https://gohugo.io/content-management/urls/#aliases][alias functionality]] to add one or more alias to every page through the front matter. There's no built-in automation around this and I also use [[https://ox-hugo.scripter.co/][ox-hugo]] to generate my Hugo files from a single org file so I decided to add the functionality to the org-capture template that I have already customized to generate Hugo slugs for posts.
+
+Generating a CRC32 hash is really straight-forward in Ubuntu (my build OS due to Emacs version requirement, yes it's heavy for CI/CD), it's just ~crc32 file.txt~ so a naive implementation would be:
+#+BEGIN_SRC sh
+echo "20240121_url-shortening-for-blog-links-natively-in-hugo" > slug.txt
+crc32 slug.txt
+
+ad734a45
+#+END_SRC
+But I didn't want transient files being created so I found this [[https://stackoverflow.com/questions/44804668/how-to-calculate-crc32-checksum-from-a-string-on-linux-bash#49446525][super hacky and delightful way]] of doing it:
+#+BEGIN_SRC sh 
+echo -n "20240121_url-shortening-for-blog-links-natively-in-hugo" | gzip -1 -c | tail -c8 | hexdump -n4 -e ' '"%08x"'
+1ba87346%
+#+END_SRC
+#+begin_export html
+<style>
+aside {
+  padding-left: 0.5rem;
+  margin-left: 20%;
+  float: block-end;
+  box-shadow: inset 5px 0 5px -5px #29627e;
+  font-style: italic;
+  font-size: medium;
+  text-align: right;
+  color: #29627e;
+}
+</style>
+#+end_export
+#+begin_aside
+The file CRC32 is different from just the string, which totally makes sense but threw me off. I think the CRC for just the text makes more sense but either method would mitigate collisions if you stick to the same method for all links.
+#+end_aside
+So I made that into a script and glued it up with my org-capture template for Hugo.
+#+BEGIN_SRC elisp
+(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/"
+							  (shell-command-to-string
+							   (concat "~/dev/shom.dev/crc32Janky.sh " fname)))
+#+END_SRC
+
+As I mentioned in my previous post, my oldest draft is on that topic but since that's never getting published, most of it is the capture template.
+#+begin_details :trim-post nil
+#+begin_summary
+Here's the full configuration for ox-hugo (click arrow to expand):
+#+end_summary
+#+BEGIN_SRC elisp
+(use-package ox-hugo
+  :straight t
+  :config
+  ;; Org capture template for Hugo posts
+  ;; https://ox-hugo.scripter.co/doc/org-capture-setup/
+  (with-eval-after-load 'org-capture
+	(defun org-hugo-new-subtree-post-capture-template ()
+	  "Returns `org-capture' template string for new Hugo post.
+See `org-capture-templates' for more information."
+	  (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+			 (fname (concat (format-time-string "%Y%m%d_") (org-hugo-slug title))))
+		(mapconcat #'identity
+				   `(
+					 ,(concat "\n* DRAFT " title)
+					 ":PROPERTIES:\n:EXPORT_FILE_NAME: index"
+					 ,(concat ":EXPORT_HUGO_BUNDLE: " fname)
+					 ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/"
+							  (shell-command-to-string
+							   (concat "~/dev/shom.dev/crc32Janky.sh " fname)))
+					 ,(concat ":EXPORT_HUGO_IMAGES: /posts/" fname "/image.jpg")
+					 ":EXPORT_HUGO_MENU:\n:END:"
+					 "%?\n")          ;Place the cursor here finally
+				   "\n")))
+
+	(add-to-list 'org-capture-templates
+				 '("h"                ;`org-capture' binding + h
+				   "Hugo post"
+				   entry
+				   ;; It is assumed that below file is present in `org-directory'
+				   ;; and that it has a "Blog Ideas" heading. It can even be a
+				   ;; symlink pointing to the actual location of all-posts.org!
+				   (file+olp "~/dev/shom.dev/content.org" "Content")
+				   (function org-hugo-new-subtree-post-capture-template)
+				   :prepend t))))
+#+END_SRC
+#+end_details
+#+begin_export html
+<br />
+#+end_export
+
+Now I need to make a nice fancy little sharing link and icon that is rendered on every page and go back and update the old posts. The downside of this approach is that it doesn't generate all shortened links on build only at capture, which is generally better for not breaking links.
+
+I don't know much about theme-templating (have a few overrides and shortcodes) or using page data to create new elements so I'll appreciate pointers and help in making my aliases as nice share-links automatically rendered by Hugo.
+
+#+begin_export html
+<p class="attribution">Share card image: "<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/86530412@N02/8253443979">3D Strongest Link</a>" by <a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/86530412@N02">ccPixs.com</a> is licensed under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by/2.0/?ref=openverse">CC BY 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img></a>. </p> 
+#+end_export
 ** DONE Tech debt for personal projects                           :foss:rant:
 CLOSED: [2024-01-20 Sat 01:16]
 :PROPERTIES:
@@ -48,14 +150,14 @@ I have been doing an increasingly better job of keeping personal notes on hobbie
 #+begin_export hugo
 {{< exif src="Deal-with-the-tech-debt_by_psd-on-Flickr_CCbySA.jpg" caption="Deal with the tech debt" alt="Pen drawing on a post-it note of a grim reaper with the text above reading DEAL WITH THE TECH DEBT" showexif="false" >}}
 #+end_export
-[^fn:6]
-
+#+begin_export html
+<p class="attribution">"<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/25996369@N07/8627787038">Deal with the tech debt</a>" by <a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/25996369@N07">dafyddbach</a> is licensed under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse">CC BY-SA 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img></a>. </p>
+#+end_export
 [^fn:1]: Linking to Github mirror because [[https://codeberg.org/shom/keyoxidizer][Codeberg]] and [[https://git.sr.ht/~shom/keyoxidizer][Sourcehut]] have been dealing with DDoS attacks.
 [^fn:2]: changing the ~Key-Type: EDDSA~ and specify the ~Key-Curve: ed25519~.
 [^fn:3]: I want to learn, yak-shave, experiment, be present instead of being results oriented and enjoy the experience.
 [^fn:4]: Fun fact - the oldest incomplete draft on this blog is from 2021-10-25 about org-capture template for Hugo, it wasn't nice enough to finish and post but would have helped a more recent past-me had I finished writing it.
 [^fn:5]: I've been using [[https://logseq.com/][Logseq]] for it (org data format) but just using the `#` notation to create pages and links using the journal as a front-end for note capture.
-[^fn:6]: "Deal with the tech debt" by dafyddbach is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse. 
 ** DONE Film Photography                   :film:
 CLOSED: [2023-12-07 Thu 03:06]
 :PROPERTIES:
