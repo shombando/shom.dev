@@ -4,6 +4,9 @@ title: "shom.dev"
 theme: "PaperMod"
 
 params:
+    description: More curiosity than time. Enthusiastic about humans, food, photography, scuba, dogs, FOSS, nature, woodworking and self-hosting.
+    images:
+      - Shom_20211026_McDonaldLake_00015.jpg
     env: production
     defaultTheme: dark
     ShowReadingTime: true
