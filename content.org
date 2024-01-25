@@ -8,6 +8,37 @@
 :EXPORT_FILE_NAME: _index
 :EXPORT_HUGO_MENU: :menu "main"
 :END:
+** DONE Alacritty: TOML and partial imports                      :linux:foss:
+CLOSED: [2024-01-25 Thu 00:06]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240124_alacritty-toml-and-partial-imports
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/c72325dc
+:EXPORT_HUGO_IMAGES: /posts/20240124_alacritty-toml-and-partial-imports/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+I have written before about using [[/posts/20220514_from-fish-on-gnome-terminal-to-zsh-with-starship-on-alacritty][Alacritty]] as my terminal and I've configured it using YAML. I've been a general fan of YAML, I like the way the syntax looks and there aren't too many brackets of any kind, if it had a line terminator, that'd be great. The downside is that it is indent dependent. But for the most part I'm comfortable with YAML and wherever an option is provided for using YAML, I pick it over TOML.
+
+However, as of version 13 Alacritty is deprecating YAML in favor of TOML (they're providing a ~alacritty migrate~ command that works very well). So I decided to just get with the program instead of delay adoption. This comes with the unexpected side benefit of being able to do imports of one configuration file into another. I discovered this because [[https://sunny.garden/@benmo/111814384857896783][@benmo]] got me wondering how to change the theme of the terminal while in a remote SSH session.
+
+The solution that TOML enable is to create a new configuration file which imports the standard configuration and then just overwrites (and/or adds) to the existing configuration. So I just made a new config file called alacritty-remote.toml: 
+#+begin_src toml
+import=["~/.config/alacritty/alacritty.toml"]
+
+[colors.primary]
+background = "0x333333"
+foreground = "0xD8DEE9"
+#+end_src
+
+Then I created a function in zsh called ~remoteshh~ to start a new Alacritty shell window with this new config file:
+#+begin_src sh
+function sshremote() {
+	  alacritty --config-file ~/.config/alacritty/alacritty-remote.toml -e ssh $1 & disown
+}
+#+end_src
+
+Now when I connect to a remote server over SSH instead of typing ~ssh server~ I type ~sshremote server~ and I get window with a different background color (I'll probably theme is more later).
+
 ** DONE URL shortening for blog links natively in Hugo      :foss:hugo:emacs:
 CLOSED: [2024-01-21 Sun 00:36]
 :PROPERTIES:
