@@ -12,7 +12,7 @@ echo ""
 
 echo "==== Process images and remove GPS info ===="
 LC_ALL=C ; find ./images/ ./static -name '*.jpg' -exec exiftool -overwrite_original "-gps*=" {} \;
-cp -r images/* content/posts/
+cp -r images/* content/
 echo ""
 
 echo "==== Copy film photo posts into content folder ===="
