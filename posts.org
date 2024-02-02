@@ -4,6 +4,29 @@
 #+startup: indent
 
 * Content
+** DONE How to get Started                                            :start:
+CLOSED: [2024-02-02 Fri 02:37]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240202_how-to-get-started
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/8aae4e73
+:EXPORT_HUGO_IMAGES: /posts/20240202_how-to-get-started/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+Sometimes it's hard to get started with something new. Sure there are so many resources, almost too many resources, distilling just the essential information is difficult. Here I'm collecting the things I've learned over time, so if I were starting from scratch today, I could just jump in and get started.
+
+These are not blog posts fixed in time so if something changes I hope to change the information inline without clarifying edits.
+
+👆🏽 That's the new section I'm adding to the website. I have benefited immensely from people that have shared their knowledge so I want to capture and share things I've learned/am learning that's a bit more methodical than a drive by note just explaining a specific issue. I hope this also helps me write blog posts more freely because those are not guides and can be more 'footloose and care-free' (just like me saying that as an inside joke to myself).
+
+I struggled with what to call the new section, since it's not really a step-by-step for every minute detail but it's also not skipping over the hurdles in trying to present a polished demo. It's just about getting started, but "getting started" doesn't fit with the single word menu structure so I asked a friend for some ideas:
+- =Genesis=
+- =Preamble=
+- =Prologue=
+That made me think of =Bootstrap= but ultimately I decided I'm really just going for jumping in to start something so a simple =Start= $XYZ made the most sense?
+
+I did a lot of yak-shaving on this Hugo site, refactoring my org-mode file structure for ox-hugo, and finally my org-capture templates to make the process smoother. So much so, that I didn't get farther than the first paragraph of the first Start article/guide. However, I am pretty impressed with how flexible Hugo yet how simple Hugo is (and how well it's supported by ox-hugo). I keep replacing more pieces of the layout (now each section has it's own RSS feed) and edging closer to creating my own theme (if I do, I'll write a Start guide)!
+
 ** DONE Alacritty: TOML and partial imports                      :linux:foss:
 CLOSED: [2024-01-25 Thu 00:06]
 :PROPERTIES:
