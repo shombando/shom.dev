@@ -1,0 +1,13 @@
+#+hugo_base_dir: .
+#+hugo_section: start
+
+* Start
+** TODO DRAFT Hosting Applications on a VPS                      :foss:linux:
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: hosting-applications-on-a-vps
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/704014a3
+:EXPORT_HUGO_IMAGES: /start/hosting-applications-on-a-vps/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+A Virtual Private Server (VPS) is essentially just like a computer running in the other room. The big difference is you can't see it or touch it or troubleshoot by slapping the side of the case even if you wanted to because it's not a real machine. It's pretending to be a single computer but it exists as a virtual computer borrowing processors, memory, hard drive from it's host machine.

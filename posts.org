@@ -4,10 +4,6 @@
 #+startup: indent
 
 * Content
-:PROPERTIES:
-:EXPORT_FILE_NAME: _index
-:EXPORT_HUGO_MENU: :menu "main"
-:END:
 ** DONE Alacritty: TOML and partial imports                      :linux:foss:
 CLOSED: [2024-01-25 Thu 00:06]
 :PROPERTIES:
@@ -1899,41 +1895,3 @@ With a certain nostalgia for the early web ever present, a Gemini site (gemite? 
 
 =gemini://gem.shom.dev=
 
-* Home
-:PROPERTIES:
-:EXPORT_HUGO_SECTION:
-:EXPORT_FILE_NAME: _index
-:EXPORT_HUGO_MENU: :menu "main" :weight -3 :title Home
-:END:
-
-* Tags
-:PROPERTIES:
-:EXPORT_HUGO_SECTION: tags 
-:EXPORT_HUGO_MENU: :menu "main" :weight -2 :title Tags
-:EXPORT_FILE_NAME: _index
-:END:
-
-* Posts
-:PROPERTIES:
-:EXPORT_HUGO_SECTION: posts
-:EXPORT_FILE_NAME: _index
-:EXPORT_HUGO_MENU: :menu "main" :weight -1 :title Posts
-:END:
-
-* Film
-:PROPERTIES:
-:EXPORT_HUGO_SECTION: film
-:EXPORT_HUGO_MENU: :menu "main" :weight 0 :title Film
-:EXPORT_FILE_NAME: _index
-:EXPORT_HUGO_IMAGES: /posts/20231207_film-photography/cameras.jpg
-:END:
-
-#+begin_description
-Shooting manual 35mm and medium format cameras and developing film.
-#+end_description
-
-I had shot two rolls of film in college and loved it, but I couldn't afford the on-going expense and got a digital camera instead. I really wish I had found my way back to film photography sooner but better late than never. I've started shooting both 35mm and 120 film, fully manual cameras, most of them without any built-in light meters. I'm also developing and scanning black & white negatives at home and plan to take on color film soon. Here's a running log of photos that I'm taking. I have a goal to share at least one photo per roll and eventually also print a photo per roll.
-
-I will figure out a better way to showcase all my photos at some point, but for now [[https://photos.shom.dev][landscape and scuba photos are here]].
-
-Each photo is tagged with the camera, film, and development process, and the alt-text for each image is included as a figure caption as well. The focus is the image so the title and descriptions are in muted colors. Finally, clicking on the image from it's own page will load a higher resolution version. Please get in touch if you want to chat about film photography, the best place to find me is on [[https://fosstodon.org/@shom][Mastodon]].
