@@ -4,6 +4,25 @@
 #+startup: indent
 
 * Content
+** DONE filmPoster with Gum Hugo photo post bliss?                :hugo:foss:
+CLOSED: [2024-02-04 Sun 18:49]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240204_filmposter-with-gum-hugo-photo-post-bliss
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/a6b91110
+:EXPORT_HUGO_IMAGES: /posts/20240204_filmposter-with-gum-hugo-photo-post-bliss/filmPosterDemo.webm
+:EXPORT_HUGO_MENU:
+:END:
+I didn't have a good process to add film photos to my Hugo static site with consistent tags to serve as metadata for camera, film, developer, format, etc. so I cobbled together a small Bash script to collect some input and create a folder as a Hugo `page bundle` but it was a very manual process still and the tag template soon became tedious to maintain.
+
+I discovered [[https://github.com/charmbracelet/gum][Gum]] and decided to play with it to see if it would improve my post creation experience and it has been pretty good during my brief testing.
+
+That's what lead to the creation of [[https://github.com/shombando/filmPoster][filmPoster]]: A Gum powered interactive Bash script to create Hugo film photo posts.
+#+begin_export html
+<video controls width="800">
+  <source src="./filmPosterDemo.webm" type="video/webm" />
+</video>
+#+end_export
 ** DONE How to get Started                                            :start:
 CLOSED: [2024-02-02 Fri 02:37]
 :PROPERTIES:
