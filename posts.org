@@ -4,6 +4,26 @@
 #+startup: indent
 
 * Content
+** DONE Firefox scrollbar size                                 :foss:firefox:
+CLOSED: [2024-02-08 Thu 12:48]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240208_firefox-scrollbar-size
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/dee21477
+:EXPORT_HUGO_IMAGES: /posts/20240208_firefox-scrollbar-size/config-screenshot.jpg
+:EXPORT_HUGO_MENU:
+:END:
+I don't like seeing the scrollbar until I want to see it. I want to see it when:
+- I'm scrolling with an indication of how big the page is
+- I want to grab the scrollbar with the mouse to move it to specific location
+When I want to grab the scrollbar, I want it to be a big target to hit, not something I'm chasing around trying to click accurately on a 4K monitor.
+#+attr_html: :caption Firefox about:config settings :alt Firefox settings showing widget.non-native-theme.scrollbar.override set to 50
+[[./config-screenshot.jpg]]
+
+Firefox allows you to customize this by going to ~about:config~ and then modifying =widget.non-native-theme.scrollbar.override=, you can also change the style. It only shows up when you scroll and only becomes chonky when you mouse over it. You can control how chonky it is, to your liking. You can also change the style if you would like a non-native style.
+#+attr_html: :caption Firefox with chonky scrollbar :alt Firefox is shown with a chonky scrollbar with the mouse hovering over it and a snippet of a previous blog post is visible showing relatibe position in viewport
+[[./chonky-scrollbar.jpg]]
+
 ** DONE filmPoster with Gum Hugo photo post bliss?                :hugo:foss:
 CLOSED: [2024-02-04 Sun 18:49]
 :PROPERTIES:
