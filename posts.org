@@ -21,8 +21,22 @@ That's what lead to the creation of [[https://github.com/shombando/filmPoster][f
 #+begin_export html
 <video controls width="800">
   <source src="./filmPosterDemo.webm" type="video/webm" />
+  <track kind="subtitles" src="alt_video_en.vtt" srclang="en" />
 </video>
 #+end_export
+#+begin_src org :exports none :tangle content/posts/20240204_filmposter-with-gum-hugo-photo-post-bliss/alt_video_en.vtt
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.000
+- Sorry, this is a poor solution to provide alt-text. Description of video follows:
+
+2
+00:00:05.000 --> 00:00:30.000
+- Screencapture of a terminal window side by side with a browser window. The terminal is demonstrating an application that enters information about at photo like title, film, camera, etc. and then selects the file from a file picker. Once the process is completed the browser auto refreshes to show the new photo has been added to the grid and then the photo page is loaded showing the different tags via clicking a few tags it is demonstrated that they were generated and linked with other posts.
+#+end_src
+=Note:Alt-text provided as closed-caption=
+
 ** DONE How to get Started                                            :start:
 CLOSED: [2024-02-02 Fri 02:37]
 :PROPERTIES:

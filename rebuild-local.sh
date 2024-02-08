@@ -10,4 +10,4 @@ echo ""
 source ./build.sh
 
 echo "+++ Start Hugo server showing drafts +++"
-hugo server -D
+hugo server --buildDrafts --noHTTPCache
