@@ -1,8 +1,151 @@
 #+hugo_base_dir: .
 #+hugo_section: start
+#+seq_todo: DRAFT DONE
 
 * Start
-** TODO DRAFT Hosting Applications on a VPS                      :foss:linux:
+** DONE Writing system automation script and service   :start:linux:terminal:
+CLOSED: [2024-02-14 Wed 14:35]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: writing-system-automation-script-and-service
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/ad49dddf
+:EXPORT_HUGO_IMAGES: /start/writing-system-automation-script-and-service/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+
+Fundamentally automation is being smart about being lazy, I like that. Writing scripts to do small tasks is an easy way to be lazy but there are times when you don't want to run the script and remember to start it each time you log in. That's where services come in handy, a lot of applications install their service to automatically do things. As an user you can do that too without needing admin rights. This article/guide goes through writing a small =bash= script, creating a =systemd= service, and running it as a regular user.
+#+hugo: more
+
+Since learning is easier in the context of a project where I'm solving a real problem, this article is focused on creating everything I need to automatically changing the theme of my terminal emulator =Alacritty= when the system changes between light-dark theme. If you just want the project itself, the repos are on [[https://github.com/shombando/alacritty-auto-theme][Github]] or [[https://git.sr.ht/~shom/alacritty-auto-theme][Sourcehut]].
+
+*** Intended audience
+This entry is written for an audience that might be interested in tweaking their system/wants to make small scripts but does not necessarily have a programming background so I'm aiming to explain what is happening and why do it that way. I'll also try to point out larger concepts around programming/logic and link to those definitions.
+
+*** Motivation behind this project
+I like and use the Alacritty terminal emulator, but it does not automatically follow the system theme. The issue tracker discussion made it clear this feature won't be supported. Fair enough and as an open system we can add our own customization, so that's great. After switching to =TOML= and [[/posts/20240124_alacritty-toml-and-partial-imports][discovering partial imports]], I knew I could scratch my own itch. Someone [[https://www.christianfosli.com/posts/on-colorscheme-changed][wrote a rust tool]] which was helpful as a guide but I wanted something with low dependency that could be used without installing a whole build environment or running binaries that you can't see. So I made a =bash= script and a =systemd= service and it was fun(?) to learn more about =dbus=.
+
+*** Background
+Alacritty provides the ability for an user to define themes (or override parts of a theme). All of this is achieved via the =alacritty.toml= configuration file (which also let your configure everything else about the application). With the switch to TOML, Alacritty allows the import of other =.toml= files that have themes defined, so it's easy to keep configuration separate from the current theme. Also if any of the configuration files are updated, the terminal windows will auto-reload (if ~live_config_reload = true~ is set). This functionality makes it possible to import a =theme.toml= file and update the contents of the file and have Alacritty change themes live. Unfortunately, Alacritty does not automatically follow the current system theme preference so we have to create our own solution for that piece.
+
+So how does it work? Breaking the problem down we can see there are two big pieces to this that are independent of each other; changing the theme for Alacritty programmatically and making the theme follow the system theme (light/dark mode). This is the concept around [[https://en.wikipedia.org/wiki/Scope_(project_management)][scope]] and [[https://en.wikipedia.org/wiki/Requirements_management][requirements]] management, note that scope and requirements are loaded terms also used for software development and often in the same sentence but their meaning changes with context.
+
+*** Changing theme programmatically
+Since Alacritty is capable of doing a live-reload of it's config file, any behavior can be changed in without relaunching the terminal. However, doing it cleanly requires creating three additional =.toml= files to contain all the theme information. That way the main configuration file doesn't need to be changed (and risk messing up the whole configuration and making the terminal potential unusable) each time the theme changes. This is the concept around [[https://en.wikipedia.org/wiki/Separation_of_concerns][separation of concerns]] and can definitely be applied to simple scripts and config files.
+
+Let's look at the files:
+=alacritty.toml⬇️=
+#+begin_src toml
+  live_config_reload = true
+  import = [ "~/.config/alacritty/alacritty-auto-theme/theme.toml" ]
+  # Rest of Alacritty config
+#+end_src
+=theme.toml⬇️=
+#+begin_src toml
+  import = [ "~/.config/alacritty/alacritty-auto-theme/light_theme.toml" ]
+#+end_src
+
+The main config file =alacritty.toml= just points to (~imports~) a file called =theme.toml= so whatever theme name or actual theme colors are in that file are loaded (as shown above, it'll load the light theme). But changing that file with the name of the preferred light and dark theme each time would be painful, so we'll introduce two more files =light_theme.toml= and =dark_theme.toml= which will contain the names/color definition of the preferred theme. This way, the user only has to update those two files with their preferred theme and the script can just switch =theme.toml= to point to one or the other. This is the simplest use case of [[https://en.wikipedia.org/wiki/Modular_programming][modularity]] to avoid the human and the computer from editing the contents of the same document and gain more predictability.
+
+=light_theme.toml⬇️=
+#+begin_src toml
+  import = [ '~/.config/alacritty/themes/themes/pencil_light.toml' ]
+#+end_src
+=dark_theme.toml⬇️=
+#+begin_src toml
+  import = [ '~/.config/alacritty/themes/themes/nord.toml' ]
+#+end_src
+
+At this point you can manually change the light/dark theme independent of the system theme by changing what is inside the =theme.toml= file. However, we'd prefer that the human never actually directly touches the that file, so we can define two aliases ~alacritty-light~ or ~alacritty-dark~ to make it convenient without having to edit the file manually.
+#+begin_src sh
+alias alacritty-light="echo \"import = [ '~/.config/alacritty/alacritty-auto-theme/light_theme.toml' ]\" > ~/.config/alacritty/alacritty-auto-theme/theme.toml"
+alias alacritty-dark="echo \"import = [ '~/.config/alacritty/alacritty-auto-theme/dark_theme.toml' ]\" > ~/.config/alacritty/alacritty-auto-theme/theme.toml"
+#+end_src
+
+And just with that we can change our terminal theme by just calling a single command. Part one is done and successful, take the W and celebrate!
+
+*** Automating theme change to follow system theme
+This part is a little more involved. Since Alacritty does not provide any mechanism to determine what the current system theme preference is, we have to listen for the system announcing when the theme is changing. On Linux a lot of that communication is done over [[https://en.wikipedia.org/wiki/D-Bus][D-Bus]] and listening to the right message will tell us when the theme changes and then we can take action.
+
+=dbus-monitor= allows us to listen to the all the messages or we can set filters to only listen to specific events. I didn't know much about the workings of =dbus= so the Rust tool article linked above and several Stack Overflow threads helped me to get the syntax figured out. You can just run =dbus-monitor= without any filters in your terminal now to see everything talking on it. But in your script we'll only listen for the setting change notification.
+
+**** Script
+=AlacrittyAutoTheme.sh⬇️=
+#+begin_src sh
+    #!/bin/bash
+    interface="org.freedesktop.portal.Settings"
+    monitor_path="/org/freedesktop/portal/desktop"
+    monitor_member="SettingChanged"
+    count=0 #D-Bus fires the change event 4 times so we'll only act on it once
+
+    dbus-monitor --profile "interface='$interface',path=$monitor_path,member=$monitor_member" |
+        while read line; do
+          	let count++
+    		if [ $count = 3 ]; then
+          		theme="$(gsettings get org.gnome.desktop.interface color-scheme)"
+          		if [[ "$theme" == "'prefer-dark'" ]]; then
+          			#Need to set with full paths, goofy things are happening otherwise
+          			echo "$(echo import = [ \'~/.config/alacritty/alacritty-auto-theme/dark_theme.toml\' ] > ~/.config/alacritty/alacritty-auto-theme/theme.toml)"
+          		else
+          			echo "$(echo import = [ \'~/.config/alacritty/alacritty-auto-theme/light_theme.toml\' ] > ~/.config/alacritty/alacritty-auto-theme/theme.toml)"
+          		fi
+          		count=0
+    		fi
+        done
+#+end_src
+
+So what's happening here:
+- First we set up the filter (line 2-4) for settings changed then we start monitoring =dbus= (line 7).
+- We keep listening until we have matched our filter, now we can execute our commands. You'll see that the first thing we do is increment a counter (line 9) and only take action the 4th time (line 10), that's because the message goes out on =dbus= 4 times and I don't know why but we only need to act once.
+- We read the current theme (line 11) so we don't have to keep track of what it was, this is called [[https://en.wikipedia.org/wiki/Composability][stateless]] design. [^fn:1]
+- We set the appropriate theme based on what the user selected (lines 12-17). Note: we could have called the aliases we defined in the previous section but the user could change the alias or it could get removed for whatever reason and we don't want to create a dependency outside the scope of our control.
+- We reset the counter so we can start counting again the next time there's a new event (line 19).
+
+We can leave a terminal open all the time and keep that script running in it. That would work but we want it to auto-start every time we're logged in and monitor in the background. That's what a =systemd= service allows us to do:
+
+**** Service
+=AlacrittyAutoTheme.service⬇️=
+#+begin_src conf
+  [Unit]
+  Description=Alacritty automated theme switching based on Gnome system theme
+  Require=dbus.service
+  After=dbus.service
+
+  [Service]
+  ExecStart=/bin/bash /home/%u/.config/alacritty/alacritty-auto-theme/AlacrittyAutoTheme.sh
+  Type=simple
+  Restart=on-failure
+
+  [Install]
+  WantedBy=default.target
+#+end_src
+
+We don't really need to understand this beyond following the template, but here's a [[https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files][good resource]]. So what's happening here:
+- =[Unit]=: Describes what this service does and what it is dependent upon
+- =[Service]=: What do we want to happen? We want to run our script, so we have to say how to do that ~/bin/bash~ and where it is located ~./home/%u/.config/alacritty/alacritty-auto-theme/AlacrittyAutoTheme.sh~ [^fn:2]
+- =[Install]=: We want it to run only for the current user.
+
+**** Install
+Alright, we're finally at the point where we can put it all these small pieces and make it all work together.
+#+begin_src sh
+  mkdir -p ~/.config/systemd/user/
+  cp ./AlacrittyAutoTheme.service ~/.config/systemd/user/
+  systemctl --user enable AlacrittyAutoTheme.service
+  systemctl --user start AlacrittyAutoTheme.service
+#+end_src
+We create an user space =systemd= service folder[^fn:3] so that we don't need admin rights on the machine to run the script as a service when we log-in. Then we copy the service to that folder and use =systemctl= command to talk to =systemd= and tell it to enable and then start our service (note =--user= so for user space).
+
+The idea of arranging small tools to accomplish a big task is called [[https://en.wikipedia.org/wiki/Composability][composability]]  I'm burying the lede here because all the other concepts I've mentioned before fall under composability but it's too top down and theoretical until you see the whole toolchain being put together.
+
+That's it, we've scratched our own itch, created a standalone tool that could be used by others, and learned about concepts.
+
+*** Conclusion
+We've followed the [[https://en.wikipedia.org/wiki/Unix_philosophy][UNIX philosophy]] fairly closely and making tools that are much more complex fundamentally follows a similar flow. I wanted to write this article as an exercise to understand the basics required to do something that most Linux users would consider rather straightforward. I still don't know if it's written at an appropriate level for the intended audience but I ended up having to write a LOT more than I would have imagined at the start. I want to continue making things I know more accessible to others so if this applies to you, I would love to hear your thoughts and feedback and happy to help if you have any questions.
+
+[^fn:1]: =gsettings= is only available on the Gnome desktop environment so we could support other systems by checking what system we're on and calling the appropriate function to read the current state.
+[^fn:2]: Systemd service does not understand relative paths like =~= (to point to home directory), but it has it's own [[https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html#Specifiers][Specifiers]] like =%u=.
+[^fn:3]: The =-p= only makes a new folder if one doesn't exist.
+
+** DRAFT Hosting Applications on a VPS                           :foss:linux:
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: hosting-applications-on-a-vps
