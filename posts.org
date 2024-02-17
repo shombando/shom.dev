@@ -4,6 +4,30 @@
 #+startup: indent
 
 * Content
+** DONE Face lift
+CLOSED: [2024-02-16 Fri 23:19]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240216_face-lift
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/6933cf4d
+:EXPORT_HUGO_IMAGES: /posts/20240216_face-lift/shom-avatar-highres.jpg
+:EXPORT_HUGO_MENU:
+:END:
+I created my online Avatar in the early 2000s using a Flash tool that someone made and I really wish I could remember more about it. It's been my online presence for over 20 years and it's almost like my real face. Fun fact: One of my co-worker's husband recognized me at a company social event solely from having seen my avatar on caller ID.
+
+#+hugo: more
+I've always wanted a higher resolution version and my friend just made one for me! He's getting started with a drawing application on his iPad and did such an excellent job and I'm delighted, thank you!!!
+
+=BEFORE=
+#+begin_export hugo
+{{< figure src="/posts/20240216_face-lift/shomavatar.png" title="OG Avatar" alt="cartoon face with big eyes, offset toothy grin, mole on right cheek, and black hair, pixelated" align="center" width="" >}}
+#+end_export
+
+=AFTER=
+#+begin_export hugo
+{{< figure src="/posts/20240216_face-lift/shom-avatar-highres.png" title="High Resolution Avatar" alt="cartoon face with big eyes, offset toothy grin, mole on right cheek, and black hair" align="center" width="400px" >}}
+#+end_export
+
 ** DONE Alacritty Auto Theme Switcher                  :linux:foss:alacritty:
 CLOSED: [2024-02-13 Tue 21:28]
 :PROPERTIES:
