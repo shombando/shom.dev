@@ -10,7 +10,7 @@ CLOSED: [2024-02-16 Fri 23:19]
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20240216_face-lift
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/6933cf4d
-:EXPORT_HUGO_IMAGES: /posts/20240216_face-lift/shom-avatar-highres.jpg
+:EXPORT_HUGO_IMAGES: /posts/20240216_face-lift/shom-avatar-highres.png
 :EXPORT_HUGO_MENU:
 :END:
 I created my online Avatar in the early 2000s using a Flash tool that someone made and I really wish I could remember more about it. It's been my online presence for over 20 years and it's almost like my real face. Fun fact: One of my co-worker's husband recognized me at a company social event solely from having seen my avatar on caller ID.
