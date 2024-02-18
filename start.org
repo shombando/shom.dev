@@ -8,8 +8,7 @@ CLOSED: [2024-02-14 Wed 14:35]
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: writing-system-automation-scripts-and-services
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/ad49dddf
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /start/writing-system-automation-script-and-service
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases '(/s/ad49dddf /start/writing-system-automation-script-and-service)
 :EXPORT_HUGO_IMAGES: /start/writing-system-automation-scripts-and-services/header.jpg
 :EXPORT_HUGO_MENU:
 :END:
