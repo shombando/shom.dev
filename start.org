@@ -3,18 +3,19 @@
 #+seq_todo: DRAFT DONE
 
 * Start
-** DONE Writing system automation script and service   :start:linux:terminal:
+** DONE Writing system automation scripts and services :start:linux:terminal:
 CLOSED: [2024-02-14 Wed 14:35]
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
-:EXPORT_HUGO_BUNDLE: writing-system-automation-script-and-service
+:EXPORT_HUGO_BUNDLE: writing-system-automation-scripts-and-services
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/ad49dddf
-:EXPORT_HUGO_IMAGES: /start/writing-system-automation-script-and-service/header.jpg
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /start/writing-system-automation-script-and-service
+:EXPORT_HUGO_IMAGES: /start/writing-system-automation-scripts-and-services/header.jpg
 :EXPORT_HUGO_MENU:
 :END:
 
 #+begin_export hugo
-{{< figure src="/start/writing-system-automation-script-and-service/header.jpg" width="600px" align="center" alt="A watercolor painting with a pink/blue swirly border around a rectangle split along the diagonal with the left being black and the right being white. The text reads 'Alacritty Auto Theme' in the inverse color of the background." >}}
+{{< figure src="/start/writing-system-automation-scripts-and-services/header.jpg" width="600px" align="center" alt="A watercolor painting with a pink/blue swirly border around a rectangle split along the diagonal with the left being black and the right being white. The text reads 'Alacritty Auto Theme' in the inverse color of the background." >}}
 #+end_export
 
 Fundamentally automation is being smart about being lazy, I like that. Writing scripts to do small tasks is an easy way to be lazy but there are times when you don't want to run the script and remember to start it each time you log in. That's where services come in handy, a lot of applications install their service to automatically do things. As an user you can do that too without needing admin rights. This article/guide goes through writing a small =bash= script, creating a =systemd= service, and running it as a regular user.
