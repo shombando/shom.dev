@@ -34,7 +34,7 @@ CLOSED: [2024-02-13 Tue 21:28]
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20240213_alacritty-auto-theme-switcher
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/201f1274
-:EXPORT_HUGO_IMAGES: /posts/20240213_alacritty-auto-theme-switcher/image.jpg
+:EXPORT_HUGO_IMAGES: /posts/20240213_alacritty-auto-theme-switcher/header.jpg
 :EXPORT_HUGO_MENU:
 :END:
 I like and use the Alacritty terminal emulator, but it does not automatically follow the system theme. The issue tracker discussion made it clear this feature won't be supported, fair enough. And after switching to =TOML= and [[/posts/20240124_alacritty-toml-and-partial-imports][discovering partial imports]], I knew I could scratch my own itch. Someone [[https://www.christianfosli.com/posts/on-colorscheme-changed][wrote a rust tool]] which was helpful as a guide but I wanted something with low dependency. So I made a =bash= script and a =systemd= service and it was fun(?) to learn more about =dbus=.
@@ -71,7 +71,7 @@ CLOSED: [2024-02-04 Sun 18:49]
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20240204_filmposter-with-gum-hugo-photo-post-bliss
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/a6b91110
-:EXPORT_HUGO_IMAGES: /posts/20240204_filmposter-with-gum-hugo-photo-post-bliss/filmPosterDemo.webm
+:EXPORT_HUGO_IMAGES: /posts/20240204_filmposter-with-gum-hugo-photo-post-bliss/header.jpg
 :EXPORT_HUGO_MENU:
 :END:
 I didn't have a good process to add film photos to my Hugo static site with consistent tags to serve as metadata for camera, film, developer, format, etc. so I cobbled together a small Bash script to collect some input and create a folder as a Hugo `page bundle` but it was a very manual process still and the tag template soon became tedious to maintain.
