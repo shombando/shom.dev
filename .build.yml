@@ -10,11 +10,11 @@ environment:
   site: shom.dev
 tasks:
   - build: |
+      cd $site
       #Only build and deploy main branch
       if [ "$(git rev-parse origin/main)" != "$(git rev-parse HEAD)" ]; then \
       complete-build; \
       fi
-      cd $site
       ./build.sh
   - deploy: |
       cd $site
