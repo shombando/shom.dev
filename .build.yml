@@ -10,7 +10,10 @@ environment:
   site: shom.dev
 tasks:
   - build: |
-      git diff --exit-code origin/main || exit 
+      #Only build and deploy main branch
+      if [ "$(git rev-parse origin/main)" != "$(git rev-parse HEAD)" ]; then \
+      complete-build; \
+      fi
       cd $site
       ./build.sh
   - deploy: |
