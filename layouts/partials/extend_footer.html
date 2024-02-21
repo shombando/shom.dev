@@ -13,3 +13,34 @@
         <a href="https://ox-hugo.scripter.co" rel="noopener noreferrer">Ox-Hugo</a>
     </span>
 </footer>
+<script
+  src="https://unpkg.com/littlefoot/dist/littlefoot.js"
+  type="application/javascript"
+></script>
+<script type="application/javascript">
+  littlefoot.littlefoot({
+	  activateDelay: 20,
+	  dismissDelay: 100,
+	  activateOnHover: false, //doesn't play nice with tooltip pop-up
+	  dismissOnUnhover: false,
+	  buttonTemplate: `<button
+  aria-label="Footnote <% number %>"
+  class="littlefoot__button"
+  id="<% reference %>"
+  title="Footnote <% number %>"
+/>
+  <% number %>
+</button>`
+}) // Pass any littlefoot settings here.
+</script>
+<style>
+  .littlefoot {
+	  --button-background-active-color: var(--tertiary);
+	  --button-text-color: #fff;
+	  --popover-background-color: var(--theme);
+	  --popover-text-color: var(--content);
+	  --popover-font-family: body.font-family;
+	  --popover-shadow: 0 0 8px var(--secondary);
+}
+</style>
+
