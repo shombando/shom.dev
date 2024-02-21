@@ -10,6 +10,7 @@ environment:
   site: shom.dev
 tasks:
   - build: |
+      git diff --exit-code origin/main || exit 
       cd $site
       ./build.sh
   - deploy: |
@@ -18,3 +19,6 @@ tasks:
       tar -cvz . > ../site.tar.gz
       cd ..
       acurl -f https://pages.sr.ht/publish/$site -Fcontent=@site.tar.gz
+  - exit: |
+      echo "Exiting"
+          
