@@ -24,19 +24,23 @@
 	  activateOnHover: false, //doesn't play nice with tooltip pop-up
 	  dismissOnUnhover: false,
 	  buttonTemplate: `<button
-  aria-label="Footnote <% number %>"
-  class="littlefoot__button"
-  id="<% reference %>"
-  title="Footnote <% number %>"
-/>
-  <% number %>
-</button>`
-}) // Pass any littlefoot settings here.
+					    aria-label="Footnote <% number %>"
+					    class="littlefoot__button"
+					    id="<% reference %>"
+					    title="Footnote <% number %>"
+					  />
+					    <% number %>
+					  </button>`
+  }) // Pass any littlefoot settings here.
 </script>
 <style>
   .littlefoot {
 	  --button-background-active-color: var(--tertiary);
 	  --button-text-color: #fff;
+	  --button-font-family: body.font-family;
+	  --button-font-weight: bold;
+	  --button-height:1.25rem;
+	  --button-text-color: var(--secondary);
 	  --popover-background-color: var(--theme);
 	  --popover-text-color: var(--content);
 	  --popover-font-family: body.font-family;
