@@ -8,15 +8,23 @@
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: using-kanata-to-remap-any-keyboard
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/7b0dccc6
-:EXPORT_HUGO_IMAGES: /start/using-kanata-to-remap-any-keyboard/kanata-icon.svg
+:EXPORT_HUGO_IMAGES: /start/using-kanata-to-remap-any-keyboard/kanata-icon.png
 :EXPORT_HUGO_MENU:
 :END:
 #+begin_export hugo
-{{< figure src="/start/using-kanata-to-remap-any-keyboard/kanata-icon.svg/" width= "400px" title="Kanata logo" alt="Kanata logo is a pink keycap with a darker pink K legend" align="center" >}}
+{{< figure src="/start/using-kanata-to-remap-any-keyboard/kanata-icon.svg" width= "400px" title="Kanata logo" alt="Kanata logo is a pink keycap with a darker pink K legend" align="center" >}}
 #+end_export
 Computer keyboards were designed with historical baggage and for entirely different workflows than we use today and with very little regard for usability. Ergonomic keyboards are great and I personally use a 42-key [[https://github.com/foostan/crkbd][Corne keyboard]] with my desktop and that's what got me to learn to fully touch type and significantly aleviated shoulder stiffness. But what if I could have a similar experience on a laptop, well with [[https://github.com/jtroo/kanata][Kanata]] keyboard remapping I can get some of the important pieces.
-
 #+hugo: more
+
+*** Personal Background / Motivation
+I didn't learn to type at all until I was in tenth grade, due to lack of opportunities. So when we finally got a computer and went to a school that required submitting typed homework, I had to learn in a hurry. But the real motivator was being able to chat with friends on [[https://www.wikipedia.org/wiki/ICQ][ICQ]][fn:1] (sidebar, apparently it still exists I fully expected it to be a historical footnote.)
+
+*** Intended audience
+
+*** Footnotes
+
+[fn:1] Apparently ICQ still exists, I fully expected it to be a historical footnote. Looks lie it has had an interesting past and somewhat checkered past. 
 
 ** DONE Writing system automation scripts and services :start:linux:terminal:
 CLOSED: [2024-02-14 Wed 14:35]

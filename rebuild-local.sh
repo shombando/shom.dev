@@ -10,4 +10,4 @@ echo ""
 source ./build.sh
 
 echo "+++ Start Hugo server showing drafts +++"
-hugo server --buildDrafts --noHTTPCache
+hugo server --buildDrafts --noHTTPCache --disableFastRender --bind pc --baseURL http://pc:1313
