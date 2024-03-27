@@ -4,6 +4,38 @@
 #+startup: indent
 
 * Content
+** DONE When open source goes source available                   :foss:rant:
+CLOSED: [2024-03-27 Wed 17:16]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240327_when-open-source-goes-source-available
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/cee0f88b
+:EXPORT_HUGO_IMAGES: /posts/20240327_when-open-source-goes-source-available/redis.png
+:EXPORT_HUGO_MENU:
+:END:
+Redis went from an open [[https://techcrunch.com/2024/03/21/redis-switches-licenses-acquires-speedb-to-go-beyond-its-core-in-memory-database/][source license to a source available license]]. This is [[https://www.elastic.co/blog/licensing-change][not a new pattern]] of trying to protect share-holder value against large cloud providers extracting value they didn't create. Corporate finance discussion aside (since that's a really sad can of worms), it's interesting to see what the FOSS community did about it. 
+
+#+hugo: more
+I posted my thoughts on Mastodon:
+#+begin_src html
+  <blockquote lang="en" cite="https://fosstodon.org/@shom/112167859283706451">
+  <p>It was wise of <span class="h-card" translate="no"><a href="https://fosstodon.org/@drewdevault" class="u-url mention">@<span>drewdevault</span></a></span> to host redict (redis fork) on <span class="h-card" translate="no"><a href="https://social.anoxinon.de/@Codeberg" class="u-url mention">@<span>Codeberg</span></a></span> to maintain workflow parity with github and avoid any perceived conflicts of interest¹.</p><p>I wondered why LGPL and not of AGPL², which is also explained nicely: &quot;but we want to make it as easy as possible for users to comply with the Redict license and we do not see any reason to discourage cloud providers from making use of Redict.&quot;</p><p>Hope other marquee projects follow suite. </p><p>¹<a href="https://fosstodon.org/@drewdevault/112167165399257154" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="ellipsis">fosstodon.org/@drewdevault/112</span><span class="invisible">167165399257154</span></a><br />² <a href="https://redict.io/posts/2024-03-22-redict-is-an-independent-fork/#why-lgpl" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="ellipsis">redict.io/posts/2024-03-22-red</span><span class="invisible">ict-is-an-independent-fork/#why-lgpl</span></a></p>
+  <blockquote lang="en" cite="https://fosstodon.org/@drewdevault/112167165399257154">
+    <p>Why isn&#39;t Redict on GitHub?</p><p>Answered here:</p><p><a href="https://github.com/redis/redis/pull/13157#issuecomment-2022380438" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="ellipsis">github.com/redis/redis/pull/13</span><span class="invisible">157#issuecomment-2022380438</span></a></p>
+    <footer>
+       — Drew DeVault (@drewdevault) <a href="https://fosstodon.org/@drewdevault/112167165399257154"><time datetime="2024-03-27T10:25:16.565Z">3/27/2024, 5:25:16 AM</time></a>
+    </footer>
+  </blockquote>
+  <footer>
+     — shom 🐧📷🤿🏔️🪚 (@shom) <a href="https://fosstodon.org/@shom/112167859283706451"><time datetime="2024-03-27T13:21:44.408Z">3/27/2024, 8:21:44 AM</time></a>
+  </footer>
+</blockquote>
+#+end_src
+
+This lead to some interesting discussion and Drew DeVault chimed in with some interesting comments and [[https://discourse.writefreesoftware.org/t/what-is-your-current-go-to-license/60][posted a link]] to why he sometimes prefers the MPL license over a GPL license, it's worth the short read and I plan to think/write about it more.
+
+So here's my semi-informed rant: AGPL might not always be the best license to police the poor behavior of corporate users. Licenses can only dictate what is legal, and just because it's legal doesn't mean it's ethical. But there-in also lies the problem: unethical entities will always look for the legal loophole or hope to not get caught, assuming laws are equitably enforced in the first place. Whether the community likes it or not a lot of commercial enterprises have contributed significant portions of the FOSS stack. Leaving the door open to contributions but finding better models to compensate developers is more fruitful use of time and effort than subjecting each other to purity tests.
+
 ** DONE Face lift
 CLOSED: [2024-02-16 Fri 23:19]
 :PROPERTIES:
