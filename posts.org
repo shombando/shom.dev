@@ -18,7 +18,7 @@ Redis went from an open [[https://techcrunch.com/2024/03/21/redis-switches-licen
 #+hugo: more
 I posted my thoughts on Mastodon:
 
-#+begin_embed
+#+begin_export html
   <blockquote lang="en" cite="https://fosstodon.org/@shom/112167859283706451">
   <p>It was wise of <span class="h-card" translate="no"><a href="https://fosstodon.org/@drewdevault" class="u-url mention">@<span>drewdevault</span></a></span> to host redict (redis fork) on <span class="h-card" translate="no"><a href="https://social.anoxinon.de/@Codeberg" class="u-url mention">@<span>Codeberg</span></a></span> to maintain workflow parity with github and avoid any perceived conflicts of interest¹.</p><p>I wondered why LGPL and not of AGPL², which is also explained nicely: &quot;but we want to make it as easy as possible for users to comply with the Redict license and we do not see any reason to discourage cloud providers from making use of Redict.&quot;</p><p>Hope other marquee projects follow suite. </p><p>¹<a href="https://fosstodon.org/@drewdevault/112167165399257154" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="ellipsis">fosstodon.org/@drewdevault/112</span><span class="invisible">167165399257154</span></a><br />² <a href="https://redict.io/posts/2024-03-22-redict-is-an-independent-fork/#why-lgpl" target="_blank" rel="nofollow noopener noreferrer" translate="no"><span class="invisible">https://</span><span class="ellipsis">redict.io/posts/2024-03-22-red</span><span class="invisible">ict-is-an-independent-fork/#why-lgpl</span></a></p>
   <blockquote lang="en" cite="https://fosstodon.org/@drewdevault/112167165399257154">
@@ -31,7 +31,7 @@ I posted my thoughts on Mastodon:
      — shom 🐧📷🤿🏔️🪚 (@shom) <a href="https://fosstodon.org/@shom/112167859283706451"><time datetime="2024-03-27T13:21:44.408Z">3/27/2024, 8:21:44 AM</time></a>
   </footer>
 </blockquote>
-#+end_embed
+#+end_export
 
 This lead to some interesting discussion and Drew DeVault chimed in with some interesting comments and [[https://discourse.writefreesoftware.org/t/what-is-your-current-go-to-license/60][posted a link]] to why he sometimes prefers the MPL license over a GPL license, it's worth the short read and I plan to think/write about it more.
 
