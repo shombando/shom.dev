@@ -18,7 +18,7 @@ Computer keyboards were designed with historical baggage and for entirely differ
 #+hugo: more
 
 *** Personal Background / Motivation
-I didn't learn to type at all until I was in tenth grade, due to lack of opportunities. So when we finally got a computer and went to a school that required submitting typed homework, I had to learn in a hurry. But the real motivator was being able to chat with friends on [[https://www.wikipedia.org/wiki/ICQ][ICQ]][fn:1] (sidebar, apparently it still exists I fully expected it to be a historical footnote.)
+I didn't learn to type at all until I was in tenth grade, due to lack of opportunities. So when we finally got a computer and went to a school that required submitting typed homework, I had to learn in a hurry. But the real motivator was being able to chat with friends on [[https://www.wikipedia.org/wiki/ICQ][ICQ]][fn:1] (sidebar, apparently it still exists I fully expected it to be a historical footnote.
 
 *** Intended audience
 
