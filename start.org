@@ -3,7 +3,7 @@
 #+seq_todo: DRAFT DONE
 
 * Start
-** DRAFT Using Kanata to remap any keyboard                           :start:
+** DRAFT Using Kanata to remap any keyboard                  :start:keyboard:
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: using-kanata-to-remap-any-keyboard
@@ -14,17 +14,72 @@
 #+begin_export hugo
 {{< figure src="/start/using-kanata-to-remap-any-keyboard/kanata-icon.svg" width= "400px" title="Kanata logo" alt="Kanata logo is a pink keycap with a darker pink K legend" align="center" >}}
 #+end_export
-Computer keyboards were designed with historical baggage and for entirely different workflows than we use today and with very little regard for usability. Ergonomic keyboards are great and I personally use a 42-key [[https://github.com/foostan/crkbd][Corne keyboard]] with my desktop and that's what got me to learn to fully touch type and significantly aleviated shoulder stiffness. But what if I could have a similar experience on a laptop, well with [[https://github.com/jtroo/kanata][Kanata]] keyboard remapping I can get some of the important pieces.
+Computer keyboards were designed with historical baggage and for entirely different workflows than we use today and with very little regard for usability. Ergonomic keyboards are great and I personally use a 42-key [[https://github.com/foostan/crkbd][Corne keyboard]] with my desktop and that's what got me to learn to fully touch type and significantly aleviated shoulder stiffness. But what if I could have a similar experience on a laptop, well with [[https://github.com/jtroo/kanata][Kanata]] keyboard remapping I can get some of the important pieces. Kanata is a *lot* more powerful than what I'll describe here but this should set someone to dive deeper into customizing.
 #+hugo: more
 
+*** Disclaimer
+By the nature of keyboard re-mapping, you're essentially running a [[https://en.wikipedia.org/wiki/Keystroke_logging][key-logger]]. So please use this based on your personal risk profile, as the software will process every keystroke, like your passwords. As of the time of writing this guide March 2024, I personally believe this software is safe to run. This isn't meant to scare anyone but it's meant to inform your consent.
+
 *** Personal Background / Motivation
-I didn't learn to type at all until I was in tenth grade, due to lack of opportunities. So when we finally got a computer and went to a school that required submitting typed homework, I had to learn in a hurry. But the real motivator was being able to chat with friends on [[https://www.wikipedia.org/wiki/ICQ][ICQ]][fn:1] (sidebar, apparently it still exists I fully expected it to be a historical footnote.
+I didn't learn to type at all until I was in tenth grade, due to lack of opportunities. So when we finally got a computer and went to a school that required submitting typed homework, I had to learn in a hurry. But the real motivator was being able to chat with friends on [[https://www.wikipedia.org/wiki/ICQ][ICQ]][fn:1] and MSN Messenger. I was in fact so bad at typing and so lazy that instead of SHIFTing to capitalize I would just leave CAPS LOCK on until my friend asked why I was yelling, I had to idea you could SHOUT with text. So I evolved an excellent 7 finger typing style that got up to 70+ words per minute on good days. So switching to the Corne was me learning split ergo along side proper 10 finger touch typing. But once I got used to that, anything else felt so clunky, especially typing on a laptop keyboard. The biggest things I missed were [[../20220414_qmk-caps-word/][home row mods]], layer switching with my thumbs so I could use the home row for more functions (primarily arrow key navigation with =h j k l=), and left-thumb =space= and right thumb =backspace=, enter Kanata.
 
 *** Intended audience
+Apparently I'm writing guides for /very niche/ audiences, a likely audience of one perhaps. This particular post is for anyone that is interested in non-standard mappings for their keyboard but slanted more towards who want to get [[https://qmk.fm][QMK]] like functionality cross-platform with any standard keyboard. Running the application will be geared towards Linux for now, since that's my primary operating system but I'll link to instructions for other OSes (since cross-platform is a desired feature for me, no lock-ins ever!).[fn:2]
+
+*** Terminology basics
+There are some potentially confusing terms so I'll try to capture those here:
+- Input: this is overloaded term to mean both the input (key presses), as well as the device (keyboard), and the operation system mapping of the device to a file (especially in Linux since everything is a file in Unix and friends land).
+- Process: this is the actual Kanta application that is running and capturing your keystrokes from input (all three meanings of input) changing them based on your config before the Operating System "sees" the keystroke.
+- Config: the customization that you define for Kanata to do the mapping from the physical keys being pressed to what you what you want to happen.
+
+*** Installation
+This is a potential can of worms and very dependent on your operating system, skill-level, and preferences. So here's *a* way to do it and it's definitely not the best way since it won't automatically update the software.[fn:3]
+
+I recommend making a folder in your .local directory to store the executable that can be downloaded from the [[https://github.com/jtroo/kanata/releases][releases page.]] Make sure the executable is named =kanata=
+#+begin_src sh
+  mkdir -p ~/.local/share/bin
+  chmod u+x ~/.local/share/bin/kanata
+#+end_src
+I wouldn't advice adding the directory to your path, but explicit call Kanata with a full path. During the initial configuration and testing it would be best to just run the application directly, once you're happy with the original layout (you'll absolutely be tweaking stuff later) then we'll write a service to automatically run it.
+
+*** Permissions
+In order for Kanata to run, it needs to be able to read the keyboard input before any other process does. Since this is a security concern the process needs to be run as root (administrator access level) to read input directly. However, that means the process would have root access to everything, which is also not a good idea.
+
+So we'll follow [[https://en.wikipedia.org/wiki/Principle_of_least_privilege][the principle of least privillege]]. One way to do that is to create groups and give each group just a specific permission and if an user needs to do a few specific things then that user can be added to those specific groups and get one permission from each specific group.
+
+The documentation in the Kanata covers how to [[https://github.com/jtroo/kanata/blob/main/docs/setup-linux.md][set this up on Linux]], but I'll include commands and commentary here.
+ 1. Create the specific group that will only have permission to read input devices =uinput=
+ 2. Add the our user to the =input= and =uinput= groups
+ 3. Define the rules for the group =uinput= by creating a rules file
+ 4. Reload the devices with the new permission in place
+ 5. Reload the drivers
+
+#+begin_src sh
+
+# 1
+sudo groupadd uinput
+
+# 2
+sudo usermod -aG input $USER
+sudo usermod -aG uinput $USER
+
+# 3
+sudo echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"' > /etc/udev/rules.d/99-input.rules
+
+# 4
+sudo udevadm control --reload && udevadm trigger --verbose --sysname-match=uniput
+
+# 5
+sudo modprobe uinput
+#+end_src
+
 
 *** Footnotes
 
-[fn:1] Apparently ICQ still exists, I fully expected it to be a historical footnote. Looks lie it has had an interesting past and somewhat checkered past. 
+[fn:3] Not automatically updating is generally not a good idea, but unless this package makes it into your distribution's maintained repo it might be a good idea to just manually update. This might mitigate any malicious repo takeover since you're literally running a key-logger. 
+[fn:2] There are other key mapping software available as discussed in the Kanata repo but I wanted to stick with the QMK familiarity in terms of terminology, platform independence, and even easier key-mapping.
+[fn:1] Apparently ICQ still exists, I fully expected it to be a historical footnote. Looks like it has had an interesting and somewhat checkered past.
+ 
 
 ** DONE Writing system automation scripts and services :start:linux:terminal:
 CLOSED: [2024-02-14 Wed 14:35]
