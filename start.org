@@ -3,7 +3,8 @@
 #+seq_todo: DRAFT DONE
 
 * Start
-** DRAFT Using Kanata to remap any keyboard                  :start:keyboard:
+** DONE Using Kanata to remap any keyboard                   :start:keyboard:
+CLOSED: [2024-03-28 Thu 16:51]
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: using-kanata-to-remap-any-keyboard
@@ -73,13 +74,224 @@ sudo udevadm control --reload && udevadm trigger --verbose --sysname-match=unipu
 sudo modprobe uinput
 #+end_src
 
+*** Configuration
+Kanata has many different ways of picking up which configuration file to use[fn:4]. The [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc][configuration guide]] is exhaustive and a great resource but it can also be intimidating so here's a getting started overview.
+
+Here we'll stick with the default method of creating a file called =kanata.kbd= in the =~/.config/kanata/= directory. The [[https://github.com/jtroo/kanata/blob/main/cfg_samples/minimal.kbd][minimal.kbd]] is a good place to start to see how things work. The basic premise is that there are different section (explained below) and follows the structure:
+#+begin_src emacs-lisp
+  (section-name
+   section-specific-information
+  )
+  (next-section
+  )
+#+end_src
+
+**** defcfg
+This section stores the "global" options that applies to all of Kanata. I want Kanata to process every key pressed whether I explicitly told it or not. And I want it to show me what layer (the current map) it's on when I press a key to change the layer. We'll want to set this to no later on after we've finalized our mapping to make Kanata run faster.
+#+begin_src emacs-lisp
+(defcfg
+	process-unmapped-keys yes
+	log-layer-changes yes
+)
+#+end_src
+
+**** defsrc
+This section can only appear once in the configuration, it tells Kanata which source keys it should expect to map to other things. There's on specific reason for which keys appear on what line, I have it organized the way it appears on my laptop keyboard from top left to right, just for visual ease. You can find a [[https://github.com/jtroo/kanata/blob/main/cfg_samples/all_keys_in_defsrc.kbd][list of all keys]] in the repo.
+#+begin_src emacs-lisp
+(defsrc
+	esc
+	grv
+	caps
+	a s d f g h j k l scln
+	lalt spc ralt
+)
+#+end_src
+
+**** deflayer
+You can define many layers and activate them by pressing keys you define. I'm just defining two layers: the always active layer which means keys that I want to permanently remap to do something different and a second layer that only activates when I hold down the =caps lock=, which I'm calling cap-mod, you can pick any key and call the layer anything you want.
+
+Note that the keys that are being remapped need to be in the same order as the source layer above. Also there are =_=, these are transparent keys as in their mapping isn't changed. The =@= denotes an alias discussed a bit later.
+
+In this example, the default layer is changing the functionality of all the keys, except =g=, =h=, and =spc= because they're transparent. I'm also "permanently" changing the left-alt to be escape and the right-alt to be backspace. The cap-mod layer changes =h= =j= =k= =l= to become the arrow keys.[fn:5]
+
+#+begin_src  emacs-lisp
+(deflayer default
+	@esc
+	@grv
+	@cap
+	@a @s @d @f _ _ @j @k @l @scln
+	esc _ bspc
+)
+(deflayer cap-mod
+	_
+	_
+	_
+	_ _ _ _ _ left down up rght _
+	_ _ _
+)
+#+end_src
+
+**** defvar
+Kanta lets you fine tune behavior quite a bit by specifying things like how long should a key be pressed for it to be counted as "held". While you can type in those values (in milliseconds) each time, it's easier to define it as a variable in one place and refer to it.
+
+#+begin_src emacs-lisp
+(defvar
+	tap-time 200
+	hold-time 250
+)
+#+end_src
+
+**** defalias
+This is where we define all the aliases (=@=) we used in the default layer. An alias take the form of:
+=name-of-alias-without-@sign (type-of-functionality options-for-that-function multiple-options-are-space-separated)=
+
+I'm using three types of functionality, what [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc#actions][Kanata calls Actions]] to change the functionality of the =esc= =`= and the home-row keys to act as [[https://precondition.github.io/home-row-mods][home-row modifiers]].
+- [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc#tap-hold][tap-hold]]: This let's us define what happens when we tap a key vs. hold a key. Let's take =@a= for example, there are two a's in there a¹ and a², I'll explain the difference:
+  =a¹ (tap-hold $tap-time $hold-time a² lmet)=
+  - =a¹= is the name of the alias, it could be anything like alpha.
+  - =tap-hold= is the name of the action which takes 4 options
+    - =$tap-time= the number of milliseconds the key can be pressed while still being considered a single press
+    - =$hold-time= the number of milliseconds for which the key must remain pressed for it count as a hold
+    - =a²= is the key code we want Kanata to use when tapped, so this has to be =a= if we want to type the letter a
+    - =lmet= is the key code we want Kanata to use when the key is held, in this case left-meta (Windows or Mac logo key)
+- [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc#tap-hold][tap-hold-press]]: Similar to tap-hold but helps managing pressing timing situations better, especially for =caps lock= which I use as a layer switcher to activate the =cap-mod= layer for the movement keys.
+- [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc#caps-word][caps-word]]: This is an excellent function that lets you type CAPITALIZED_WORDS and automatically turns off the CAPS if it's not a letter or an underscore. Useful to typing environment variables which are typically written in that form.
+#+begin_src emacs-lisp
+(defalias
+	esc (tap-hold-press $tap-time $hold-time esc caps)
+	grv (tap-hold-press $tap-time $hold-time S-grv grv)
+	capsword (caps-word 2000)
+	cap (tap-hold-press $tap-time $hold-time @capsword (layer-toggle cap-mod))
+	a (tap-hold $tap-time $hold-time a lmet)
+	s (tap-hold $tap-time $hold-time s lalt)
+	d (tap-hold $tap-time $hold-time d lsft)
+	f (tap-hold $tap-time $hold-time f lctl)
+	j (tap-hold $tap-time $hold-time j rctl)
+	k (tap-hold $tap-time $hold-time k rsft)
+	l (tap-hold $tap-time $hold-time l lalt)
+	scln (tap-hold $tap-time $hold-time scln lmet)
+)
+#+end_src
+
+**** Putting the config together
+
+#+begin_details :trim-post nil
+#+begin_summary
+Here's the full kanata.kbd file that you can save as =~/.config/kanata/kanata.kbd= if you want to try my config (click arrow to expand).
+#+end_summary
+#+begin_src emacs-lisp
+;; global configuration options
+(defcfg
+	process-unmapped-keys yes
+	log-layer-changes no
+)
+
+;; define keys that will be modified (all keys still processed)
+(defsrc
+	esc
+	grv
+	caps
+	a s d f g h j k l scln
+	lalt spc ralt
+)
+
+;; default/base layer modifications always active
+(deflayer default
+	@esc
+	@grv
+	@cap
+	@a @s @d @f _ _ @j @k @l @scln
+	esc _ bspc
+)
+
+;; shifted layer activated by holding CAPS lock
+(deflayer cap-mod
+	_
+	_
+	_
+	_ _ _ _ _ left down up rght _
+	_ bspc _
+)
+
+;; values used by multiple changes
+(defvar
+	tap-time 200
+	hold-time 250
+)
+
+;; remapping between physical keys and functionality
+(defalias
+	esc (tap-hold-press $tap-time $hold-time esc caps)
+	grv (tap-hold-press $tap-time $hold-time S-grv grv)
+	capsword (caps-word 2000)
+	cap (tap-hold-press $tap-time $hold-time @capsword (layer-toggle cap-mod))
+	a (tap-hold $tap-time $hold-time a lmet)
+	s (tap-hold $tap-time $hold-time s lalt)
+	d (tap-hold $tap-time $hold-time d lsft)
+	f (tap-hold $tap-time $hold-time f lctl)
+	j (tap-hold $tap-time $hold-time j rctl)
+	k (tap-hold $tap-time $hold-time k rsft)
+	l (tap-hold $tap-time $hold-time l lalt)
+	scln (tap-hold $tap-time $hold-time scln lmet)
+)
+
+#+end_src
+#+end_details
+#+begin_export html
+<br />
+#+end_export
+
+*** Testing Kanata
+We can finally give it a spin. It's best to just run Kanata in a terminal window and see the output to make sure it's doing what you expect. You can specify the full path and the full path to the config to take away any weird path issues:
+#+begin_src sh
+~/.local/share/bin/kanata --cfg ~/.config/kanata/kanata.kbd
+#+end_src
+If there are any errors in the config or the permissions Kanata gives really good/descriptive errors:
+#+begin_export hugo
+{{< figure src="kanata-error.png" width= "400px" title="Rust style descriptive error messages showing exact issue" alt="Console output showing Kanata error in keyword cap being unkown and shows the exact location of the error" align="center" >}}
+#+end_export
+Continue testing until the layout feels comfortable. Once you're ready set =log-layer-changes false= and now we're ready to run it as a service.
+
+*** Running Kanata as a service
+I've discussed [[../writing-system-automation-scripts-and-services/#service][running something as a service]] in another post, so some of the why's and details are there. For Kanata, create a file called =kanata.service= and place it in =~/.config/systemd/user/=:
+#+begin_src service
+[Unit]
+Description=Kanata keyboard remapper
+Documentation=https://github.com/jtroo/kanata
+
+[Service]
+Type=simple
+ExecStart=/home/%u/.local/share/bin/kanata
+Restart=no
+
+[Install]
+WantedBy=default.target
+#+end_src
+
+To enable the service so it starts every time you are logged in run:
+#+begin_src sh
+systemctl --user enable kanata.service
+systemctl --user start kanata.service
+#+end_src
+
+If you need to make changes to your config you have to restart the service or you can [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc#live-reload][setup live re-loading]].
+#+begin_src sh
+systemctl --user restart kanata.service
+#+end_src
+
+Hope this gets you further in your [[https://systemcrafters.net/][system crafting]] and ergonomic computing journey!
 
 *** Footnotes
 
+[fn:5] =g= is never remapped but since the entire "home-row" is being mapped it's easier to leave =g= in there to make visually matching up the config easier.
+[fn:4] Running Kanata with the =--cfg= option would be a good way to test out a few different configurations by supplying a different file:
+#+begin_src sh
+~/.local/share/bin/kanata --cfg ~/dotfiles/kanata/example1.cfg
+#+end_src
+Kanata also provides the ability to load multiple configuration files and switch at run-time.
 [fn:3] Not automatically updating is generally not a good idea, but unless this package makes it into your distribution's maintained repo it might be a good idea to just manually update. This might mitigate any malicious repo takeover since you're literally running a key-logger. 
 [fn:2] There are other key mapping software available as discussed in the Kanata repo but I wanted to stick with the QMK familiarity in terms of terminology, platform independence, and even easier key-mapping.
 [fn:1] Apparently ICQ still exists, I fully expected it to be a historical footnote. Looks like it has had an interesting and somewhat checkered past.
- 
 
 ** DONE Writing system automation scripts and services :start:linux:terminal:
 CLOSED: [2024-02-14 Wed 14:35]
