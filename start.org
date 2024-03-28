@@ -248,7 +248,7 @@ We can finally give it a spin. It's best to just run Kanata in a terminal window
 #+end_src
 If there are any errors in the config or the permissions, Kanata gives really good/descriptive errors:
 #+begin_export hugo
-{{< figure src="kanata-error.png" width= "400px" title="Rust style descriptive error message showing exact issue" alt="Console output showing Kanata error in keyword cap being unkown and shows the exact location of the error" align="center" >}}
+{{< figure src="kanata-error.png" width= "85%" title="Rust style descriptive error message showing exact issue" alt="Console output showing Kanata error in keyword cap being unkown and shows the exact location of the error" align="center" >}}
 #+end_export
 Continue testing until the layout feels comfortable. Once you're ready, set =log-layer-changes false= and now we're ready to run it as a service.
 
