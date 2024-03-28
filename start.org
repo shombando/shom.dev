@@ -15,28 +15,28 @@ CLOSED: [2024-03-28 Thu 16:51]
 #+begin_export hugo
 {{< figure src="/start/using-kanata-to-remap-any-keyboard/kanata-icon.svg" width= "400px" title="Kanata logo" alt="Kanata logo is a pink keycap with a darker pink K legend" align="center" >}}
 #+end_export
-Computer keyboards were designed with historical baggage and for entirely different workflows than we use today and with very little regard for usability. Ergonomic keyboards are great and I personally use a 42-key [[https://github.com/foostan/crkbd][Corne keyboard]] with my desktop and that's what got me to learn to fully touch type and significantly aleviated shoulder stiffness. But what if I could have a similar experience on a laptop, well with [[https://github.com/jtroo/kanata][Kanata]] keyboard remapping I can get some of the important pieces. Kanata is a *lot* more powerful than what I'll describe here but this should set someone to dive deeper into customizing.
+Computer keyboards were designed with historical baggage and for entirely different workflows than we use today and with very little regard for usability. Ergonomic keyboards are great and I personally use a 42-key [[https://github.com/foostan/crkbd][Corne keyboard]] with my desktop and that's what got me to learn to fully touch type and significantly aleviated shoulder stiffness. But what if I could have a similar experience on a laptop, well with [[https://github.com/jtroo/kanata][Kanata]] keyboard remapping I can get some of the important pieces. Kanata is a *lot* more powerful than what I'll describe here but this should set someone up enough to dive deeper into customizing.
 #+hugo: more
 
 *** Disclaimer
-By the nature of keyboard re-mapping, you're essentially running a [[https://en.wikipedia.org/wiki/Keystroke_logging][key-logger]]. So please use this based on your personal risk profile, as the software will process every keystroke, like your passwords. As of the time of writing this guide March 2024, I personally believe this software is safe to run. This isn't meant to scare anyone but it's meant to inform your consent.
+By the nature of keyboard re-mapping, you're essentially running a [[https://en.wikipedia.org/wiki/Keystroke_logging][key-logger]]. So please use this based on your personal risk profile, as the software will process every keystroke, like your passwords. As of the time of writing this guide, March 2024, I personally believe this software is safe to run. This isn't meant to scare anyone but it's meant to inform your consent.
 
 *** Personal Background / Motivation
-I didn't learn to type at all until I was in tenth grade, due to lack of opportunities. So when we finally got a computer and went to a school that required submitting typed homework, I had to learn in a hurry. But the real motivator was being able to chat with friends on [[https://www.wikipedia.org/wiki/ICQ][ICQ]][fn:1] and MSN Messenger. I was in fact so bad at typing and so lazy that instead of SHIFTing to capitalize I would just leave CAPS LOCK on until my friend asked why I was yelling, I had to idea you could SHOUT with text. So I evolved an excellent 7 finger typing style that got up to 70+ words per minute on good days. So switching to the Corne was me learning split ergo along side proper 10 finger touch typing. But once I got used to that, anything else felt so clunky, especially typing on a laptop keyboard. The biggest things I missed were [[../20220414_qmk-caps-word/][home row mods]], layer switching with my thumbs so I could use the home row for more functions (primarily arrow key navigation with =h j k l=), and left-thumb =space= and right thumb =backspace=, enter Kanata.
+I didn't learn to type at all until I was in tenth grade, due to lack of opportunities. So when we finally got a computer and started attending a school that required submitting typed homework, I had to learn in a hurry. But the real motivator was being able to chat with friends on [[https://www.wikipedia.org/wiki/ICQ][ICQ]][fn:1] and MSN Messenger. I was so horrid at typing that instead of SHIFTing to capitalize I would just leave CAPS LOCK on until my friend asked why I was yelling, I had to idea you could SHOUT with text. So I evolved an excellent 7 finger typing style that got up to 70+ words per minute on good days. Switching to the Corne meant learning split ergo key layout along-side proper 10 finger touch typing. But once I got used to that, anything else felt so clunky, especially typing on a laptop keyboard. The biggest things I missed were [[../20220414_qmk-caps-word/][home row mods]], layer switching with my thumbs so I could use the home row for more functions (primarily arrow key navigation with =h j k l=), and left-thumb =space= and right thumb =backspace=, enter Kanata.
 
 *** Intended audience
-Apparently I'm writing guides for /very niche/ audiences, a likely audience of one perhaps. This particular post is for anyone that is interested in non-standard mappings for their keyboard but slanted more towards who want to get [[https://qmk.fm][QMK]] like functionality cross-platform with any standard keyboard. Running the application will be geared towards Linux for now, since that's my primary operating system but I'll link to instructions for other OSes (since cross-platform is a desired feature for me, no lock-ins ever!).[fn:2]
+Apparently I'm writing guides for /very niche/ audiences, a likely audience of one, perhaps. This particular post is for anyone that is interested in non-standard mappings for their keyboard but slanted more towards those who want to get cross-platform [[https://qmk.fm][QMK]]-like functionality with any standard keyboard. Running the application will be geared towards Linux for now, since that's my primary operating system but [[https://github.com/jtroo/kanata/tree/main?tab=readme-ov-file#usage][I'll link to instructions]] for other OSes (since cross-platform is a desired feature for me, no lock-ins ever!).[fn:2]
 
 *** Terminology basics
 There are some potentially confusing terms so I'll try to capture those here:
-- Input: this is overloaded term to mean both the input (key presses), as well as the device (keyboard), and the operation system mapping of the device to a file (especially in Linux since everything is a file in Unix and friends land).
-- Process: this is the actual Kanta application that is running and capturing your keystrokes from input (all three meanings of input) changing them based on your config before the Operating System "sees" the keystroke.
+- Input: this is an overloaded term to mean both the input (key presses), as well as the device (keyboard), and the operating system mapping of the device to a file (especially in Linux since everything is a file in Unix and friends land).
+- Process: this is the actual Kanata application that is running and capturing your keystrokes from input (all three meanings of input) changing them based on your config before the Operating System "sees" the keystroke.
 - Config: the customization that you define for Kanata to do the mapping from the physical keys being pressed to what you what you want to happen.
 
 *** Installation
 This is a potential can of worms and very dependent on your operating system, skill-level, and preferences. So here's *a* way to do it and it's definitely not the best way since it won't automatically update the software.[fn:3]
 
-I recommend making a folder in your .local directory to store the executable that can be downloaded from the [[https://github.com/jtroo/kanata/releases][releases page.]] Make sure the executable is named =kanata=
+I recommend making a folder in your =.local= directory to store the executable that can be downloaded from the [[https://github.com/jtroo/kanata/releases][releases page.]] Make sure the executable is named =kanata=
 #+begin_src sh
   mkdir -p ~/.local/share/bin
   chmod u+x ~/.local/share/bin/kanata
@@ -50,7 +50,7 @@ So we'll follow [[https://en.wikipedia.org/wiki/Principle_of_least_privilege][th
 
 The documentation in the Kanata covers how to [[https://github.com/jtroo/kanata/blob/main/docs/setup-linux.md][set this up on Linux]], but I'll include commands and commentary here.
  1. Create the specific group that will only have permission to read input devices =uinput=
- 2. Add the our user to the =input= and =uinput= groups
+ 2. Add our user to the =input= and =uinput= groups
  3. Define the rules for the group =uinput= by creating a rules file
  4. Reload the devices with the new permission in place
  5. Reload the drivers
@@ -77,7 +77,7 @@ sudo modprobe uinput
 *** Configuration
 Kanata has many different ways of picking up which configuration file to use[fn:4]. The [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc][configuration guide]] is exhaustive and a great resource but it can also be intimidating so here's a getting started overview.
 
-Here we'll stick with the default method of creating a file called =kanata.kbd= in the =~/.config/kanata/= directory. The [[https://github.com/jtroo/kanata/blob/main/cfg_samples/minimal.kbd][minimal.kbd]] is a good place to start to see how things work. The basic premise is that there are different section (explained below) and follows the structure:
+Here we'll stick with the default method of creating a file called =kanata.kbd= in the =~/.config/kanata/= directory. The [[https://github.com/jtroo/kanata/blob/main/cfg_samples/minimal.kbd][minimal.kbd]] is a good place to start to see how things work. The basic premise is that there are different sections (explained below) all of which follow the structure:
 #+begin_src emacs-lisp
   (section-name
    section-specific-information
@@ -87,7 +87,7 @@ Here we'll stick with the default method of creating a file called =kanata.kbd= 
 #+end_src
 
 **** defcfg
-This section stores the "global" options that applies to all of Kanata. I want Kanata to process every key pressed whether I explicitly told it or not. And I want it to show me what layer (the current map) it's on when I press a key to change the layer. We'll want to set this to no later on after we've finalized our mapping to make Kanata run faster.
+This section stores the "global" options that applies to all of Kanata. I want Kanata to process every key pressed whether I explicitly told it to remap it or not. And I want it to show me what layer (the current map) it's on when I press a key to change the layer. We'll want to set this to no later on after we've finalized our mapping to make Kanata run faster.
 #+begin_src emacs-lisp
 (defcfg
 	process-unmapped-keys yes
@@ -96,7 +96,7 @@ This section stores the "global" options that applies to all of Kanata. I want K
 #+end_src
 
 **** defsrc
-This section can only appear once in the configuration, it tells Kanata which source keys it should expect to map to other things. There's on specific reason for which keys appear on what line, I have it organized the way it appears on my laptop keyboard from top left to right, just for visual ease. You can find a [[https://github.com/jtroo/kanata/blob/main/cfg_samples/all_keys_in_defsrc.kbd][list of all keys]] in the repo.
+This section can only appear once in the configuration, it tells Kanata which source keys it should expect to map to other things. There's no specific reason for which keys appear on what line, I have it organized it the way it appears on my laptop keyboard from top left to right, just for visual ease. You can find a [[https://github.com/jtroo/kanata/blob/main/cfg_samples/all_keys_in_defsrc.kbd][list of all keys]] in the repo.
 #+begin_src emacs-lisp
 (defsrc
 	esc
@@ -110,9 +110,9 @@ This section can only appear once in the configuration, it tells Kanata which so
 **** deflayer
 You can define many layers and activate them by pressing keys you define. I'm just defining two layers: the always active layer which means keys that I want to permanently remap to do something different and a second layer that only activates when I hold down the =caps lock=, which I'm calling cap-mod, you can pick any key and call the layer anything you want.
 
-Note that the keys that are being remapped need to be in the same order as the source layer above. Also there are =_=, these are transparent keys as in their mapping isn't changed. The =@= denotes an alias discussed a bit later.
+Note that the keys that are being remapped need to be in the same order as the source layer above. Also there are =_=, these are called transparent keys. As in their mapping isn't changed and passed through transparently. The =@= denotes an alias, discussed a bit later.
 
-In this example, the default layer is changing the functionality of all the keys, except =g=, =h=, and =spc= because they're transparent. I'm also "permanently" changing the left-alt to be escape and the right-alt to be backspace. The cap-mod layer changes =h= =j= =k= =l= to become the arrow keys.[fn:5]
+In this example, the default layer is changing the functionality of all the keys, except =g=, =h=, and =spc= because they're transparent. I'm also "permanently" changing the left-alt to be =escape= and the right-alt to be =backspace=. The cap-mod layer changes =h= =j= =k= =l= to become the arrow keys.[fn:5]
 
 #+begin_src  emacs-lisp
 (deflayer default
@@ -132,7 +132,7 @@ In this example, the default layer is changing the functionality of all the keys
 #+end_src
 
 **** defvar
-Kanta lets you fine tune behavior quite a bit by specifying things like how long should a key be pressed for it to be counted as "held". While you can type in those values (in milliseconds) each time, it's easier to define it as a variable in one place and refer to it.
+Kanata lets you fine tune behavior quite a bit by specifying things like how long a key should be pressed for it to be counted as "held". While you can type in those values (in milliseconds) each time, it's easier to define them as a variable in one place and refer to throughout.
 
 #+begin_src emacs-lisp
 (defvar
@@ -145,17 +145,17 @@ Kanta lets you fine tune behavior quite a bit by specifying things like how long
 This is where we define all the aliases (=@=) we used in the default layer. An alias take the form of:
 =name-of-alias-without-@sign (type-of-functionality options-for-that-function multiple-options-are-space-separated)=
 
-I'm using three types of functionality, what [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc#actions][Kanata calls Actions]] to change the functionality of the =esc= =`= and the home-row keys to act as [[https://precondition.github.io/home-row-mods][home-row modifiers]].
+I'm using three types of functionality, what [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc#actions][Kanata calls Actions]] to change the functionality of the =esc,= =`,= and the home-row keys to act as [[https://precondition.github.io/home-row-mods][home-row modifiers]].
 - [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc#tap-hold][tap-hold]]: This let's us define what happens when we tap a key vs. hold a key. Let's take =@a= for example, there are two a's in there a¹ and a², I'll explain the difference:
   =a¹ (tap-hold $tap-time $hold-time a² lmet)=
-  - =a¹= is the name of the alias, it could be anything like alpha.
-  - =tap-hold= is the name of the action which takes 4 options
-    - =$tap-time= the number of milliseconds the key can be pressed while still being considered a single press
-    - =$hold-time= the number of milliseconds for which the key must remain pressed for it count as a hold
-    - =a²= is the key code we want Kanata to use when tapped, so this has to be =a= if we want to type the letter a
-    - =lmet= is the key code we want Kanata to use when the key is held, in this case left-meta (Windows or Mac logo key)
+  - =a¹= is the name of the alias, it could be anything; like alpha.
+  - =tap-hold= is the name of the action which takes 4 options.
+    - =$tap-time= the number of milliseconds the key can be pressed while still being considered a single press.
+    - =$hold-time= the number of milliseconds for which the key must remain pressed for it count as a hold.
+    - =a²= is the key code we want Kanata to use when tapped, so this has to be =a= if we want to type the letter a.
+    - =lmet= is the key code we want Kanata to use when the key is held, in this case left-meta (Windows or Mac logo key).
 - [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc#tap-hold][tap-hold-press]]: Similar to tap-hold but helps managing pressing timing situations better, especially for =caps lock= which I use as a layer switcher to activate the =cap-mod= layer for the movement keys.
-- [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc#caps-word][caps-word]]: This is an excellent function that lets you type CAPITALIZED_WORDS and automatically turns off the CAPS if it's not a letter or an underscore. Useful to typing environment variables which are typically written in that form.
+- [[https://github.com/jtroo/kanata/blob/main/docs/config.adoc#caps-word][caps-word]]: This is an excellent function that lets you type CAPITALIZED_WORDS and automatically turns off the CAPS if it's not a letter or an underscore. Useful for typing environment variables which are typically written in that form.
 #+begin_src emacs-lisp
 (defalias
 	esc (tap-hold-press $tap-time $hold-time esc caps)
@@ -246,11 +246,11 @@ We can finally give it a spin. It's best to just run Kanata in a terminal window
 #+begin_src sh
 ~/.local/share/bin/kanata --cfg ~/.config/kanata/kanata.kbd
 #+end_src
-If there are any errors in the config or the permissions Kanata gives really good/descriptive errors:
+If there are any errors in the config or the permissions, Kanata gives really good/descriptive errors:
 #+begin_export hugo
-{{< figure src="kanata-error.png" width= "400px" title="Rust style descriptive error messages showing exact issue" alt="Console output showing Kanata error in keyword cap being unkown and shows the exact location of the error" align="center" >}}
+{{< figure src="kanata-error.png" width= "400px" title="Rust style descriptive error message showing exact issue" alt="Console output showing Kanata error in keyword cap being unkown and shows the exact location of the error" align="center" >}}
 #+end_export
-Continue testing until the layout feels comfortable. Once you're ready set =log-layer-changes false= and now we're ready to run it as a service.
+Continue testing until the layout feels comfortable. Once you're ready, set =log-layer-changes false= and now we're ready to run it as a service.
 
 *** Running Kanata as a service
 I've discussed [[../writing-system-automation-scripts-and-services/#service][running something as a service]] in another post, so some of the why's and details are there. For Kanata, create a file called =kanata.service= and place it in =~/.config/systemd/user/=:
@@ -268,7 +268,7 @@ Restart=no
 WantedBy=default.target
 #+end_src
 
-To enable the service so it starts every time you are logged in run:
+To enable the service, so it starts every time you are logged in, run:
 #+begin_src sh
 systemctl --user enable kanata.service
 systemctl --user start kanata.service
