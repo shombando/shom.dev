@@ -1,7 +1,7 @@
-image: alpine/latest
+image: ubuntu/22.04
 packages:
   - emacs-nox
-  - exiftool
+  - libimage-exiftool-perl
   - hugo
 oauth: pages.sr.ht/PAGES:RW
 sources:
