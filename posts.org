@@ -77,7 +77,6 @@ So, =alacritty-auto-theme= was born which automatically switches themes with man
 #+hugo: more
 Originally this was a long blog post but I moved the breakdown on [[/start/writing-system-automation-script-and-service][how to make a small script and write a systemd service]] with it. That article is more instructional and is written for an audience that might be interested in tweaking their system but does not necessarily have a technical background so explaining what is happening and why is going to be the focus.
 
-
 ** DONE Firefox scrollbar size                                 :foss:firefox:
 CLOSED: [2024-02-08 Thu 12:48]
 :PROPERTIES:
@@ -383,7 +382,6 @@ Lessons learned:
 {{< exif src="Swoop.jpg" caption="Make way!" alt="A bald eagle is swooping down over a frozen body of water and has its wings out stretched and talons forward. Several blackbirds are scattering due to the arrival of the eagle captured in various poses of flight tyring to vacate the area." showexif="true" >}}
 #+end_export
 
-
 ** DONE Eagles in the "backyard"                                     :camera:
 CLOSED: [2023-01-20 Fri 13:11]
 :PROPERTIES:
@@ -544,7 +542,7 @@ CLOSED: [2022-09-18 Sun 02:11]
 :EXPORT_HUGO_IMAGES: /posts/20220917_markdown-anchor-linking-on-github/user-anchors-as-p.jpg
 :EXPORT_HUGO_MENU:
 :END:
-I've been using =org-transclusion= for an [[* "Inverse literate" config via org-transclusion]["inverse literate"]] Emacs config and tangling all the config chunks on save and exporting it as a markdown file. This has worked fairly well except for the fact that org-export creates =org-export= regenerates ids for all the headings which creates noise in the git commit history and also in-page anchors can't be reliably linked to a specific part of the document (independent of the git forge's markdown parsing implementation).
+I've been using =org-transclusion= for an [[../20211230_inverse-literate-config-via-org-transclusion/]["inverse literate"]] Emacs config and tangling all the config chunks on save and exporting it as a markdown file. This has worked fairly well except for the fact that org-export creates =org-export= regenerates ids for all the headings which creates noise in the git commit history and also in-page anchors can't be reliably linked to a specific part of the document (independent of the git forge's markdown parsing implementation).
 
 In order to remedy that without relying on a full-featured package without additional capabilities, I decided to adapt a snippet of [[https://github.com/alphapapa][@alphapapa]]'s [[https://github.com/alphapapa/unpackaged.el][unpackaged configuration]], which advices the export to create unique anchors that won't change between exports (unless the headings themselves have been changed). However, this is ended being the beginning of the solution and how I discovered GitHub renders markdown internal links to HTML is not consistent with how Sourcehut does it.
 
@@ -1820,12 +1818,6 @@ By default the camera attempts to do Noise Reduction (NR) when doing long-exposu
 
 These are the main features that would have "bit" me if I didn't change them before trying to use the camera. If there are others, I will note them here after they bite me.
 
-** DRAFT Org-capture template for Hugo
-:PROPERTIES:
-:EXPORT_FILE_NAME: 20211025_org-capture-template-for-hugo
-:EXPORT_HUGO_MENU:
-:END:
-Need to get the original date of the post as part of the slug title in capture template. This might cause discrepancy if the date of capture isn't the date of publish (which will show up in Hugo metadata), so maybe the slug needs to be updated upon org state change from DRAFT to DONE.
 ** DONE org-bars view for outlining/folding :emacs:
 CLOSED: [2021-10-23 Sat 23:37]
 :PROPERTIES:

@@ -1,7 +1,7 @@
-image: ubuntu/22.04
+image: archlinux
 packages:
   - emacs-nox
-  - libimage-exiftool-perl
+  - perl-image-exiftool
   - hugo
 oauth: pages.sr.ht/PAGES:RW
 sources:
