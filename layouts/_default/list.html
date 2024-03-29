@@ -15,7 +15,6 @@
   {{- end }}
 </header>
 {{- end }}
-
 {{- if .Content }}
 <div class="post-content">
   {{- if not (.Param "disableAnchoredHeadings") }}
@@ -34,6 +33,18 @@
 
 {{- if and .IsHome .Site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
 {{- partial "home_info.html" . }}
+{{- end }}
+
+{{- if .IsHome }}
+<article class="post-entry">
+  <div>
+	<h2><b>📌</b> Getting Started Guides</h2>
+	<section class="entry-content">
+	  <p>Long form guides on esoteric topics on Alacritty themeing, Kanata keyboard remapping, etc.</p>
+	</section>
+	<a class="entry-link" aria-label="link to getting started guides" href="/start"></a>
+  </div>
+</article>
 {{- end }}
 
 {{- $term := .Data.Term }}
