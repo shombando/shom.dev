@@ -36,15 +36,7 @@
 {{- end }}
 
 {{- if .IsHome }}
-<article class="post-entry">
-  <div>
-	<h2><b>📌</b> Getting Started Guides</h2>
-	<section class="entry-content">
-	  <p>Long form guides on esoteric topics like themeing, keyboard mapping, etc.</p>
-	</section>
-	<a class="entry-link" aria-label="link to getting started guides" href="/start"></a>
-  </div>
-</article>
+{{- partial "site_sections.html"}}
 {{- end }}
 
 {{- $term := .Data.Term }}
