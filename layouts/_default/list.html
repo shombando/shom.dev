@@ -33,10 +33,7 @@
 
 {{- if and .IsHome .Site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
 {{- partial "home_info.html" . }}
-{{- end }}
-
-{{- if .IsHome }}
-{{- partial "site_sections.html"}}
+{{- partial "site_sections.html" . }}
 {{- end }}
 
 {{- $term := .Data.Term }}
