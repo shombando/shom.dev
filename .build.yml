@@ -9,9 +9,9 @@ tasks:
   - build: |
       cd $site
       #Only build and deploy main branch
-      # if [ "$(git rev-parse origin/main)" != "$(git rev-parse HEAD)" ]; then \
-      # complete-build; \
-      # fi
+      if [ "$(git rev-parse origin/main)" != "$(git rev-parse HEAD)" ]; then \
+      complete-build; \
+      fi
       nix develop --command ./build.sh --gc
   - deploy: |
       cd $site
