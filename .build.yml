@@ -1,12 +1,9 @@
-image: ubuntu/22.04
-packages:
-  - emacs-nox
-  - libimage-exiftool-perl
-  - hugo
+image: nixos/23.05
 oauth: pages.sr.ht/PAGES:RW
 sources:
   - https://git.sr.ht/~shom/shom.dev
 environment:
+  NIX_CONFIG: "experimental-features = nix-command flakes"
   site: shom.dev
 tasks:
   - build: |
@@ -15,7 +12,7 @@ tasks:
       if [ "$(git rev-parse origin/main)" != "$(git rev-parse HEAD)" ]; then \
       complete-build; \
       fi
-      ./build.sh
+      nix develop --command ./build.sh --gc
   - deploy: |
       cd $site
       cd public
