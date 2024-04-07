@@ -4,6 +4,21 @@
 #+startup: indent
 
 * Content
+** DONE Joy is free and comes in small packages                         :fun:
+CLOSED: [2024-04-07 Sun 01:02]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240407_joy-is-free-and-comes-in-small-packages
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/820055e1
+:EXPORT_HUGO_IMAGES: /posts/20240407_joy-is-free-and-comes-in-small-packages/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+Two little neighborhood kids MADE my day!
+I'm rolling in my small Subaru hatchback and these kids run to the edge of their yard and give me the trucker/train conductor honk fist pump hand signal! I tapped out a festive sequence of mini honks and everyone was happy. Joy is free and comes in small packages!
+
+I shared this on [[https://fosstodon.org/@shom/112225988844681892][Mastodon]] but wanted to remember it, it was awesome!
+
+#+hugo: more
 ** DONE When open source goes source available                   :foss:rant:
 CLOSED: [2024-03-27 Wed 17:16]
 :PROPERTIES:
