@@ -26,6 +26,7 @@ I have created myself a list of pins on a map and identified roads that I can us
 - [[https://www.timeanddate.com/eclipse/map/2024-april-8#@38.07404145941957,-87.82470703125001,6][Path of eclipse]]: click on a city to find details about: when the eclipse starts, how long totality is, what's the total duration.
 - [[https://radar.weather.gov/?settings=v1_eyJhZ2VuZGEiOnsiaWQiOiJuYXRpb25hbCIsImNlbnRlciI6Wy04OC4zNDgsNDAuNjEzXSwibG9jYXRpb24iOlstOTAuMzA5LDQyLjY0M10sInpvb20iOjYuNjY1MjAyNzM5NTk4MjIyLCJsYXllciI6ImNyZWZfcWNkIn0sImFuaW1hdGluZyI6ZmFsc2UsImJhc2UiOiJzdGFuZGFyZCIsImFydGNjIjpmYWxzZSwiY291bnR5IjpmYWxzZSwiY3dhIjpmYWxzZSwicmZjIjpmYWxzZSwic3RhdGUiOmZhbHNlLCJtZW51Ijp0cnVlLCJzaG9ydEZ1c2VkT25seSI6dHJ1ZSwib3BhY2l0eSI6eyJhbGVydHMiOjAuOCwibG9jYWwiOjAuNiwibG9jYWxTdGF0aW9ucyI6MC44LCJuYXRpb25hbCI6MC42fX0%3D][Radar view for Eclipse path]]: it's the same view area as the map above, so I plan to move about based on weather.
 - [[https://maps.app.goo.gl/4ASJvH9rHhuobYBg8][My path targets]]: potential target locations based on weather.
+- Edit: More hot tips! Download a local copy of the map area on Google maps so you can find alternate routes during peak traffic congestion when the internet by the main roads also crawling.
 *** Safety Tips
 *DO NOT* look at the sun unless you're actually on the line of totality and it's in the middle of the totality period. I'll very much be in doubt about whether I can guarantee both of those conditions are true, so I will not be looking directly at the sun.
 **** Photography safety tips
