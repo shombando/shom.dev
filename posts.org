@@ -4,6 +4,41 @@
 #+startup: indent
 
 * Content
+** DONE 2024 Total Eclipse Prep                                         :fun:
+CLOSED: [2024-04-07 Sun 20:40]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240407_2024-total-eclipse-prep
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/b702c920
+:EXPORT_HUGO_IMAGES: /posts/20240407_2024-total-eclipse-prep/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+The total eclipse is tomorrow, I've known about it since the last one [[https://photos.shom.dev/solar-eclipse/][I missed in 2017]], so of course I started preparing (earlier today). Here's some handy information for myself and it might help you too.
+
+#+hugo: more
+*** Why is this one special
+Well the next total eclipse on the continental USA is in 2044 and not in driving distance for me. Besides that, there are other reasons as well, and this is the [[https://youtu.be/0fgbMTC30F8][best explanation with (good) animations]] that I've come across. I highly recommend it, it's approachable and kid friendly.
+*** Path planning
+I have created myself a list of pins on a map and identified roads that I can use if I need to shift my location based on the weather. Here are some resources:
+- [[https://www.timeanddate.com/eclipse/map/2024-april-8#@38.07404145941957,-87.82470703125001,6][Path of eclipse]]: click on a city to find details about: when the eclipse starts, how long totality is, what's the total duration.
+- [[https://radar.weather.gov/?settings=v1_eyJhZ2VuZGEiOnsiaWQiOiJuYXRpb25hbCIsImNlbnRlciI6Wy04OC4zNDgsNDAuNjEzXSwibG9jYXRpb24iOlstOTAuMzA5LDQyLjY0M10sInpvb20iOjYuNjY1MjAyNzM5NTk4MjIyLCJsYXllciI6ImNyZWZfcWNkIn0sImFuaW1hdGluZyI6ZmFsc2UsImJhc2UiOiJzdGFuZGFyZCIsImFydGNjIjpmYWxzZSwiY291bnR5IjpmYWxzZSwiY3dhIjpmYWxzZSwicmZjIjpmYWxzZSwic3RhdGUiOmZhbHNlLCJtZW51Ijp0cnVlLCJzaG9ydEZ1c2VkT25seSI6dHJ1ZSwib3BhY2l0eSI6eyJhbGVydHMiOjAuOCwibG9jYWwiOjAuNiwibG9jYWxTdGF0aW9ucyI6MC44LCJuYXRpb25hbCI6MC42fX0%3D][Radar view for Eclipse path]]: it's the same view area as the map above, so I plan to move about based on weather.
+- [[https://maps.app.goo.gl/4ASJvH9rHhuobYBg8][My path targets]]: potential target locations based on weather.
+*** Safety Tips
+*DO NOT* look at the sun unless you're actually on the line of totality and it's in the middle of the totality period. I'll very much be in doubt about whether I can guarantee both of those conditions are true, so I will not be looking directly at the sun.
+**** Photography safety tips
+- If you're looking at the sun with any optics (camera lens / binoculars) put the filter on the outside of the glass not on your eyes.
+- Basically don't put on goggles and look through binoculars, it's essentially 'a magnifying glass to burn paper' situation. You want to cut the light before magnifying.
+- Same deal with cell phones, put the googles on the phone camera and look through the screen.
+- =Reminder to self=: photo effort is limited to 15 seconds for each minute, enjoy and look around.
+**** Road safety tips
+- Give yourself 150% time margin to get where you're going.
+- If you pull off to the side of the road, don't stand next to your car. Other people will not be invested in the eclipse until it's happening and they'll rubber-neck.
+- =Reminder to self=: Bring snacks, chair, and patience
+**** This is NOT a comprehensive list.
+- =Reminder to self=: hydrate and sunscreen.
+*** Good luck and have a safe eclipse
+If the weather is bad, just remind yourself that on any sunny day you can eclipse the sun with your head and create a magical and terrifying experience for small creatures.
+
 ** DONE Joy is free and comes in small packages                         :fun:
 CLOSED: [2024-04-07 Sun 01:02]
 :PROPERTIES:
