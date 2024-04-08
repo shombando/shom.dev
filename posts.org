@@ -10,9 +10,12 @@ CLOSED: [2024-04-07 Sun 20:40]
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20240407_2024-total-eclipse-prep
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/b702c920
-:EXPORT_HUGO_IMAGES: /posts/20240407_2024-total-eclipse-prep/image.jpg
+:EXPORT_HUGO_IMAGES: /posts/20240407_2024-total-eclipse-prep/Solar-Eclipse.jpg
 :EXPORT_HUGO_MENU:
 :END:
+#+begin_export hugo
+{{< figure src="Solar-Eclipse.jpg" width= "500px" title="Partial eclipse from SFO 2017" alt="Fluffy white clouds with a pitch black band in the middle where a crescent sun is visible in the center of the band." align="center" >}}
+#+end_export
 The total eclipse is tomorrow, I've known about it since the last one [[https://photos.shom.dev/solar-eclipse/][I missed in 2017]], so of course I started preparing (earlier today). Here's some handy information for myself and it might help you too.
 
 #+hugo: more
