@@ -5,3 +5,5 @@
 /static/ox-hugo/
 /resources/
 /.hugo_build.lock
+/.htmltest/
+/filmPoster/
