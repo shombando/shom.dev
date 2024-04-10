@@ -343,7 +343,7 @@ Now I need to make a nice fancy little sharing link and icon that is rendered on
 I don't know much about theme-templating (have a few overrides and shortcodes) or using page data to create new elements so I'll appreciate pointers and help in making my aliases as nice share-links automatically rendered by Hugo.
 
 #+begin_export html
-<p class="attribution">Share card image: "<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/86530412@N02/8253443979">3D Strongest Link</a>" by <a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/86530412@N02">ccPixs.com</a> is licensed under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by/2.0/?ref=openverse">CC BY 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img></a>. </p>
+<p class="attribution">Share card image: "<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/86530412@N02/8253443979">3D Strongest Link</a>" by <a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/86530412@N02">ccPixs.com</a> is licensed under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by/2.0/?ref=openverse">CC BY 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;" alt="CC icon"></img><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;" alt="By icon of a stick figure person"></img></a>. </p>
 #+end_export
 ** DONE Tech debt for personal projects                           :foss:rant:
 CLOSED: [2024-01-20 Sat 01:16]
@@ -386,7 +386,7 @@ I have been doing an increasingly better job of keeping personal notes on hobbie
 {{< exif src="Deal-with-the-tech-debt_by_psd-on-Flickr_CCbySA.jpg" caption="Deal with the tech debt" alt="Pen drawing on a post-it note of a grim reaper with the text above reading DEAL WITH THE TECH DEBT" showexif="false" >}}
 #+end_export
 #+begin_export html
-<p class="attribution">"<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/25996369@N07/8627787038">Deal with the tech debt</a>" by <a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/25996369@N07">dafyddbach</a> is licensed under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse">CC BY-SA 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img></a>. </p>
+<p class="attribution">"<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/25996369@N07/8627787038">Deal with the tech debt</a>" by <a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/25996369@N07">dafyddbach</a> is licensed under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse">CC BY-SA 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="CC icon" style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="By icon, stick figure person"style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="SA icon" style="height: 1em; margin-right: 0.125em; display: inline;"></img></a>. </p>
 #+end_export
 [^fn:1]: Linking to Github mirror because [[https://codeberg.org/shom/keyoxidizer][Codeberg]] and [[https://git.sr.ht/~shom/keyoxidizer][Sourcehut]] have been dealing with DDoS attacks.
 [^fn:2]: changing the ~Key-Type: EDDSA~ and specify the ~Key-Curve: ed25519~.
@@ -735,7 +735,7 @@ My favorite mural was definitely this whimsical scene of this mural of a guy vib
 
 The island is also famous for its flamingos grazing in the salt flats. Bonaire is a sea-salt producing island and there are huge mounds of salt that are stacked before shipping, all of that area is a good hang for flamingos. I was lucky to get to see some flamingos up close while at the Washington Slagbaai National Park. But I think I saw a lot more flamingo art, which was also great.
 #+begin_export hugo
-{{< exif src="flamingos.jpg" caption="Wall mural of a flock of flamingos standing and grazing in the salt flats. Only one of them is standing on one leg, the classic pose." showexif="false" >}}
+{{< exif src="flamingos.jpg" caption="Colony of Flamingos" alt="Wall mural of a flock of flamingos standing and grazing in the salt flats. Only one of them is standing on one leg, the classic pose." showexif="false" >}}
 #+end_export
 
 #+begin_export hugo
@@ -920,7 +920,10 @@ CLOSED: [2022-03-08 Tue 21:53]
 :EXPORT_HUGO_MENU:
 :END:
 I still need to figure out how to get ox-hugo to process images that are within shortcodes. Might be a good opportunity to learn the code base a bit and maybe contribute.
-[[file:images/posts/20220308_seahorse/20220308_seahorse.jpg]]
+#+begin_export html
+<img src="20220308_seahorse.jpg" width= "600px" title="TITLE" alt="Watercolor painting of a seahorse in yellows browns and reds floating above slight green and pink vegetation" align="center">
+#+end_export
+=Note=: I did wrap this in a proper img tag to support alt-text but the rendered effect is the same as just putting a raw file in.
 
 Here's the ~figure~ shortcode.
 #+begin_export hugo
@@ -941,8 +944,10 @@ I ran into =nil pointer evaluating resource.Resource.Resize= error when running 
 I still have to smooth out the edges for making the page bundle play nice with the short-code within ox-hugo. Kudos to [[https://fosstodon.org/web/@kaushalmodi@mastodon.technology][Kaushal Modi]] for already [[https://ox-hugo.scripter.co/doc/hugo-bundle/][supporting page bundles elegantly]] in ox-hugo. But for this post, I can "cheat" because I need to show the old style rendering anyway for a comparison. By inserting the image directly, ox-hugo will copy the image to the right location so Hugo can do image processing on that page bundle.
 
 The "old" method is just the original image linked directly with no captions or EXIF metadata:
-[[file:images/posts/20220128_hugo-photos-with-exif-data/20191016-Howe-Lake.jpg]]
-
+#+begin_export html
+<img src="20191016-Howe-Lake.jpg" width= "800px" alt="Howe Lake in Glacier National Park reflecting the yellow larch and pink alpine glow of sunset kissing the top of the snow-capped peaks on a perfectly still mirror surface " align="center">
+#+end_export
+=Note=: I did wrap this in a proper img tag to support alt-text but the rendered effect is the same as just putting a raw file in.
 
 And the "new" method which uses the shortcode to resize the image to save bandwidth (the original image can be viewed at full resolution by clicking it... I'm not thrilled with the compression quality but it's decent) and also shows the EXIF metadata. I plan to do a bit more with the EXIF info but this is a great start thanks to the shortcode, the caption parameter I added (to provide descriptive alts for accessibility independent of the caption) and icons from the [[https://github.com/Remix-Design/remixicon][Remixicon project]] who provide high-quality FOSS icons.
 
@@ -1007,7 +1012,11 @@ CLOSED: [2022-01-09 Sun 21:05]
 :EXPORT_HUGO_MENU:
 :END:
 First painting with the new paint set. Good paper (140 lbs) and paint make a big difference.
-[[./static/20220109_foundnemo.jpg]]
+#+begin_export hugo
+{{< figure src="../../20220109_foundnemo.jpg" width= "600px" title="Found Nemo in very clear water(color)" alt="Watercolor painting of a clowfish like Nemo on white paper with some grass tufts along the bottom" align="center" >}}
+#+end_export
+
+
 ** DONE Water color paint key/legend                         :art:watercolor:
 CLOSED: [2022-01-08 Sat 17:48]
 :PROPERTIES:
@@ -1016,7 +1025,9 @@ CLOSED: [2022-01-08 Sat 17:48]
 :END:
 I got a new water color paint set. Turns out I like painting enough and I was encouraged by a friend with a generous gift of brushes and a marine life water color book. The same friend also clued me in to making a paint key/legend. Well, first I made a poor design decision on how to structure the key and then failed to follow the design (further indicating poor design). I also had to reconcile  my desire for perfection with lack of a ruler, lack of patience, and lack of necessity for the outcome to be perfect. So what I intended to be a relaxing afternoon activity turned out to be a bit frustrating. BUT, I'm glad I persevered and now I have this legend to guide me on what colors to pick when I paint. Now that it's done, it looks pretty to me, not surprising that I also love opera warming up cacophonous sound.
 
-[[./static/20220108_paintkey.jpg]]
+#+begin_export hugo
+{{< figure src="../../20220108_paintkey.jpg" width= "600px" title="Watercolor swatch" alt="4x6 grid of water color swatches with the color drawn across and the name of the color written above in black ink." align="center" >}}
+#+end_export
 
 ** DONE Setting up Protonmail in Emacs :emacs:linux:
 CLOSED: [2022-01-08 Sat 12:04]
@@ -1769,8 +1780,9 @@ CLOSED: [2021-11-29 Mon 22:52]
 :END:
 I picked up a water color kit for $2 with a brush and eight colors to try something new. I followed along with a [[https://www.instagram.com/paigepayne_creations/channel/][tutorial]] to paint a highland cow and my painting wasn't that great, but it was fun. Afterwards it felt a little like Chewbacca, so l added a bandolier. Here's +Highland Chewie+ Chewvaca:
 
-#+ATTR_ORG: :width 800
-[[./static/20211129_HighlandChewie.jpg]]
+#+begin_export hugo
+{{< figure src="../../20211129_HighlandChewie.jpg" width= "800px" title="Highland Chewie loyal ally" alt="Watercolor drawing of a highland coo with characteristic shaggy fur and pointy horns with a bandolier across its body" align="center" >}}
+#+end_export
 
 ** DONE Emacs which-key prefix labels :emacs:
 CLOSED: [2021-11-22 Mon 00:26]
@@ -1847,8 +1859,10 @@ Instead, I opted for the A7c which was released in 2020 and is essentially an A7
 All of this preface to get to my main point. I have customized a lot of functions of the A7ii that I no longer remember the "how" or the "why" behind those changes. Here are the main changes I made and replicated on the A7c before the first shoot.
 
 Image from first shoot:
-#+ATTR_ORG: :width 800
-[[./static/Shom_20211026_McDonaldLake_00015.jpg]]
+#+begin_export hugo
+{{< figure src="../../Shom_20211026_McDonaldLake_00015.jpg" width= "800px" title="Lake McDonald" alt="A serene still lake photo with glacial rocks in the foreground and mountains with snowy peaks in the background with sunset hue cloud cover." align="center" >}}
+#+end_export
+
 
 *** Back-button auto-focus
 Decoupling auto-focus from the shutter action allows me to focus on a subject and wait for the right moment to click the shutter without worrying about refocusing/losing focus. This is accomplished in two pieces, first the shutter and auto-focus is decoupled and then the auto-focus function is then remapped to a button on the back of the camera.
@@ -1900,8 +1914,9 @@ See `buffer-invisibility-spec'."
 #+end_src
 
 Here's a screenshot of my Hugo content buffer showing ~org-bars~:
-#+ATTR_ORG: :width 600
-[[./static/20211023_org-bars.png]]
+#+begin_export hugo
+{{< figure src="../../20211023_org-bars.png" width= "800px" title="Org-bars screeshot" alt="Screenshot of this post inside an Emacs buffers with org-bars drawing vertical lines between each hierarchical node" align="center" >}}
+#+end_export
 
 ** DONE Wine and CrossOver to use Lightroom on Linux :foss:linux:
 CLOSED: [2021-10-16 Sat 00:07]
@@ -2080,7 +2095,11 @@ CLOSED: [2021-08-02 Mon 19:11]
 :END:
 Getting into home espresso has been fun, it's a rabbit hole like most fun things. And with rabbit holes it's best to decide how far you're willing to fall in before really starting down that hole. For me, it was an used Rancilio Silvia modded with a temperature PID controller and a refurbished Baratza Vario. At this level it's definitely possible to get good espresso and latte art if one tries, gets lucky, and practices... it's a good balance. Making one or maximum of two drinks most days is nearly not enough practice especially considering missed practice due to travel. But today was a lucky day, I got the best pour I've managed and it's exciting to see what's possible at the lower/est end of prosumer equipment.
 #+ATTR_ORG: :width 1200
-[[./static/20210802_LatteArt.jpg]]
+
+#+begin_export hugo
+{{< figure src="../../20210802_LatteArt.jpg" width= "800px" title="Latte Art" alt="A cup of latte with layered heart design sitting on a figured walnut table top" align="center" >}}
+#+end_export
+
 
 ** DONE Gemini Capsule :gemini:
 CLOSED: [2021-08-02 Mon 19:00]
