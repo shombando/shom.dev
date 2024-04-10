@@ -1,0 +1,19 @@
+DirectoryPath: "public"
+OutputDir: ./.htmltest
+EnforceHTTPS: true
+CacheExpires: "24h"
+
+IgnoreURLs:
+  # LinkedIn returns poor status
+  - "https://www.linkedin.com/in/shom"
+  # Hugo Figure shortcode centers images with #
+  - "^.*\\.(jpg|svg|png)#center"
+
+# Trust Hugo to generate internal tag page links
+IgnoreDirs:
+  - "tags"
+
+IgnoreDirectoryMissingTrailingSlash: true
+
+# Escape hatch can be attribute or class name
+IgnoreTagAttribute: "skip-htmltest-check"
