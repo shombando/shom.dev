@@ -124,7 +124,7 @@ CLOSED: [2024-02-13 Tue 21:28]
 :EXPORT_HUGO_IMAGES: /posts/20240213_alacritty-auto-theme-switcher/header.jpg
 :EXPORT_HUGO_MENU:
 :END:
-I like and use the Alacritty terminal emulator, but it does not automatically follow the system theme. The issue tracker discussion made it clear this feature won't be supported, fair enough. And after switching to =TOML= and [[/posts/20240124_alacritty-toml-and-partial-imports][discovering partial imports]], I knew I could scratch my own itch. Someone [[https://www.christianfosli.com/posts/on-colorscheme-changed][wrote a rust tool]] which was helpful as a guide but I wanted something with low dependency. So I made a =bash= script and a =systemd= service and it was fun(?) to learn more about =dbus=.
+I like and use the Alacritty terminal emulator, but it does not automatically follow the system theme. The issue tracker discussion made it clear this feature won't be supported, fair enough. And after switching to =TOML= and [[/posts/20240124_alacritty-toml-and-partial-imports][discovering partial imports]], I knew I could scratch my own itch. Someone [[https://www.christianfosli.com/posts/2024-on-colorscheme-changed/][wrote a rust tool]] which was helpful as a guide but I wanted something with low dependency. So I made a =bash= script and a =systemd= service and it was fun(?) to learn more about =dbus=.
 
 So, =alacritty-auto-theme= was born which automatically switches themes with manual override possible, repo on [[https://github.com/shombando/alacritty-auto-theme][Github]] and [[https://git.sr.ht/~shom/alacritty-auto-theme][Sourcehut]].
 
@@ -560,7 +560,7 @@ CLOSED: [2022-09-19 Mon 19:15]
 :EXPORT_HUGO_MENU:
 :END:
 
-Just came across this excellent post: [[https://unixsheikh.com/tutorials/poor-mans-mind-mapping-tool-with-just-the-terminal.html][Poor mans mind mapping tool with just the terminal]] from [[https://fosstodon.org/@fullstackthaumaturge/109026870492731099][@fullstackthaumaturge]] toot on Fosstodon. The whole premise is that you can do a lot things with the UNIX philosophy of using files for everything and manipulating them with simple tools that do one thing but do it well. So if you wanted a mindmap then just ~touch~ files in a folder hierarchy and then print it out with ~tree~.
+Just came across this excellent post: [[https://unixsheikh.com/tutorials/poor-mans-mind-mapping-tool-with-just-the-terminal.html][Poor mans mind mapping tool with just the terminal]] from @fullstackthaumaturge (account no longer exists) toot on Fosstodon. The whole premise is that you can do a lot things with the UNIX philosophy of using files for everything and manipulating them with simple tools that do one thing but do it well. So if you wanted a mindmap then just ~touch~ files in a folder hierarchy and then print it out with ~tree~.
 
 I found that amusing and thought, "well what if you don't want to clutter your file-system and wanted to zip up your mindmap?" Would you be able to get a nice ~tree~ output without unzipping the archive? Well turns out you can do just that by piping from ~zipinfo~ to ~tree~, which supports reading from a file (instead of reading a file-system) using the =--fromfile= argument.
 
@@ -780,7 +780,7 @@ The baseline against which I'm making this list is default =bash= on Ubuntu base
 While this list serves as the basis for the requirements of the new tool-chain, the top requirement was plain-text based configuration management, which can be placed under version control. The other very soft requirement was tools developed using [[https://www.rust-lang.org/][Rust]]. I've done a few "hello world" things in Rust and want to continue learning more and figured that using more Rust based tools is a good path to learning and contributing. With all that in mind, I landed on [[Prompt: starship]], [[Terminal: Alacritty]], and [[Shell: zsh]].
 
 *** Prompt: starship
-I decided to separate the prompt from the shell with [[https://starship.rs/][Starship]]. =starship= is highly customizable but it does everything I want from it out of the box; which is, cleanly and minimally replicate features of the =fish= prompt. There are a lot of "themes" and configurations which I'm sure I'd love to tweak and [[https://www.youtube.com/watch?v=AbSehcT19u0][yak-shave]] someday, but I enjoy the out of box experience. To fully take advantage of the default configuration, you need a nerd font (a font that has been patched with icons that are often used to represent software tools/concepts/applications). I'm a fan of the JetBrains Mono and there is a [[https://github.com/jtbx/jetbrainsmono-nerdfont][patched nerd font variant]].
+I decided to separate the prompt from the shell with [[https://starship.rs/][Starship]]. =starship= is highly customizable but it does everything I want from it out of the box; which is, cleanly and minimally replicate features of the =fish= prompt. There are a lot of "themes" and configurations which I'm sure I'd love to tweak and [[https://www.youtube.com/watch?v=AbSehcT19u0][yak-shave]] someday, but I enjoy the out of box experience. To fully take advantage of the default configuration, you need a nerd font (a font that has been patched with icons that are often used to represent software tools/concepts/applications). I'm a fan of the JetBrains Mono and there is a [[https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#patched-fonts][patched nerd font variant]].
 
 *** Terminal: Alacritty
 I have seen =Alacritty= getting praised for being fast, functional, configurable, and it being cross-platform tool written in Rust was all I needed to land on it. Some of the speed tests are pretty impressive, the configuration is very straight forward, and there are tons of resources so I won't delve into things that have been covered very well everywhere.
@@ -920,7 +920,7 @@ CLOSED: [2022-03-08 Tue 21:53]
 :EXPORT_HUGO_MENU:
 :END:
 I still need to figure out how to get ox-hugo to process images that are within shortcodes. Might be a good opportunity to learn the code base a bit and maybe contribute.
-[[file:images/20220308_seahorse/20220308_seahorse.jpg]]
+[[file:images/posts/20220308_seahorse/20220308_seahorse.jpg]]
 
 Here's the ~figure~ shortcode.
 #+begin_export hugo
@@ -941,7 +941,7 @@ I ran into =nil pointer evaluating resource.Resource.Resize= error when running 
 I still have to smooth out the edges for making the page bundle play nice with the short-code within ox-hugo. Kudos to [[https://fosstodon.org/web/@kaushalmodi@mastodon.technology][Kaushal Modi]] for already [[https://ox-hugo.scripter.co/doc/hugo-bundle/][supporting page bundles elegantly]] in ox-hugo. But for this post, I can "cheat" because I need to show the old style rendering anyway for a comparison. By inserting the image directly, ox-hugo will copy the image to the right location so Hugo can do image processing on that page bundle.
 
 The "old" method is just the original image linked directly with no captions or EXIF metadata:
-[[file:images/20220128_hugo-photos-with-exif-data/20191016-Howe-Lake.jpg]]
+[[file:images/posts/20220128_hugo-photos-with-exif-data/20191016-Howe-Lake.jpg]]
 
 
 And the "new" method which uses the shortcode to resize the image to save bandwidth (the original image can be viewed at full resolution by clicking it... I'm not thrilled with the compression quality but it's decent) and also shows the EXIF metadata. I plan to do a bit more with the EXIF info but this is a great start thanks to the shortcode, the caption parameter I added (to provide descriptive alts for accessibility independent of the caption) and icons from the [[https://github.com/Remix-Design/remixicon][Remixicon project]] who provide high-quality FOSS icons.
@@ -960,7 +960,7 @@ CLOSED: [2022-01-16 Sun 14:48]
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_MENU:
 :END:
-I fell down the split ergo mechanical keyboard rabbit hole thanks to a dear friend who was kind enough to loan me his [[https://www.gboards.ca/product/gergoplex][Gergoplex]] (despite my incessant teasing about his hipster keyboard). The Gergoplex is on the deeper end of the rabbit-hole with only 36 keys and 12g switches but it demonstrated the value to me. I ended up getting a pre-built [[https://github.com/foostan/crkbd][Corne]] and added the lightest switches I could find at the time: [[https://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=1638][Gateron MX 35g switches]]. I've been pretty happy with the Corne (and it's 3x6 +3 layout) but I very much enjoyed the lower profile and light action of the Gergoplex and wanted to chase it...
+I fell down the split ergo mechanical keyboard rabbit hole thanks to a dear friend who was kind enough to loan me his [[https://kowodo.github.io/HardwareTools/gergoPlex.html][Gergoplex]] (despite my incessant teasing about his hipster keyboard). The Gergoplex is on the deeper end of the rabbit-hole with only 36 keys and 12g switches but it demonstrated the value to me. I ended up getting a pre-built [[https://github.com/foostan/crkbd][Corne]] and added the lightest switches I could find at the time: [[https://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=1638][Gateron MX 35g switches]]. I've been pretty happy with the Corne (and it's 3x6 +3 layout) but I very much enjoyed the lower profile and light action of the Gergoplex and wanted to chase it...
 
 So, I got a [[https://boardsource.xyz/store/5f2efc462902de7151495057][Corne LP]] kit but went with an acrylic case (the aluminum case looks really nice but it's quite rich) and got the 25g [[https://boardsource.xyz/store/5fff705f03db380da20f1014][Purpz]] Choc switches.
 #+begin_export hugo
@@ -972,7 +972,7 @@ It was fun to assemble the kit and the board looks great:
 {{< exif src="20220126_corne-2.jpg" caption="Corne with purpz" alt="Split ergonomic keyboard with switches installed but no keycaps" showexif="false">}}
 #+end_export
 
-I didn't have any Choc keycaps so I had to wait a bit for the [[https://mkultra.click/mbk-choc-keycaps][MK Ultra MBK Choc]] keycaps. I'm very impressed with the keycaps and the homing keys feel great. I'm a big fan of the look and feel and quite happy with the low profile and light touch which I was looking for.
+I didn't have any Choc keycaps so I had to wait a bit for the MK Ultra MBK Choc (vendor may be defunct) keycaps. I'm very impressed with the keycaps and the homing keys feel great. I'm a big fan of the look and feel and quite happy with the low profile and light touch which I was looking for.
 
 #+begin_export hugo
 {{< exif src="20220126_corne-3.jpg" caption="Fully assembled Corne" alt="Split ergonomic keyboard with black and white keys" showexif="false">}}
@@ -1125,7 +1125,7 @@ At this stage plain-text email will work just fine, in order to send email with 
 *** References
 Here are a list of references I used to get everything setup and configured:
 - https://systemcrafters.net/emacs-mail/
-- http://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/
+- [[https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/][https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/]]
 - https://jherrlin.github.io/posts/emacs-mu4e/
 
 ** DONE "Inverse literate" config via org-transclusion                :emacs:
@@ -1165,6 +1165,7 @@ Overall, this has worked pretty well. The file =config.org= in my repo contains 
 CLOSED: [2021-12-01 Wed 21:57]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211201_doom-emacs-config--deprecated
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases '(20211201_doom-emacs-config-deprecated)
 :EXPORT_HUGO_MENU:
 :END:
 I was asked about my Doom config by [[https://fosstodon.org/@Runlevelrobot/107374760764898864][someone on fosstodon]] but it's not a clean repo where I'm not confident that I didn't accidentally commit private information in the past, so I wasn't sure how to share. But this is a good time to put a pin in the config and capture a snapshot here, for reference.
@@ -1918,7 +1919,7 @@ Crash Annotation GraphicsCriticalError: |[0][GFX1]: Potential driver version mis
 ) [GFX1]: Potential driver version mismatch ignored due to missing DLLs 0.0.0.0 and 0.0.0.0
 #+end_src
 
-At this point I didn't have high hopes for avoiding the Windows VM route but  wanted to give a quick try to [[https://www.codeweavers.com/crossover][CrossOver]]. I tried one of their supported applications (Notepad++) and that worked great. They also support "unlisted application" but pointing the Adobe installer led to a lot of nothing, the logs were not very helpful either. At this point I decided to abandon this path and go the VM route to make progress on my actual photo editing goals. However, Steam's [[https://www.simpler.website/html/2020/12/steam-play.html][Proton]] could be a option to investigate in the future. Are there any other good solutions?
+At this point I didn't have high hopes for avoiding the Windows VM route but  wanted to give a quick try to [[https://www.codeweavers.com/crossover][CrossOver]]. I tried one of their supported applications (Notepad++) and that worked great. They also support "unlisted application" but pointing the Adobe installer led to a lot of nothing, the logs were not very helpful either. At this point I decided to abandon this path and go the VM route to make progress on my actual photo editing goals. However, Steam's [[https://protonge.com/][Proton]](updated to link to Proton-GE) could be a option to investigate in the future. Are there any other good solutions?
 
 ** DONE Fully automated deployment :emacs:foss:
 CLOSED: [2021-10-05 Tue 05:53]
@@ -2043,7 +2044,7 @@ I turned to KDEnlive after it was recommended by the System Crafters community [
 All in all, I would say both are good but I personally had a better experience with KDEnlive, even though I much preferred the key framing UI of Shotcut. The stability issues of Shotcut could very well be specific to my machine and environment, so I'm not writing it off and might revisit it. KDEnlive produced a quality video where the editing seems passably professional, which is a testament to the tool and not my skill. It's amazing to have such high quality FOSS software, thank you devs!
 
 
-[1] https://wiki.systemcrafters.cc/community/chat-with-us/
+[1] [[https://systemcrafters.net/community/][https://systemcrafters.net/community/]]
 
 ** DONE Termux + Emacs :emacs:
 CLOSED: [2021-08-07 Sat 15:59]
