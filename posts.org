@@ -67,7 +67,7 @@ CLOSED: [2024-03-27 Wed 17:16]
 :EXPORT_HUGO_IMAGES: /posts/20240327_when-open-source-goes-source-available/redis.png
 :EXPORT_HUGO_MENU:
 :END:
-Redis went from an open [[https://techcrunch.com/2024/03/21/redis-switches-licenses-acquires-speedb-to-go-beyond-its-core-in-memory-database/][source license to a source available license]]. This is [[https://www.elastic.co/blog/licensing-change][not a new pattern]] of trying to protect share-holder value against large cloud providers extracting value they didn't create. Corporate finance discussion aside (since that's a really sad can of worms), it's interesting to see what the FOSS community did about it. 
+Redis went from an open [[https://techcrunch.com/2024/03/21/redis-switches-licenses-acquires-speedb-to-go-beyond-its-core-in-memory-database/][source license to a source available license]]. This is [[https://www.elastic.co/blog/licensing-change][not a new pattern]] of trying to protect share-holder value against large cloud providers extracting value they didn't create. Corporate finance discussion aside (since that's a really sad can of worms), it's interesting to see what the FOSS community did about it.
 
 #+hugo: more
 I posted my thoughts on Mastodon:
@@ -220,7 +220,7 @@ I have written before about using [[/posts/20220514_from-fish-on-gnome-terminal-
 
 However, as of version 13 Alacritty is deprecating YAML in favor of TOML (they're providing a ~alacritty migrate~ command that works very well). So I decided to just get with the program instead of delay adoption. This comes with the unexpected side benefit of being able to do imports of one configuration file into another. I discovered this because [[https://sunny.garden/@benmo/111814384857896783][@benmo]] got me wondering how to change the theme of the terminal while in a remote SSH session.
 
-The solution that TOML enable is to create a new configuration file which imports the standard configuration and then just overwrites (and/or adds) to the existing configuration. So I just made a new config file called alacritty-remote.toml: 
+The solution that TOML enable is to create a new configuration file which imports the standard configuration and then just overwrites (and/or adds) to the existing configuration. So I just made a new config file called alacritty-remote.toml:
 #+begin_src toml
 import=["~/.config/alacritty/alacritty.toml"]
 
@@ -238,7 +238,7 @@ function sshremote() {
 
 Now when I connect to a remote server over SSH instead of typing ~ssh server~ I type ~sshremote server~ and I get window with a different background color (I'll probably theme is more later).
 
-After I told my friend about this whole YAML to TOML saga, he made this... 
+After I told my friend about this whole YAML to TOML saga, he made this...
 #+begin_export hugo
 {{< exif src="meme.jpg" caption="I feel like we've both unlocked a new level of nerd." alt="Distracted boyfriend meme format with girl in red dress labeled TOML, boyfriend labeled SHOM, and girlfriend labeld YAML" showexif="false" >}}
 #+end_export
@@ -264,7 +264,7 @@ crc32 slug.txt
 ad734a45
 #+END_SRC
 But I didn't want transient files being created so I found this [[https://stackoverflow.com/questions/44804668/how-to-calculate-crc32-checksum-from-a-string-on-linux-bash#49446525][super hacky and delightful way]] of doing it:
-#+BEGIN_SRC sh 
+#+BEGIN_SRC sh
 echo -n "20240121_url-shortening-for-blog-links-natively-in-hugo" | gzip -1 -c | tail -c8 | hexdump -n4 -e ' '"%08x"'
 1ba87346%
 #+END_SRC
@@ -343,7 +343,7 @@ Now I need to make a nice fancy little sharing link and icon that is rendered on
 I don't know much about theme-templating (have a few overrides and shortcodes) or using page data to create new elements so I'll appreciate pointers and help in making my aliases as nice share-links automatically rendered by Hugo.
 
 #+begin_export html
-<p class="attribution">Share card image: "<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/86530412@N02/8253443979">3D Strongest Link</a>" by <a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/86530412@N02">ccPixs.com</a> is licensed under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by/2.0/?ref=openverse">CC BY 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img></a>. </p> 
+<p class="attribution">Share card image: "<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/86530412@N02/8253443979">3D Strongest Link</a>" by <a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/86530412@N02">ccPixs.com</a> is licensed under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by/2.0/?ref=openverse">CC BY 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img></a>. </p>
 #+end_export
 ** DONE Tech debt for personal projects                           :foss:rant:
 CLOSED: [2024-01-20 Sat 01:16]
@@ -375,7 +375,7 @@ There's a past-me, the now-me, and the future-me and they're almost never happy 
 *** Keyoxidizer
 I made Keyoxidizer to scratch my own itch, sharing it with the world was exciting as it looked like some people got some use out of it. GPG identity management isn't that straight forward and I was learning by doing. Sharing with the world paid-off because I got great feedback and a couple of contributions. But some of the feedback about best practices was a bit over my head. I understood enough to know that what I had implemented (RSA) was fine but neither modern nor performant. But I didn't understand the feedback enough to directly translate that to the GPG unattended key generation config format (it's not straight-forward, or so I thought because it's complicated)! Also I wanted to learn and make other improvements on handling this, like giving users choice of algo... so predictably it didn't get done. It fell into the really-nice-post™ black-hole.
 
-Ultimately, what helped was to just narrow my focus on a specific implementation[^fn:2]. Something that I would have easily done in a work context, but doing it for a personal project is difficult because there are so many competing goals[^fn:3]. 
+Ultimately, what helped was to just narrow my focus on a specific implementation[^fn:2]. Something that I would have easily done in a work context, but doing it for a personal project is difficult because there are so many competing goals[^fn:3].
 
 *** Personal tech-debt
 So why did it take 700+ words to get to the titular point? Because I'm still fighting against past-me's desire to have a really-nice-post™[^fn:4] and future-me's concern that this is all rubbish anyway.
@@ -471,7 +471,7 @@ I just saw [[https://mspsocial.net/@vkc/109612388794875976][this post from VKC]]
 
 I still have my photos on a WordPress blog and it automatically updates the copyright, which came up, very recently, in a conversation with a friend and yet I never thought about my Hugo site (this one). I wonder if I need a build pipeline that triggers at midnight UTC every year just to update the footer!? No.
 
-I wanted to scribble this thought quickly to first, trigger a rebuild and secondly, to put a commitment to finally investigate the Creative Commons licenses and choose an appropriate license site-wide. I would like for any information/photo/art to be usable for non-commercial use with attribution and maintaining an equivalent license. 
+I wanted to scribble this thought quickly to first, trigger a rebuild and secondly, to put a commitment to finally investigate the Creative Commons licenses and choose an appropriate license site-wide. I would like for any information/photo/art to be usable for non-commercial use with attribution and maintaining an equivalent license.
 =======
 
 ** DONE Let's Encrypt with acme.sh behind CPanel           :linux:foss:
@@ -712,7 +712,7 @@ Turns out that GitHub won't do anchors with any non-alphanumeric links even if t
 {{< exif src="user-anchors-as-p.png" caption="All non-alphanumeric replaced with dashes" alt="Similiar to other screenshot except anchor words are dash separated. Screenshot of Readme.md file with source insepctor open in Firefox showing the actual header anchor is GitHub's internal linking and there's separate <p> with the user exported anchor from markdown." showexif="false" >}}
 #+end_export
 
-Another excellent example of how [[/tags/foss][#foss]] enables these customizations by empowering the user. 
+Another excellent example of how [[/tags/foss][#foss]] enables these customizations by empowering the user.
 
 ** DONE Bonaire Art                                              :art:travel:
 CLOSED: [2022-05-30 Mon 11:26]
@@ -733,7 +733,7 @@ My favorite mural was definitely this whimsical scene of this mural of a guy vib
 {{< exif src="goats.jpg" caption="Dodici's goats" alt="Street mural of a man wearing a straw hat, red shirt, blue shorts, reclining while playing a ukuele while three goats surround him chewing leaves with funky expressions." showexif="false" >}}
 #+end_export
 
-The island is also famous for its flamingos grazing in the salt flats. Bonaire is a sea-salt producing island and there are huge mounds of salt that are stacked before shipping, all of that area is a good hang for flamingos. I was lucky to get to see some flamingos up close while at the Washington Slagbaai National Park. But I think I saw a lot more flamingo art, which was also great.  
+The island is also famous for its flamingos grazing in the salt flats. Bonaire is a sea-salt producing island and there are huge mounds of salt that are stacked before shipping, all of that area is a good hang for flamingos. I was lucky to get to see some flamingos up close while at the Washington Slagbaai National Park. But I think I saw a lot more flamingo art, which was also great.
 #+begin_export hugo
 {{< exif src="flamingos.jpg" caption="Wall mural of a flock of flamingos standing and grazing in the salt flats. Only one of them is standing on one leg, the classic pose." showexif="false" >}}
 #+end_export
@@ -785,9 +785,9 @@ I decided to separate the prompt from the shell with [[https://starship.rs/][Sta
 *** Terminal: Alacritty
 I have seen =Alacritty= getting praised for being fast, functional, configurable, and it being cross-platform tool written in Rust was all I needed to land on it. Some of the speed tests are pretty impressive, the configuration is very straight forward, and there are tons of resources so I won't delve into things that have been covered very well everywhere.
 
-One big advantage of Alacritty that I don't see touted often is a very keyboard focused workflow. I especially enjoy the vim-like visual mode (bound to =CTRL= + =SPACE= by default) which allows navigating within the buffer, searching the output, and making text selections and copying from anywhere in the buffer all with the familiar vim keybindings. 
+One big advantage of Alacritty that I don't see touted often is a very keyboard focused workflow. I especially enjoy the vim-like visual mode (bound to =CTRL= + =SPACE= by default) which allows navigating within the buffer, searching the output, and making text selections and copying from anywhere in the buffer all with the familiar vim keybindings.
 
-Here's my minimal =Alacritty= configuration: 
+Here's my minimal =Alacritty= configuration:
 
 #+begin_src yaml
   # Configuration for Alacritty, the GPU enhanced terminal emulator.
@@ -916,7 +916,7 @@ I was able to set it up pretty easily on the keyboard, well, once I realized tha
 CLOSED: [2022-03-08 Tue 21:53]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 20220308_seahorse
-:EXPORT_FILE_NAME: index 
+:EXPORT_FILE_NAME: index
 :EXPORT_HUGO_MENU:
 :END:
 I still need to figure out how to get ox-hugo to process images that are within shortcodes. Might be a good opportunity to learn the code base a bit and maybe contribute.
@@ -1014,7 +1014,7 @@ CLOSED: [2022-01-08 Sat 17:48]
 :EXPORT_FILE_NAME: 20220108_water-color-paint-key-legend
 :EXPORT_HUGO_MENU:
 :END:
-I got a new water color paint set. Turns out I like painting enough and I was encouraged by a friend with a generous gift of brushes and a marine life water color book. The same friend also clued me in to making a paint key/legend. Well, first I made a poor design decision on how to structure the key and then failed to follow the design (further indicating poor design). I also had to reconcile  my desire for perfection with lack of a ruler, lack of patience, and lack of necessity for the outcome to be perfect. So what I intended to be a relaxing afternoon activity turned out to be a bit frustrating. BUT, I'm glad I persevered and now I have this legend to guide me on what colors to pick when I paint. Now that it's done, it looks pretty to me, not surprising that I also love opera warming up cacophonous sound. 
+I got a new water color paint set. Turns out I like painting enough and I was encouraged by a friend with a generous gift of brushes and a marine life water color book. The same friend also clued me in to making a paint key/legend. Well, first I made a poor design decision on how to structure the key and then failed to follow the design (further indicating poor design). I also had to reconcile  my desire for perfection with lack of a ruler, lack of patience, and lack of necessity for the outcome to be perfect. So what I intended to be a relaxing afternoon activity turned out to be a bit frustrating. BUT, I'm glad I persevered and now I have this legend to guide me on what colors to pick when I paint. Now that it's done, it looks pretty to me, not surprising that I also love opera warming up cacophonous sound.
 
 [[./static/20220108_paintkey.jpg]]
 
@@ -1033,7 +1033,7 @@ In order to use connect to the local IMAP bridge locally, I will be using =mbsyn
 #+end_src
 
 *** Configuring mbsync
-=mbsync= expects a configuration in =~/.mbsyncrc= (does anyone know how to move this to =~/.config=? I'm disheartened by all the home directory clutter). Ideally one would GPG encrypt the password but since Proton Bridge generates it locally and it's is available as clear text to the local machine anyway, I didn't bother. Instead I just put the password from the ProtonBridge application into a text file (ensure no extra characters exist like space or return) and cat that into the ~PassCmd~. 
+=mbsync= expects a configuration in =~/.mbsyncrc= (does anyone know how to move this to =~/.config=? I'm disheartened by all the home directory clutter). Ideally one would GPG encrypt the password but since Proton Bridge generates it locally and it's is available as clear text to the local machine anyway, I didn't bother. Instead I just put the password from the ProtonBridge application into a text file (ensure no extra characters exist like space or return) and cat that into the ~PassCmd~.
 #+begin_src conf
   IMAPAccount proton
   Host 127.0.0.1
@@ -1761,7 +1761,7 @@ See `buffer-invisibility-spec'."
 
 #+end_src
 
-** DONE Highland Chewie                                      :art:watercolor: 
+** DONE Highland Chewie                                      :art:watercolor:
 CLOSED: [2021-11-29 Mon 22:52]
 :PROPERTIES:
 :EXPORT_FILE_NAME: 20211129_highland-chewie
@@ -1821,16 +1821,16 @@ CLOSED: [2021-11-21 Sun 17:35]
 
 I crafted a custom configuration for Emacs and have been using it for the past few weeks. This is something I didn't really see myself doing when I started using Emacs, it seemed "very advanced". This was my journey from a noob to a different kind of noob!
 
-*** Doom 
+*** Doom
 I started my Emacs journey with [[https://github.com/hlissner/doom-emacs/][Doom]] and was learning things along the way. This was a great way to get started by borrowing configuration snippets and blindly copying and pasting, which got me up and running quickly. I did find the vastness of Doom intimidating and knew that I wasn't using all the functionality and wasn't really discovering it given the jam packed key-maps.
-*** Vanilla Chocolate Swirl  
-Around the time when I was understanding how to copy paste configs more, there was some community discussion around making Emacs more inviting to new users. As a new user, I felt qualified to collect my thoughts. In an attempt to help new user on-boarding, I even created a [[https://github.com/shombando/EmacsVanillaChocolateSwirl][literate config]] that others found useful enough to contribute to. I understood things a lot better through that exercise and felt comfortable enough to try packages by myself. 
+*** Vanilla Chocolate Swirl
+Around the time when I was understanding how to copy paste configs more, there was some community discussion around making Emacs more inviting to new users. As a new user, I felt qualified to collect my thoughts. In an attempt to help new user on-boarding, I even created a [[https://github.com/shombando/EmacsVanillaChocolateSwirl][literate config]] that others found useful enough to contribute to. I understood things a lot better through that exercise and felt comfortable enough to try packages by myself.
 *** Back to Doom
-Actually, I never left Doom while doing the above exercise. I did not want to invest the time necessary to learn to make my own config. Also, having all the keybindings already setup and showing up nicely in ~which-key~ was great. This is also before =native-comp= was merged into Emacs 28 master branch so I was having issues with compatibility. The final push was that using Doom with all its modules was not performant on a Windows machine that I don't manage but have to use. 
+Actually, I never left Doom while doing the above exercise. I did not want to invest the time necessary to learn to make my own config. Also, having all the keybindings already setup and showing up nicely in ~which-key~ was great. This is also before =native-comp= was merged into Emacs 28 master branch so I was having issues with compatibility. The final push was that using Doom with all its modules was not performant on a Windows machine that I don't manage but have to use.
 *** Custom Config
 [[../20211201_doom-emacs-config-deprecated][During this time]], I kept disabling more and more Doom modules and replacing some of them with other options. There seems to be a lot of excitement about light-weight packages like =vertico=, =consult=, etc. that are more single task focused which I started integrating. I started using =orderless=, =embark= and =ace-window= as well and with those, I felt I had enough to use a custom config and be productive. I'm using [[https://github.com/plexus/chemacs2][Chemacs2]] to have both my Doom config and my [[https://git.sr.ht/~shom/.emacs.custom][custom config]] installed but have been exclusively using the config.
 
-I'll make a few short posts with some of the things I learned in this process with some code snippets as examples.  
+I'll make a few short posts with some of the things I learned in this process with some code snippets as examples.
 
 ** DONE Sony A7c initial customization :camera:
 CLOSED: [2021-10-27 Wed 00:52]

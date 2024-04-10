@@ -9,7 +9,7 @@
 
 * Tags
 :PROPERTIES:
-:EXPORT_HUGO_SECTION: tags 
+:EXPORT_HUGO_SECTION: tags
 :EXPORT_HUGO_MENU: :menu "main" :weight -2 :title Tags
 :EXPORT_FILE_NAME: _index
 :END:

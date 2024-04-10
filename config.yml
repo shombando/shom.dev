@@ -8,7 +8,7 @@ params:
     images:
       - Shom_20211026_McDonaldLake_00015.jpg
     env: production
-    defaultTheme: auto 
+    defaultTheme: auto
     ShowReadingTime: true
     #ShowShareButtons: true
     #ShowToc: true

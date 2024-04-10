@@ -307,7 +307,7 @@ Hope this gets you further in your [[https://systemcrafters.net/][system craftin
 ~/.local/share/bin/kanata --cfg ~/dotfiles/kanata/example1.cfg
 #+end_src
 Kanata also provides the ability to load multiple configuration files and switch at run-time.
-[fn:3] Not automatically updating is generally not a good idea, but unless this package makes it into your distribution's maintained repo it might be a good idea to just manually update. This might mitigate any malicious repo takeover since you're literally running a key-logger. 
+[fn:3] Not automatically updating is generally not a good idea, but unless this package makes it into your distribution's maintained repo it might be a good idea to just manually update. This might mitigate any malicious repo takeover since you're literally running a key-logger.
 [fn:2] There are other key mapping software available as discussed in the Kanata repo but I wanted to stick with the QMK familiarity in terms of terminology, platform independence, and even easier key-mapping.
 [fn:1] Apparently ICQ still exists, I fully expected it to be a historical footnote. Looks like it has had an interesting and somewhat checkered past.
 
