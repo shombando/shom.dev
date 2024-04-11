@@ -15,8 +15,7 @@
       devShell.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.mkShell {
         nativeBuildInputs = with pkgs.buildPackages; [
           hugo
-		  exiftool
-		  emacs-nox
+          emacs-nox
         ];
       };
     };
