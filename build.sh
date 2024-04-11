@@ -10,8 +10,7 @@ echo "==== Generate Hugo markdown using ox-hugo ===="
 emacs -Q --script build.el
 echo ""
 
-echo "==== Process images and remove GPS info ===="
-LC_ALL=C ; find ./images/ ./static -name '*.jpg' -exec exiftool -overwrite_original "-gps*=" {} \;
+echo "==== Copy images to content folder ===="
 cp -r images/* content/
 echo ""
 
