@@ -4,6 +4,106 @@
 #+startup: indent
 
 * Content
+** DONE Starting a webring in 2024                                     :foss:
+CLOSED: [2024-04-17 Wed 21:56]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240417_starting-a-webring-in-2024
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/18a9a25f
+:EXPORT_HUGO_IMAGES: /posts/20240417_starting-a-webring-in-2024/posse.jpeg
+:EXPORT_HUGO_MENU:
+:END:
+I'm happy to see that a lot of people, both regular and "content creators", are relying less solely on commercial social platforms. But discoverability is still an issue, maybe taking back the web requires using ancient tools like webrings.
+#+hugo: more
+#+begin_export hugo
+{{< figure src="./posse.jpeg" width= "400px" title="Publish on Own Site Syndicate Everywhere" alt="Hand drawn sketch of a hub and spoke arrangement with 'Your site' as the hub and other sites like Mastodon, Instagram, Github, etc. as spokes" align="center" >}}
+#+end_export
+
+The idea of [[https://indieweb.org/POSSE][POSSE]] is very appealing from a data sovereignty perspective but you're still relying on third-party platforms for discoverability. If only there was a way to discover others from each other... well there used to be: webrings. The basic premise was, you land on a site(D) and you were pointed to the previous(C) and next(E) sites in the ring. A random site button was also common.
+#+begin_export hugo
+{{< mermaid >}}
+flowchart LR
+A((A))<-->B((B))
+B((B))<-->C((C))
+C((C))<-->D((D))
+D((D))<-->E((E))
+E((E))<-->A((A))
+{{< /mermaid >}}
+#+end_export
+#+begin_export html
+<style>
+aside {
+  padding-left: 0.5rem;
+  margin-left: 40%;
+  float: block-end;
+  box-shadow: inset 5px 0 5px -5px #29627e;
+  font-style: italic;
+  font-size: medium;
+  text-align: right;
+  color: #29627e;
+}
+</style>
+#+end_export
+#+begin_aside
+Diagram rendered by Mermaid.js which is a 1MB payload (ESM version), I'll investigate render at build.
+#+end_aside
+
+An easier and older(?) concept is a "blog roll", where you just list the other sites you find cool/interesting on your site somewhere (typically in the side-navigation bar which was as common design pattern). However, the downside with blog rolls is that you have to maintain it manually and it could grow quite long. As a reader, it's hard to choose which site to visit; it's a real judging a book by it's cover dilemma.
+
+The previous/next links in a webring kind of solve both those problems, especially if there is an index page that one can visit to see all the sites. But the biggest downside is that it typically requires an active server running "code" to route the traffic (because manually linking to sites would require constant upkeep) and if a site(C) ceases to exist or removes the previous/next links then it breaks the ring. The other issue is that if there's a popular site in the ring(B) then only the adjacent sites (A & C) benefit from the additional 👀.
+#+begin_export hugo
+{{< mermaid >}}
+flowchart LR
+A((A))<-->B((B))
+B((B)) -- x --> C((C))
+C((C)) -- x --> D((D))
+D((D))<-->E((E))
+E((E))<-->A((A))
+style C fill:#a33
+style B fill:#3a3
+{{< /mermaid >}}
+#+end_export
+
+So what are some mitigations we can apply to this webring model?
+1. Don't run "code" on each site or a central server
+2. Give sites an easy way to link previous/next sites (minimal technical ability required)
+3. Make sure that all sites actually exist and link correctly to their adjacent positions
+4. Change the order of the sites that link to each other to facilitate more discoverability
+#+begin_export hugo
+{{< mermaid >}}
+flowchart LR
+C((C))<-->A((A))
+A((A))<-->E((E))
+E((E))<-->B((B))
+B((B))<-->D((D))
+D((D))<-->C((C))
+style B fill:#3a3
+{{< /mermaid >}}
+#+end_export
+
+Well, turns out that [[https://github.com/k3rs3d/ringfairy][Ringfairy]] actually address all of these:
+1. It uses statically generated redirect pages for each node in the ring
+2. Individual sites only need to insert three (previous/index/nextg) regular url links
+3. It audits sites and excludes missing/malformed sites during build to preserve ring integrity
+4. It can shuffle the site order each time it builds the ring
+
+In my quest to just do things and learn from them instead of wishing it existed and with encouragement from the [[https://systemcrafters.net/community/][System Crafters Community]], I started [[https://craftering.systemcrafters.net/][Craftering]]. Of course this site is a part of the ring and you can explore others with the previous/next links in the footer. I can say for certain that my site is not (B) but it's been fun to bring others into the fold. We're collaborating via a [[https://codeberg.org/SystemCrafters/craftering][Codeberg]] repo and we've had a few people who made their first contribution to an open source repo and/or their first Pull Request(PR), it's rewarding to be a part of that milestone. A couple first times for me as well: this is first community project that I'm maintaining; and I've submitted [[https://github.com/k3rs3d/ringfairy/pull/3][my first Rust-lang PR]] to Ringfairy (more on that in a future post).
+#+begin_export hugo
+{{< mermaid >}}
+flowchart LR
+a((C))<-->b((R))
+b((R))<-->c((A))
+c((A))<-->d((F))
+d((F))<-->e((T))
+e((T))<-->a((C))
+style a fill:#33a
+style b fill:#339
+style c fill:#338
+style d fill:#337
+style e fill:#336
+{{< /mermaid >}}
+#+end_export
+
 ** DONE 2024 Total Eclipse Prep                                         :fun:
 CLOSED: [2024-04-07 Sun 20:40]
 :PROPERTIES:
