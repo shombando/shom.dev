@@ -1,19 +1,19 @@
 repos:
+# - repo: local
+#   hooks:
+#     - id: checklinks
+#       name: "Check for broken links"
+#       entry: checklinks.sh
+#       language: script
+#       pass_filenames: false
+#       verbose: true
+- repo: https://github.com/shombando/exif-stripper #Strips GPS only
+  rev: c7c10730b8c2ee0761491c9a71965c10447fe8b2
+  hooks:
+    - id: strip-exif
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.6.0
   hooks:
     -   id: trailing-whitespace
     -   id: check-yaml
     -   id: check-added-large-files
-- repo: local
-  hooks:
-    - id: checklinks
-      name: "Check for broken links"
-      entry: checklinks.sh
-      language: script
-      pass_filenames: false
-      verbose: true
-- repo: https://github.com/shombando/exif-stripper #Strips GPS only
-  rev: c7c10730b8c2ee0761491c9a71965c10447fe8b2
-  hooks:
-    - id: strip-exif

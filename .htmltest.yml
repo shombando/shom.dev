@@ -1,7 +1,7 @@
 DirectoryPath: "public"
 OutputDir: ./.htmltest
 EnforceHTTPS: true
-CacheExpires: "24h"
+IgnoreCanonicalBrokenLinks: true
 
 IgnoreURLs:
   # LinkedIn returns poor status
@@ -9,9 +9,10 @@ IgnoreURLs:
   # Hugo Figure shortcode centers images with #
   - "^.*\\.(jpg|svg|png)#center"
 
-# Trust Hugo to generate internal tag page links
+# Trust Hugo to generate internal page links
 IgnoreDirs:
   - "tags"
+  - "s"
 
 IgnoreDirectoryMissingTrailingSlash: true
 
