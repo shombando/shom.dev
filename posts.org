@@ -96,11 +96,11 @@ b((R))<-->c((A))
 c((A))<-->d((F))
 d((F))<-->e((T))
 e((T))<-->a((C))
-style a fill:#33a
-style b fill:#339
-style c fill:#338
-style d fill:#337
-style e fill:#336
+style a fill:#9ab
+style b fill:#abc
+style c fill:#bcd
+style d fill:#cde
+style e fill:#def
 {{< /mermaid >}}
 #+end_export
 
