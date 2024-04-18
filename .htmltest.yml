@@ -7,12 +7,11 @@ IgnoreURLs:
   # LinkedIn returns poor status
   - "https://www.linkedin.com/in/shom"
   # Hugo Figure shortcode centers images with #
-  - "^.*\\.(jpg|svg|png)#center"
+  - "^.*\\.(jpg|jpeg|svg|png)#center"
 
 # Trust Hugo to generate internal page links
 IgnoreDirs:
   - "tags"
-  - "s"
 
 IgnoreDirectoryMissingTrailingSlash: true
 
