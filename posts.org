@@ -45,7 +45,7 @@ aside {
 </style>
 #+end_export
 #+begin_aside
-Diagram rendered by Mermaid.js which is a 1MB payload (ESM version), I'll investigate render at build.
+Diagram rendered by Mermaid.js which is a 1MB payload (ESM version), I'll investigate render at build. Edit: lots of issues with serving js, trying serving from static.
 #+end_aside
 
 An easier and older(?) concept is a "blog roll", where you just list the other sites you find cool/interesting on your site somewhere (typically in the side-navigation bar which was as common design pattern). However, the downside with blog rolls is that you have to maintain it manually and it could grow quite long. As a reader, it's hard to choose which site to visit; it's a real judging a book by it's cover dilemma.
