@@ -62,8 +62,8 @@
 	{{ $featured_image := index (.Resources.ByType "image") 0 }}
 	{{ $thumbnail_image := $featured_image.Fit "200x200" }}
 	{{ with $featured_image }}
-	<a href="{{.Permalink}}">
-	  <img load="lazy" src="{{ $thumbnail_image.Permalink }}" class="article-thumbnail" alt="Cover image from article, alt-text in article" style="margin-right:15px; margin-top:5px">
+	<a href="{{.RelPermalink}}">
+	  <img load="lazy" src="{{ $thumbnail_image.RelPermalink }}" class="article-thumbnail" alt="Cover image from article, alt-text in article" style="margin-right:15px; margin-top:5px">
 	</a>
 	{{ end }}
   </div>
@@ -84,7 +84,7 @@
 	  {{- partial "post_meta.html" . -}}
 	</footer>
 	{{- end }}
-	<a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+	<a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
   </div>
 </article>
 {{- end }}
