@@ -21,15 +21,9 @@ I'm happy to see that a lot of people, both regular and "content creators", are 
 
 The idea of [[https://indieweb.org/POSSE][POSSE]] is very appealing from a data sovereignty perspective but you're still relying on third-party platforms for discoverability. If only there was a way to discover others from each other... well there used to be: webrings. The basic premise was, you land on a site(D) and you were pointed to the previous(C) and next(E) sites in the ring. A random site button was also common.
 #+begin_export hugo
-{{< mermaid >}}
-flowchart LR
-A((A))<-->B((B))
-B((B))<-->C((C))
-C((C))<-->D((D))
-D((D))<-->E((E))
-E((E))<-->A((A))
-{{< /mermaid >}}
+{{< figure src="flow1.png" width= "600px" title="Webring" alt="A flow chart showing five nodes, A through E, pointing to each other in a circle" align="center" >}}
 #+end_export
+
 #+begin_export html
 <style>
 aside {
@@ -45,23 +39,14 @@ aside {
 </style>
 #+end_export
 #+begin_aside
-Diagram rendered by Mermaid.js which is a 1MB payload (ESM version), I'll investigate render at build. Edit: lots of issues with serving js, trying serving from static.
+Diagrams generated with mermaid-cli but workflow is poor now, mermaid.js payload is too large (3MB) to use a shortcode and render on web and it doesn't work for RSS feeds. I might need to update/maintain ob-mermaid to get seamless results, that'll definitely be another post.
 #+end_aside
 
 An easier and older(?) concept is a "blog roll", where you just list the other sites you find cool/interesting on your site somewhere (typically in the side-navigation bar which was as common design pattern). However, the downside with blog rolls is that you have to maintain it manually and it could grow quite long. As a reader, it's hard to choose which site to visit; it's a real judging a book by it's cover dilemma.
 
 The previous/next links in a webring kind of solve both those problems, especially if there is an index page that one can visit to see all the sites. But the biggest downside is that it typically requires an active server running "code" to route the traffic (because manually linking to sites would require constant upkeep) and if a site(C) ceases to exist or removes the previous/next links then it breaks the ring. The other issue is that if there's a popular site in the ring(B) then only the adjacent sites (A & C) benefit from the additional 👀.
 #+begin_export hugo
-{{< mermaid >}}
-flowchart LR
-A((A))<-->B((B))
-B((B)) -- x --> C((C))
-C((C)) -- x --> D((D))
-D((D))<-->E((E))
-E((E))<-->A((A))
-style C fill:#a33
-style B fill:#3a3
-{{< /mermaid >}}
+{{< figure src="flow2.png" width= "600px" title="Broken webring" alt="Same ring as before by C is colored red and there are x on it's connections to A&C, B is colored green." align="center" >}}
 #+end_export
 
 So what are some mitigations we can apply to this webring model?
@@ -70,15 +55,7 @@ So what are some mitigations we can apply to this webring model?
 3. Make sure that all sites actually exist and link correctly to their adjacent positions
 4. Change the order of the sites that link to each other to facilitate more discoverability
 #+begin_export hugo
-{{< mermaid >}}
-flowchart LR
-C((C))<-->A((A))
-A((A))<-->E((E))
-E((E))<-->B((B))
-B((B))<-->D((D))
-D((D))<-->C((C))
-style B fill:#3a3
-{{< /mermaid >}}
+{{< figure src="flow3.png" width= "600px" title="Shuffled ring gives better exposure" alt="Same as first image but B is green and the order is CAEBD" align="center" >}}
 #+end_export
 
 Well, turns out that [[https://github.com/k3rs3d/ringfairy][Ringfairy]] actually address all of these:
@@ -89,19 +66,7 @@ Well, turns out that [[https://github.com/k3rs3d/ringfairy][Ringfairy]] actually
 
 In my quest to just do things and learn from them instead of wishing it existed and with encouragement from the [[https://systemcrafters.net/community/][System Crafters Community]], I started [[https://craftering.systemcrafters.net/][Craftering]]. Of course this site is a part of the ring and you can explore others with the previous/next links in the footer. I can say for certain that my site is not (B) but it's been fun to bring others into the fold. We're collaborating via a [[https://codeberg.org/SystemCrafters/craftering][Codeberg]] repo and we've had a few people who made their first contribution to an open source repo and/or their first Pull Request(PR), it's rewarding to be a part of that milestone. A couple first times for me as well: this is first community project that I'm maintaining; and I've submitted [[https://github.com/k3rs3d/ringfairy/pull/3][my first Rust-lang PR]] to Ringfairy (more on that in a future post).
 #+begin_export hugo
-{{< mermaid >}}
-flowchart LR
-a((C))<-->b((R))
-b((R))<-->c((A))
-c((A))<-->d((F))
-d((F))<-->e((T))
-e((T))<-->a((C))
-style a fill:#9ab
-style b fill:#abc
-style c fill:#bcd
-style d fill:#cde
-style e fill:#def
-{{< /mermaid >}}
+{{< figure src="flow4.png" width= "600px" title="Craftering be Crafting" alt="Same 5 nodes as first image but the letters spell CRAFT" align="center" >}}
 #+end_export
 
 ** DONE 2024 Total Eclipse Prep                                         :fun:
