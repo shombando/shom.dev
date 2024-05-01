@@ -4,6 +4,24 @@
 #+startup: indent
 
 * Content
+** DONE In appreciation of podcasts                                   :rant:
+CLOSED: [2024-04-30 Tue 23:54]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240430_in-appreciation-of-podcasts
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/cfab88dc
+:EXPORT_HUGO_IMAGES: /posts/20240430_in-appreciation-of-podcasts/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+I've seen several posts and threads lately on the fediverse that take a rather pessimistic view of podcasts and advocate for written media instead. I guess here's my hot take about it because no one asked!
+
+#+hugo: more
+You know what? Transcripts would be great and having them integrated into the podcast app like synchronized lyrics, even better. Being able to quickly refer to the part that I didn't catch or copy a piece of information to save as a note, would be fantastic. I'm excited for all these types of features coming to podcast apps. Multi-track media, like video with subtitles is great for everyone and helps with accessibility.
+
+However, there's a lot of "this could have been an email" energy in a lot of these conversations. And a lot of straight up hate about tech bro podcasts... it makes me question why these folks are listening to that content, I don't want to read the crap content I wouldn't want to listen to either. I'm sure there must be a lot of atrocious podcasts out there for people to have such strong opinions. Luckily I'm not familiar with them and even if I were, I would just move on instead of crapping on the medium as a whole. There's a lot of equivalence of audio and text and I would rather have text because that's easier to skim. Sure, no argument about the skimming part. But audio is a different (and richer) medium than text and good podcasts lean into the strengths of the medium; tone, tamber, pacing, ambiance, relative loudness, etc. I'm not just talking about radio drama, I'm also talking about news, conversational, and reporting podcasts.
+
+There's no substitute for good content (I mean that in the definition of the word not content-creator sense) but audio is a great medium so I'm defending that in text form so it might actually reach folks that will not listen to a podcast about it. I would love for podcasts to have transcripts and make all media more accessible. But hey Podcasters, please keep making great podcasts with excellent audio mixing and production, I appreciate your craft!
+
 ** DONE Starting a webring in 2024                                     :foss:
 CLOSED: [2024-04-17 Wed 21:56]
 :PROPERTIES:
