@@ -1,4 +1,4 @@
-image: nixos/23.05
+image: nixos/unstable
 oauth: pages.sr.ht/PAGES:RW
 sources:
   - https://git.sr.ht/~shom/shom.dev
