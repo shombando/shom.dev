@@ -33,6 +33,8 @@ Instead of letting a good crisis go to waste, let's use this (as yet another) im
 
 I hope we can learn these lessons from the on-going Enshittification and start taking back the web instead of furthering Enshittification by protesting it ineffectively.
 
+=Discussion=: This site doesn't have comments but happy to chat via this [[https://fosstodon.org/@shom/112403736338407818][Mastodon post]].
+
 *** Footnotes
 
 [fn:3] Citing attribution would be difficult at best and while I'm not a lawyer I can't see how [[https://mastodon.social/@trisweb@m.trisweb.com/112402123151382239][their response]] could help legally.
