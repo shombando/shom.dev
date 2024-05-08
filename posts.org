@@ -4,6 +4,41 @@
 #+startup: indent
 
 * Content
+** DONE Enshittification protests beget more enshittification     :rant:foss:
+CLOSED: [2024-05-07 Tue 21:42]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240507_enshittification-protests-beget-more-enshittification
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/b0ef9631
+:EXPORT_HUGO_IMAGES: /posts/20240507_enshittification-protests-beget-more-enshittification/bad-luck-brian.jpg
+:EXPORT_HUGO_MENU:
+:END:
+Like many others, I am frustrated by corporations that have ingested immense amounts of user generated content and are using/selling it to train LLMs[fn:2]. However, deleting the content now is counter productive, let's protest more effectively by building a better web.
+
+#+hugo: more
+#+begin_export hugo
+{{< figure src="./bad-luck-brian.jpg" width= "500px" title="Bad Luck Brian answers important questions (via quickmeme.com)" alt="Bad luck Brian meme format with 'When does a narwhal bacon?' on top and '*Comment has been deleted*' at the bottom" align="center" >}}
+#+end_export
+*** Context and Concern
+I'm seeing many influential people on the Fediverse urging others to go register their displeasure by deleting the knowledge they contributed via answers and comments. This is especially puzzling in the case of the current [[https://stackoverflow.co/company/press/archive/openai-partnership][Stack Overflow and OpenAI partnership]] announcement that has caused [[https://mastodon.social/tags/StackOverflow][blowback on Mastodon]][fn:1] because these folks are tech savvy and should understand that deleting their contribution from showing up on the front-end does not delete the data. It's a bit crazy making because I feel like I'm missing something here, am I?
+
+Please don't advise people to delete their existing answers. Not contributing new answers and not logging in/deleting your account are great ways to register protest but deleting data is self-defeating. These companies already have the data backed up and will use it anyway, deleting answers only hurts humans who are searching for the answers through traditional searches. Removing the information by deleting it or issuing GDPR requests only locks up the knowledge and makes it exclusive to the "AI".
+
+*** Potential Solutions
+A dramatic analogy before we get to solutions... If a marauding force is razing your city and driving you away, you absolutely shouldn't come back to help them rebuild the city where you can't live anymore. But you also don't burn your books in the fire on the way out. You take your books with and build a better city with fortified libraries!
+
+Just in case it's not clear, I'm not siding with the platforms here. Even if they have a legal right to the use the data as they see fit, they're violating trust with the community by going against its wishes. And in the case of Stack Overflow all contributions are [[https://creativecommons.org/licenses/by-nc-sa/4.0/][CC-BY-SA]] so anyone can use the data provided they follow the attribution requirement[fn:3].
+
+Instead of letting a good crisis go to waste, let's use this (as yet another) impetus to leave walled gardens and join community spaces. Instead of encouraging others to delete answers, direct them to [[https://forum.systemcrafters.net/][community forums]], write the answer on your own website and post a link to the platform ([[https://indieweb.org/POSSE][POSSE style]]), stop contributing further to closed platforms and liberate existing data by using export tools where available.
+
+I hope we can learn these lessons from the on-going Enshittification and start taking back the web instead of furthering Enshittification by protesting it ineffectively.
+
+*** Footnotes
+
+[fn:3] Citing attribution would be difficult at best and while I'm not a lawyer I can't see how [[https://mastodon.social/@trisweb@m.trisweb.com/112402123151382239][their response]] could help legally.
+[fn:2] Large Language Model, falls under the umbrella of the colloquial Artificial Intelligence (AI) terminology.
+[fn:1] As of 2024-05-07, I don't want to single out individual posters.
+
 ** DONE In appreciation of podcasts                                   :rant:
 CLOSED: [2024-04-30 Tue 23:54]
 :PROPERTIES:
