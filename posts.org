@@ -75,7 +75,7 @@ I'm happy to see that a lot of people, both regular and "content creators", are 
 #+end_export
 
 The idea of [[https://indieweb.org/POSSE][POSSE]] is very appealing from a data sovereignty perspective but you're still relying on third-party platforms for discoverability. If only there was a way to discover others from each other... well there used to be: webrings. The basic premise was, you land on a site(D) and you were pointed to the previous(C) and next(E) sites in the ring. A random site button was also common.
-#+begin_src sh :noweb :noeval
+#+begin_src sh :exports none :noeval
   echo "flowchart LR
   A((A))<-->B((B))
   B((B))<-->C((C))
@@ -109,7 +109,7 @@ Diagrams generated with mermaid-cli but workflow is poor now, mermaid.js payload
 An easier and older(?) concept is a "blog roll", where you just list the other sites you find cool/interesting on your site somewhere (typically in the side-navigation bar which was as common design pattern). However, the downside with blog rolls is that you have to maintain it manually and it could grow quite long. As a reader, it's hard to choose which site to visit; it's a real judging a book by it's cover dilemma.
 
 The previous/next links in a webring kind of solve both those problems, especially if there is an index page that one can visit to see all the sites. But the biggest downside is that it typically requires an active server running "code" to route the traffic (because manually linking to sites would require constant upkeep) and if a site(C) ceases to exist or removes the previous/next links then it breaks the ring. The other issue is that if there's a popular site in the ring(B) then only the adjacent sites (A & C) benefit from the additional 👀.
-#+begin_src sh :noweb :noeval
+#+begin_src sh :exports none :noeval
   echo "flowchart LR
   A((A))<-->B((B))
   B((B)) -- x --> C((C))
@@ -129,7 +129,7 @@ So what are some mitigations we can apply to this webring model?
 2. Give sites an easy way to link previous/next sites (minimal technical ability required)
 3. Make sure that all sites actually exist and link correctly to their adjacent positions
 4. Change the order of the sites that link to each other to facilitate more discoverability
-#+begin_src sh :noweb :noeval
+#+begin_src sh :exports none :noeval
   echo "flowchart LR
   C((C))<-->A((A))
   A((A))<-->E((E))
@@ -150,7 +150,7 @@ Well, turns out that [[https://github.com/k3rs3d/ringfairy][Ringfairy]] actually
 4. It can shuffle the site order each time it builds the ring
 
 In my quest to just do things and learn from them instead of wishing it existed and with encouragement from the [[https://systemcrafters.net/community/][System Crafters Community]], I started [[https://craftering.systemcrafters.net/][Craftering]]. Of course this site is a part of the ring and you can explore others with the previous/next links in the footer. I can say for certain that my site is not (B) but it's been fun to bring others into the fold. We're collaborating via a [[https://codeberg.org/SystemCrafters/craftering][Codeberg]] repo and we've had a few people who made their first contribution to an open source repo and/or their first Pull Request(PR), it's rewarding to be a part of that milestone. A couple first times for me as well: this is first community project that I'm maintaining; and I've submitted [[https://github.com/k3rs3d/ringfairy/pull/3][my first Rust-lang PR]] to Ringfairy (more on that in a future post).
-#+begin_src sh :noweb :noeval
+#+begin_src sh :exports none :noeval
   echo "flowchart LR
   a((C))<-->b((R))
   b((R))<-->c((A))
