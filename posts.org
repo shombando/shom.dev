@@ -15,9 +15,8 @@ CLOSED: [2024-05-27 Mon 08:33]
 :END:
 This post [[https://robindev.substack.com/p/cloudflare-took-down-our-website][alleging extortion from CloudFlare]]  is plausible/cautionary. Market monopolies/tech mono-cultures suck so it's tempting to just be outraged at CF.
 
-However, 
 #+hugo: more
-we allow this when we cede control to third parties (not just cloud) without mitigation plans, by NOT:
+However, we allow this when we cede control to third parties (not just cloud) without mitigation plans, by NOT:
 - using open standards/formats
 - separating concerns
 - staffing expertise in-house/independent long-term partners
@@ -25,7 +24,8 @@ we allow this when we cede control to third parties (not just cloud) without mit
 
 Let's have that bigger talk!
 
-=Originally posted on [[https://fosstodon.org/@shom/112513200445089689][Mastodon]].=
+=Note=: Originally posted on [[https://fosstodon.org/@shom/112513200445089689][Mastodon]], any conversation will be there.
+
 ** DONE Enshittification protests beget more enshittification     :rant:foss:
 CLOSED: [2024-05-07 Tue 21:42]
 :PROPERTIES:
