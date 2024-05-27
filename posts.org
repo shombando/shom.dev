@@ -4,6 +4,28 @@
 #+startup: indent
 
 * Content
+** DONE To our own detriment                            :rant:foss:mastodon:
+CLOSED: [2024-05-27 Mon 08:33]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240527_to-our-own-detriment
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/22b248b7
+:EXPORT_HUGO_IMAGES: /posts/20240527_to-our-own-detriment/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+This post [[https://robindev.substack.com/p/cloudflare-took-down-our-website][alleging extortion from CloudFlare]]  is plausible/cautionary. Market monopolies/tech mono-cultures suck so it's tempting to just be outraged at CF.
+
+However, 
+#+hugo: more
+we allow this when we cede control to third parties (not just cloud) without mitigation plans, by NOT:
+- using open standards/formats
+- separating concerns
+- staffing expertise in-house/independent long-term partners
+- balancing risk with cost
+
+Let's have that bigger talk!
+
+=Originally posted on [[https://fosstodon.org/@shom/112513200445089689][Mastodon]].=
 ** DONE Enshittification protests beget more enshittification     :rant:foss:
 CLOSED: [2024-05-07 Tue 21:42]
 :PROPERTIES:
