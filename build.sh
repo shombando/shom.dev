@@ -16,8 +16,6 @@ echo ""
 
 echo "==== Copy film photo posts into content folder ===="
 cp -r ./film ./content/
-rm -rf ./content/film/.template
-rm ./content/film/add.sh
 echo ""
 
 echo "==== Build with Hugo ===="
