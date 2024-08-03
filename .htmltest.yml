@@ -8,6 +8,8 @@ IgnoreURLs:
   - "https://www.linkedin.com/in/shom"
   # Hugo Figure shortcode centers images with #
   - "^.*\\.(jpg|jpeg|svg|png)#center"
+  # 403 code - probably preventing scraping, fair play
+  - "https://snowgoons.ro/posts/2020-06-04-hugo-automated-image-processing/"
 
 # Trust Hugo to generate internal page links
 IgnoreDirs:
