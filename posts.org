@@ -4,6 +4,81 @@
 #+startup: indent
 
 * Content
+** DONE Hosting a Valheim Plus server on a VPS with Podman and docker-compose :linux:containers:selfhosting:
+CLOSED: [2024-08-18 Sun 22:28]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20240818_hosting-a-valheim-plus-server-on-a-vps-with-podman-and-docker-compose
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/6a32ef7b
+:EXPORT_HUGO_IMAGES: /posts/20240818_hosting-a-valheim-plus-server-on-a-vps-with-podman-and-docker-compose/valheimreadme.png
+:EXPORT_HUGO_MENU:
+:END:
+One of the best parts of being a self-hoster is being able to host a game server for your friends, right? Well, yes but also it can go sideways and not only because you're a system admin for more than yourself. There are many ways but Podman, docker-compose, and Syncthing can help!
+
+#+hugo: more
+*** Unwarranted exposition
+I plan to write a [[../../start][getting started]] guide at some point but after doing a bit of maintenance to get everything working again I wanted to share some quick thoughts. I did not want to expose Docker to the external web because running Docker as root is easier but also dangerous since root inside the container is root on host -- took a bit to really understand that. There are rootless Docker and other security measures but after Docker pulled some shenanigans and Podman being almost fully API compatible, it was an easy choice.
+**** Valheim
+#+begin_quote
+Valheim is a game where you explore, build, craft and conquer in a procedurally generated world inspired by Norse mythology.
+#+end_quote
+Valheim is stunning game that really captured my attention and was an excellent escape through a long winter few years back, I describe it as Viking Minecraft. The game supports multiplayer and people have figured out how to run it headless so there's a persistent world on a server so people can play and build asynchronously. It's quite fun to play with some friends when a simple resource gathering trip turns into a harrowing boondoggle.
+However, there are a lot of small quality of life (I'm not a 'real gamer' just cos-playing) improvements that could make the game more enjoyable. These (and many more) things have coalesced into a mod-pack called Valheim Plus.
+**** Valheim Plus
+[[https://www.nexusmods.com/valheim/mods/2323][Valheim Plus]] can live alongside the game and I first used it locally for my solo game. But when a group of friends wanted to play I suggested we keep our options open to enable Valheim Plus and selectively tweak the game. All of that finally led me to this [[https://github.com/Grantapher/ValheimPlus][excellent container stack]].
+*** The Setup
+I went through a couple different approached but I'm happy with a =docker-compose.yaml=, a =valheim.env= file, and the =valheim_plus.cfg= file. It is a bit annoying that all three files in are their separate file types but that's just modern development.
+**** Documentation and Version Control
+I have a private git server for my self-hosted infrastructure so I can commit secrets in .env files and not worry about leaking them accidentally. I wrote up a readme file, screenshot included to show how nice self-hosted Forgejo is and how it pays to do documentation for your own sake.
+#+begin_export hugo
+{{< figure src="valheimreadme.png" width= "600px" title="Readme Screenshot" alt="Screenshot of a readme file showing from a Forgejo instance with sections for Server, Server Staus, Valheim Plus, and Podman" align="center" >}}
+#+end_export
+Quick points on each piece of the tech stack, I hope to expound in a planned article on "self-hosting on an affordable VPS", feedback and topics to cover are very welcome.
+**** Podman
+[[https://podman.io/][Podman]] installation is pretty straight forward. I suggest creating a separate user on the server who owns all the containers. If you're familiar with docker, you can replace all docker commands with podman and it'll work a treat and [[https://www.redhat.com/sysadmin/compose-podman-pods][Redhat has a nice article]].
+**** docker-compose.yaml
+Podman uses an equivalent... [[https://github.com/containers/podman-compose][podman-compose]], I appreciate them not being cute about it and going with a familiar setup. I can share the docker-compose file as is, since I'm using the .env file to store all secrets.
+#+begin_src yaml
+  version: "3.1"
+
+services:
+  valheim-mod-prod:
+    image: ghcr.io/lloesche/valheim-server
+    cap_add:
+      - sys_nice
+    volumes:
+      - ./config:/config
+      - ./data:/opt/valheim
+      - ./valheim_plus.cfg:/opt/valheim/plus/BepInEx/config/valheim_plus.cfg:ro
+    ports:
+      - "2456-2458:2456-2458/udp"
+      - "9001:9001/tcp"
+    env_file:
+      - ./valheim.env
+    restart: always
+    stop_grace_period: 2m
+    networks:
+      - reverse_proxy
+
+networks:
+  reverse_proxy:
+    name: reverse_proxy
+    external: true
+#+end_src
+A couple things to point out:
+- The Valheim Plus documentation will tell you to place the =valheim_plus.cfg= file in the =BepInEx= folder but that made version controlling it a bit janky so I map it directly into the location inside the container where it's expected.
+- Also note the ":ro" at the end, it's mounted internally as a read-only file. You will see messages in the log stating it's read-only, that's not an error and it works just fine. The game will download a fresh config from GitHub if there's no file present so it's best to make it read-only so it doesn't get overwritten accidentally.
+- ~networks: reverse-proxy~ refers to Caddy that is proxying the requests coming to the Supervisor, which is a small web-app that allows control of the pieces of the tech stack.
+#+begin_export hugo
+  {{< figure src="supervisor.png" width= "600px" title="Supervisor Status web app" alt="Web app screenshot showing control options: Restart, Stop, Clear Log, Tail -f Stdout, Tail -f Stderr for the following services: crond, syslogd, valheim-backup, valheim-bootstrap, valheim-server, valheim-updater" align="center" >}}
+#+end_export
+**** Version Control
+With this setup you only have to version control three files: =docker-compose.yaml=, =valheim.env= (don't share publicly), and =valheim_plus.cfg= (I suggest creating a readme and version controlling that too).
+**** Syncthing
+This is probably the odd-ball part here, it's basically the easiest way for me to create an "on-site backup" for my "off-site server" (VPS). This really isn't in scope but wanted to throw it out there as a cheaper place to backup those frequent and bulky (for cloud storage but light for home) backups that the container stack creates.
+*** Takeaway
+There are great tools out there to self-host things for fun and to be in control of your data (more on that in the future too). But being able to recreate, reproduce, with reliability requires a little planning and some documenting. This blog doesn't have comments but happy to discuss further on [[https://phanpy.social/#/fosstodon.org/a/243697][Mastodon]].
+
 ** DONE To our own detriment                            :rant:foss:mastodon:
 CLOSED: [2024-05-27 Mon 08:33]
 :PROPERTIES:
