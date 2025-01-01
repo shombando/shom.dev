@@ -20,7 +20,7 @@ I'm not that big on marking milestones but I'm also realizing that I don't alway
 {{< figure src="./vibes.jpg" width= "600px" title="2024 vibes" alt="Photo of a large green tree behind a field of yellow black-eyed susan flowers in full bloom, the foreground is a bright red-orange light bleed emanating from the bottom right almost making the field look like it's on fire." align="center" >}}
 #+end_export
 
-The first thing that surprised me as I sit down to take stock the year that was, is how much I actually did. That was definitely not my gut feel, I didn't do a lot of things that I had vague notions about and unfortunately that's that sticks out without this explicit retrospection. This isn't chronological:
+The first thing that surprised me as I sit down to take stock the year that was, is how much I actually did. That was definitely not my gut feel, I didn't do a lot of things that I had vague notions about and unfortunately that's that sticks out without this explicit retrospection. This isn't chronological...
 
 ** Just trying things
 I wrote an article about [[../20240119_tech-debt-for-personal-projects/]["Tech debt for personal projects"]] and that was a good kick off for the year. It allowed me to just make and do things without trying to have grand plan, something I need to periodically revisit. I added a new section to the site for [[../../start][Getting Started Guides]] and while it still feels pretty empty I've had some great feedback from people who have found both the current guides helpful. I do want to add more to the series, I have a couple ideas in mind but I'm trying to lean into seasons of interests and hobbies and not worrying about "unfinished work".
@@ -49,7 +49,7 @@ Aside from that, there have been a lot of personally significant things but the 
 {{< figure src="./eclipse.jpg" width= "600px" title="Total Solar Eclipse" alt="Two side by side photos of the total solar eclipse. First one has the entire sun covered with only the prominence streaming off and the second one is the diamond ring breaking through at the 4o'clock position." align="center" >}}
 #+end_export
 
-Here's to just trying more things in 2025!
+Here's to just trying more things in 2025! 
 
 ** DONE Hosting a Valheim Plus server on a VPS with Podman and docker-compose :linux:containers:selfhosting:
 CLOSED: [2024-08-18 Sun 22:28]
