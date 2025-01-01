@@ -4,6 +4,53 @@
 #+startup: indent
 
 * Content
+** DONE 2024 in review                                             :fun:film:
+CLOSED: [2024-12-31 Tue 22:08]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20241231_2024-in-review
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/8e634aea
+:EXPORT_HUGO_IMAGES: /posts/20241231_2024-in-review/vibes.jpg
+:EXPORT_HUGO_MENU:
+:END:
+I'm not that big on marking milestones but I'm also realizing that I don't always remember, appreciate, and am grateful for the seasons of life. So a little retrospection is in order.
+
+#+hugo: more
+#+begin_export hugo
+{{< figure src="./vibes.jpg" width= "600px" title="2024 vibes" alt="Photo of a large green tree behind a field of yellow black-eyed susan flowers in full bloom, the foreground is a bright red-orange light bleed emanating from the bottom right almost making the field look like it's on fire." align="center" >}}
+#+end_export
+
+The first thing that surprised me as I sit down to take stock the year that was, is how much I actually did. That was definitely not my gut feel, I didn't do a lot of things that I had vague notions about and unfortunately that's that sticks out without this explicit retrospection. This isn't chronological:
+
+** Just trying things
+I wrote an article about [[../20240119_tech-debt-for-personal-projects/]["Tech debt for personal projects"]] and that was a good kick off for the year. It allowed me to just make and do things without trying to have grand plan, something I need to periodically revisit. I added a new section to the site for [[../../start][Getting Started Guides]] and while it still feels pretty empty I've had some great feedback from people who have found both the current guides helpful. I do want to add more to the series, I have a couple ideas in mind but I'm trying to lean into seasons of interests and hobbies and not worrying about "unfinished work".
+
+The biggest thing in this area of just diving into something was starting up a webring for the [[https://systemcrafters.net/][System Crafters Community]]: [[https://craftering.systemcrafters.net/][Craftering]] and that was wild to get several people adding their blogs and posting more. A few of my craftermates made their first site and started blogging from all the hype. Looking back, I'm quite proud of that and grateful for all the help and support from the community (especially [[https://blog.benoitj.ca/][Benoit]] for always being willing to help and encourage). It was a very concrete example of build the internet you want to see and small federated personal sites is exactly what I want to see. A bit more of that journey is [[../20240417_starting-a-webring-in-2024/][documented in this post]].
+
+Based on all this, I also created a getting started template site that is fully integrated with Nix and CI/CD for sourcehut: [[https://git.sr.ht/~shom/ox-hugo-nix][ox-hugo-nix]]. Which was both fun to make and got me another step closer towards a [[https://git.sr.ht/~shom/dotfiles][fully declarative tech stack based on Nix]], I want to get back to it and move of the Nix VM onto bare metal.
+
+Craftering was also a great excuse for me to learn a tiny bit of Rust and contribute to the project that builds the ring: [[https://github.com/k3rs3d/ringfairy][Ringfairy]]. Rust has been on my wish list for years and while I still know next to nothing, I'm grateful to [[https://kersed.net/][Kern]] for being so encouraging and merging my changes.
+
+I've wanted to make videos for fun/helpful instruction, I tried some streaming to get a setup figured out. I finally made a video about the [[https://makertube.net/w/14PXvXsCGAMPPvCNXGGGxA][Mamiya Six folder camera]] that I am totally enamored with, which brings us to...
+
+** Film Photography (give me all the mechanical cameras)
+The biggest focus for me from a hobby/creative outlet perspective this year has been Film Photography and the whole analog experience has been good for the soul. I find myself to be the happiest when I'm looking through and optical view/range finder. I've been developing film at home, both B&W and as of a few months ago, C-41 color and it has been a rewarding experience. I also realized that the highest friction and least enjoyable parts were the digital parts so after a bit of a journey I'm now camera scanning and while that feels ironic it's fast and I'm actually developing and scanning, so a big win!
+
+Speaking of digital friction, have wanted to revamp my [[https://photos.shom.dev][Photos]] site for a long time because the cobbled together Wordpress workflow was too much friction for posting frequently so instead of boiling the ocean I added a [[../../film][Film]] photography section to the site so I could document/share the photos I am taking. I have finally found a route forward for the new site in the last week and am playing a hugo test site, I'll include a photo since the test link is not meant to be permanent.
+#+begin_export hugo
+{{< figure src="hugogallery.png" width= "600px" title="Hugo Gallery theme with mods" alt="Home page screenshot showing Featured album and three folders: Nature, Film, Scuba; all of them have relevant cover art (automatically picked or can be specified in index.md)" align="center" >}}
+#+end_export
+
+** Life experiences
+I have found that I have really embraced being connected with online friends and that has been very rewarding. It is still a privacy/sharing struggle for me (not the people but putting stuff online) but I have found great community in System Crafters and the Fediverse as a whole and the Film Photography community specifically. Trying to balance between finding my voice / not self-censoring / digital privacy, it's an evolution but I have been a lot more active on [[https://phanpy.social/#/fosstodon.org/a/243697][Mastodon]] and so far I'm glad for it.
+
+Aside from that, there have been a lot of personally significant things but the most incredible experience of the year has to be experiencing the total solar eclipse. I'm glad [[../20240407_2024-total-eclipse-prep/][I planned for it]] and had some contingencies mapped out, I was down to plan C but had a transformative experience.
+#+begin_export hugo
+{{< figure src="./eclipse.jpg" width= "600px" title="Total Solar Eclipse" alt="Two side by side photos of the total solar eclipse. First one has the entire sun covered with only the prominence streaming off and the second one is the diamond ring breaking through at the 4o'clock position." align="center" >}}
+#+end_export
+
+Here's to just trying more things in 2025! 
+
 ** DONE Hosting a Valheim Plus server on a VPS with Podman and docker-compose :linux:containers:selfhosting:
 CLOSED: [2024-08-18 Sun 22:28]
 :PROPERTIES:
