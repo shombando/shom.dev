@@ -41,7 +41,7 @@ params:
     #     url: "/tags"
     socialIcons: # optional
         - name: 'Mastodon'
-          url: 'https://social.shom.dev/#/gts.shom.dev/a/01PY645MD8EHTQHK1B35SGVAV6'
+          url: 'https://gts.shom.dev/@shom'
         - name: 'camera'
           url: 'https://photos.shom.dev'
         - name: 'git'
