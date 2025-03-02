@@ -4,6 +4,32 @@
 #+startup: indent
 
 * Content
+** DONE Python, FastHTML, and Yak-shaving :rant:mastodon:containers:selfhosting:
+CLOSED: [2025-03-02 Sun 01:12]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250302_python-fasthtml-and-yak-shaving
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/6c578fb5
+:EXPORT_HUGO_IMAGES: /posts/20250302_python-fasthtml-and-yak-shaving/prototype.png
+:EXPORT_HUGO_MENU:
+:END:
+I wanted to save my barely passable Python scripting from total extinction and write something quick/useful. So what had happened was...
+
+#+hugo: more
+#+begin_export hugo
+{{< figure src="prototype.png" width= "600px" title="FastHTML web app prototype" alt="Single webpage titled "Systemd config generator for Podman" with form fields "App Name", "Port number mapping", and "Volume name" with a "Generate .service file" button. The table underneath shows the same fields as above plus a Delete column with the example data being Caddy with ports 80, 443, and volumes being ./data and ./site" align="center" >}}
+#+end_export
+
+Instead of writing a quick script I decided to learn a bit of FastHTML to create a web app to generate systemd service files for Podman, so a total yak-shave (I used podman generate last week but wanted "cleaner" files).
+
+FastHTML is a really neat approach to "templating" HTML and seems to scale nicely with your needs, which means it's easy to get started. The fact that Pico.css and sqlite are built-in is really nice for out-of-box experience (can be disabled and extended). I'll keep working on my toy app and maybe actually make it useful (I'm posting publicly for accountability, I hope).
+
+I posted the above on my single-user GoToSocial instance (having migrated away from Mastodon in late January). I have been meaning to document my journey with that and revamping my infrastructure on the VPS but I have been more in a doing mode and connecting with people on Fedi mode than actually writing mode. But I want to avoid falling into my perpetual really-nice-post™ trap so I'm adding some color here.
+
+I have been pretty happy with how things are set up at the VPS now. There's a separate user that runs all the containers in podman through ~systemd~ user service. The data for the various containers are served out of a single data folder that is Syncthing'ed over to various machines (and there are backup snapshots), and I have monitoring via Uptime Kuman and Ntfy (which I plan to move to a different VPS on a different provider). Taking ownership of my Fedi presence with GoToSocial elevated my personal SLA and recovery needs quite a bit.
+
+Well, I do still plan to write more about the VPS setup and crate a Start guide but the more I learn, the more I'm not sure where I would want someone else to start. Finding that balance between "best practice" / "I wish I had known when I started" / "this is way too complicated to start with" is a hard one to find. But it's nice to be doing things, learning, and now sharing (a bit).
+
 ** DONE 2024 in review                                             :fun:film:
 CLOSED: [2024-12-31 Tue 22:08]
 :PROPERTIES:
@@ -49,7 +75,7 @@ Aside from that, there have been a lot of personally significant things but the 
 {{< figure src="./eclipse.jpg" width= "600px" title="Total Solar Eclipse" alt="Two side by side photos of the total solar eclipse. First one has the entire sun covered with only the prominence streaming off and the second one is the diamond ring breaking through at the 4o'clock position." align="center" >}}
 #+end_export
 
-Here's to just trying more things in 2025! 
+Here's to just trying more things in 2025!
 
 ** DONE Hosting a Valheim Plus server on a VPS with Podman and docker-compose :linux:containers:selfhosting:
 CLOSED: [2024-08-18 Sun 22:28]
