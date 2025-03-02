@@ -17,7 +17,7 @@ I wanted to save my barely passable Python scripting from total extinction and w
 
 #+hugo: more
 #+begin_export hugo
-{{< figure src="prototype.png" width= "600px" title="FastHTML web app prototype" alt="Single webpage titled "Systemd config generator for Podman" with form fields "App Name", "Port number mapping", and "Volume name" with a "Generate .service file" button. The table underneath shows the same fields as above plus a Delete column with the example data being Caddy with ports 80, 443, and volumes being ./data and ./site" align="center" >}}
+{{< figure src="prototype.png" width= "600px" title="FastHTML web app prototype" alt="Single webpage titled 'Systemd config generator for Podman' with form fields 'App Name', 'Port number mapping', and 'Volume name' with a 'Generate .service file' button. The table underneath shows the same fields as above plus a Delete column with the example data being Caddy with ports 80, 443, and volumes being ./data and ./site" align="center" >}}
 #+end_export
 
 Instead of writing a quick script I decided to learn a bit of FastHTML to create a web app to generate systemd service files for Podman, so a total yak-shave (I used podman generate last week but wanted "cleaner" files).
