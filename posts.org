@@ -4,6 +4,48 @@
 #+startup: indent
 
 * Content
+** GPG Keys and Signing Git Commits
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250302_gpg-keys-and-signing-git-commits
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/af7407ee
+:EXPORT_HUGO_IMAGES: /posts/20250302_gpg-keys-and-signing-git-commits/GoldLock_FischerFotos_Flickr.jpg
+:EXPORT_HUGO_MENU:
+:END:
+It started with me adding a claim to my [[https://id.shom.dev][Keyoxide identity]] to link my new [[https://gts.shom.dev][GoToSocial fediverse]] home. That led to me making a minor edit to [[https://codeberg.org/shom/keyoxidizer][Keyoxidizer]] and then remembering that I meant to update my GPG key from RSA to ed25519. So that's the lovely path I walked to fall into this rabbit hole...
+
+#+hugo: more
+#+begin_export hugo
+{{< figure src="GoldLock_FischerFotos_Flickr.jpg" width= "600px" title="The G in GPG is for Gold(i)locks¹" alt="A brass lock hangs brightly in front of a blue wall made of wooden slats" align="center" >}}
+#+end_export
+
+Let's just collect the ideas:
+- PGP keys can't be upgraded unlike SSH keys
+- Gotta do a full generate
+- Keys and subkeys: separate signing from encryption
+  - This post about [[https://dev.to/benjaminblack/signing-git-commits-with-modern-encryption-1koh][signing git commits]] was very helpful
+#+begin_src conf
+[user]
+	name = Shom Bandopadhaya
+	email = shom@bandopadhaya.com
+	signingkey = 2231A3331BA5DF5B!
+[commit]
+	gpgsign = true
+#+end_src
+- Forgejo (Codeberg) and Github only need the signing keys
+- Getting signing keys extracted out after lot of trial and error
+  - ~gpg --list-keys --keyid-format short~
+  - ~gpg --armor --export 1BA5DF5B! > signingkey.asc~ (it's the same key, just truncated, read from the back)
+- Forgejo will use the main key as the default
+  - ~gpg -a --default-key CFFF15E945DF1157 --detach-sig \ gpg: using "CFFF15E945DF1157" as default secret key for signing~
+  - need to change it to the key you specified (not sure if this matters though because both are present) ~gpg -a --default-key 1BA5DF5B --detach-sig \ gpg: using "1BA5DF5B" as default secret key for signing~
+- Sourcehut needs the encryption and the signing key (they encrpyt email with GPG before sending)
+- The reward for all this? Little lock icon and verified badge! Not enough? Another layer of authenticity. 
+
+#+begin_export html
+<p class="attribution">¹"<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/80854685@N08/7454996046">Gold Lock</a>" by <a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/fischerfotos/">Mark Fischer</a> is licensed under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse">CC BY-SA 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="CC icon" style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="By icon, stick figure person"style="height: 1em; margin-right: 0.125em; display: inline;"></img><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="SA icon" style="height: 1em; margin-right: 0.125em; display: inline;"></img></a>. </p>
+#+end_export
+
 ** DONE Python, FastHTML, and Yak-shaving :rant:mastodon:containers:selfhosting:
 CLOSED: [2025-03-02 Sun 01:12]
 :PROPERTIES:
