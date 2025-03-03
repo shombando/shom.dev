@@ -25,3 +25,4 @@ echo ""
 echo "==== Copy .well-known for webfinger ===="
 cp ./.well-known -r ./public/
 echo ""
+if [[ eval"$(uname -n)"="pc-pop" ]]; then hugo server --buildDrafts --navigateToChanged --disableFastRender; fi
