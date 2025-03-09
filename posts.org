@@ -4,7 +4,81 @@
 #+startup: indent
 
 * Content
-** GPG Keys and Signing Git Commits
+** DONE PineNote - Day One                       :foss:pinenote:openhardware:
+CLOSED: [2025-03-08 Sat 21:55]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250308_pinenote-day-one
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/69a9f84e
+:EXPORT_HUGO_IMAGES: /posts/20250308_pinenote-day-one/PineNote_Overview.jpeg
+:EXPORT_HUGO_MENU:
+:END:
+I've been eye'ing the [[https://pine64.org/devices/pinenote/][PineNote]] for years and recently decided to check up on it. The community has been hard at work it starting to look ready for prime now. I would LOVE an ebook reader and note taker but do not want to be tied into proprietary walled gardens (tempted most by the [[https://remarkable.com/store/remarkable-2][Remarkable 2]] / [[https://remarkable.com/store/remarkable-paper/pro][Paper Pro]]). I didn't find much review type information on the PineNote since it's original developer edition release several years ago. So I decided to be the change I wanted to see and bought one. It's Open-Hardware, Free Open Source Software (FOSS), and the main distro is purely community built, the purchase justifications just write themselves!
+#+hugo: more
+#+begin_export hugo
+{{< figure src="PineNote_Overview.jpeg" width= "800px" title="PineNote" alt="A PineNote e-ink tablet with a pen on it is placed on a black mat with white grids along a collection of various coins down the side for a size comparison. The coins are (top to bottom): Canadian 2 dollars, Mexican 10 pesos, Japanese 500 yen, UK 1 pound, US 25 cents" align="center" >}}
+#+end_export
+*** First impressions
+It arrived from Hong Kong within a week via DHL, conveniently on a Friday afternoon so I was able to get into it last evening. I shared my experience on the Fediverse and what follows is mostly capturing and organizing those thoughts. 
+
+My first impression was: feels like a quality and sturdy device. Feels good in the hand, the texture is a kinda soft grippy plastic. Pen felt good, the writing friction seems ok, I don't want to make any software qualifications until I update the device but still happy with the out-of-box experience. The wake from sleep time is essentially instant.
+
+#+begin_export hugo
+{{< figure src="PineNote_WarmFrontLight.jpeg" width= "800px" title="The warm glow is delightful" alt="PineNote in a dark room with its warm front light which is a gentle glow. There's a Garmin watch on top of the screen blasting out harsh blue light. The PineNote is open to the Foreword of Terry Pratchett's The Color of Magic." align="center" >}}
+#+end_export
+I have been really hoping the warm front light was decent, and it is fantastic! That's about halfway up the brightness scale. The regular (white/blue) and warm front lights are separate sliders both in the quick access menu (white is totally off). Garmin watch is still showing a bit more blue than white. I adjusted the color balance to correct for the camera and get it to a close as what I see in a pitch black room.
+
+*** A bit of Q&A driven review
+I had solicited questions from the Fedifolks so I could answer questions people might have. There seems to be some interest and I got a few great questions. I then compiled them into an initial review by section.
+
+**** Linux Experience
+This is a first-class Linux device, full on Debian Trixie with a full Gnome desktop with Pine specific packages that are pinned so they're not overridden by generic packages. The on-screen keyboard has been the only source of frustration. The display runs at 200% and the keyboard isn't optimized for that. 
+
+**** Display Rendering Modes
+There's a handy widget to change the current display rendering modes based on what you're doing.
+- *Grayscale*: 16 levels of gray for best quality, slowest refresh, good for graphics.
+- *DU4*: 4 levels of grey, great for reading (text is very crisp).
+- *B&W + Dither*: best for fast refresh needs, writing, terminal, etc. still easy to read but display will feel lower res.
+*B&W and B&W invert*: these exist but I haven't found them to be that useful for me yet.
+
+**** Backlight
+Wonderfully configurable from very dim to burn your retina. The white and the warm backlights can be controlled individually from the quick access, so you can create your own perfect color temperature. Genuinely delighted by this!
+
+**** Applications
+- *Terminal*: Gnome Terminal, everything works great, touch typing hampered by on-screen keyboard but entirely good experience as a terminal with B&W + Dither mode.
+- *Browser*: Firefox, full install, works with plugins (only tried uBlock Origin).
+- *Reader*: KO Reader (more utilitarian) and Foliate (more UX polish) but both work great with epub and mobi, didn't try pdf much but it works. I will test annotation, marking, etc. later. It's a good eBook experience, I'm happy to say but as long you realize that it's not that small but definitely not heavy for its size and build quality. 
+- *Note-taking*: Xournal++, works fine out of the box but can be improved with some community config. Haven't used the writing much, more on that in the future. Without config, totally usable but not a dream.
+- *App Sources*: Anything available in Debian Trixie and Flatpaks cab be enabled. I plan to test and use Flatpaks, will report back.
+- *Sync*: Syncthing built-in but I read people are also using NextCloud with it. Will test both in the future, might need a test NextCloud instance (if you want answers sooner).
+
+**** Battery
+Definitely not enough data to say. I've been poking and prodding the device most of the day and it has used about 30% of charge so that is very encouraging. Closing the folio case and opening it up again is almost instant response, which I love (was a big fear).
+*Speculation*: The device must be doing  some good battery management  it seems since first launch of app after inactivity takes a bit to startup but is responsive after launch.
+
+**** Peripherals
+I have not connected Bluetooth devices yet, I plan to test it with Bluetooth mouse, keyboard, and headphones and report back in the utnext couple days. 
+*Disclaimer* based on very quick research: There's no USB-C dock functionality, the chip supports USB 3 PCIe,but the actual circuit out to USB-C connector is USB 2.0. There is no physical way for display mirroring (as in act as a  external display) or multi-monitor support (as in extend/duplicate screen). But there are Gnome tools to achieve this, I'll play with them at some point.
+
+**** Rough Edges
+As generally impressed as I am, this is *not* consumer device and Pine64 are very upfront about it. They actually caution is much less usable than it actually is. I've experienced a couple of freezes, specific to window dragging (my guess is dragging + gesture conflict + Xournal++ interaction). I had to run a few (documented) commands to get the boot environment fixed and remove a symlink to get ~apt~ to update properly. Honestly, these aren't even papercuts based on my expectations but I want to be fair about it.
+
+**** Resources
+- [[https://pndeb.github.io/pinenote-tweaks/][On-device documentation shown on startup]].
+- [[https://domistyle.gitlab.io/pinenote-2024][Great blog post with device overview and links to resources]].
+- [[https://fosstodon.org/@carbonatedcaffeine][@carbonatedcaffeine]] [[https://www.youtube.com/playlist?list=PLdVTsU3z511czt6WO_w5_MpOW52KkhQCB][YouTube Channel]] with demos and tutorials.
+- [[https://github.com/PNDeb/pinenote-debian-image][Community developed Debian image]] that is shipping on device.
+ 
+*** Up next
+My plan is to make an initial hands-on video and then add some feature/function focused videos. I don't plan to get very technical in any testing but I'm open to collaborating. So if you have an idea and want to try something out (given its within my capability, time availability, and risk appetite) please get in touch and let's chat.
+
+One of the other objectives of buying an early device is to contribute to the community both by writing reviews but also contributing to documentation (maybe code?). I already made my first PR to the on-device documentation and I hope to do some more. And finally, I'll be writing at least three more posts in this series: Week one, Month one, Year one.
+
+#+begin_export hugo
+{{< figure src="PineNote_Sideview.jpg" width= "800px" title="PineNote portable thin client (no backlight at all)" alt="The PineNote is shown from a sideview resting on a table with black cutting mat. The folio is folded to prop the tablet up like a laptop screen and a wireless keyboard is in front of the screen. The screen is showing a small browser window and a terminal window with uname -a output" align="center" >}}
+#+end_export
+
+** DRAFT GPG Keys and Signing Git Commits
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20250302_gpg-keys-and-signing-git-commits
