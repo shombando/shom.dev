@@ -19,6 +19,23 @@ I've been eye'ing the [[https://pine64.org/devices/pinenote/][PineNote]] for yea
 {{< figure src="PineNote_Overview.jpeg" width= "800px" title="PineNote" alt="A PineNote e-ink tablet with a pen on it is placed on a black mat with white grids along a collection of various coins down the side for a size comparison. The coins are (top to bottom): Canadian 2 dollars, Mexican 10 pesos, Japanese 500 yen, UK 1 pound, US 25 cents" align="center" >}}
 #+end_export
 *** First impressions
+#+begin_export html
+<style>
+aside {
+  padding-left: 0.5rem;
+  margin-left: 40%;
+  float: block-end;
+  box-shadow: inset 5px 0 5px -5px #29627e;
+  font-style: italic;
+  font-size: medium;
+  text-align: right;
+  color: #29627e;
+}
+</style>
+#+end_export
+#+begin_aside
+I made a [[https://makertube.net/w/cSDcWZVjFksZsxpPx5yo8j][first impressions video]], showing the device in action, covering most of the information here and more.
+#+end_aside
 It arrived from Hong Kong within a week via DHL, conveniently on a Friday afternoon so I was able to get into it last evening. I shared my experience on the Fediverse and what follows is mostly capturing and organizing those thoughts. 
 
 My first impression was: feels like a quality and sturdy device. Feels good in the hand, the texture is a kinda soft grippy plastic. Pen felt good, the writing friction seems ok, I don't want to make any software qualifications until I update the device but still happy with the out-of-box experience. The wake from sleep time is essentially instant.
