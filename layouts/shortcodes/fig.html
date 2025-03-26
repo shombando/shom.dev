@@ -1,0 +1,16 @@
+{{ $srcUrl := .Get "src" | safeURL }}
+{{ $originalImage := .Page.Resources.GetMatch (printf "%s" $srcUrl) }}
+{{- $alt := .Get "alt" -}}
+{{- $title := .Get "title" -}}
+{{- $width := default "600px" (.Get "width") -}}
+
+{{- $resize := default "800x" (.Get "resize") -}}
+
+{{- /* generate thumbnail */ -}}
+{{ .Scratch.Set "image" ($originalImage.Resize $resize) }}
+{{ $resizedImage := .Scratch.Get "image" }}
+
+<figure class="align-center">
+	<a href="{{ $originalImage.RelPermalink }}"> <img loading="lazy" style="display: block; margin-left:auto; margin-right:auto;" src="{{ $resizedImage.RelPermalink }}" alt="{{ $alt }}" width="{{ $width }}" /></a>
+	<figcaption>{{ $title }}</figcaption>
+</figure>

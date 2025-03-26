@@ -16,7 +16,7 @@ CLOSED: [2025-03-08 Sat 21:55]
 I've been eye'ing the [[https://pine64.org/devices/pinenote/][PineNote]] for years and recently decided to check up on it. The community has been hard at work it starting to look ready for prime now. I would LOVE an ebook reader and note taker but do not want to be tied into proprietary walled gardens (tempted most by the [[https://remarkable.com/store/remarkable-2][Remarkable 2]] / [[https://remarkable.com/store/remarkable-paper/pro][Paper Pro]]). I didn't find much review type information on the PineNote since it's original developer edition release several years ago. So I decided to be the change I wanted to see and bought one. It's Open-Hardware, Free Open Source Software (FOSS), and the main distro is purely community built, the purchase justifications just write themselves!
 #+hugo: more
 #+begin_export hugo
-{{< figure src="PineNote_Overview.jpeg" width= "800px" title="PineNote" alt="A PineNote e-ink tablet with a pen on it is placed on a black mat with white grids along a collection of various coins down the side for a size comparison. The coins are (top to bottom): Canadian 2 dollars, Mexican 10 pesos, Japanese 500 yen, UK 1 pound, US 25 cents" align="center" >}}
+{{< fig src="PineNote_Overview.jpeg" width= "800px" title="PineNote" alt="A PineNote e-ink tablet with a pen on it is placed on a black mat with white grids along a collection of various coins down the side for a size comparison. The coins are (top to bottom): Canadian 2 dollars, Mexican 10 pesos, Japanese 500 yen, UK 1 pound, US 25 cents" align="center" >}}
 #+end_export
 *** First impressions
 #+begin_export html
@@ -41,7 +41,7 @@ It arrived from Hong Kong within a week via DHL, conveniently on a Friday aftern
 My first impression was: feels like a quality and sturdy device. Feels good in the hand, the texture is a kinda soft grippy plastic. Pen felt good, the writing friction seems ok, I don't want to make any software qualifications until I update the device but still happy with the out-of-box experience. The wake from sleep time is essentially instant.
 
 #+begin_export hugo
-{{< figure src="PineNote_WarmFrontLight.jpeg" width= "800px" title="The warm glow is delightful" alt="PineNote in a dark room with its warm front light which is a gentle glow. There's a Garmin watch on top of the screen blasting out harsh blue light. The PineNote is open to the Foreword of Terry Pratchett's The Color of Magic." align="center" >}}
+{{< fig src="PineNote_WarmFrontLight.jpeg" title="The warm glow is delightful" alt="PineNote in a dark room with its warm front light which is a gentle glow. There's a Garmin watch on top of the screen blasting out harsh blue light. The PineNote is open to the Foreword of Terry Pratchett's The Color of Magic." align="center" >}}
 #+end_export
 I have been really hoping the warm front light was decent, and it is fantastic! That's about halfway up the brightness scale. The regular (white/blue) and warm front lights are separate sliders both in the quick access menu (white is totally off). Garmin watch is still showing a bit more blue than white. I adjusted the color balance to correct for the camera and get it to a close as what I see in a pitch black room.
 
@@ -92,7 +92,7 @@ My plan is to make an initial hands-on video and then add some feature/function 
 One of the other objectives of buying an early device is to contribute to the community both by writing reviews but also contributing to documentation (maybe code?). I already made my first PR to the on-device documentation and I hope to do some more. And finally, I'll be writing at least three more posts in this series: Week one, Month one, Year one.
 
 #+begin_export hugo
-{{< figure src="PineNote_Sideview.jpg" width= "800px" title="PineNote portable thin client (no backlight at all)" alt="The PineNote is shown from a sideview resting on a table with black cutting mat. The folio is folded to prop the tablet up like a laptop screen and a wireless keyboard is in front of the screen. The screen is showing a small browser window and a terminal window with uname -a output" align="center" >}}
+{{< fig src="PineNote_Sideview.jpg"  title="PineNote portable thin client (no backlight at all)" alt="The PineNote is shown from a sideview resting on a table with black cutting mat. The folio is folded to prop the tablet up like a laptop screen and a wireless keyboard is in front of the screen. The screen is showing a small browser window and a terminal window with uname -a output" align="center" >}}
 #+end_export
 
 ** DRAFT GPG Keys and Signing Git Commits
