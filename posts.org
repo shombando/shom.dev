@@ -4,6 +4,59 @@
 #+startup: indent
 
 * Content
+** DONE Slimming the site slightly                         :hugo:selfhosting:
+CLOSED: [2025-03-26 Wed 23:00]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250326_slimming-the-site-slightly
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/274e28bb
+:EXPORT_HUGO_IMAGES: /posts/20250326_slimming-the-site-slightly/ArticleLoadPre.png
+:EXPORT_HUGO_MENU:
+:END:
+I was looking into how Caddy serves pre-compressed files (html/css/js), it's pretty straightforward, I just need to generate the compressed files after Hugo builds the site. However, that is small fraction of the total payload since a lot of my posts have images. So I'm tackling that first.
+
+#+HUGO: more
+So why this and why now? I will eventually be moving this blog/site to own VPS and serve it via Caddy. I have really enjoyed the convenience of [[https://srht.site/][Sourcehut Pages]] and being able to utilize their build system for CI/CD, but I would like to do so with Forgejo instance fully on my VPS. Still, why? Why not, it's all for fun and learning.
+
+The [[../20250308_pinenote-day-one/][previous post]] seemed like a good one to optimize since the payload was actually quite hefty at 5.67 MB (mostly due to the three images). While this is not "bad" by modern web standards, it is non-value-add heavy. The images were inserted as ~figure~ and even though the max-width was 800px, it is loading the full size image. I'm a lot more mindful of this in the [[../../film][Film]] section of this site since it is all images but I had not taken the time to optimize the image experience for regular posts.
+#+begin_export hugo
+{{< fig src="ArticleLoadPre.png" title="Pre Optimization" alt="Showing 5.67 MB transferred" >}}
+#+end_export
+
+So how much bandwidth is saved on a cold-cache load? 12x! That is more than an order of magnitude savings for an arguably better experience (now the images can be clicked to open the original). *12x!!*    
+#+begin_export hugo
+{{< fig src="ArticleLoadPost.png" title="Post Optimization" alt="Showing 449.66 kB transferred" >}}
+#+end_export
+
+It's a real shame because it didn't take long and I already had most of the shortcode from when I implemented the exif display for photos. I added a new shortcode =fig= in ~/layouts/shortcodes/fig.html~:
+#+begin_src hugo
+{{ $srcUrl := .Get "src" | safeURL }}
+{{ $originalImage := .Page.Resources.GetMatch (printf "%s" $srcUrl) }}
+{{- $alt := .Get "alt" -}}
+{{- $title := .Get "title" -}}
+{{- $width := default "600px" (.Get "width") -}}
+
+{{- $resize := default "800x" (.Get "resize") -}}
+
+{{- /* generate thumbnail */ -}}
+{{ .Scratch.Set "image" ($originalImage.Resize $resize) }}
+{{ $resizedImage := .Scratch.Get "image" }}
+
+<figure class="align-center">
+	<a href="{{ $originalImage.RelPermalink }}"> <img loading="lazy" style="display: block; margin-left:auto; margin-right:auto;" src="{{ $resizedImage.RelPermalink }}" alt="{{ $alt }}" width="{{ $width }}" /></a>
+	<figcaption>{{ $title }}</figcaption>
+</figure>
+#+end_src
+=note:= /~width~ and ~resize~ are optional so I can easily control the viewing experience./
+
+And updated my Hugo Image Yasnippet template from using the HTML default =figure= to my custom =fig=. So now whenever I insert an image, I don't do anything differently, the shortcode takes care of it all. 
+#+begin_src html
+{{ < fig src="${1:SOURCE}" width= "${2:6}00px" title="${3:TITLE}" alt="${4:ALT-TEXT}" align="center" >}}
+#+end_src
+=note:= /there's a space between ~{{~ and ~<~ when Hugo templating should _not_ have that, I can't get Hugo to not render that even though it's in a code fence. I'll take any advice anyone has. Yes, it's a Hugo thing, not a ox-hugo export issue, I tried with the generated Markdown file as well./
+
+Oh, and how much would compressing the HTML save? 3.5x, between raw html and serving =zstd= which is what Sourcehut serves by default. But the difference there is 35 kB vs 10 kB. My plan now is still to pre-compress the text files after the Hugo build process and configure Caddy to offer =zstd= (and =br=?) but also eventually go back and update all images to use this new =fig= shortcode.
+
 ** DONE PineNote - Day One                       :foss:pinenote:openhardware:
 CLOSED: [2025-03-08 Sat 21:55]
 :PROPERTIES:
