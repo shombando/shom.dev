@@ -4,6 +4,53 @@
 #+startup: indent
 
 * Content
+** DONE How I accidentally got better at self-hosting and FOSS contributing :foss:selfhosting:fun:
+CLOSED: [2025-04-02 Wed 00:00]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250401_how-i-accidentally-got-better-at-self-hosting-and-foss-contributing
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/a2242e57
+:EXPORT_HUGO_IMAGES: /posts/20250401_how-i-accidentally-got-better-at-self-hosting-and-foss-contributing/nodes.jpg
+:EXPORT_HUGO_MENU:
+:END:
+
+A year ago (April 3rd, 2024) [[../20240417_starting-a-webring-in-2024/][I started a webring]] with the System Crafters Community, building the web I wanted to see instead of lamenting its absence. [[https://craftering.systemcrafters.net/][Craftering]] has motivated others to write and share more, which in itself is very rewarding, but what I didn't anticipate is how it improved my self-hosting and FOSS contributions.
+#+hugo: more
+
+#+begin_export hugo
+{{< fig src="nodes.jpg" width= "600px" title="Let's pretend these are rings not nodes, same idea." alt="Black and white photo of a square divided into triangles and the edges each then split off into other triangles. A reflection is visible in the right and bottom central triangles cluing-in the viewer into it being a glass window (it's a glass ceiling actually)." align="center" >}}
+#+end_export
+
+*** Build the thing you want to see
+Craftering started because I was nostalgic for a web of yore where people had their own quirky sites and each of them had their own personality — alright fair, a lot of them had the personality of a "red text on black background with under-construction-gifs". But the thing I really liked was being recommended another interesting personal site via blog rolls or webrings. It's organic, word of mouth, "haaaaave you met..." kind of "algo". So I built the webring with encouragement and active participation from the community, it was really fun.
+
+[[https://github.com/k3rs3d/ringfairy][Ringfairy]] was and remains the perfect solution for what I was looking for (static, simple linking, shuffles sites,built-in link audit). But it didn't have a mechanism to add all the sites (with RSS feeds) of a ring into a feed reader in one go through an OPML file. So I finally put some of that rudimentary Rust I had tried learning into actual use and [[https://github.com/k3rs3d/ringfairy/pull/3][upstreamed an OPML support feature]]. The developer (Kern) was also super encouraging and kind.
+
+*** Creating opportunities for FOSS workflow
+One of the hardest things about getting started with contributing to FOSS projects is that very first contribution. There is a HUGE hill to climb if you're not already steeped in a PR driven workflow. One of my unstated goals was to help get over that hump. Craftering onboards members in Coderberg through PRs or issues. We had a few first timers using git PR workflow and it felt great to be able to provide that learning experience and I learned a lot about being a maintainer. Whether we like to admit it or not, it's really nice to a see a clean merge from your PR... I had to learn how to clean up the PR through communication (while still being inviting and not coming across as gate-keepy) instead of just fixing it in the merge, that was also good growth.
+
+The other FOSS win was learning more about Nix packaging from the ever helpful and excellent mentor [[https://blog.benoitj.ca/][Benoit J]]. He got Ringfairy packaged up for Nixpkgs and made the entire build process trivial. Building it with Cargo was a bear (a tame but slow bear) and without Craftering that wouldn't have come about either. And that whole experience made me comfortable to rev the version of the [[https://halloy.chat][Halloy]] IRC client in [[https://github.com/NixOS/nixpkgs/pull/341510][Nixpkgs]], a real scratch-your-itch FOSS win.
+
+The other part of the workflow that I wanted to make "easier" for an Emacs crowd (a not insignificant contingent of System Crafters) was a [[https://codeberg.org/shom/ox-hugo-nix][Emacs+OrgMode+Hugo+Nix]] CI/CD blog. This is a clean "reference implementation" of my current blogging setup if I knew what I know now back when I started. I know it has been helpful as a reference for a few people.
+
+*** Nothing's more permanent than a temporary solution
+When all of this started the goal was to use Codeberg pages to host the static site after it is built with Codeberg's Woodpecker CLI. But instead of waiting around to get all the Cargo based (back then) CI/CD figured out (it's a lot more straightforward for repos you own, less so for organization repos and coordinating secrets management), I decided to host it on my VPS via Caddy. I did NOT appreciate what I had just signed up for... I signed up to be a Site Reliability Engineer (SRE) / System Administrator (SysAdmin) and really had to take the responsibility seriously.
+
+Until that point in time, I had only hosted for myself and only things I was fine with being down for up to a few weeks at a time. But hosting a site where I had rallied people to link up to, couldn't be down for weeks. So I did a few things that I had been meaning to for years:
+- Moved from Docker to Podman and using systemd to manage containers in order to be rootless by default and make automated system bring-up more robust.
+- Monitoring with [[https://github.com/louislam/uptime-kuma][Uptime-Kuma]].
+- Notifications with [[https://ntfy.sh/][Ntfy]].
+- Discovered a great systemd tool: [[https://isd-project.github.io/isd/][isd]]
+
+What's really interesting and cool is that this all actually works! I had an issue just yesterday as I was deploying Craftering for our *20th!* member and accidentally knocked down the site and I kept getting yelled at by the notifications. What even cooler is that this is an isolated incident, even more impressive because I'm always trying things on that VPS and serve a lot of other services out of it. (no whammy/no jinx/no curse)
+
+The long-term plan is to still get CI/CD figured out and deployed on Codeberg Pages so I'm not a single point of failure. But I'm grateful for having the opportunity and impetus to learn/improve where/when it counted.
+
+*** Community
+The best part of this whole experience without a doubt is the community we have built together. I wanted to learn and do these things but I needed motivation, encouragement, support, and more fundamentally — a reason. That's what I have found in the System Crafters community, the FOSS community, and the Fediverse writ large. There are a lot of great, kind, and patient people who want to collaborate to build something together. Two special shout-outs to [[https://systemcrafters.net/][daviwil]] for bringing us together and to [[https://glenneth.org/][glenneth]] for being an embodiment of the spirit I described.
+
+Sometimes you don't have to wait for someone else, you can be a catalyst. Happy Birthday Craftering!
+
 ** DONE Slimming the site slightly                         :hugo:selfhosting:
 CLOSED: [2025-03-26 Wed 23:00]
 :PROPERTIES:
