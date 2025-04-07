@@ -4,6 +4,35 @@
 #+startup: indent
 
 * Content
+** DONE A PineNote only 5-day weekend           :pinenote:linux:openhardware:
+CLOSED: [2025-04-07 Mon 00:00]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250406_a-pinenote-only-5-day-weekend
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/f50d4418
+:EXPORT_HUGO_IMAGES: /posts/20250406_a-pinenote-only-5-day-weekend/hanami.jpeg
+:EXPORT_HUGO_MENU:
+:END:
+I went away this weekend to visit a friend and to experience _hanami_ (experience the transient beauty of cherry blossoms, a cherish memory from living in Japan). Perfect scenario to only bring only the PineNote for five days. TL;DR: PineNote was exactly the right device for this and I have no complaints.
+
+#+hugo: more
+#+begin_export hugo
+{{< fig src="hanami.jpeg" width= "600px" title="Sakura Hanami" alt="Pink cherry blossoms in full bloom taking most of the frame with some branches are sticking out against the blidning warm golden sunlight to the right edge of the frame. It's very glowy, warm, and fuzzy feel." align="center" >}}
+#+end_export
+
+
+This was a non-work trip and as such I didn't need to bring a laptop and I am only shooting film so no need to back-up photos from a SD card. So the only time I would "need a computer" would be if I need to type a lot for any reason. The biggest reason I ended up needing to type for was chatting with folks on IRC, which is a great reason I suppose. The other reason was typing this blog post at the airprot, while also chatting on IRC.
+
+I brought along my wireless Corne keyboard which is what I use at home as well. The total weight of the setup was 903 grams, for contrast my laptop is 1347 grams. Aside from graphical and processor intensive workloads the PineNote has the edge as a travel device, especially since I get a great e-reader and a writing tablet. The lag in typing is not a real concern for the amount and reasons I would use for it for, but I also don't think I would want to use this if I had a laptop or deskptop available. However, it is excellent on the road.
+#+begin_export hugo
+{{< fig src="pinenote-dca.jpeg" width= "600px" title="PineNote with Corne" alt="The PineNote e-ink tablet is in landcape mode on a table at an airport with the Corne split-ergo 42 key keyboard." align="center" >}}
+#+end_export
+
+I read on the device on average about 1.5 hours a day, most of that on Airplane mode. In addition to that I typed on it (with WiFi and Bluetooth) for an additional 3 hours or so, and I had the warm backlight halfway up for about half the time. So roughly 10 hours of active use and on standby the rest of the time, the total battery usage usage was about 75%. This is super non-scientific but point is that I did not have battery anxiety and I only charged it once during the trip.
+
+Another thing that I intended to do but didn't need/get around to is getting tailscale setup. I want to think through that a bit more to see if that is something that is a good idea on a portable device that is most convenient when there's no passcode involved. But if I keep using it more like a Linux device than an e-reader I really need to reconsider how to secure it better. More on that another time.
+
+So, I'll declare this a success for my needs.
 ** DONE How I accidentally got better at self-hosting and FOSS contributing :foss:selfhosting:fun:
 CLOSED: [2025-04-02 Wed 00:00]
 :PROPERTIES:
