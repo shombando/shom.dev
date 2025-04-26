@@ -1,23 +1,18 @@
 {
-  "subject": "acct:shom@fosstodon.org",
+  "subject": "acct:shom@gts.shom.dev",
   "aliases": [
-    "https://fosstodon.org/@shom",
-    "https://fosstodon.org/users/shom"
+    "https://gts.shom.dev/@shom"
   ],
   "links": [
     {
       "rel": "http://webfinger.net/rel/profile-page",
       "type": "text/html",
-      "href": "https://fosstodon.org/@shom"
+      "href": "https://gts.shom.dev/@shom"
     },
     {
       "rel": "self",
       "type": "application/activity+json",
-      "href": "https://fosstodon.org/users/shom"
-    },
-    {
-      "rel": "http://ostatus.org/schema/1.0/subscribe",
-      "template": "https://fosstodon.org/authorize_interaction?uri={uri}"
+      "href": "https://gts.shom.dev/@shom"
     }
   ]
 }
