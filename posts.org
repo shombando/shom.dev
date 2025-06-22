@@ -4,6 +4,27 @@
 #+startup: indent
 
 * Content
+** DONE Undo finally clicked with vundo                               :emacs:
+CLOSED: [2025-06-22 Sun 18:18]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250622_undo-finally-clicked-with-vundo
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/84ed7afe
+:EXPORT_HUGO_IMAGES: /posts/20250622_undo-finally-clicked-with-vundo/vundo.png
+:EXPORT_HUGO_MENU:
+:END:
+Emacs undo is one of those things that never clicked for me, I used vanilla =undo-fu= until I discovered [[https://github.com/casouri/vundo][vundo]] via [[https://sachachua.com/blog/2025/06/thinking-about-time-travel-with-the-emacs-text-editor-and-org-mode/][Sacha's post]].
+#+hugo: more
+#+begin_export hugo
+{{< fig src="vundo.png" width= "600px" title="vundo (visual undo) shows a node graph and supports diff" alt="Emacs screenshot showing a configuration snippet of vundo and the vundo window at the bottom. The vundo window shows a lot of nodes and branching paths. One of the branched nodes has a blue x and that is being compared with the cursor positioin, the output of the diff is shown in its own pane." align="center" >}}
+#+end_export
+
+I used =undo-fu= for a familiar approach to undo-redo system but knew I wasn't taking advantage of the power of multi-path undo. That is what the =vundo= package simplifies by visualizing the history of the buffer as nodes that can you can traverse and diff in a very familiar git branch paradigm. I have only been using this package for a day but it has really freed up my mental load on what I want to tweak around and keep track of when the changes are small enough that they don't warrant a commit but also numerous that there's a branching aspect. Very useful for working in a REPL-like workflow for Hugo-templating or CSS tweaking. I'm aware of undo-tree as another popular package but sometimes things don't click, it was one of those things.
+
+The feature that is really cool, is being able to diff any arbitrary point in the history with one in another branching path (and selecting them visually). The screenshot shows how a node is selected (marked) in blue and then it can be diffed with any other node where the cursor (point) is currently. The pop-up mode can also be useful to visualize how far you're backing up just with regular undo-redo keybinds.
+
+I've been pretty intentional about not messing with Emacs config and just using it as a tool but this has been fun discovery and made me realize I need to learn a bit more about the undo system. I want to make the node size a little more configurable. Ideally a grouping of words when I'm writing a block of prose, like this blog post. Sometimes it's very granular and other times it has entire paragraphs. To be clear, this isn't an issue with =vundo=, I've had this issue forever, but never looked into it (possibly ~undo-limit~). Let me know how you deal with this issue, or if you even have it.
+
 ** DONE Five years on the Fedi                     :mastodon:fediverse:rant:
 CLOSED: [2025-06-09 Mon 23:52]
 :PROPERTIES:
