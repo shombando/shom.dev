@@ -4,6 +4,110 @@
 #+startup: indent
 
 * Content
+** DRAFT Photos meta data: the disjointed state of EXIF, XMP, IPTC in tools :hugo:foss:
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250615_photos-meta-data-the-disjointed-state-of-exif-xmp-iptc-in-tools
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/7598b765
+:EXPORT_HUGO_IMAGES: /posts/20250615_photos-meta-data-the-disjointed-state-of-exif-xmp-iptc-in-tools/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+
+#+hugo: more
+Hugo only support EXIF. The only reasonably modifiable fields are Image Description and Artist (Copyright, Software have meaningful information, UserComment is prefixed with ~ASCII~).
+Darktable will export XMP information with the photos
+- Tags are exported in XMP: Subjects, not XMP: Keywords
+- Hierarchical tags will export the entire hierarchy as a flattened list, top-level hierarchies need to be made into standalone Category to avoid export
+- Title, Description, Creator, Publisher, Copyright, Notes export just fine
+EXIF:Artist = XMP:Creator (both are written out)
+Darktable 5.3 just added the ability to customize the metadata editor list of fields and has all fields supported by Exiv2
+Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
+
+** DONE Bookmarking! I mean omnivoring! no, hoarding! no, bagging... wait, decking!? :foss:selfhosting:
+CLOSED: [2025-06-30 Mon 00:59]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250629_bookmarking-i-mean-omnivoring-no-hoarding-no-bagging-dot-dot-dot-wait-decking
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/6bee267b
+:EXPORT_HUGO_IMAGES: /posts/20250629_bookmarking-i-mean-omnivoring-no-hoarding-no-bagging-dot-dot-dot-wait-decking/logos.png
+:EXPORT_HUGO_MENU:
+:END:
+I have been on a prolonged bookmarking/reading-later/digital-archiving solution journey. Here's a quick run-down of my experience, this is /not/ a review of these tools.
+#+hugo: more
+#+begin_export hugo
+{{< fig src="logos.png" width= "600px" title="All the apps!" alt="Logos of Omnivore, Hoarder (now Kara Keep), Wallabag, and Readeck in increasing size from left to right against a blue to orange fill gradient." align="center" >}}
+#+end_export
+
+*** In the beginning
+There were browser bookmarks and then that was unmanageable and often lost while moving machines through incompetence and laziness. Then there was a long period of not keeping track of anything when internet search was in its golden years, you just needed to conjure vague phrases and within the top 5 links it was right there. Then came the darkness of search getting worse, and platforms disappearing, and personal blogs vanishing or buried and the need for bookmarks returned. The prodigal bookmark came home but had picked up a bad habit called link-rot. So any solution now also needed to archive the actual content of the page and not just the link itself. This is also coincidentally when I decided to take Personal Knowledge Management more seriously, so I wanted it all to integrate nicely and I wanted to have control over the content. Spoiler: I'm still not fully there.
+
+*** Omnivore
+For a brief moment I almost had it all (albeit with some compromises) and I was consuming everything into my system and truly living up to the [[https://github.com/omnivore-app/omnivore][Ominvore]] moniker. Omnivore had/has excellent mobile experience, great reading and highlighting experience, and integrated into [[https://github.com/logseq/logseq][Logseq]] and brought along the highlights. (Side note for nerds (I mean nerdier nerds): Logseq supports org-mode notation as a backend along with the default Markdown, so I can work effectively with it in Emacs but use Logseq as a front-end on mobile and sometimes on desktop).
+
+This was all fine and great, but I was uneasy about how their whole stack was not fully self-hostable but they seemed to be making a good faith effort to make it so. It was too good to be true and even with a paid hosting service they decided to shift focus/sell/acqui-hire, can't remember. But their tech stack was too complicated and too Google-y, so I was out. The community seems to have kept working on it, which is wonderful but my lesson learned was to stick with something that is self-host first approach and something I could understand and manage.
+
+*** Hoarder (now karakeep)
+One of the migration paths available was Hoarder (now [[https://karakeep.app/][karakeep]]) that would take the Omnivore output (no highlights... sad!) and made it a fairly seamless transition. It is pretty powerful but I just never quite got along with it and I have a few reasons that are more preference than limitation and philosophical misalignment/gripes that are not worth diving into (design aesthetics, heavy AI nudge for tagging, etc.). The one actual issue was it did not integrate with my RSS Reader: [[https://miniflux.app/][Miniflux]].   
+
+#+begin_details :trim-post nil
+#+begin_summary
+Which is crazy because Miniflux integrates with tons of stuff, click to expand:
+#+end_summary
+- Apprise
+- Betula
+- Cubox
+- Espial
+- Fever
+- Google Reader
+- Instapaper
+- LinkAce
+- Linkding
+- Linkwarden
+- Matrix Bot
+- Notion
+- Ntfy
+- Nunux Keeper
+- Omnivore
+- Pinboard
+- Pocket
+- Raindrop
+- Readeck
+- Readwise Reader
+- RSS-Bridge
+- Shaarli
+- Shiori
+- Telegram Bot
+- Wallabag
+- Webhook
+#+end_details
+#+begin_export html
+<br />
+#+end_export
+
+I also looked at [[https://github.com/linkwarden/linkwarden][Linkwarden]] and it's a fast moving target and I was looking for a simple, single-user approach that I could wrap my head around if needed for long-term viability. But again, both Karakeep and Linkwarden are great pieces of software and I'm happy to see so many choices in this space.
+
+*** Wallabag
+So [[https://wallabag.org/][Wallabag]] is an OG (like 2013 OG), I bounced off of it a long time ago mostly because I didn't know what I was doing and this is before search sucked. I used [[https://www.instapaper.com/][Instapaper]] for a while and I really liked it but I can't remember the details of why I stopped paying for it (just looked at the price and it may have contributed) but I remember it got worse somehow and I didn't control my content. And now again that I had been bruised a bit with shiny choices I decided to go back and give Wallabag a fair shot. Wallabag is SOLID. And since it's been around for ever, /almost everything/ works with it but also because it's been around for ever, it's age is noticeable.
+
+Honestly it does everything I needed and I was happy with it... except that there's no way to highlight text in the Android app. But, the Progressive Web App (PWA) let's you do that *if* you leave a comment, someone on fedi told me that it will save with a blank comment, which was a fine enough work around, but janky! So I would read and highlight with the PWA and use the native app for it's share intent and *offline reading*, which is a huge feature of the native app. I kept hopping along and bagging articles into my virtual marsupial pouch. But it would absolutely soil the bag when you threw a YouTube, PDF, or Mastodon link at it, in a less than helpful way. 
+
+*** Readeck
+Amongst all this of this playing out and me bouncing along not fully satisfied but also too resigned to try something new, Mozilla announced the death of [[https://en.wikipedia.org/wiki/Pocket_(service)][Pocket]]. I was always skeptical of Pocket because they pushed it too hard but didn't ever open source it and it never smelled right, even though I would have loved to use it since I'm a long-time Firefox user (mini-rant: browser-engine mono-culture, Mozilla please do better we beg of you, etc., so hope this is trimming for a worthy cause). So the topic of bookmarking/read-it-later (ironically Pocket's original name) was hot again and the [[https://linuxlads.com/episodes/144/][Linux Lads]] discussed it in a recent episode and mentioned Wallabag and [[https://codeberg.org/readeck/readeck][Readeck]]. I was done with messing around and had committed to Wallabag but something tugged at me to check it out more thoroughly, probably because it's a Go project and I've been loving my experience with [[https://codeberg.org/superseriousbusiness/gotosocial][GoToSocial]].
+
+I was so convinced that this wouldn't go anywhere that I didn't even bother running it with a compose file or podman systemd service, just threw a one-liner podman command into the terminal. But it started looking more and more appealing. It is so simple but has the exact feature set that I'm looking for (minus the Logseq/org-mode integration but the API is so simple that even a dummy like me can hack something together). I'm actually surprised how I kept getting more interested, the API browser and inline querying that is built-in (through Go libraries) makes the software so approachable, elegant even. Nothing here is new but all the things together really clicked for me, so I kept looking into it more.
+
+The interface is almost too simple and even the settings are bare and almost hides the excellent features, which I'm good with; not having to tune ten knobs to do one thing is good when the defaults are sane. It solves some of my gripes with Wallabag: handles Mastodon/Fedi threads really well, as well as YouTube links (it even pulls in the transcript text so videos are searchable), and the highlighting is excellent (has like 4 colors, if you're into that) and all highlights are collected in one place (no need to even open the article to go look for them) and collected as a side-bar within the article. Here's a quick look, I changed my highlights to different colors to make a point, I don't have a system.
+
+#+begin_export hugo
+{{< fig src="readeck.png" width= "400px" title="Readeck interface with highlights, sharing, and article links" alt="A screenshot of an article about with three different pieces highlighted in different colors and the corresponding highlighted texts appear on the right side bar in their respective colors. The sidebar also has tags and a QR code with a link that expires in a day which can be shared with the highlights available to the sharee. The bottom shows all links found in the article in a list." align="center" >}}
+#+end_export
+
+A couple other things to point out about the screenshot: The sidebar also has the usual meta data like the link details and tags but a list of all the links found in the article all collected at the bottom, just delightful! And the sharing menu generates a link (and QR code) which can be shared with the highlights available to the sharee, the link auto-expires in 24 hours.
+
+Another hidden gem is the [[https://opds.io/][OPDS]] library, which allows a reader software/device to directly connect to Readeck and have it export an article as an ePub. I use KO Reader on my [[../20250308_pinenote-day-one/][PineNote]] and now that the library is setup I can pull down an individual article or an entire collection as an ePub book (collections render into chapters in a book), how awesome! I really wish the highlights synced back, small lament.
+
+I don't know if I'll ever get around to doing a full review so I tried to cram a lot in here. Anyway, I'm early on with this journey and this was supposed to be a quick post after having sorted it all out, but 1500 words later I probably could keep going. I will say one last thing, I've been very encouraged with how the developer, [[https://codeberg.org/olivier][Oliver Meunier]], has been interacting with the community (on Codeberg!) and I hope I can figure out a way to contribute. I'll update this with a link to a Fediverse post if anyone wants to chat about this.
+
 ** DONE Undo finally clicked with vundo                               :emacs:
 CLOSED: [2025-06-22 Sun 18:18]
 :PROPERTIES:
