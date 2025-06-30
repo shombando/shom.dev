@@ -35,7 +35,7 @@ CLOSED: [2025-06-30 Mon 00:59]
 I have been on a prolonged bookmarking/reading-later/digital-archiving solution journey. Here's a quick run-down of my experience, this is /not/ a review of these tools.
 #+hugo: more
 #+begin_export hugo
-{{< fig src="logos.png" width= "600px" title="All the apps!" alt="Logos of Omnivore, Hoarder (now Kara Keep), Wallabag, and Readeck in increasing size from left to right against a blue to orange fill gradient." align="center" >}}
+{{< fig src="logos.png" width= "600px" title="All the apps!" alt="Logos of Omnivore, Hoarder (now Kara Keep), Wallabag, and Readeck in increasing size from left to right against a teal to yellow fill gradient." align="center" >}}
 #+end_export
 
 *** In the beginning
@@ -106,7 +106,7 @@ A couple other things to point out about the screenshot: The sidebar also has th
 
 Another hidden gem is the [[https://opds.io/][OPDS]] library, which allows a reader software/device to directly connect to Readeck and have it export an article as an ePub. I use KO Reader on my [[../20250308_pinenote-day-one/][PineNote]] and now that the library is setup I can pull down an individual article or an entire collection as an ePub book (collections render into chapters in a book), how awesome! I really wish the highlights synced back, small lament.
 
-I don't know if I'll ever get around to doing a full review so I tried to cram a lot in here. Anyway, I'm early on with this journey and this was supposed to be a quick post after having sorted it all out, but 1500 words later I probably could keep going. I will say one last thing, I've been very encouraged with how the developer, [[https://codeberg.org/olivier][Oliver Meunier]], has been interacting with the community (on Codeberg!) and I hope I can figure out a way to contribute. I'll update this with a link to a Fediverse post if anyone wants to chat about this.
+I don't know if I'll ever get around to doing a full review so I tried to cram a lot in here. Anyway, I'm early on with this journey and this was supposed to be a quick post after having sorted it all out, but 1500 words later I probably could keep going. I will say one last thing, I've been very encouraged with how the developer, [[https://codeberg.org/olivier][Oliver Meunier]], has been interacting with the community (on Codeberg!) and I hope I can figure out a way to contribute. I'll update this with a [[https://gts.shom.dev/@shom/statuses/01JYZQEP89RD1SKGZB1A37YR2M][link to a Fediverse post]] if anyone wants to chat about this.
 
 ** DONE Undo finally clicked with vundo                               :emacs:
 CLOSED: [2025-06-22 Sun 18:18]
