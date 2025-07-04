@@ -23,6 +23,101 @@ EXIF:Artist = XMP:Creator (both are written out)
 Darktable 5.3 just added the ability to customize the metadata editor list of fields and has all fields supported by Exiv2
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 
+** DONE GoToSocial Custom CSS                                :gotosocial:css:
+CLOSED: [2025-07-04 Fri 04:01]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250704_gotosocial-custom-css
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/284dbe2b
+:EXPORT_HUGO_IMAGES: /posts/20250704_gotosocial-custom-css/gotosocial_custom_css_gts.shom.dev.png
+:EXPORT_HUGO_MENU:
+:END:
+See what had happened was, I accidentally saw my Fedi profile not in dark mode (basically how all adventures begin). Now I'll tell you about a fairly small rabbit hole, in comparison to the other Yak-shaving chronicled here.
+
+GoToSocial allows customization through CSS at the instance and profile level. I had customized a few small aspects (borders, layout tweak) but decided to try on a new theme and got carried away with Yak-shaving. Then I was going to just throw the CSS into a gist, got carried away again and here's a blog post.
+
+#+hugo: more
+GoToSocial has recently shipped some fun themes and they can be customized with CSS at the profile level. The Midnight Hunt theme is pretty bold but also has some interesting CSS gradients going on, I thought maybe I'll change the highlight color and see how I like it. Well I kept tweaking for a bit. Here's the default theme looks like:
+#+begin_export hugo
+{{< fig src="default_midnight_hunt.png" width= "800px" title="Midnight Hunt theme" alt="Screenshot of the theme, it has red edges fading to black in the middle  " align="center" >}}
+#+end_export
+
+These are the instance level customizations I had previously made to my instance [gts.shom.dev](https://gts.shom.dev). I'm not a fan of borders and elements with their own background, preferring empty space for denoting boundaries. I also wanted to make the footer more responsive.
+#+begin_src css
+.profile .profile-header .basic-info .avatar-image-wrapper {
+  border: 0rem;
+}
+.status .status-header > address > a .avatar {
+  border: 0rem;
+}
+.status .status-header > address > a .avatar img {
+    background: var(--status-focus-bg);
+}
+.page-footer {
+  font-size: 0.8rem;
+  grid-column: 2 / span 1;
+}
+.page-footer:after {
+  content "";
+}
+#+end_src
+
+I've adapted it to something a little less exciting and way more drab so I guess it's more of a *New Moon Stroll* now. I decided to apply all of the CSS to the instance level since I'm single user instance and I wanted the about page to match my profile page. Normally this will be applied only to the custom CSS for the profile.
+#+begin_export hugo
+{{< fig src="gotosocial_custom_css_gts.shom.dev.png" width= "800px" title="I guess I'm calling this 'New Moon Stroll'" alt="Screenshot of the theme, it's a dark blue gradient background with lighter blue borders around the key sections and white text. The profile itself is described at the link above." align="center" >}}
+#+end_export
+
+Here's the CSS snippet (the ~root~ and ~body~ are standalone and can be used in any page):
+#+begin_src css
+  :root {
+    --bright-red: #;   //#f61a1ae6;
+    --blood-red: #;    //#6c1619;
+    --feral-orange: #; //#f78d17;
+    --ghastly-blue: #446868; //#88bebe;
+    --og-ghastly-blue: #88bebe;
+    --outer-space: #06080e;
+    --inner-space: #121630;
+  }
+  a {
+    color: var(--og-ghastly-blue);
+  }
+  .status .text > .content a, .status .text-spoiler > summary > .spoiler-content a {
+    color: var(--og-ghastly-blue);
+  }
+  body {
+    background: linear-gradient(
+      90deg,
+      var(--outer-space),
+      var(--inner-space) 30%,
+      var(--inner-space) 70%,
+      var(--outer-space)
+    );
+  	color: white;
+    text-shadow: none;
+  }
+  .profile .about-user .fields .field {
+    border: none;
+  }
+  .profile .about-user .fields .field:first-child {
+    border-top: 0.1rem solid var(--ghastly-blue);
+  }
+  .button {
+    box-shadow: none;
+  }
+  .about {
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+  .account-card {
+    background: none;
+  }
+  .account-card h3 {
+  	color: var(--og-ghastly-blue);
+  }
+#+end_src
+Just messing with CSS to make my profile felt like I was 'wasting time' but now that I have written a post about it somehow it feels like I did something useful!? It would be better to just be able to enjoy doing things because it was fun/interesting in the moment but making a blog is also kind of fun even if it did start as a 'I should get something out of idle inquiry so I'll write a post'.
+
 ** DONE Bookmarking! I mean omnivoring! no, hoarding! no, bagging... wait, decking!? :foss:selfhosting:
 CLOSED: [2025-06-30 Mon 00:59]
 :PROPERTIES:
