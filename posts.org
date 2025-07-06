@@ -69,56 +69,79 @@ I've adapted it to something a little less exciting and way more drab so I guess
 
 Here's the CSS snippet (the ~root~ and ~body~ are standalone and can be used in any page):
 #+begin_src css
-  :root {
-    --bright-red: #;   //#f61a1ae6;
-    --blood-red: #;    //#6c1619;
-    --feral-orange: #; //#f78d17;
-    --ghastly-blue: #446868; //#88bebe;
-    --og-ghastly-blue: #88bebe;
-    --outer-space: #06080e;
-    --inner-space: #121630;
-  }
-  a {
-    color: var(--og-ghastly-blue);
-  }
-  .status .text > .content a, .status .text-spoiler > summary > .spoiler-content a {
-    color: var(--og-ghastly-blue);
-  }
-  body {
-    background: linear-gradient(
-      90deg,
-      var(--outer-space),
-      var(--inner-space) 30%,
-      var(--inner-space) 70%,
-      var(--outer-space)
-    );
-  	color: white;
-    text-shadow: none;
-  }
-  .profile .about-user .fields .field {
-    border: none;
-  }
-  .profile .about-user .fields .field:first-child {
-    border-top: 0.1rem solid var(--ghastly-blue);
-  }
-  .button {
-    box-shadow: none;
-  }
-  .about {
-    background: none;
-    border: none;
-    box-shadow: none;
-  }
-  .account-card {
-    background: none;
-  }
-  .account-card h3 {
-  	color: var(--og-ghastly-blue);
-  }
+.profile .profile-header .basic-info .avatar-image-wrapper {
+  border: 0rem;
+}
+.status .status-header > address > a .avatar {
+  border: 0rem;
+}
+.status .status-header > address > a .avatar img {
+    background: var(--status-focus-bg);
+}
+.page-footer {
+  font-size: 0.8rem;
+  grid-column: 2 / span 1;
+}
+.page-footer:after {
+  content "";
+}
+:root {
+  --bright-red: #;   //#f61a1ae6;
+  --blood-red: #;    //#6c1619;
+  --feral-orange: #; //#f78d17;
+  --link-fg: #aafefe;
+  --fg-accent: #aafefe;
+  --ghastly-blue: #446868; //#88bebe;
+  --og-ghastly-blue: #88bebe;
+  --outer-space: #06080e;
+  --inner-space: #121630;
+}
+a {
+  color: var(--link-fg);
+}
+.status .text > .content a, .status .text-spoiler > summary > .spoiler-content a {
+  color: var(--link-fg);
+}
+.status .status-info,
+.status.expanded .status-info {
+  color: var(--og-ghastly-blue);
+}
+body {
+  background: linear-gradient(
+    90deg,
+    var(--outer-space),
+    var(--inner-space) 30%,
+    var(--inner-space) 70%,
+    var(--outer-space)
+  );
+  text-shadow: none;
+}
+.profile .about-user .fields .field {
+  border: none;
+}
+.profile .about-user .fields .field:first-child {
+  border-top: 0.1rem solid var(--ghastly-blue);
+}
+.button {
+  box-shadow: none;
+}
+.about {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+.account-card {
+  background: none;
+}
+.account-card h3 {
+  color: var(--og-ghastly-blue);
+}
 #+end_src
 Just messing with CSS to make my profile felt like I was 'wasting time' but now that I have written a post about it somehow it feels like I did something useful!? It would be better to just be able to enjoy doing things because it was fun/interesting in the moment but making a blog is also kind of fun even if it did start as a 'I should get something out of idle inquiry so I'll write a post'.
 
 If you want to make me feel even better about my sunk-cost, come [[https://gts.shom.dev/@shom/statuses/01JZAD3GRV85G5WY1H6XZGKR80][chat about it on Fedi]].
+
+~Updated 2025-07-06:~ updated colors to meet accessibility contrast rules.
 
 ** DONE Bookmarking! I mean omnivoring! no, hoarding! no, bagging... wait, decking!? :foss:selfhosting:
 CLOSED: [2025-06-30 Mon 00:59]
