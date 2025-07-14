@@ -6,4 +6,4 @@ podman run -it \
 -v ./:/workdir \
 --rm --interactive --tty \
 --entrypoint "/workdir/container/nix-develop.sh" \
-nixos/nix
+docker.io/nixos/nix
