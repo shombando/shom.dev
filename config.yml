@@ -20,6 +20,7 @@ params:
     showtoc: true
     tocopen: false
     hideFooter: true
+    hideAuthor: true
     assets:
       disableHLJS: true
     homeInfoParams:
