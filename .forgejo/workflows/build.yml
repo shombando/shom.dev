@@ -1,0 +1,24 @@
+on: [push]
+
+jobs:
+  build:
+    runs-on: docker #tag associated with runner
+    container:
+      image: ghcr.io/nixos/nix
+    steps:
+      - name: Checkout
+        run: |
+          #from https://codeberg.org/nix-actions/checkout/src/branch/main/action.yml
+          set -x
+          git init $PWD
+          git remote add origin $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
+          git fetch --depth=1 origin +$GITHUB_SHA:$GITHUB_REF
+          git checkout -B $GITHUB_REF_NAME $GITHUB_REF
+          git submodule init
+          git submodule update
+      - name: Build site
+        env:
+          NIX_CONFIG: "experimental-features = nix-command flakes"
+          site: shom.dev
+        run: |
+          nix develop --command ./build.sh --gc
