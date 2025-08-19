@@ -23,6 +23,32 @@ EXIF:Artist = XMP:Creator (both are written out)
 Darktable 5.3 just added the ability to customize the metadata editor list of fields and has all fields supported by Exiv2
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 
+** DONE Readeck: "still delighted" mini-review update      :foss:selfhosting:
+CLOSED: [2025-08-18 Mon 18:57]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250818_readeck-still-delighted-mini-review-update
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/a94be9bc
+:EXPORT_HUGO_IMAGES: /posts/20250818_readeck-still-delighted-mini-review-update/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+I wrote about my bookmark management journey and ended up writing a [[../20250629_bookmarking-i-mean-omnivoring-no-hoarding-no-bagging-dot-dot-dot-wait-decking/#readeck][glowing mini-review of Readeck]]. Well, it's been almost a couple months and not only am I still using it (more than any of the previous solutions) but also still delighted despite the [[https://en.wikipedia.org/wiki/Hedonic_treadmill][hedonic adaptation]].
+
+#+hugo: more
+So let's start with what am I missing so it doesn't sound like a paid advertisement: native PDF support. Aside from that, nothing really. But I'm excited for some of the [[https://codeberg.org/readeck/readeck/milestone/7623][new features]] (bookmark notes, yes please!) being worked on and native apps just as a convenient sharing target on Android. I currently use the Firefox plug-in which is a couple extra taps since Firefox doesn't shows all plugins in a sub-menu.
+
+#+begin_export hugo
+{{< fig src="epub-collection-readeck.png" width= "600px" title="EPUB export for Collection in Readeck" alt="Screenshot of the Readeck interface showing several articles in a collection, with the collection filtering criteria shown on the right and a menu option that shows EPUB export." align="center" >}}
+#+end_export
+Now, why am I excitedly writing an update? Today, I came across an article with a list of links to [[https://transfer-orbit.ghost.io/here-ar/][2025 Hugo award winners]] and wanted to read the short stories but didn't have time. I have had this exact scenario play-out many times before, it goes like this: I save that link in my Signal 'notes to self' and... and that's it, no further action. I don't want to read it on my phone or monitor, I'd love to read it on a proper e-ink device ([[../20250308_pinenote-day-one/][PineNote]]) but that's too much hassle, but not with Readeck. I added the short stories quickly and tagged them #hugo2025 #shortstory and created a collection in Readeck with those tags, et voila, EPUB!
+
+#+begin_export hugo
+{{< fig src="ko-reader-toc.png" width= "400px" title="KO Reader EPUB with table-of-contents" alt="KO Reader screenshot showing the same articles as chapters in an EPUB book." align="center" >}}
+#+end_export
+The EPUB is nicely formatted with chapters and a Table-Of-Contents and I can also access it from inside KO Reader on my PineNote OPDS library, so I don't need to sling files around like the stone age. Side Note about KO Reader: I will admit that I don't do it often enough to remember the exact menu options in KO Reader to launch the OPDS library. KO Reader has a very unique UX and is great for touch operation but the paradigm is so different that my brain forgets the pathways if I don't use it for a couple days.
+
+Anyway, I think it's great to revisit the things that bring us value/joy and today I had the spoons to write it up and share with you and hopefully the Readeck team will enjoy this real 'user story'.
+
 ** DONE GoToSocial Custom CSS                                :gotosocial:css:
 CLOSED: [2025-07-04 Fri 04:01]
 :PROPERTIES:
