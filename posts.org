@@ -29,7 +29,7 @@ CLOSED: [2025-08-18 Mon 18:57]
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20250818_readeck-still-delighted-mini-review-update
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/a94be9bc
-:EXPORT_HUGO_IMAGES: /posts/20250818_readeck-still-delighted-mini-review-update/image.jpg
+:EXPORT_HUGO_IMAGES: /posts/20250818_readeck-still-delighted-mini-review-update/epub-collection-readeck.png
 :EXPORT_HUGO_MENU:
 :END:
 I wrote about my bookmark management journey and ended up writing a [[../20250629_bookmarking-i-mean-omnivoring-no-hoarding-no-bagging-dot-dot-dot-wait-decking/#readeck][glowing mini-review of Readeck]]. Well, it's been almost a couple months and not only am I still using it (more than any of the previous solutions) but also still delighted despite the [[https://en.wikipedia.org/wiki/Hedonic_treadmill][hedonic adaptation]].

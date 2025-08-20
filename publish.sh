@@ -1,5 +1,6 @@
 #usr/bin/env bash
-set -eou pipefail
+set -eu #o pipefail
+hugo
 rsync --archive					`# recursively copy directories, copy symlinks without resolving, and preserve permissions, ownership and modification times` \
 	    --partial					`# keep partially transferred files` \
 			--progress				`#  show progress during transfer` \
