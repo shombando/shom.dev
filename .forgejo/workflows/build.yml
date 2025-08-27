@@ -2,7 +2,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: docker #tag associated with runner
+    runs-on: [codeberg-small, docker] #tag associated with runner
     container:
       image: ghcr.io/nixos/nix
     steps:
