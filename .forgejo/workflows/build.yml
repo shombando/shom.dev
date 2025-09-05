@@ -9,17 +9,16 @@ jobs:
       - name: Secrets
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/forgejo
+          chmod 600 ~/.ssh/forgejo
           echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
       - name: Checkout
         run: |
           #from https://codeberg.org/nix-actions/checkout/src/branch/main/action.yml
           set -x
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519 -p 222" git clone git@git.shom.dev:shom/shom.dev.git --depth=1
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/forgejo -p 222" git clone -b $GITHUB_REF_NAME git@git.shom.dev:shom/shom.dev.git --depth=1
           cd shom.dev
-          #git checkout -B $GITHUB_REF_NAME $GITHUB_REF
           git submodule init
           git submodule update
       - name: Build site
@@ -27,4 +26,5 @@ jobs:
           NIX_CONFIG: "experimental-features = nix-command flakes"
           site: shom.dev
         run: |
+          cd shom.dev
           nix develop --command ./build.sh --gc
