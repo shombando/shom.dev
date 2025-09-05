@@ -2,15 +2,18 @@ on: [push]
 
 jobs:
   build:
-    runs-on: [codeberg-small, docker] #tag associated with runner
+    runs-on: docker #tag associated with runner
     container:
       image: ghcr.io/nixos/nix
     steps:
       - name: Secrets
         run: |
           mkdir -p ~/.ssh
-          echo "{{ secrets.SSH_KEY }} > ~/.ssh/forgejo
+          echo "{{ secrets.SSH_KEY }}" > ~/.ssh/forgejo
           chmod 600 ~/.ssh/forgejo
+          # echo "{{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          ssh-keyscan -H git.shom.dev >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
       - name: Checkout
         run: |
           #from https://codeberg.org/nix-actions/checkout/src/branch/main/action.yml
