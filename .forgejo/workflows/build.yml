@@ -6,12 +6,17 @@ jobs:
     container:
       image: ghcr.io/nixos/nix
     steps:
+      - name: Secrets
+        run: |
+          mkdir -p ~/.ssh
+          echo "{{ secrets.SSH_KEY }} > ~/.ssh/forgejo
+          chmod 600 ~/.ssh/forgejo
       - name: Checkout
         run: |
           #from https://codeberg.org/nix-actions/checkout/src/branch/main/action.yml
           set -x
           git init $PWD
-          git remote add origin $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
+          git remote add origin ssh://git@git.shom.dev/shom/shom.dev.git
           git fetch --depth=1 origin +$GITHUB_SHA:$GITHUB_REF
           git checkout -B $GITHUB_REF_NAME $GITHUB_REF
           git submodule init
