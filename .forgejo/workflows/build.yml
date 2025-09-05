@@ -11,18 +11,15 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          # echo "{{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-          # ssh-keyscan -H git.shom.dev >> ~/.ssh/known_hosts
-          ssh -o StrictHostKeyChecking=accept-new git@git.shom.dev
-          #chmod 644 ~/.ssh/known_hosts
+          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
       - name: Checkout
         run: |
           #from https://codeberg.org/nix-actions/checkout/src/branch/main/action.yml
           set -x
-          #git init $PWD
-          #git fetch --depth=1 origin +$GITHUB_SHA:$GITHUB_REF
           GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519 -p 222" git clone git@git.shom.dev:shom/shom.dev.git --depth=1
-          git checkout -B $GITHUB_REF_NAME $GITHUB_REF
+          cd shom.dev
+          #git checkout -B $GITHUB_REF_NAME $GITHUB_REF
           git submodule init
           git submodule update
       - name: Build site
