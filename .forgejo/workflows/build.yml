@@ -8,6 +8,7 @@ jobs:
     steps:
       - name: Secrets
         run: |
+          echo "Adding keys to .ssh"
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/forgejo
           chmod 600 ~/.ssh/forgejo
@@ -15,6 +16,7 @@ jobs:
           chmod 600 ~/.ssh/conman
           echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
+          echo "Keys added"
       - name: Checkout
         env:
           GIT_SSH_COMMAND: "ssh -i ~/.ssh/forgejo -p 222"
@@ -30,10 +32,14 @@ jobs:
           NIX_CONFIG: "experimental-features = nix-command flakes"
           site: shom.dev
         run: |
-          cd shom.dev
+          cd $site
+          echo "Building with nix"
           nix develop --command ./build.sh --gc
       - name: Deploy
+        env:
+          NIX_CONFIG: "experimental-features = nix-command flakes"
+          site: shom.dev
         run: |
-          cd shom.dev
+          cd $site
           echo "deploy test" > deploy.txt
           nix run nixpkgs#rsync 'ssh -p 222' ./deploy.txt conman@git.shom.dev:~/prod/caddy/site/shom.dev
