@@ -11,13 +11,17 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/forgejo
           chmod 600 ~/.ssh/forgejo
+          echo "${{ secrets.CONMAN_SSH_KEY }}" > ~/.ssh/conman
+          chmod 600 ~/.ssh/conman
           echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
       - name: Checkout
+        env:
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/forgejo -p 222" 
         run: |
           #from https://codeberg.org/nix-actions/checkout/src/branch/main/action.yml
           set -x
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/forgejo -p 222" git clone -b $GITHUB_REF_NAME git@git.shom.dev:shom/shom.dev.git --depth=1
+          git clone -b $GITHUB_REF_NAME git@git.shom.dev:shom/shom.dev.git --depth=1
           cd shom.dev
           git submodule init
           git submodule update
