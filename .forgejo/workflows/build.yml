@@ -42,4 +42,5 @@ jobs:
         run: |
           cd $site
           echo "deploy test" > deploy.txt
-          nix run nixpkgs#rsync 'ssh -p 222' ./deploy.txt conman@git.shom.dev:~/prod/caddy/site/shom.dev
+          ssh -i ~/.ssh/conman -p 22 conman@107.175.0.178
+          #nix run nixpkgs#rsync 'ssh -p 22 -i ~/.ssh/conman' ./deploy.txt conman@107.175.0.178:~/prod/caddy/site/shom.dev
