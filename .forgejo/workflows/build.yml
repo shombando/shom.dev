@@ -17,7 +17,7 @@ jobs:
           chmod 644 ~/.ssh/known_hosts
       - name: Checkout
         env:
-          GIT_SSH_COMMAND="ssh -i ~/.ssh/forgejo -p 222" 
+          GIT_SSH_COMMAND: "ssh -i ~/.ssh/forgejo -p 222"
         run: |
           #from https://codeberg.org/nix-actions/checkout/src/branch/main/action.yml
           set -x
@@ -32,3 +32,8 @@ jobs:
         run: |
           cd shom.dev
           nix develop --command ./build.sh --gc
+      - name: Deploy
+        run: |
+          cd shom.dev
+          echo "deploy test" > deploy.txt
+          rsync 'ssh -p 222' ./deploy.txt conman@git.shom.dev:~/prod/caddy/site/shom.dev
