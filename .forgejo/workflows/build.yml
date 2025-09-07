@@ -42,6 +42,6 @@ jobs:
         run: |
           cd $site
           echo "Deploying with scp"
-          ssh -i ~/.ssh/conman conman@107.175.0.178 "rm -rf ~/prod/caddy/site/test/"
-          scp -i ~/.ssh/conman -r ./public conman@107.175.0.178:~/prod/caddy/site/test/
+          ssh -i ~/.ssh/conman conman@107.175.0.178 "rm -rf /home/conman/prod/caddy/site/test/*"
+          scp -i ~/.ssh/conman -r ./public/* conman@107.175.0.178:/home/conman/prod/caddy/site/test/
           #nix run nixpkgs#rsync 'ssh -p 22 -i ~/.ssh/conman' ./deploy.txt conman@107.175.0.178:~/prod/caddy/site/shom.dev
