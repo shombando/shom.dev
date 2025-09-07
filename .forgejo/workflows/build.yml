@@ -2,18 +2,29 @@ on: [push]
 
 jobs:
   build:
-    runs-on: [codeberg-small, docker] #tag associated with runner
+    runs-on: docker #tag associated with runner
     container:
       image: ghcr.io/nixos/nix
     steps:
+      - name: Secrets
+        run: |
+          echo "Adding keys to .ssh"
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/forgejo
+          chmod 600 ~/.ssh/forgejo
+          echo "${{ secrets.CONMAN_SSH_KEY }}" > ~/.ssh/conman
+          chmod 600 ~/.ssh/conman
+          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+          echo "Keys added"
       - name: Checkout
+        env:
+          GIT_SSH_COMMAND: "ssh -i ~/.ssh/forgejo -p 222"
         run: |
           #from https://codeberg.org/nix-actions/checkout/src/branch/main/action.yml
           set -x
-          git init $PWD
-          git remote add origin $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
-          git fetch --depth=1 origin +$GITHUB_SHA:$GITHUB_REF
-          git checkout -B $GITHUB_REF_NAME $GITHUB_REF
+          git clone -b $GITHUB_REF_NAME git@git.shom.dev:shom/shom.dev.git --depth=1
+          cd shom.dev
           git submodule init
           git submodule update
       - name: Build site
@@ -21,4 +32,15 @@ jobs:
           NIX_CONFIG: "experimental-features = nix-command flakes"
           site: shom.dev
         run: |
+          cd $site
+          echo "Building with nix"
           nix develop --command ./build.sh --gc
+      - name: Deploy
+        env:
+          NIX_CONFIG: "experimental-features = nix-command flakes"
+          site: shom.dev
+        run: |
+          cd $site
+          echo "Deploying with scp"
+          ssh -i ~/.ssh/conman conman@107.175.0.178 "rm -rf /home/conman/prod/caddy/site/shom.dev/*"
+          scp -i ~/.ssh/conman -r ./public/* conman@107.175.0.178:/home/conman/prod/caddy/site/shom.dev/
