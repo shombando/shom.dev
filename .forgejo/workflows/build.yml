@@ -41,6 +41,5 @@ jobs:
           site: shom.dev
         run: |
           cd $site
-          echo "Deploying with scp"
-          ssh -i ~/.ssh/conman conman@107.175.0.178 "rm -rf /home/conman/prod/caddy/site/shom.dev/*"
-          scp -i ~/.ssh/conman -r ./public/* conman@107.175.0.178:/home/conman/prod/caddy/site/shom.dev/
+          echo "Deploying with rsync"
+          nix run nixpkgs#rsync -- -e 'ssh -i ~/.ssh/conman -p 22' --archive --partial --progress --human-readable --delete-before ./public/* conman@107.175.0.178:/home/conman/prod/caddy/site/shom.dev/
