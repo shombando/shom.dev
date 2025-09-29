@@ -4,7 +4,7 @@
 #+startup: indent
 
 * Content
-** DRAFT Photos meta data: the disjointed state of EXIF, XMP, IPTC in tools :hugo:foss:
+** DRAFT Photos meta data: the disjointed state of EXIF, XMP, IPTC in tools :hugo:foss:exif:
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20250615_photos-meta-data-the-disjointed-state-of-exif-xmp-iptc-in-tools
@@ -22,6 +22,35 @@ Darktable will export XMP information with the photos
 EXIF:Artist = XMP:Creator (both are written out)
 Darktable 5.3 just added the ability to customize the metadata editor list of fields and has all fields supported by Exiv2
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
+[[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
+
+** DONE EXIF for Film Photos                       :hugo:darktable:exif:film:
+CLOSED: [2025-09-28 Sun 23:44]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20250928_exif-for-film-photos
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/ed4cc349
+:EXPORT_HUGO_IMAGES: /posts/20250928_exif-for-film-photos/darktable-export-exif-mapping.png
+:EXPORT_HUGO_MENU:
+:END:
+I have a blog post titled "Photos meta data: the disjointed state of EXIF, XMP, IPTC in tools" that's been a draft with talking points since June. The whole landscape is maddeningly inconsistent and eventually I'll sort out my thoughts and harmonize my little part of the world and +rant+ blog about it. But until then I finally have a workable solution.
+
+#+hugo: more
+The primary thing I want is embedded alt-ext in EXIF Image Description. But I also wanted to display an image title, which was fraught. I had a "workable" solution going with Hugo by cheating the EXIF artist flag for the title of the image (since the only other field UserComment was pre-pending everything with ~ASCII~) but that seems to have resolved itself thankfully because I could not stand that metadata "corruption". AND I got some great advice from [[https://toot.community/@tmcfarlane][tmcfarlane]] [[https://toot.community/@tmcfarlane/115242078564848872][in this fedi thread]] about exporting tags in [[https://www.darktable.org/][Darktable]].
+
+#+begin_export hugo
+{{< fig src="darktable-export-exif-mapping.png" width= "600px" title="Darktable Export Preference Dialog" alt="Darktable Export Preferences dialog box showing the EXIF data checkbox off and all the pertinent tags redefined under Exif.Image.$ and Exif.Image.ImageDescription is set as $(Xmp.dc.description) Shot with a $(CATEGORY0(Camera)) $(CATEGORY1(Camera)) and $(CATEGORY0(Lens)) lens, on $(CATEGORY0(Film)), and developed with $(CATEGORY0(Developer)) by $(Xmp.dc.publisher). Licensed under $(Xmp.dc.rights)." align="center" >}}
+#+end_export
+I had already been using hierarchical tags for Camera, Film, and Developer but now knowing that I could actually overwrite the EXIF on the exported image, opened up more ideas and investing more heavily in tags made sense. I broke up the Camera hierarchy to =Camera|Make|Model= added a =Lens|Model= (might expand to =Lens|Model|FocalLenght|Aperture=) in the future and added =ISO= in addition to Film (maybe future possibility is =Film|Manufacturer|Brand|ISO=). Currently, I'm appending the meta data at the end of the =EXIF.ImageDescription= and displaying that on alongside the image. But now I will have the opportunity to customize more and actually show the true EXIF and not what the "scanning camera" records.
+#+begin_export hugo
+{{< fig src="red-shed.jpg" width= "600px" title="Red Shed photo with alt and metadata" alt="Screenshot of the image that is linked below which shows the title of 'Red Shed' and alt-text as it appears on the image." align="center" >}}
+#+end_export
+This is what the final presentation [[https://photos.shom.dev/film/mamiya-six/#20250902_202506_mxxxx_peoria_harmonphoenixi_mamiyasix_0017.jpg][looks like on my photos site]]. The good part about this approach of putting all the metadata in the image description is that not all images need to re-tagged and re-exported all at once and the site won't break. When all the image are properly tagged, I'll create a metadata section similar to what you see below, but note that the EXIF information showing the camera setup used for scanning the negative (the whole reason I'm doing all this song and dance) so all images *have* to be tagged and exported. Also, I don't keep good enough notes while shooting, so I'll likely remove the aperture and shutter speed, despite their very cool SVG icons.
+#+begin_export hugo
+{{< exif src="commercial-street.jpg" caption="Hugo template for displaying EXIF data" alt="Color of a red door with two panes each with a glass window. Above the door is is another horizontal pane of glass with the words 'COMMERCIAL STREET' emblazoned in gold. The door has trim decoration a heavily patina'd copper door handle and some shiny bronze splash guards at the bottom. The opposite side of the street is reflecting a nondescript scene of an alley, the reflection of the photographer is missing. The vibe is of by gone glory fallen into disrepair." >}}
+#+end_export
+If you're interested in how this template came to be , I wrote about it a while ago: [[../20220128_hugo-photos-with-exif-data/
+][Hugo photos with EXIF data]].
 
 ** DONE Forgejo'ing forward                :foss:hugo:containers:selfhosting:
 CLOSED: [2025-09-07 Sun 23:54]
@@ -1871,7 +1900,7 @@ Here's the ~figure~ shortcode.
 {{< figure src="20220308_seahorse.jpg" caption="Seahorse" alt="Watercolor painting of a seahorse in yellows browns and reds floating above slight green and pink vegetation" >}}
 #+end_export
 
-** DONE Hugo photos with EXIF data                                :foss:hugo:
+** DONE Hugo photos with EXIF data                           :foss:hugo:exif:
 CLOSED: [2022-01-29 Sat 01:42]
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: 20220128_hugo-photos-with-exif-data
