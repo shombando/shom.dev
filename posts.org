@@ -71,7 +71,7 @@ rm phanpy.tar
 podman rm phanpy
 #+end_src
 
-I'm sure there are better and more idiomatic ways of doing this, so if you have any suggestions please drop me a line.
+I'm sure there are better and more idiomatic ways of doing this, so if you have any suggestions [[https://gts.shom.dev/@shom/statuses/01KB3S1F1P2JQ80NWMX4S1JTE1][please drop me a line]].
 
 ** DONE EXIF for Film Photos                       :hugo:darktable:exif:film:
 CLOSED: [2025-09-28 Sun 23:44]
