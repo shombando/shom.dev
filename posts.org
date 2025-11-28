@@ -30,12 +30,16 @@ CLOSED: [2025-11-27 Thu 16:01]
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20251127_phanpy-custom-build-for-self-hosting
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/b61138e3
-:EXPORT_HUGO_IMAGES: /posts/20251127_phanpy-custom-build-for-self-hosting/image.jpg
+:EXPORT_HUGO_IMAGES: /posts/20251127_phanpy-custom-build-for-self-hosting/phanpy-compose.png
 :EXPORT_HUGO_MENU:
 :END:
 [Phanpy](https://phanpy.social/) is an excellent front-end client for Mastodon compatible Fediverse instances that I use with [GoToSocial](https://gotosocial.org/). Here's how I build the Progressive Web App (PWA).
 
 #+hugo: more
+#+begin_export hugo
+{{< fig src="phanpy-compose.png" width= "600px" title="Phanpy compose window now automatically reads the alt-text embedded in image files" alt="A screenshot of Phanpy compose window with two black and white images added and the alt-text filled out." align="center" >}}
+#+end_export
+
 Phanpy is a purely static web app so serving it is as simple as pointing your webserver (Caddy in my case) at a static folder. Phanpy has releases that you can just unzip but I want to build and use the latest feature before release sometimes. And I also wanted a single command to update my customized install. I created a ~Containerfile~ (~Dockerfile~) to build the app and a shell script to run the container and extract the build artifact so I can serve it out of Caddy (instead of running another web server within another container).
 
 Phanpy needs ~node~ with ~vite~ to build so there's a =npm install= step and I added ~git~ and ~tar~ to the ~alpine~ container to get the latest Phanpy code and create an archive of the build output.
