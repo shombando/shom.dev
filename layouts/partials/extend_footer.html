@@ -32,4 +32,61 @@
         <a href="https://orgmode.org" rel="noopener noreferrer">Org Mode</a> and
         <a href="https://ox-hugo.scripter.co" rel="noopener noreferrer">Ox-Hugo</a>
     </span>
+	<!-- Winter decoration inspired by https://blog.gridranger.dev/ via https://mementomori.social/@david_bardos/115635283055502349-->
+	<div id="winterContainer" class="winterContainer" aria-hidden="true"></div>
+	<script>
+		window.onload = function() {
+				const container = document.getElementById('winterContainer');
+				const snowflakeCount = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)/3;
+				const snowflakeSymbols = ['\u2744', '\u2745', '\u2746', '\u2747', '\u2748', '\u2749', '\u274a', '\u274b']
+
+				for (let i = 0; i < snowflakeCount; i++) {
+						const snowflake = document.createElement('div');
+						const randomSymbol = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+						snowflake.className = 'winterSnowflake';
+						snowflake.style.left = `${Math.random() * 100}%`;
+						snowflake.style.animationDuration = `${10 + Math.random() * 10}s`;
+						snowflake.style.animationDelay = `${Math.random() * 10}s`;
+						snowflake.style.setProperty('--swirl', `${Math.random() * 20 - 10}vw`);
+						snowflake.style.setProperty('--rot', `${Math.random() * 720 + 360}deg`);
+						snowflake.textContent = randomSymbol;
+						container.appendChild(snowflake);
+				}
+		}
+  </script>
+	<style >
+		.winterContainer {
+				position:fixed;
+				top:0;
+				left:0;
+				width:100vw;
+				height:100vh;
+				pointer-events:none;
+				overflow:hidden;
+				z-index:10;
+		}
+		@keyframes snowfall {
+				0% {
+						transform: translateY(0) translateX(0) rotate(0deg);
+						opacity: 1;
+				}
+				15% {
+						opacity: 0.4;
+				}
+				100% {
+						transform: translateY(100vh) translateX(var(--swirl)) rotate(var(--rot));
+						opacity: 0.2;
+				}
+		}
+		.winterSnowflake {
+				position: absolute;
+				top: 0;
+				left: 0;
+				font-size: 1rem;
+				color: --primary;
+				opacity: 0;
+				animation: snowfall linear infinite;
+				will-change: transform;
+		}
+	</style>
 </footer>
