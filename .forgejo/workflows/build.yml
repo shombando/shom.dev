@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: docker #tag associated with runner
     container:
-      image: ghcr.io/nixos/nix
+      image: git.shom.dev/shom/nixos:emacs29
     steps:
       - name: Secrets
         run: |
@@ -42,4 +42,4 @@ jobs:
         run: |
           cd $site
           echo "Deploying with rsync"
-          nix run nixpkgs#rsync -- -e 'ssh -i ~/.ssh/conman -p 22' --archive --progress ./public/* conman@107.175.0.178:/home/conman/prod/caddy/site/shom.dev/
+          rsync -- -e 'ssh -i ~/.ssh/conman -p 22' --archive --progress ./public/* conman@107.175.0.178:/home/conman/prod/caddy/site/shom.dev/

@@ -6,4 +6,5 @@ podman run -it \
 -v ./:/workdir \
 --rm --interactive --tty \
 --entrypoint "/workdir/container/nix-develop.sh" \
-docker.io/nixos/nix
+#docker.io/nixos/nix
+git.shom.dev/shom/nixos:emacs29
