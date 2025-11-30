@@ -36,8 +36,8 @@ jobs:
           site: shom.dev
         run: |
           cd $site
-          echo "Building"
-          ./build.sh
+          echo "Building with nix"
+          nix develop --command ./build.sh --gc
       - name: Deploy
         env:
           NIX_CONFIG: "experimental-features = nix-command flakes"
