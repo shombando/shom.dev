@@ -2,9 +2,12 @@ on: [push]
 
 jobs:
   build:
-    runs-on: docker #tag associated with runner
+    runs-on: nixos-emacs29 #tag associated with runner
     container:
       image: git.shom.dev/shom/nixos:emacs29
+      credentials:
+        username: shom
+        password: ${{ secrets.PACKAGE_REGISTRY_PAT }}
     steps:
       - name: Secrets
         run: |
