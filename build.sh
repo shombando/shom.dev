@@ -14,10 +14,6 @@ echo "==== Copy images to content folder ===="
 cp -r images/* content/
 echo ""
 
-echo "==== Copy film photo posts into content folder ===="
-cp -r ./film ./content/
-echo ""
-
 echo "==== Build with Hugo ===="
 hugo
 echo ""
