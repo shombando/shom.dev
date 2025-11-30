@@ -24,6 +24,47 @@ Darktable 5.3 just added the ability to customize the metadata editor list of fi
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
+** DONE Anatomy of a yak-shave               :selfhosting:forgejo:containers:
+CLOSED: [2025-11-30 Sun 00:02]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20251129_anatomy-of-a-yak-shave
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/f80d6631
+:EXPORT_HUGO_IMAGES: /posts/20251129_anatomy-of-a-yak-shave/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+In an EPIC bout of [[https://en.wiktionary.org/wiki/yak_shaving][yak-shaving]] I have reduced the build time for this static site infrastructure running on a puny VPS by a factor of 5. Come along on this undiagnosed journey.
+
+#+hugo: more
+#+begin_export hugo
+{{< fig src="buildtimes.png" width= "600px" title="Build times reduced by 5x" alt="Screenshot of side by side build steps and their elapsed times. Both builds have passed, the one on the left took 13 minutes and 22 seconds, while the right took 2 minutes and 45 seconds." align="center" >}}
+#+end_export
+
+Anatomy of a yak-shave:
+  - See what had happened was...
+  - I wanted to put animated snowflakes on my site
+  - Learned about CSS animation, nice
+  - Learned how to not bork screen readers
+  - Remembered I barely got my CI/CD working with Forgejo runner
+  - Remembered it takes for ever to deploy
+  - Realized most of it is just downloading and setting up dependencies
+  - How hard can it be to bake all that into my own image?
+  - Oh Forgejo supports a container registry too, nice!
+  - If I can't quickly build and push an image then this will have to wait
+  - Oh wow, that was really easy
+  - False sense of how well things are going
+  - All the freaking examples are for using public forges with public container registries ([[https://codeberg.org/shom/shom.dev/src/commit/a8eb4a6d979b952711178cfd15765afbac9660b9/.forgejo/workflows/build.yml][use credentials with a Personal Access Token]])
+  - Fall down several totally wrong rabbit due to lack of knowledge
+  - Have not stood up, eaten, drank, blinked in hours by this point
+  - Things are kinda working, yay! Noooo version mismatch
+  - I barely know Nix flakes, how do channels work, how do you pin them?
+  - Realized my tools have been broken but flake.lock has been saving me, nice!
+  - Fatigue related silly errors and utter faith this attempt will work so I don't need to make a quick test setup and test on a much faster setup
+  - Revert back to how it was, drink water, oh wait silly me...
+  - Victory
+  - Should probably write a blog post, it'll be SO fast to deploy
+
+If you want to commiserate, [[https://gts.shom.dev/@shom/statuses/01KB9NAC9ERVE2G8D8A4A2F9FN][drop me a line]].
 ** DONE Phanpy custom build for self-hosting :selfhosting:containers:gotosocial:
 CLOSED: [2025-11-27 Thu 16:01]
 :PROPERTIES:
@@ -105,7 +146,7 @@ This is what the final presentation [[https://photos.shom.dev/film/mamiya-six/#2
 If you're interested in how this template came to be , I wrote about it a while ago: [[../20220128_hugo-photos-with-exif-data/
 ][Hugo photos with EXIF data]].
 
-** DONE Forgejo'ing forward                :foss:hugo:containers:selfhosting:
+** DONE Forgejo'ing forward        :foss:hugo:containers:selfhosting:forgejo:
 CLOSED: [2025-09-07 Sun 23:54]
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
