@@ -54,7 +54,7 @@ Anatomy of a yak-shave:
   - Oh wow, that was really easy
   - False sense of how well things are going
   - All the freaking examples are for using public forges with public container registries ([[https://codeberg.org/shom/shom.dev/src/commit/a8eb4a6d979b952711178cfd15765afbac9660b9/.forgejo/workflows/build.yml][use credentials with a Personal Access Token]])
-  - Fall down several totally wrong rabbit due to lack of knowledge
+  - Fall down several totally wrong rabbit holes due to lack of knowledge
   - Have not stood up, eaten, drank, blinked in hours by this point
   - Things are kinda working, yay! Noooo version mismatch
   - I barely know Nix flakes, how do channels work, how do you pin them?
