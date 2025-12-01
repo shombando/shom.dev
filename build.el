@@ -20,22 +20,11 @@
 ;;; Code:
 
 ;; Setup
-(message "\n==== Setup package repos ====")
-(require 'package)
+(message "\n==== Load packages ====")
 (setq package-user-dir (expand-file-name "/.packages"))
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
-
-;; Initialize the package system
 (package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-
-;; Install and dependencies
-(message "\n==== Load dependencies ====")
-(require 'org-id)
-(package-install 'ox-hugo)
 (require 'ox-hugo)
+(require 'org-id)
 
 ;; Export content from org to Hugo md
 (message "\n==== Exporting Hugo markdown ====")
