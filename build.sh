@@ -7,6 +7,7 @@ rm -rf ./public/
 echo ""
 
 echo "==== Generate Hugo markdown using ox-hugo ===="
+ls -lah / | grep .packages
 emacs --script build.el
 echo ""
 

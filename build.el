@@ -22,7 +22,7 @@
 ;; Setup
 (message "\n==== Setup package repos ====")
 (require 'package)
-(setq package-user-dir (expand-file-name "./.packages"))
+(setq package-user-dir (expand-file-name "/.packages"))
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
 
@@ -34,6 +34,7 @@
 ;; Install and dependencies
 (message "\n==== Load dependencies ====")
 (require 'org-id)
+(package-install 'ox-hugo)
 (require 'ox-hugo)
 
 ;; Export content from org to Hugo md
