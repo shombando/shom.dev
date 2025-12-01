@@ -7,7 +7,7 @@ rm -rf ./public/
 echo ""
 
 echo "==== Generate Hugo markdown using ox-hugo ===="
-emacs -Q --script build.el
+emacs --script build.el
 echo ""
 
 echo "==== Copy images to content folder ===="

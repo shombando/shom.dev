@@ -32,8 +32,7 @@
   (package-refresh-contents))
 
 ;; Install and dependencies
-(message "\n==== Installing depedencies ====")
-(package-install 'ox-hugo)
+(message "\n==== Load dependencies ====")
 (require 'org-id)
 (require 'ox-hugo)
 
