@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
-nix  --extra-experimental-features nix-command --extra-experimental-features flakes develop --command ./build.sh --gc
+podman run -p 1313:1313 -v ./:/workdir --rm -it git.shom.dev/shom/nixos:emacs29 hugo server --bind 0.0.0.0 --buildDrafts --navigateToChanged --disableFastRender
