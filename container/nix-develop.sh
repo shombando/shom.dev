@@ -2,4 +2,7 @@
 set -euo pipefail
 
 cd /workdir
-nix develop --command /workdir/build.sh --gc
+echo "==== Nix develop ===="
+nix --extra-experimental-features nix-command \
+		--extra-experimental-features flakes \
+		develop --command /workdir/build.sh
