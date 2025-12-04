@@ -16,3 +16,6 @@ echo ""
 echo "==== Copy .well-known for webfinger ===="
 cp ./.well-known -r ./public/
 echo ""
+if [[ "${1-production}"  == "develop" ]]; then
+		hugo server --bind 0.0.0.0 --buildDrafts --navigateToChanged --disableFastRender;
+fi
