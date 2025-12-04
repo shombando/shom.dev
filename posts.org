@@ -143,8 +143,7 @@ This is what the final presentation [[https://photos.shom.dev/film/mamiya-six/#2
 #+begin_export hugo
 {{< exif src="commercial-street.jpg" caption="Hugo template for displaying EXIF data" alt="Color of a red door with two panes each with a glass window. Above the door is is another horizontal pane of glass with the words 'COMMERCIAL STREET' emblazoned in gold. The door has trim decoration a heavily patina'd copper door handle and some shiny bronze splash guards at the bottom. The opposite side of the street is reflecting a nondescript scene of an alley, the reflection of the photographer is missing. The vibe is of by gone glory fallen into disrepair." >}}
 #+end_export
-If you're interested in how this template came to be , I wrote about it a while ago: [[../20220128_hugo-photos-with-exif-data/
-][Hugo photos with EXIF data]].
+If you're interested in how this template came to be , I wrote about it a while ago: [[../20220128_hugo-photos-with-exif-data/][Hugo photos with EXIF data]].
 
 ** DONE Forgejo'ing forward        :foss:hugo:containers:selfhosting:forgejo:
 CLOSED: [2025-09-07 Sun 23:54]
