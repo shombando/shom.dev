@@ -24,6 +24,151 @@ Darktable 5.3 just added the ability to customize the metadata editor list of fi
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
+** DONE Let's Go                                        :hugo:gotosocial:foss:
+CLOSED: [2025-12-28 Sun 02:48]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20251228_let-s-go
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/53dfbebc
+:EXPORT_HUGO_IMAGES: /posts/20251228_let-s-go/202311_Peoria_120IlfordFP4_0003.jpg
+:EXPORT_HUGO_MENU:
+:END:
+So without making a conscious choice I've been using and loving some excellent Go-lang software: [[https://gohugo.io/][Hugo]], [[https://gotosocial.org/][GoToSocial]], and [[https://readeck.org/en/][Readeck]]. I don't know Go but I've picked up some templating from customizing Hugo (which powers this blog), is it time I learned more? Let's [[https://go.dev/][Go]]!!!
+#+hugo: more
+I don't engineer/code for work anymore so I don't have proficiency in any specific language and for some reason that has been bothersome. I do write some ad-hoc and nominal (terrible) Python and SQL, neither of which I have written professionally before, so I've been thinking about increasing my Python proficiency. But... that's not where my tinkering/crafting heart has been, although [[https://fastht.ml/][FastHTML for Python]] is a really interesting proposition.
+
+I've also rooted around in [[https://rust-lang.org/][Rust-Lang]] and really love the core concepts of borrow-checker and memory-safety; wish I had that when I was (poorly) working in embedded software (so. many. segfaults.). I've read some of the Rust book and even contribute a bit to a Rust project ([[https://github.com/k3rs3d/ringfairy][Ringfairy]]) but realistically I do not have the focus and drive to gain any proficiency in Rust.
+
+#+begin_export hugo
+{{< fig src="202311_Peoria_120IlfordFP4_0003.jpg" width= "400px" title="I don't have a gopher (Go mascot) photo but I do feel like a coffe'ed up bear" alt="Black and white photo of a taxidermied polar bear dyed black holding a coffee cup in front of a brick wall and very bright windows to either side." align="center" >}}
+#+end_export
+
+But since I've burrowing around in Go software and would love to scratch a few itches and contribute back, I decided to take advantage of a bit time off to learn a bit of Go-lang. The cross-platform, single-binary, C-like paradigm, with a massive standard library is pretty appealing. I'm getting along fine with the syntax for the most part but putting the type after the variable is going to be an adjustment. 
+
+I wrote a toy "hello world" with the most common syntax I need as a reference (based on reading and watching YouTube snippets). To get up and running I created a nix-shell environment, and since I didn't have emacs setup for Go dev, I fired up VS Codium, instead of yak-shaving (for once). 😬 VS Codium works really well out of the box with click-ops extensions installation. Someone better give me a nicely configured Go setup for Emacs quick.
+
+So what? This 100 lines of reference between Go and HTML (with comments) prints to console, starts and serves a webpage and conditionally shows information from structured data on a webpage; that's pretty cool and compact. Nothing I am going to make with Go can't just easily be slopped together and probably better, but learning things with your own brain is punk AF!
+
+=main.go=
+#+begin_src go-lang
+  package main
+
+import (
+	"fmt"
+	"html/template"
+	"net/http"
+	"strconv"
+)
+
+// global variables go here
+var message = "Http World!"
+
+// slice, array is fixed size, put size in []
+var items = []string{message, "val1", "val2"}
+
+type language struct {
+	Id       int
+	Language string
+	Hello    string
+	Active   bool //defaults to false
+}
+
+var english = language{
+	Id:       0,
+	Language: "English",
+	Hello:    "Hello",
+	Active:   true,
+}
+var spanish = language{
+	Id:       1,
+	Language: "Spanish",
+	Hello:    "Hola",
+	//Active defaults to false, but needs expanded declaration
+}
+var bangla = language{2, "Bangla", "নমস্কার", true}
+var japanese = language{2, "Japanese", "こんにちは", true}
+var languages = []language{english, bangla, spanish, japanese}
+
+func main() {
+	items = addItem(items, "hola")
+	printItems(items)
+
+	http.HandleFunc("/", app)
+	http.ListenAndServe(":9090", nil)
+}
+
+func printItems(items []string) {
+	//if index is not needed use _
+	for index, item := range items {
+		//fmt.Println(index, ":", item) //will print space between strings
+		fmt.Printf("%d: %s\n", index, item)
+	}
+}
+
+// return multiple values by specifying types in (): ([]string, int)
+func addItem(items []string, newItem string) []string {
+	return append(items, newItem)
+}
+
+func showItems(writer http.ResponseWriter) {
+	for index, item := range items {
+		var showItem = strconv.Itoa(index) + ": " + item
+		fmt.Fprintln(writer, showItem)
+	}
+}
+
+func app(writer http.ResponseWriter, request *http.Request) {
+	//fmt.Fprintln(writer, message)
+	//showItems(writer)
+	renderTemplate(writer, languages)
+}
+
+func renderTemplate(writer http.ResponseWriter, languages []language) {
+	var htmlTemplates *template.Template
+	htmlTemplates, _ = htmlTemplates.ParseGlob("templates/*.html")
+	htmlTemplates.ExecuteTemplate(writer, "index.html", languages)
+}
+#+end_src
+
+=templates/index.html=
+#+begin_src html
+  <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Greetings</title>
+</head>
+
+<body>
+    {{range .}}
+    {{if .Active}}
+    <div id="{{.Id}}">
+        <span>{{.Language}}: </span>
+        <span>{{.Hello}}</span>
+    </div>
+    {{end}}
+    {{end}}
+</body>
+
+</html>
+#+end_src
+
+=shell.nix=
+#+begin_src nix
+    let
+    nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-25.11";
+    pkgs = import nixpkgs { config = {}; overlays = []; };
+  in
+
+  pkgs.mkShellNoCC {
+    packages = with pkgs; [
+      go
+      gopls
+      vscodium
+    ];
+  }
+#+end_src
+
 ** DONE Anatomy of a yak-shave               :selfhosting:forgejo:containers:
 CLOSED: [2025-11-30 Sun 00:02]
 :PROPERTIES:
