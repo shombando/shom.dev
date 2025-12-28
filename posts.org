@@ -49,6 +49,8 @@ I wrote a toy "hello world" with the most common syntax I need as a reference (b
 
 So what? This 100 lines of reference between Go and HTML (with comments) prints to console, starts and serves a webpage and conditionally shows information from structured data on a webpage; that's pretty cool and compact. Nothing I am going to make with Go can't just easily be slopped together and probably better, but learning things with your own brain is punk AF!
 
+If you have tips or want to chat, [[https://gts.shom.dev/@shom/statuses/01KDJ2Y9G6MGXAFQRYBDB3ES04][catch me on the fedi]].
+
 =main.go=
 #+begin_src go-lang
   package main
