@@ -42,7 +42,7 @@ params:
     #     url: "/tags"
     socialIcons: # optional
         - name: 'Mastodon'
-          url: 'https://gts.shom.dev/@shom'
+          url: 'https://phanpy.social/#/mastodon.social/a/113878109689154226'
         - name: 'camera'
           url: 'https://photos.shom.dev'
         - name: 'git'
