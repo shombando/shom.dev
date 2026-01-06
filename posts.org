@@ -3134,6 +3134,11 @@ CLOSED: [2021-10-16 Sat 00:07]
 :EXPORT_FILE_NAME: 20211016_wine-and-crossover-lightroom
 :EXPORT_HUGO_MENU:
 :END:
+=2026 Update:=
+This continues to be one of the most visited posts on my site, mostly by bots but here's an update for humans. I have been using Darktable full time for over 5 years now, I do not miss Lightroom. I think these [[https://www.youtube.com/watch?v=SiWBZ3FOMo8&list=PLtEQQgn1V_PcrulNvoon21Pf8AuUVf5HL][Darktable tutorials]] are the best way to get started and using Filmic and RGB primaries are really the only two modules you need. Happy to chat about it more, come find me on the [[https://gts.shom.dev][Fediverse/Mastodon]].
+
+---
+
 I have been using [[https://www.darktable.org/][Darktable]] and transitioning away from Adobe's Lightroom. However, I have almost a decade of edits and experience with Lightroom so doing a cold-turkey switch is proving to be challenging. So I decided to investigate if I could "natively" run Lightroom (without a VM) so I decided to give =wine= a try.
 
 I use =guix= as a package manager on Pop!_OS and guix has =wine= but it did a while to build and install. I needed to download a Lightroom Classic executable but like a lot of software it's an installer that does the downloading and installing. However, Adobe won't allow you to download a Windows installer on Linux, so I had to use [[https://gitlab.com/ntninja/user-agent-switcher][User-Agent Switcher]] on Firefox to Windows to even get the installer... this is part of the frustration of software you lease.
