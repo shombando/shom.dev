@@ -1,5 +1,10 @@
 <footer class="footer">
 
+	{{ $month := now | time.Format "01"}}
+	{{- if or (eq $month "11") (eq $month "12") (eq $month "01") (eq $month "02") }}
+	{{- partial "winter_snowflakes.html" . }}
+	{{- end }}
+
   <style>
 	.craftering {
 		margin: auto;
