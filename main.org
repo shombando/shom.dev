@@ -1,10 +1,11 @@
 #+hugo_base_dir: .
+#+author: Shom Bandopadhaya
 
-* Home
+* shom.dev
 :PROPERTIES:
 :EXPORT_HUGO_SECTION:
 :EXPORT_FILE_NAME: _index
-:EXPORT_HUGO_MENU: :menu "main" :weight -3 :title Home
+:EXPORT_HUGO_MENU: :menu "main" :weight -3 :title shom.dev
 :END:
 
 * Tags

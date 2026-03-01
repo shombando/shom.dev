@@ -4,53 +4,38 @@ title: "shom.dev"
 theme: "PaperMod"
 
 params:
-    description: More curiosity than time. Enthusiastic about humans, food, photography, scuba, dogs, FOSS, nature, woodworking and self-hosting.
-    images:
-      - Shom_20211026_McDonaldLake_00015.jpg
-    env: production
-    defaultTheme: auto
-    ShowReadingTime: true
-    #ShowShareButtons: true
-    #ShowToc: true
-    ShowBreadCrumbs: true
-    ShowPostNavLinks: true
-    ShowFullTextinRSS: true
-    ShowCodeCopyButtons: true
-    disableScrollToTop: true
-    showtoc: true
-    tocopen: false
-    hideFooter: true
-    hideAuthor: true
-    assets:
-      disableHLJS: true
-    homeInfoParams:
-        enabled: true
-        Title: Shom Bandopadhaya
-        Content: "I like people, dogs, photography, scuba-diving, computers, open-source software, privacy, and generally improving things where I can."
-    profileMode:
-        enabled: false
-        title: "Shom Bandopadhaya" # optional default will be site title
-        subtitle: "More curiosity than time"
-        #imageUrl: "<image link>" # optional
-        #imageTitle: "<title of image as alt>" # optional
-#        imageWidth: 120 # custom size
-#        imageHeight: 120 # custom size
-    # buttons:
-    #   - name: Archives
-    #     url: "/posts"
-    #     name: Tags
-    #     url: "/tags"
-    socialIcons: # optional
-        - name: 'Mastodon'
-          url: 'https://phanpy.social/#/mastodon.social/a/113878109689154226'
-        - name: 'camera'
-          url: 'https://photos.shom.dev'
-        - name: 'git'
-          url: 'https://codeberg.org/shom'
-        - name: 'key'
-          url: 'https://id.shom.dev'
-        - name: 'RSS'
-          url: 'https://shom.dev/index.xml'
+  description: "More curiosity than time. Enthusiastic about humans, food, photography, scuba, dogs, FOSS, nature, woodworking and self-hosting."
+  images:
+    - Shom_20211026_McDonaldLake_00015.jpg
+  env: production
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowBreadCrumbs: true
+  ShowPostNavLinks: true
+  ShowFullTextinRSS: true
+  ShowCodeCopyButtons: true
+  disableScrollToTop: true
+  showtoc: true
+  tocopen: false
+  hideFooter: true
+  hideAuthor: true
+  assets:
+    disableHLJS: true
+  homeInfoParams:
+      enabled: true
+      Title: Shom Bandopadhaya
+      Content: "I like people, dogs, photography, scuba-diving, computers, open-source software, privacy, and generally improving things where I can."
+  socialIcons: # optional
+      - name: 'Mastodon'
+        url: 'https://phanpy.social/#/mastodon.social/a/113878109689154226'
+      - name: 'camera'
+        url: 'https://photos.shom.dev'
+      - name: 'git'
+        url: 'https://codeberg.org/shom'
+      - name: 'key'
+        url: 'https://id.shom.dev'
+      - name: 'RSS'
+        url: 'https://shom.dev/index.xml'
 markup:
   highlight:
     # anchorLineNos: true
