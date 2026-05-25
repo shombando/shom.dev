@@ -27,7 +27,7 @@ params:
       Content: "I like people, dogs, photography, scuba-diving, computers, open-source software, privacy, and generally improving things where I can."
   socialIcons: # optional
       - name: 'Mastodon'
-        url: 'https://phanpy.social/#/mastodon.social/a/113878109689154226'
+        url: 'https://gts.shom.dev/@shom'
       - name: 'camera'
         url: 'https://photos.shom.dev'
       - name: 'git'
