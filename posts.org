@@ -30,7 +30,7 @@ CLOSED: [2026-07-30 Thu 22:35]
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20260730_the-hummingbird-and-the-hound
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/4f866734
-:EXPORT_HUGO_IMAGES: /posts/20260730_the-hummingbird-and-the-hound/image.jpg
+:EXPORT_HUGO_IMAGES: /posts/20260730_the-hummingbird-and-the-hound/1sandy-and-ernest.jpeg
 :EXPORT_HUGO_MENU:
 :END:
 The story of The Hummingbird and The Hound, originally told in a [[https://gts.shom.dev/@shom/statuses/01KY8GXK3CJ1RXZXGKAVK2MMP1][series of posts on the fediverse]].
@@ -70,7 +70,7 @@ I got him back home and tried to get him to drink some sugar water. Y'all this b
 {{< fig src="hummingbird-espresso-cup.jpeg" width= "600px" title="Shots of espresso, err sugar water" alt="A tiny green hummingbird is sitting in the open palm of a light brown hand looking into an espresso cup with a spoon sticking out of it." align="center" >}}
 #+end_export
 #+begin_export hugo
-{{< fig src="sandy-and-ernest.jpeg" width= "600px" title="Ernest and Sandy" alt="Same bird and same hand show the dog from before laying on the floor facing away being completely oblivious." align="center" >}}
+{{< fig src="1sandy-and-ernest.jpeg" width= "600px" title="Ernest and Sandy" alt="Same bird and same hand show the dog from before laying on the floor facing away being completely oblivious." align="center" >}}
 #+end_export
 ~note~: someone suggested the excellent name [[https://oslo.town/@matt/116971693497428603][Ernest Hummingway]].
 
