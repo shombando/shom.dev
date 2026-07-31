@@ -24,6 +24,69 @@ Darktable 5.3 just added the ability to customize the metadata editor list of fi
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
+** DONE The Hummingbird and The Hound                                   :fun:
+CLOSED: [2026-07-30 Thu 22:35]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20260730_the-hummingbird-and-the-hound
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/4f866734
+:EXPORT_HUGO_IMAGES: /posts/20260730_the-hummingbird-and-the-hound/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+The story of The Hummingbird and The Hound, originally told in a [[https://gts.shom.dev/@shom/statuses/01KY8GXK3CJ1RXZXGKAVK2MMP1][series of posts on the fediverse]].
+#+hugo: more
+
+It's was a day! I'm dog sitting for a friend's very high energy young rescue with more than a touch of separation anxiety. We go on a lunch walk and stumble upon this hummingbird. How do you try to help a tiny struggling bird while a high prey drive dog wants to pounce on it!?
+#+begin_export hugo
+{{< fig src="./hummingbird-street.mp4" width= "400px" title="Hummingbird on the street" alt="Video of a sidestreet where a tiny green hummingbird is fluttering desperately but unable to fly or even make it onto the grass." align="center" >}}
+#+end_export
+
+This is the dog, Sandy. She is very very sweet but loses her mind when she sees a prey animal (we're working on it).
+#+begin_export hugo
+{{< fig src="./sandy-window-ledge.jpeg" width= "600px" title="Sandy patrolling from the window ledge" alt="A brown yellow dog who looks like a dingo in profile with giant antenna ears looks out the window standing on a window bench." align="center" >}}
+#+end_export
+#+begin_export hugo
+{{< fig src="./sandy-sniff.jpeg" width= "600px" title="Sandy sniffing" alt="Same dog calmly smelling grass and tiny yellow flowers." align="center" >}}
+#+end_export
+
+Well I don't know how but I managed to grab the bird without Sandy eating him (don't know gender using him to distinguish from she dog). Well she wouldn't eat him per se but violently shake him and launch him into orbit. I still needed to do a little bit more of the walk to keep Sally from being too energetic. This bird (does he need a name?) was so exhausted that it just lay in my hand and didn't even have the energy to squeak or struggle.
+I got him back home and tried to get him to drink some sugar water. Y'all this bird is so tiny and had a thinner than needle tongue. He was drinking the sugar water and surprisingly Sandy didn't notice.
+#+begin_export hugo
+{{< fig src="./hummingbird-espresso-cup.jpeg" width= "600px" title="Shots of espresso, err sugar water" alt="A tiny green hummingbird is sitting in the open palm of a light brown hand looking into an espresso cup with a spoon sticking out of it." align="center" >}}
+#+end_export
+#+begin_export hugo
+{{< fig src="./sandy-and-ernest.jpeg" width= "400px" title="Ernest and Sandy" alt="Same bird and same hand show the dog from before laying on the floor facing away being completely oblivious." align="center" >}}
+#+end_export
+~note~: someone suggested the excellent name [[https://oslo.town/@matt/116971693497428603][Ernest Hummingway]].
+
+I cannot emphasize enough how tiny and how still this bird was. I've never seen a hummingbird be still but it was encouraging to see him move his neck around a bit and blink. The sugar water treatment carried on for a while.
+#+begin_export hugo
+{{< fig src="./the-hummingbird-and-the-hound.mp4" width= "400px" title="The Hummingbird and The Hound both passed out" alt="A video of a tiny green hummingbird on an open palm of a light brown hand being panned around the kitchen and a laying dog can be seen out of focus in the background at the end of the video." align="center" >}}
+#+end_export
+
+I took him outside with the dog along on a leash (see separation anxiety from above) and felt like a Disney Princess but the struggling single mom flavor desperately trying to make sure one kid doesn't eat the other. Everytime he would try to fly away he would just struggle to the ground immediately. It was not safe for him to be inside or outside.
+#+begin_export hugo
+{{< fig src="./hummingbird-close-up.jpeg" width= "600px" title="Ernest close-up in the sun" alt="A beautiful iridescent green hummingbird in the open palm of a light brown hand under bright sunshine, green grass in the background." align="center" >}}
+#+end_export
+#+begin_export hugo
+{{< fig src="./hummingbird-sunshine.jpeg" width= "600px" title="Sooo pretty" alt="Same as before but more zoomed out. Copied description below. A beautiful iridescent green hummingbird in the open palm of a light brown hand under bright sunshine, green grass in the background." align="center" >}}
+#+end_export
+
+Well at this point I had no choice but to attend a meeting with a hummingbird in the hand. He was definitely worth more than two hummingbirds in the bush.
+#+begin_export hugo
+{{< fig src="./hummingbird-meeting.jpeg" width= "600px" title="Ernest and I attended some meetings (should have signed an NDA)" alt="Tiny green hummingbird sitting on the open palm of a lightbrown hand against the chest of a person wearing a gray shirt." align="center" >}}
+#+end_export
+Over the next two hours his strength started returning and I tried to move his wing a bit so it was not stuck under his other feathers. He peed on me. But eventually started getting feisty but still not able to fly. Keeping Sandy oblivious was very stressful!
+#+begin_export hugo
+{{< fig src="./sandy-sleeping.jpeg" width= "600px" title="For a long while thankfully Sandy was oblivious and took some naps" alt="A yellow brown dog is curled into a tight ball and sleeping on top of a plaid fleece blanket." align="center" >}}
+#+end_export
+
+He started getting more feisty so I put him outside on the grass and left him with some sugar water. Checked on him a couple times throughout the afternoon. Called the Humane Society, they can't help but said I could bring him in a box to the county to euthanize him 😭
+
+In the meanwhile he had perched himself on some grass (on grass! this is a tiny bird). I left my phone inside in the chaos of making sure Sandy didn't eat him so no photos, she clued in big time when he got more and more feisty.  and when I finally came back at the end of the work day, he was gone.
+
+I'd like to think to greater adventures or he became part of the food chain. But we tried the best we could. And that's the story of how I spent an afternoon with a hummingbird in the palm of my hand, wild!
+
 ** DONE Let's Go                                        :hugo:gotosocial:foss:
 CLOSED: [2025-12-28 Sun 02:48]
 :PROPERTIES:
