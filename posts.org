@@ -40,10 +40,10 @@ It's was a day! I'm dog sitting for a friend's very high energy young rescue wit
 #+begin_export html
 <video controls width="800">
 <source src="./hummingbird-street.mp4" type="video/webm" />
-<track kind="subtitles" src="alt_video_en.vtt" srclang="en" />
+<track kind="subtitles" src="alt_hummingbird-street_en.vtt" srclang="en" />
 </video>
 #+end_export
-#+begin_src org :exports none :tangle content/slug/alt_video_en.vtt
+#+begin_src org :exports none :tangle content/posts/20260730_the-hummingbird-and-the-hound/alt_hummingbird-street_en.vtt
   WEBVTT
 
   1
@@ -78,10 +78,10 @@ I cannot emphasize enough how tiny and how still this bird was. I've never seen 
 #+begin_export html
 <video controls width="800">
 <source src="./the-hummingbird-and-the-hound.mp4" type="video/webm" />
-<track kind="subtitles" src="alt_video_en.vtt" srclang="en" />
+<track kind="subtitles" src="./alt_the-hummingbird-and-the-hound_en.vtt" srclang="en" />
 </video>
 #+end_export
-#+begin_src org :exports none :tangle content/slug/alt_video_en.vtt
+#+begin_src org :exports none :tangle content/posts/20260730_the-hummingbird-and-the-hound/alt_the-hummingbird-and-the-hound_en.vtt
     WEBVTT
 
     1
