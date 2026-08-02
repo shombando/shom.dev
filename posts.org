@@ -30,12 +30,16 @@ CLOSED: [2026-08-01 Sat 19:54]
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20260801_i-m-a-cyclical-hobbyist-dot-dot-dot
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/07bc55b5
-:EXPORT_HUGO_IMAGES: /posts/20260801_i-m-a-cyclical-hobbyist-dot-dot-dot/image.jpg
+:EXPORT_HUGO_IMAGES: /posts/20260801_i-m-a-cyclical-hobbyist-dot-dot-dot/golden-sunset.jpg
 :EXPORT_HUGO_MENU:
 :END:
 ... and I'm finally okay with it!
 
 #+hugo: more
+#+begin_export hugo
+{{< fig src="golden-sunset.jpg" width= "600px" title="Film photography magic, not knowing if you got it until later and it's awesome when you did get it." alt="A sunset scene at Baker Beach by the Golden Gate Bridge in San Fransisco, CA, USA. The sun is setting off screen to the left and casting a beautiful light sideways towards the subjects which is further scattered by the spray in the air. A wave is crashing in from the left with white foamy water rushing onto the sand and covering most of the bottom third, beyond which are the rocks that have caused a huge splash of brilliant white spray just in front of a couple that is standing front to back on some rocks hugging framed in between to two towers of the Golden Gate Bridge in the background which stands under a blue sky with scattered fluffy clouds. Shot with a Voigtlander BessaR3M and Voigtlander40f1.4MC lens, on KodakKodacolor100, and developed with LabDev by Shom Bandopadhaya. Licensed under Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)." align="center" >}}
+#+end_export
+
 Last week I pulled up my for-fun [[../20251228_let-s-go][acoustic-coding Go project]] the last commit was from April 27th, exactly 3 months ago. Well that just smells like yet another abandoned project. But instead of feeling bad, I tied up the main functionality and added a small feature (after getting reacquainted with the code). It started as an elaborate joke and my mate and I had a chuckle, delightful.
 
 In the last year or so I've realized that I'm a *cyclical hobbyist* and instead of feeling guilty for not doing my hobbies consistently (I know it sounds ridiculous) I have accepted that! This means that my projects don't have to be abandoned projects, they can just be on hold and I can pick them up when I'm interested again. This is fundamentally different than being a serial hobbyist, where you're chasing novelty; not saying I won't add hobbies but I genuinely like the thing and come back to them. Part of me is sulking that I'm learning basic things like this about myself this late in life, but the rest of me is trying to learn how to be happy about small victories that change the larger narrative about my self lore. Be kinder to yourself y'all, it works 😭
