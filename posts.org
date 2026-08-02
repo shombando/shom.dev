@@ -24,7 +24,25 @@ Darktable 5.3 just added the ability to customize the metadata editor list of fi
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
-** DONE The Hummingbird and The Hound                                   :fun:
+** DONE I'm a cyclical hobbyist...                            :life:blaugust:
+CLOSED: [2026-08-01 Sat 19:54]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20260801_i-m-a-cyclical-hobbyist-dot-dot-dot
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/07bc55b5
+:EXPORT_HUGO_IMAGES: /posts/20260801_i-m-a-cyclical-hobbyist-dot-dot-dot/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+... and I'm finally okay with it!
+
+#+hugo: more
+Last week I pulled up my for-fun [[../20251228_let-s-go][acoustic-coding Go project]] the last commit was from April 27th, exactly 3 months ago. Well that just smells like yet another abandoned project. But instead of feeling bad, I tied up the main functionality and added a small feature (after getting reacquainted with the code). It started as an elaborate joke and my mate and I had a chuckle, delightful.
+
+In the last year or so I've realized that I'm a *cyclical hobbyist* and instead of feeling guilty for not doing my hobbies consistently (I know it sounds ridiculous) I have accepted that! This means that my projects don't have to be abandoned projects, they can just be on hold and I can pick them up when I'm interested again. This is fundamentally different than being a serial hobbyist, where you're chasing novelty; not saying I won't add hobbies but I genuinely like the thing and come back to them. Part of me is sulking that I'm learning basic things like this about myself this late in life, but the rest of me is trying to learn how to be happy about small victories that change the larger narrative about my self lore. Be kinder to yourself y'all, it works 😭
+
+So what are these hobbies that I cycle between?! I enjoy [[https://photos.shom.dev/film/][film photography]], [[https://phanpy.social/#/mastodon.social/s/116479730120274093][woodworking]], [[https://phanpy.social/#/mastodon.social/s/115470036738640175][bicycling]], [[https://photos.shom.dev/scuba/][scuba diving]], [[https://phanpy.social/#/mastodon.social/s/114123564188306239?media=1][open hardware/software]], [[https://phanpy.social/#/mastodon.social/s/114966498152501004?media=1][watercoloring]], and [[https://craftering.systemcrafters.net/][indie web/blogging]].
+
+** DONE The Hummingbird and The Hound                              :fun:life:
 CLOSED: [2026-07-30 Thu 22:35]
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
