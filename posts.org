@@ -24,6 +24,44 @@ Darktable 5.3 just added the ability to customize the metadata editor list of fi
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
+** DONE Morning joy                                           :life:blaugust:
+CLOSED: [2026-08-04 Tue 00:19]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20260803_morning-joy
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/34527634
+:EXPORT_HUGO_IMAGES: /posts/20260803_morning-joy/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+I'm NOT a morning person, never have been. I'm at my best from 10 pm to 2 am! Somehow morning larks get all the glory when historically it was us night owls who kept your butts unmonched by wolves! But, there are a few things I like about the morning...
+
+#+hugo: more
+#+begin_export hugo
+{{< fig src="latte.jpg" width= "600px" title="A latte to like about the morning" alt="A white coffee cup on a dark walnut wooden table top with some latte 'art' somewhere between and onion and a heart" align="center" >}}
+#+end_export
+
+#+begin_quote
+It can't be said I'm an early bird
+
+It's 10 o'clock before I say a word
+#+end_quote
+
+I like the diffused light of the morning when dew is burning off.
+I like the bird songs.
+I like knocking out a clean puck of espresso after I've pulled a shot.
+And of late I like how sweet and loving this pup is in the morning. We get up and do some stretching on the floor, which is her cue to find a way to be under me regardless od how much ground clearance there might be and give my face a bath any opportunity she finds. I also an enjoying the morning walk with the long shadows and the aforementioned light and birds.
+
+#+begin_export hugo
+{{< fig src="shadows.jpeg" width= "600px" title="Long shadows" alt="Elongated shadows of a person and a dog (in profile) stretched out over grass lit by a soft morning sun." align="center" >}}
+#+end_export
+
+I can love these things, but I have no intention of becoming a /virtuous/ morning person. To them I have the same question as Hozier:
+#+begin_quote
+Don't you just wanna wake up, dark as a lake
+
+Smellin' like a bonfire, lost in a haze?
+#+end_quote
+
 ** DONE I'm a cyclical hobbyist...                            :life:blaugust:
 CLOSED: [2026-08-01 Sat 19:54]
 :PROPERTIES:
