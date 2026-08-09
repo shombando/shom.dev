@@ -24,6 +24,36 @@ Darktable 5.3 just added the ability to customize the metadata editor list of fi
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
+** DONE Big hopes for littleFedi             :fediverse:selfhosting:blaugust:
+CLOSED: [2026-08-08 Sat 22:35]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20260808_big-hopes-for-littlefedi
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/c5e65606
+:EXPORT_HUGO_IMAGES: /posts/20260808_big-hopes-for-littlefedi/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+The Fediverse is exciting, I've formed genuine connections with interesting people. [[https://gotosocial.org/][GoToSocial]] got me hosting my own presence. And I hope [[https://littleone.littlefedi.social/][littleFedi]] is what gets to hosting a community.
+#+hugo: more
+
+*** Thoughts/context on Fediverse
+The federated universe (Fediverse) is awesome: different applications, networks, sub-cultures all able to interact with each other via a rather lightweight protocol, ActivityPub. It's this very lightweightness is interesting because not all the servers are architected to be lightweight because they are architected to scale. There's a lot of debate about the role of centralization, discoverability, "flagship" instances this post isn't that. BUT, decentralization is a big selling point of ActivityPub and being able to run many small instances on low power hardware democratizes participation. I'm all about that, GoToSocial fits the bill perfectly and I have been very happy hosting it and the team is doing great and thoughtful work.
+
+*** Why am I excited about littleFedi!?
+Well maybe it's a better idea to talk about what is littleFedi is?! I'll let [[https://littleone.littlefedi.social/@stefano][Stefano]] talk about that: [[https://littleone.littlefedi.social/@stefano/blog/2026/08/07/littlefedi-a-fediverse-server-that-doesn-t-need-a-data/][littleFedi: a Fediverse Server That Doesn't Need a Data Centre]]. That blog is actually served directly by littlFedi and the post was created as any other regular post AND the blog is statically served AND a regular post can be retroactively turned into a blog post AND it supported threaded comments (since it also remains a regular ActivityPub post). littleFedi has a load of other great features as well and I don't want to take away from that but this is definitely what sets it apart from GoToSocial.
+#+begin_export hugo
+{{< fig src="littleFedi.png" width= "600px" title="littleFedi post page" alt="Screenshot of littleFedi default teal and black theme showing a social post with nested comments and likes and boosts metadata" align="center" >}}
+#+end_export
+
+*** Blogging vs Microblogging
+Blogging and maintaining a separate social feed is difficult. The ability to do it all in one platform and also convert existing posts into blog posts if they need to be persisted as a "body of work" is great for folks who don't want to mess around with tech and just want to share with their community. Also it's cognitively easier to write a series of posts instead of sitting down to write a blog post and being able to convert it later is great.
+#+begin_export hugo
+{{< fig src="blog.png" width= "600px" title="Same post as a static blog" alt="The same content has been rendered into a distinct blog interface and the comments from the fedi post are displayed as nested blog comments." align="center" >}}
+#+end_export
+
+*** What's next?
+[[https://littleone.littlefedi.social/@shom][I'm on the test instance]] and have been doing some testing and providing feedback. Stefano is both very prompt and gracious in receiving feedback and fixing issues. The project will be released as a MIT licensed self-hostable application and I plan on trialing a niche community hub (more on that later) using littleFedi. I wish the project well and will be following it closely and eagerly.
+
 ** DONE Morning joy                                           :life:blaugust:
 CLOSED: [2026-08-04 Tue 00:19]
 :PROPERTIES:
