@@ -24,7 +24,37 @@ Darktable 5.3 just added the ability to customize the metadata editor list of fi
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
-** DONE Big hopes for littleFedi             :fediverse:selfhosting:blaugust:
+** DONE Fedi thread to blog post           :littleFedi:fediverse:ui:blaugust:
+CLOSED: [2026-08-09 Sun 20:29]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20260809_fedi-thread-to-blog-post
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/7f1e5964
+:EXPORT_HUGO_IMAGES: /posts/20260809_fedi-thread-to-blog-post/proposal.png
+:EXPORT_HUGO_MENU:
+:END:
+Aside from being a [[../20260801_i-m-a-cyclical-hobbyist-dot-dot-dot/][cyclical hobbyist]] I don't blog as much as I potentially could because I end up posting something on Fedi and repeating myself feels weird unless it's something [[../20260730_the-hummingbird-and-the-hound/][completely bonkers]] that I want to capture for posterity. Last week I thought about writing an application that did just that and link it to this here blog. But the last few days I've been preoccupied with [[https://littleone.littlefedi.social/][littleFedi]].
+
+#+hugo: more
+*** Converting threaded posts to blog proposal
+
+Based on my incessant posts it's clear that I'm a fan of littleFedi and the static blog integration. Currently, it is possible to take an existing public post and mark it as a blog post and takes that existing post and all the interaction on it and creates a blog post from it (with the interactions as comments), brilliant.
+
+*** Desired State
+
+> The idea is that if you end up writing a series of posts and it becomes something that is more meaty and has some value for longevity it can be persisted by simply changing the post type to a blog, after the fact.
+
+This is [what I wrote](https://littleone.littlefedi.social/@shom/1ad99f9c-2c9a-47d2-80fa-04399dc477d5) when I first learned about this feature and the more I think about it the more it makes sense for me. The whole premise was that you start writing something and have interactions with others or have updates over time and now it is a "body of work". How can that be made into a full-on blog post without the venerable copy-paste method. And again, from that original post
+> it's cognitively easier to write a series of posts instead of sitting down to write a blog post.
+
+*** Proposal
+A threaded post is a known quantity in the Fedi world and littleFedi does a great job of showing threads. So when editing a post the threaded replies that are either nested replies OR replies to the top post from the original author can be considered for inclusion into the blog post. Making an assumption on which posts should be part of the blog is not possible since the author did not write the posts originally with intent for a blog post. This is a potential way this can be achieved but I can imagine how the implementation can be hairy and supported scenarios could be difficult to define and explain. Here's a visual to illustrate the idea, I created this with the littleFedi UI and developer tools in Firefox
+#+begin_export hugo
+{{< fig src="proposal.png" width= "600px" title="littleFedi threaded post to blog mockup" alt="Screenshot of a html composite of the littleFedi edit inteface and threaded replies with check boxes in front of each thread, not all boxes are checked for demonstration." align="center" >}}
+#+end_export
+link to post shown: https://littleone.littlefedi.social/@shom/1ad99f9c-2c9a-47d2-80fa-04399dc477d5
+
+** DONE Big hopes for littleFedi  :fediverse:selfhosting:blaugust:littleFedi:
 CLOSED: [2026-08-08 Sat 22:35]
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
