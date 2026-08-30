@@ -4,7 +4,36 @@
 #+startup: indent
 
 * Content
-** DRAFT Photos meta data: the disjointed state of EXIF, XMP, IPTC in tools :hugo:foss:exif:
+** DRAFT Like tears in the rain                               :life:blaugust:
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20260829_like-tears-in-the-rain
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/b5612cf2
+:EXPORT_HUGO_IMAGES: /posts/20260829_like-tears-in-the-rain/atlantic_storm.jpg
+:EXPORT_HUGO_MENU:
+:END:
+As I sat on the dark beach listening to the sounds of the crashing waves and the very faint roar of thunder from the distant flashes of lightning, I wonder will I think of this serene moment again? How many times will I remember this memory? Or will
+#+begin_quote
+All those moments will be lost in time, like tears in rain.[fn:BladeRunnerTearsInRain]
+#+end_quote
+
+#+hugo: more
+#+begin_export hugo
+{{< fig src="atlantic_storm.jpg" width= "600px" title="Dark 'n Stormy" alt="A dark image of the ocean at night but the white foam from the crashing wasves on the beach is visible against the greenish blue of the water and the dark blue of the sky with some gray storm clouds and a hint of lightning in the distance." align="center" >}}
+#+end_export
+
+Not like this.[fn:MatrixNotLikeThis]
+Not Penny's Boat[fn:LostNotPennysBoat]
+What door?[fn:WestworldWhatDoor]
+
+*** Footnotes
+
+[fn:LostNotPennysBoat] LOST
+[fn:MatrixNotLikeThis] The Matrix
+[fn:WestworldWhatDoor] Westworld Season 1
+[fn:BladeRunnerTearsInRain] Blade Runner
+
+* DRAFT Photos meta data: the disjointed state of EXIF, XMP, IPTC in tools :hugo:foss:exif:
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20250615_photos-meta-data-the-disjointed-state-of-exif-xmp-iptc-in-tools
