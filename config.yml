@@ -2,6 +2,7 @@ baseURL: "https://shom.dev"
 languageCode: "en-us"
 title: "shom.dev"
 theme: "PaperMod"
+timeZone: "America/Chicago"
 
 params:
   description: "More curiosity than time. Enthusiastic about humans, food, photography, scuba, dogs, FOSS, nature, woodworking and self-hosting."
