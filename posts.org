@@ -24,6 +24,35 @@ Darktable 5.3 just added the ability to customize the metadata editor list of fi
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
+** DONE Any day diving is better than a day without diving :life:blaugust:scuba:
+CLOSED: [2026-08-30 Sun 22:17]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20260830_any-day-diving-is-better-than-a-day-without-diving
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/ae697421
+:EXPORT_HUGO_IMAGES: /posts/20260830_any-day-diving-is-better-than-a-day-without-diving/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+Today it rained, I had equipment issues, and we saw "nothing good" but any day diving is better than day without diving.
+
+#+hugo: more
+I'm on a short dive trip with a friend, diving the Blue Heron Bridge off Phil Foster Park by West Palm Beach, Florida. It is the least glamorous dive spot, literally under a bridge; not a cool suspension bridge, a flyover. But somehow through some magic some of the coolest critters show up here. I've seen some [[https://photos.shom.dev/scuba/blueheron/][truly amazing things]] here, today was not one of those days.
+
+The day started out with great weather, bright sunny skies. But it started raining the moment we set foot in the water. Rain under water looks really neat but nothing else looks neat when you have no light.
+#+begin_export hugo
+{{< fig src="rain.jpg" width= "800px" title="wet on wet" alt="An abstract scene of light blue on the top of the frame making way to darker blues towards the bottom with a lot of undulating dappled texture throughout the image. It's a photo of rain falling on the surface of water taken from underwater." align="center" >}}
+#+end_export
+
+But with the rain it wasn't that pretty, the visibility was poor, we found nothing in the grass or anything we hadn't seen a bunch before. I also experienced equipment issues because my secondary air supply which is also my Buoyancy Control Device (BCD) inflator started free-flowing after just having been serviced this week.
+
+Here's where I admit that I've become a bit of a snob; unless I see something that is truly rare (to me) then it feels like I saw nothing. So basically, if it's not a seahorse, octopus, batfish, or something equally wild it doesn't feel successful. I totally understand people catching Pokemon. Do birders get this way too?
+
+#+begin_export hugo
+{{< fig src="eel.jpg" width= "800px" title="'Hey guuuuuuys, let's hang out underwater sometime, preferably in a tube!'" alt="An extreme close up for a sharp tail eel which has this goofy nostrils and a single eye visible, cute and derpy expression" align="center" >}}
+#+end_export
+
+Sometimes it takes a bit longer than I like for me to realize that I get to choose: I got to dive today and that makes today a great day. I saw a lot of wonderful fish, crabs, eels, even a stone fish and the dive shop was so great they will service my gear again and gave me a free rental so I could dive again tomorrow. Diving is awesome and any day I get to hangout underwater with my eel friend here is a great day that I'm grateful for.
+
 ** DONE Like tears in the rain                                :life:blaugust:
 CLOSED: [2026-08-29 Sat 22:57]
 :PROPERTIES:
