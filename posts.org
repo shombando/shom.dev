@@ -24,6 +24,29 @@ Darktable 5.3 just added the ability to customize the metadata editor list of fi
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
+** DONE In the market for assorted moldy fishes         :life:blaugust:scuba:
+CLOSED: [2026-08-31 Mon 21:26]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20260831_in-the-market-for-assorted-moldy-fishes
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/db490df9
+:EXPORT_HUGO_IMAGES: /posts/20260831_in-the-market-for-assorted-moldy-fishes/scorpionfish.jpg
+:EXPORT_HUGO_MENU:
+:END:
+A bit of a follow-on from the [[../20260830_any-day-diving-is-better-than-a-day-without-diving][previous post]], today was only a good day because it included diving and one moldy fish that keeps hope alive.
+
+#+hugo: more
+We went down to Lauderdale by the Sea today and the dive was kind of a bust. The reef is interesting but the visibility was 3 to 10 feet-ish at best. This has been a bit of an unlucky trip from fauna, conditions, and equipment. Side note: got my octo-inflator serviced and back from the dive shop, the rental worked out nicely; the BCD (a Zeagle with a backplate) is a very tempting upgrade.
+
+The visibility made photography almost pointless but I halfheartedly took some photos and near the very end of the dive, I spotted a Scorpion fish. Very well camouflaged until it decided I was sus and moved... into the open and opened up the beautiful underside of its fin. Well not very good camouflage but I will take it as a sign to not get discouraged because seeing their fin is quite rare indeed.
+#+begin_export hugo
+{{< fig src="scorpionfish.jpg" width= "800px" title="A scorpion fish - moldy camouflage expert" alt="A scorpion fish is sitting on a reef and would be totally blending in except it is showing the underside of its fins which is very colorful bands of yellow, black, and pink." align="center" >}}
+#+end_export
+
+One more dive tomorrow, depending upon your worldview you're either going to give up hope and be pleasantly surprised if something good happens or be full of hope and manifest any of the moldy looking fishes we're in the market for: moldy frogfish, moldy batfish, moldy seahorse, moldy stonefish, really any moldy looking weird fish will do. Thanks moldy scorpionfish, is this a sign to keep hope alive?
+
+~note to fellow pedants:~ plural of fish is fish when it's the same kind of fish, when it's a variety of them, it's fishes. Happy to be corrected if this isn't right.
+
 ** DONE Any day diving is better than a day without diving :life:blaugust:scuba:
 CLOSED: [2026-08-30 Sun 22:17]
 :PROPERTIES:
