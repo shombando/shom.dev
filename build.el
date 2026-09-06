@@ -26,6 +26,9 @@
 (require 'ox-hugo)
 (require 'org-id)
 
+;; Remove timezone and set it via hugo config
+(setq org-hugo-date-format "%Y-%m-%dT%T")
+
 ;; Export content from org to Hugo md
 (message "\n==== Exporting Hugo markdown ====")
 (with-current-buffer (find-file "./main.org")
