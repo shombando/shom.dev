@@ -24,6 +24,80 @@ Darktable 5.3 just added the ability to customize the metadata editor list of fi
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
+** DONE Handworks 2026                                     :woodworking:life:
+CLOSED: [2026-09-06 Sun 01:29]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20260905_handworks-2026
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/78da46c9
+:EXPORT_HUGO_IMAGES: /posts/20260905_handworks-2026/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+I'm an amateur woodworker and a very amateur (fine, almost not a) hand-tool user, but I attended Handworks and it was great.
+
+#+hugo: more
+#+begin_export hugo
+{{< fig src="1handworksposter.jpg" width= "400px" title="Handworks Poster" alt="An art poster saying Handworks which looks like a 3D wood carving being done by a figure with a chisel and mallet on a workbench that says Amana, IA and the dates Sept 4-5 2026" align="center" >}}
+#+end_export
+
+[[https://www.handworks.co/][Handworks]] is woodworking event/gathering and was billed as
+#+begin_quote
+join modern woodworking hand tool makers and fellow enthusiasts for a weekend immersion in all things handwork. Unplug from the world of machines, dust and noise while listening to the crisp sounds of the hand plane, chisel and saw in a restored timber-frame dairy barn in the traditional, historic German village of Amana.
+#+end_quote
+I can attest that it was exactly that and I just realized that there was no sounds of loud woodworking power tools, which is nice. Here are a few photos and thoughts...
+
+The quality of the tools that the craftspeople made was phenomenal. It was very clear that the indie makers were there for the love of the game. I loved that everyone was friendly and wanting to chat with anyone stopping by and not in a sales-y way. There was a lot of hands on demonstration and encouragement from the makers to pick up and interact with the tools. It is very clear that they are proud of what they made and want others to experience joy in using the tools.
+#+begin_export hugo
+{{< fig src="markingknives.jpeg" width= "600px" title="Marking knives with a display of steps" alt="Tool maker booth with marking knives, a work in process steps board, and a tiny lathe." align="center" >}}
+#+end_export
+
+It was cool to see that there were new tools as well as old tools that were restored. There were definitely old tools that were geared towards collectors but most of them were well loved and restored tools that were looking for a new home. Side note: I did see a Union no. 1 0XA hand plane that was on sale for $4500!!!
+#+begin_export hugo
+{{< fig src="usedtools.jpeg" width= "600px" title="Used tools looking for a new home" alt="Old woodworking tools for sale on table tops and people browsing" align="center" >}}
+#+end_export
+
+The event was across three locations that are within a short walk and it is a very cute town BUT it was very hot and humid (feels like temperature of 95F/35C).
+#+begin_export hugo
+{{< fig src="dairybarn.jpeg" width= "600px" title="Dairy barn and tents were at least breezy, sometimes" alt="Old barn with a yellow and white tent beyond." align="center" >}}
+#+end_export
+The main barn was absolutely packed, didn't spend too much time in there with the sea of sweaty bodies 🤢 (mine being chief among them).
+#+begin_export hugo
+{{< fig src="mainbarn.jpeg" width= "600px" title="Main barn was packed and had more of the big players" alt="An old barn with a light ropes on the pillars and just packed with people." align="center" >}}
+#+end_export
+That is also where the more commercial entities were so it was less interesting to me. BUT, the Veritas booth had their miniature series, which are fully functional and 100% adorable!
+#+begin_export hugo
+{{< fig src="miniaturetools.jpeg" width= "600px" title="Just look at those tiny adorable chisels" alt="A display of hand tools and there are tiny chisels and planes that look impractical but cute." align="center" >}}
+#+end_export
+While these are beautiful tools I think the indie maker tools are just works of art. Look at these tools made in Australia by HNT Gordon (pretty sure).
+#+begin_export hugo
+{{< fig src="australiahandtools.jpeg" width= "600px" title="Classic Plane Makers from Australia with native woods" alt="Classic wooden planes with brass and steel on a display table with a company banner in the background." align="center" >}}
+#+end_export
+Soooo... I got some really cool tools. I got a marking knife made from snakewood by [[https://personmakeobject.square.site/][Person Make Object]], a saddle square made from buckeye burl and brass by [[https://www.hillviewtool.com/][Hillview Metal&Wood]], and a ryoba saw. My friend also got a few things as well, here's our haul:
+#+begin_export hugo
+{{< fig src="toolhaul.jpeg" width= "600px" title="Our tool haul" alt="A bunch of tools on a white countertop made of wood and brass gleaming in the sunlight." align="center" >}}
+#+end_export
+I did not know that saddle square is a tool that existed but it is absolutely a tool I could have used a lot. Saddle squares let you mark a line on both adjacent (orthogonal) faces at the same time (or transfer your mark from one to the other). I struggle a lot transferring a measurement from one face to the next, especially if I need to take it to the opposite face, this will be a great help!
+
+Amana Colonies have their own forestry service who sustainably manages the land and supplies their furniture making operation and lumber sales. They have a little show room attached to their workshop where skilled craftspeople make beautiful furniture. I wish I had taken some photos inside but look at the size of these Sycamore slabs
+#+begin_export hugo
+{{< fig src="sycamoreslab.jpg" width= "600px" title="Absolute unit Sycamore slab" alt="A very wide slab of spalted sycamore with a brown hand giving a thumbs up to show the scale. It is several feet across and perhaps five feet tall." align="center" >}}
+#+end_export
+I got a slab of walnut with the intent of making it a top of a coffee table. I'm very happy with the find, the figure is beautiful bacony figure 🥓 and will absolutely pop when finished.
+#+begin_export hugo
+{{< fig src="walnutslab.jpeg" width= "600px" title="A glamour shot of the walnut slab" alt="A walnut slab leaned up against a tree in a grassy yard. The slab has a lot of interesting grain/figure, beautiful swoops and swirls." align="center" >}}
+#+end_export
+
+The stack of boards also turned out excellent with only one board being less than desirable. A total surprise on the wide boards being sequential and can be used as a book-match! I bought these to mill up legs for the table but now I want to use the wide boards as a bookmatched table top, look at the 👀🦉
+#+begin_export hugo
+{{< fig src="walnutboards.jpeg" width= "600px" title="Walnut boards laid on table saw" alt="Six boards of walnut are laid on top of a table saw, there's of differing lengths and widths." align="center" >}}
+#+end_export
+
+I don't mean to cause envy but it's unavoidable for anyone aware of walnut prices... this 58"x18"x1¾" (145 x 45 x 4 cm) slab was $160 (USD). The bundle of boards all together roughly measuring 44" x 30" x 1" (110 x 75 x 2.5 cm) was $50 (USD).
+
+It was a great trip with quality time with my good friend, excellent food, and cool people doing amazing work. Despite the oppressive heat, I would totally do it again and hope it was like 2023 weather wise when we walked around the explored the town.
+
+A version of this post [[https://gts.shom.dev/@shom/statuses/01M1S3WWJ9TQE321D5XGRWFDMX][was shared as a thread]] on the Fediverse/Mastodon, feel free to comment there and share your experience.
+
 ** DONE In the market for assorted moldy fishes         :life:blaugust:scuba:
 CLOSED: [2026-08-31 Mon 21:26]
 :PROPERTIES:
