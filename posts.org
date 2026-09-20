@@ -24,13 +24,132 @@ Darktable 5.3 just added the ability to customize the metadata editor list of fi
 Use the same tag system that Negative Lab Pro uses to maintain some sort of compatibility
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
+** DONE D2 diagramming
+CLOSED: [2026-09-19 Sat 21:26]
+:PROPERTIES:
+:EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: 20260919_d2-diagramming
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/5a22ff63
+:EXPORT_HUGO_IMAGES: /posts/20260919_d2-diagramming/image.jpg
+:EXPORT_HUGO_MENU:
+:END:
+I have tried diagramming on a couple posts but never had a good workflow because I didn't want Mermaid.js with a massive payload, but maybe D2 is a contender!?
+
+#+hugo: more
+I watched this excellent video: [[https://www.youtube.com/watch?v=SsC-OsHR9RY][Beautiful diagrams in Emacs]] by [[https://skybert.net/][Torstein Krause Johansen]] and it got me interested in reexamining an easy way to integrate diagramming that is both declarative and tangled out, my Mermaid [[https://codeberg.org/shom/shom.dev/commit/aa85e3d19a2cc716881c974a6ea8ff3f5d8c4949][attempt]] wasn't that.
+
+*** Yak shaves
+I've started this blog post as a way to try it out directly in my workflow, so this is happening live and already has yak-shave vibes. So, let's see how many yaks we shave:
+1. Oh yeah, just realized that to actually test it fully I need to update my custom build OS image to add the ~d2~ CLI tool and getting it pushed up to my container registry and pulling it down to the laptop to test.
+2. It was a yak-shave after all since elpa.gnu.org kept failing until I realized that it was not code but the remote machine was on VPN 😭. But now I have ~d2~ in my build environment.
+3. I struggled with trying to write a file and then include it and then realized that tangling it inline also includes it in the export, which is cool. But tangling my whole file isn't doing the job, manually tangling the block does work. * many minutes later * Right, that doesn't work because of my workflow of org > ox-hugo > md > hugo.
+4. Had to go through and update my Hugo templates to handle SVG images (since resize for thumbnails doesn't make sense and hence fails).
+5. The org file still isn't tangling the ~d2~ block in the build pipeline but it does tangle out other blocks.... arrrggghhh!
+6. Alright, it needs to tangle with the rest of the file but not rendered inline, small yak shaved with =:exports none :noeval=
+7. Woof, now I have to update the Hugo shortcode so it doesn't try to resize a svg.
+8. =:flags= or =:cmdline= isn't supported by ~d2-mode~'s =org-babel-execute:d2= function natively, so all cli parameters (like themes) need to be passed via =d2-flags= and can't easily be customized per block.
+#+begin_src elisp
+     (setq d2-flags (list "--sketch" "--layout" "elk" "--theme" "102" "--dark-theme" "200"))
+#+end_src
+Post completion reflection: 1 and 2 were completely unnecessary and would have been obvious if I thought through how I handle images and I wouldn't use the auto-inlining because I add images as figures with alt-text. 7 and 8 were the only real dependencies, the rest was learning churn... a bit sad/frustrating but definitely learned stuff.
+
+*** D2 Diagrams
+Alright now I can finally try D2 diagramming (in my workflow). Here's the most basic one and it's reasonably small overhead (now that I have shaved a heard of yaks) and can be reduced further if I made another short code to add in the Hugo image boiler plate and read in org properties to reduce manual entry effort.
+#+begin_src d2 :file ./images/posts/20260919_d2-diagramming/simple.svg
+  foo -> bar: read
+  bar -> foo: write
+#+end_src
+
+#+RESULTS:
+[[file:./images/posts/20260919_d2-diagramming/simple.svg]]
+
+#+begin_export hugo
+{{< fig src="simple.svg" width="300 px" title="Simple D2 diagram" alt="Two boxes named foo and bar with arrows pointed to each other with lables read and write" align="center" >}}
+#+end_export
+
+Styling is fairly simple but I can't figure out to show to style all connectors but not shape borders.
+#+begin_src d2 :file ./images/posts/20260919_d2-diagramming/styled.svg
+  direction: right
+  ,*.shape: circle
+  foo -> bar: read
+  bar -> foo: write{
+  style: {
+  	animated: true
+  	stroke-dash: 3
+    }
+  }
+#+end_src
+
+#+RESULTS:
+[[file:./images/posts/20260919_d2-diagramming/styled.svg]]
+
+#+begin_export hugo
+{{< fig src="styled.svg" width="600 px" title="Styled and animated D2 diagram" alt="Two cirlces named foo and bar with arrows pointed to each other with lables read and write in horizontal orientation where the 'write' arrow is dashed and animated" align="center" >}}
+#+end_export
+
+*** Webring diagramming
+So if I were to [[../20240417_starting-a-webring-in-2024][recreate the webring diagram]] which started this "I wonder if" thought HOURS ago, it would look like:
+#+begin_src d2 :file ./images/posts/20260919_d2-diagramming/webring.svg
+  direction: right
+  ,*.shape: circle
+  A <--> B
+  B <--> C
+  C <--> D
+  D <--> E
+  E <--> A
+
+  C.style.fill: red
+#+end_src
+
+#+RESULTS:
+[[file:./images/posts/20260919_d2-diagramming/webring.svg]]
+
+#+begin_export hugo
+{{< fig src="webring.svg" width= "800px" title="Webring diagram in D2" alt="Five circular nodes have a bidirectional connection to their immediate neighbors. Nodes are named A, B, C, D, E." align="center" >}}
+#+end_export
+
+And when I was trying to explain a broken webring, I could get quite fancy without /that/ much effort:
+#+begin_src d2 :file ./images/posts/20260919_d2-diagramming/brokenwebring.svg
+  direction: right
+  classes: {
+  broken: {
+    style: {
+  		stroke-dash: 3
+  		stroke: "#884444"
+  		}
+    }
+  working: {
+    style: {
+      animated: true
+  		stroke: "#44AA44"
+  		stroke-dash: 3
+  		}
+    }
+  }
+  ,*.shape: circle
+  A <--> B: ✅ { class: working }
+  B <--> C: ❌ { class:broken }
+  C.style.fill: "#884444"
+  C <--> D: ❌ { class:broken }
+  D <--> E: ✅ { class: working }
+  E <--> A: ✅ { class: working }
+
+#+end_src
+
+#+RESULTS:
+[[file:./images/posts/20260919_d2-diagramming/brokenwebring.svg]]
+#+begin_export hugo
+{{< fig src="brokenwebring.svg" width= "800px" title="Broken Webring" alt="Same ring as before but node C is broken and colored red and so are it's connections, all other connections are green and animated." align="center" >}}
+#+end_export
+
+So in conclusion: D2 is great, now that the infrastructure is set up and I have a tiny bit of familiarity with it, it is fairly easy to use. I still have to tangle out a file and then include it manually but that could be templated/automated but this side quest ended up being my most of my day so I'm putting a pin in it.
+
 ** DONE Handworks 2026                                     :woodworking:life:
 CLOSED: [2026-09-06 Sun 01:29]
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20260905_handworks-2026
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :aliases /s/78da46c9
-:EXPORT_HUGO_IMAGES: /posts/20260905_handworks-2026/image.jpg
 :EXPORT_HUGO_MENU:
 :END:
 I'm an amateur woodworker and a very amateur (fine, almost not a) hand-tool user, but I attended Handworks and it was great.
