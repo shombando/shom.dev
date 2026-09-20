@@ -25,7 +25,7 @@ Use the same tag system that Negative Lab Pro uses to maintain some sort of comp
 [[https://discourse.gohugo.io/t/image-exif-and-usercomments-tag/49817][UserComment is extractable]] and Exif.Photo.UserComment is writable as are Exif.Image.PageName (and ReelName) but can't extracted (even with toml config set to [[https://gohugo.io/configuration/imaging/#exif-data][imaging.exif.includeFields = '.*']])
 
 ** DONE D2 diagramming
-CLOSED: [2026-09-19 Sat 21:26]
+CLOSED: [2026-09-20 Sun 01:08]
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: 20260919_d2-diagramming
@@ -97,8 +97,6 @@ So if I were to [[../20240417_starting-a-webring-in-2024][recreate the webring d
   C <--> D
   D <--> E
   E <--> A
-
-  C.style.fill: red
 #+end_src
 
 #+RESULTS:
@@ -114,7 +112,7 @@ And when I was trying to explain a broken webring, I could get quite fancy witho
   classes: {
   broken: {
     style: {
-  		stroke-dash: 3
+  		stroke-dash: 4
   		stroke: "#884444"
   		}
     }
@@ -122,7 +120,7 @@ And when I was trying to explain a broken webring, I could get quite fancy witho
     style: {
       animated: true
   		stroke: "#44AA44"
-  		stroke-dash: 3
+  		stroke-dash: 1
   		}
     }
   }
