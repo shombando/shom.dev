@@ -6,9 +6,13 @@
 
 {{- $resize := default "800x" (.Get "resize") -}}
 
-{{- /* generate thumbnail */ -}}
-{{ .Scratch.Set "image" ($originalImage.Resize $resize) }}
-{{ $resizedImage := .Scratch.Get "image" }}
+{{ $resizedImage := $originalImage }}
+{{ if not (eq $originalImage.MediaType.SubType "svg") }}
+  {{- /* generate thumbnail */ -}}
+  {{ .Scratch.Set "image" ($originalImage.Resize $resize) }}
+  {{ $resizedImage := .Scratch.Get "image" }}
+{{ end }}
+
 
 <figure class="align-center">
 	<a href="{{ $originalImage.RelPermalink }}"> <img loading="lazy" style="display: block; margin-left:auto; margin-right:auto;" src="{{ $resizedImage.RelPermalink }}" alt="{{ $alt }}" width="{{ $width }}" /></a>
